@@ -1,0 +1,172 @@
+import 'package:clippy_flutter/arc.dart';
+import 'package:firebase_auth/firebase_auth.dart';
+import 'package:flutter/material.dart';
+import 'package:flutter_svg/svg.dart';
+import 'package:clientPhysiho/src/components/default_button.dart';
+import 'package:clientPhysiho/src/config/colors.dart';
+import 'package:clientPhysiho/src/config/constants.dart';
+import 'package:clientPhysiho/src/config/images.dart';
+import 'package:clientPhysiho/src/config/strings.dart';
+import 'package:clientPhysiho/src/helpers/extension_helper.dart';
+import 'package:clientPhysiho/src/helpers/size_helper.dart';
+import 'package:clientPhysiho/src/helpers/widget_helper.dart';
+import 'package:clientPhysiho/src/providers/login_provider.dart';
+import 'package:clientPhysiho/src/views/complete_profile_view.dart';
+import 'package:clientPhysiho/src/views/create_account_view.dart';
+import 'package:clientPhysiho/src/views/home_view.dart';
+import 'package:loading_overlay/loading_overlay.dart';
+import 'package:provider/provider.dart';
+
+class LoginView extends StatefulWidget {
+  static const routeName = 'login';
+
+  @override
+  _LoginViewState createState() => _LoginViewState();
+}
+
+class _LoginViewState extends State<LoginView> {
+  @override
+  Widget build(BuildContext context) {
+    changeStatusColor(primaryColor);
+    var width = MediaQuery.of(context).size.width;
+    Widget socialButton(var color, var icon, var value, var iconColor,
+        var valueColor, VoidCallback onPressed) {
+      return SizedBox(
+        width: double.infinity,
+        height: getProportionateScreenHeight(50),
+        child: FlatButton.icon(
+          shape: RoundedRectangleBorder(
+              borderRadius: BorderRadius.circular(50),
+              side: BorderSide(color: whiteColor)),
+          color: color,
+          onPressed: onPressed,
+          icon: SvgPicture.asset(icon, color: iconColor, width: 18, height: 18),
+          label: Text(
+            value,
+            style: TextStyle(
+                fontSize: getProportionateScreenWidth(textSizeMedium),
+                color: valueColor),
+          ),
+        ),
+      );
+    }
+
+    return Scaffold(
+      body: LoadingOverlay(
+        isLoading: Provider.of<LoginProvider>(context).isLoading(),
+        child: Stack(
+          children: <Widget>[
+            Container(
+              decoration: BoxDecoration(
+                color: const Color(0xff7c94b6),
+                backgroundBlendMode: BlendMode.color,
+                image: DecorationImage(
+                    colorFilter: new ColorFilter.mode(
+                        Colors.black.withOpacity(0.8), BlendMode.dstATop),
+                    image: new AssetImage('assets/images/backgroundLogin.png'),
+                    fit: BoxFit.fitHeight),
+              ),
+            ),
+            Container(
+              height: width * 0.7,
+              width: width,
+              padding: EdgeInsets.only(top: 90, bottom: 0),
+              child: Center(
+                child: Image.asset("assets/images/Physioh1shadow.png"),
+              ),
+            ),
+            Container(
+              margin: EdgeInsets.only(top: width * 0.9),
+              child: Stack(
+                children: <Widget>[
+                  Arc(
+                    arcType: ArcType.CONVEX,
+                    edge: Edge.TOP,
+                    height: (MediaQuery.of(context).size.width) / 10,
+                    child: new Container(
+                        height: (MediaQuery.of(context).size.height),
+                        width: MediaQuery.of(context).size.width,
+                        color: login_colorPrimary),
+                  ),
+                  Align(
+                    alignment: Alignment.topCenter,
+                    child: Container(
+                      transform: Matrix4.translationValues(0.0, -20.0, 0.0),
+                      alignment: Alignment.center,
+                      decoration: BoxDecoration(
+                          shape: BoxShape.circle, color: food_color_green),
+                      width: width * 0.13,
+                      height: width * 0.13,
+                      child: Icon(Icons.arrow_forward, color: whiteColor),
+                    ),
+                  ),
+                  Container(
+                    alignment: Alignment.bottomCenter,
+                    padding: EdgeInsets.all(
+                        getProportionateScreenWidth(spacing_standard_new)),
+                    child: Column(
+                      children: <Widget>[
+                        SizedBox(height: width * 0.1),
+                        text("Bienvenido(a)",
+                            textColor: whiteColor,
+                            fontWeight: fontBold,
+                            fontSize: getProportionateScreenWidth(30)),
+                        SizedBox(height: width * 0.12),
+                        socialButton(
+                            whiteColor,
+                            food_ic_google_fill,
+                            "Ingresar con Google",
+                            googleColor,
+                            textPrimaryColor, () {
+                          context.read<LoginProvider>().login("google");
+                        }),
+                        SizedBox(height: width * 0.05),
+                        socialButton(
+                            facebookColor,
+                            food_ic_fb,
+                            "Ingresar con Facebook",
+                            whiteColor,
+                            whiteColor, () {
+                          context.read<LoginProvider>().login("facebook");
+                        }),
+                        SizedBox(height: width * 0.05),
+                        Row(
+                          mainAxisAlignment: MainAxisAlignment.spaceBetween,
+                          children: <Widget>[
+                            Container(
+                                height: 0.5,
+                                color: whiteColor,
+                                width: width * 0.07,
+                                margin:
+                                    EdgeInsets.only(right: spacing_standard)),
+                            text(food_lbl_or_use_your_mobile_email,
+                                textColor: whiteColor,
+                                textAllCaps: true,
+                                fontSize: textSizeSMedium),
+                            Container(
+                                height: 0.5,
+                                color: whiteColor,
+                                width: width * 0.07,
+                                margin:
+                                    EdgeInsets.only(left: spacing_standard)),
+                          ],
+                        ),
+                        SizedBox(height: width * 0.07),
+                        DefaultButton(
+                          text: "Usar número de teléfono",
+                          press: () {
+                            launchScreen(context, CreateAccountView.routeName);
+                          },
+                        )
+                      ],
+                    ),
+                  )
+                ],
+              ),
+            )
+          ],
+        ),
+      ),
+    );
+  }
+}

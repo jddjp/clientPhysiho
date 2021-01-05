@@ -1,0 +1,48 @@
+{
+  "project_info": {
+    "project_number": "330010738355",
+    "firebase_url": "https://fisioterapia-cfb53.firebaseio.com",
+    "project_id": "fisioterapia-cfb53",
+    "storage_bucket": "fisioterapia-cfb53.appspot.com"
+  },
+  "client": [
+    {
+      "client_info": {
+        "mobilesdk_app_id": "1:330010738355:android:7484f4d3ae649fc588bac6",
+        "android_client_info": {
+          "package_name": "core.business.client.clientPhysiho"
+        }
+      },
+      "oauth_client": [
+        {
+          "client_id": "330010738355-app2btqe7odlbbj32n2al678e3o9qcqo.apps.googleusercontent.com",
+          "client_type": 1,
+          "android_info": {
+            "package_name": "core.business.client.clientPhysiho",
+            "certificate_hash": "2115cdd0dd645ac19f14d8896b839aade3ec681f"
+          }
+        },
+        {
+          "client_id": "330010738355-el3sir5k86iq4nqd9lepm5jdv59tlvn8.apps.googleusercontent.com",
+          "client_type": 3
+        }
+      ],
+      "api_key": [
+        {
+          "current_key": "AIzaSyBZnQaGJWwvHH_rna9Jz8pjo_z_tt4564k"
+        }
+      ],
+      "services": {
+        "appinvite_service": {
+          "other_platform_oauth_client": [
+            {
+              "client_id": "330010738355-el3sir5k86iq4nqd9lepm5jdv59tlvn8.apps.googleusercontent.com",
+              "client_type": 3
+            }
+          ]
+        }
+      }
+    }
+  ],
+  "configuration_version": "1"
+}
