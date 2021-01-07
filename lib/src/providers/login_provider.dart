@@ -1,4 +1,8 @@
-import 'package:firebase_messaging/firebase_messaging.dart';
+import 'dart:convert';
+import 'dart:math';
+import 'package:flutter_web_auth/flutter_web_auth.dart';
+import 'package:fluttertoast/fluttertoast.dart';
+import 'package:intl/intl.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter/services.dart';
 import 'package:cloud_firestore/cloud_firestore.dart';
@@ -8,19 +12,37 @@ import 'package:google_sign_in/google_sign_in.dart';
 import 'package:shared_preferences/shared_preferences.dart';
 import 'package:clientPhysiho/src/helpers/extension_helper.dart';
 import 'package:clientPhysiho/src/views/opt_view.dart';
+import 'package:sign_in_with_apple/sign_in_with_apple.dart';
+import 'package:crypto/crypto.dart';
+
+/// Generates a cryptographically secure random nonce, to be included in a
+/// credential request.
+String generateNonce([int length = 32]) {
+  final charset =
+      '0123456789ABCDEFGHIJKLMNOPQRSTUVXYZabcdefghijklmnopqrstuvwxyz-._';
+  final random = Random.secure();
+  return List.generate(length, (_) => charset[random.nextInt(charset.length)])
+      .join();
+}
+
+/// Returns the sha256 hash of [input] in hex notation.
+String sha256ofString(String input) {
+  final bytes = utf8.encode(input);
+  final digest = sha256.convert(bytes);
+  return digest.toString();
+}
 
 class LoginProvider with ChangeNotifier {
-
   FirebaseAuth _auth;
   SharedPreferences _prefs;
-  Map<String,dynamic> _currentUser;
+  Map<String, dynamic> _currentUser;
 
   bool _loggedIn = false;
   bool _loading = false;
   bool _loadingCurrentUser = true;
 
   // Public access to current user data
-  Map<String,dynamic> get currentUser => _currentUser;
+  Map<String, dynamic> get currentUser => _currentUser;
 
   LoginProvider() {
     // Initialize App Provider
@@ -39,16 +61,19 @@ class LoginProvider with ChangeNotifier {
   bool isLoading() => _loading;
   bool isLoadingCurrentUser() => _loadingCurrentUser;
 
-  bool isCompleted() => _currentUser != null ? _currentUser['completed'] == true : false;
+  bool isCompleted() =>
+      _currentUser != null ? _currentUser['completed'] == true : false;
 
   // Main login function
-  void login(String type) async {
+  Future<dynamic> login(String type) async {
     _loading = true;
     notifyListeners();
 
     final AuthResult result = type == 'google'
         ? await signInWithGoogle()
-        : await signInWithFacebook();
+        : (type == 'apple'
+            ? await signInWithApple()
+            : await signInWithFacebook());
 
     if (result.status == AuthResult.ok) {
       try {
@@ -59,9 +84,37 @@ class LoginProvider with ChangeNotifier {
         print(e);
       }
     } else if (result.status == AuthResult.cancelled) {
-      print("login canceled");
+      Fluttertoast.showToast(msg: "Haz cancelado el inicio de sesión");
     } else {
-      print("login error");
+      Fluttertoast.showToast(msg: "Ocurrió un error, inténtalo más tarde");
+    }
+
+    _loading = false;
+    notifyListeners();
+
+    return Future.error("not loggedin");
+  }
+
+  // TODO: Testing alternative
+  void loginFacebook() async {
+    _loading = true;
+    notifyListeners();
+
+    // Present the dialog to the user
+    final result = await FlutterWebAuth.authenticate(
+        url: "https://hermez-delivery--hermez-r7efb7dk.web.app",
+        callbackUrlScheme: "hermez");
+
+    // Extract status from resulting url
+    final params = Uri.parse(result).queryParameters;
+    final status = int.parse(params['status']);
+
+    // Success
+    if (status == AuthResult.ok) {
+      final uid = params['uid'];
+      // Save UID on device
+      _prefs.setString('uid', uid);
+      await checkLoginState();
     }
 
     _loading = false;
@@ -81,26 +134,19 @@ class LoginProvider with ChangeNotifier {
       }
       // Save new user
       await FirebaseFirestore.instance
-        .collection('customers')
-        .doc(_userData.uid)
-        .set({
-          'nombre': _userData.displayName,
-          'correo': _userData.email,
-          'telefono': phoneNumber,
-          'photo': {
-            'path': null,
-            'url': _userData.photoURL
-          },
-          'record': {
-            'path': null,
-            'url': null
-          },
-          'active': 1,
-          'completed': false, // We required that user complete their profile
-          'type': 'client',
-          'created_at': FieldValue.serverTimestamp(),
-          'updated_at': FieldValue.serverTimestamp()
-        });
+          .collection('users')
+          .doc(_userData.uid)
+          .set({
+        'name': _userData.displayName,
+        'email': _userData.email,
+        'phone': phoneNumber,
+        'photo': {'path': null, 'url': _userData.photoURL},
+        'active': true,
+        'completed': false, // We required that user complete their profile
+        'type': 'client',
+        'created_at': FieldValue.serverTimestamp(),
+        'updated_at': FieldValue.serverTimestamp()
+      });
     }
 
     // Save UID on device
@@ -115,7 +161,7 @@ class LoginProvider with ChangeNotifier {
     // Trigger the authentication flow
     try {
       result =
-        await GoogleSignIn().signIn().catchError((onError) => print(onError));
+          await GoogleSignIn().signIn().catchError((onError) => print(onError));
     } on PlatformException catch (e) {
       print(e);
     } catch (e) {
@@ -123,8 +169,7 @@ class LoginProvider with ChangeNotifier {
     }
 
     // Canceled authentication
-    if (result == null) 
-      return AuthResult(status: AuthResult.cancelled);
+    if (result == null) return AuthResult(status: AuthResult.cancelled);
 
     // Obtain the auth details from the request
     final GoogleSignInAuthentication googleAuth = await result.authentication;
@@ -142,33 +187,72 @@ class LoginProvider with ChangeNotifier {
   // Facebook login
   Future<AuthResult> signInWithFacebook() async {
     try {
-        // by default the login method has the next permissions ['email','public_profile']
+      // by default the login method has the next permissions ['email','public_profile']
       AccessToken accessToken = await FacebookAuth.instance.login();
       // get the user data
       //final userData = await FacebookAuth.instance.getUserData();
       //print(userData);
       FacebookAuthCredential facebookAuthCredential =
-        FacebookAuthProvider.credential(accessToken.token);
+          FacebookAuthProvider.credential(accessToken.token);
 
       return AuthResult(
-        status: AuthResult.ok, credential: facebookAuthCredential);
+          status: AuthResult.ok, credential: facebookAuthCredential);
     } on FacebookAuthException catch (e) {
       print(e.message);
       switch (e.errorCode) {
-          case FacebookAuthErrorCode.OPERATION_IN_PROGRESS:
-            print("You have a previous login operation in progress");
-            break;
-          case FacebookAuthErrorCode.CANCELLED:
-            print("login cancelled");
-            break;
-          case FacebookAuthErrorCode.FAILED:
-            print("login failed");
-            break;
+        case FacebookAuthErrorCode.OPERATION_IN_PROGRESS:
+          print("You have a previous login operation in progress");
+          break;
+        case FacebookAuthErrorCode.CANCELLED:
+          print("login cancelled");
+          break;
+        case FacebookAuthErrorCode.FAILED:
+          print("login failed");
+          break;
       }
     }
 
-    return AuthResult(
-        status: 500, credential: null);
+    return AuthResult(status: 500, credential: null);
+  }
+
+  Future<AuthResult> signInWithApple() async {
+    // To prevent replay attacks with the credential returned from Apple, we
+    // include a nonce in the credential request. When signing in in with
+    // Firebase, the nonce in the id token returned by Apple, is expected to
+    // match the sha256 hash of `rawNonce`.
+    final rawNonce = generateNonce();
+    final nonce = sha256ofString(rawNonce);
+    var appleCredential;
+    var oauthCredential;
+
+    // Request credential for the currently signed in Apple account.
+    try {
+      appleCredential = await SignInWithApple.getAppleIDCredential(
+        scopes: [
+          AppleIDAuthorizationScopes.email,
+          AppleIDAuthorizationScopes.fullName,
+        ],
+        nonce: nonce,
+      );
+
+      // Create an `OAuthCredential` from the credential returned by Apple.
+      oauthCredential = OAuthProvider("apple.com").credential(
+        idToken: appleCredential.identityToken,
+        rawNonce: rawNonce,
+      );
+    } on PlatformException catch (e) {
+      print(e);
+    } catch (e) {
+      print(e);
+    }
+
+    // Canceled authentication
+    if (oauthCredential == null)
+      return AuthResult(status: AuthResult.cancelled);
+
+    // Sign in the user with Firebase. If the nonce we generated earlier does
+    // not match the nonce in `appleCredential.identityToken`, sign in will fail.
+    return AuthResult(status: AuthResult.ok, credential: oauthCredential);
   }
 
   // SignIn With phone
@@ -179,17 +263,15 @@ class LoginProvider with ChangeNotifier {
     PhoneAuthCredential phoneAuthCredential;
     try {
       phoneAuthCredential = PhoneAuthProvider.credential(
-        verificationId: verificationId, 
-        smsCode: smsCode
-      );
+          verificationId: verificationId, smsCode: smsCode);
       // Sign the user in (or link) with the credential
       UserCredential userCredential =
-        await FirebaseAuth.instance.signInWithCredential(phoneAuthCredential);
-      
+          await FirebaseAuth.instance.signInWithCredential(phoneAuthCredential);
+
       await afterSignIn(userCredential);
 
       return Future.value();
-    } on PlatformException catch(err) {
+    } on PlatformException catch (err) {
       print(err);
     } catch (err) {
       print(err);
@@ -227,10 +309,8 @@ class LoginProvider with ChangeNotifier {
 
   /// Check login status // cookies
   Future<void> checkLoginState() async {
-
     // Create instance if not initialized
-    if (_prefs == null) 
-      _prefs = await SharedPreferences.getInstance();
+    if (_prefs == null) _prefs = await SharedPreferences.getInstance();
 
     // Get logged user data
     if (_prefs.getString('uid') != null) {
@@ -252,18 +332,15 @@ class LoginProvider with ChangeNotifier {
   }
 
   Future<void> saveTokenToDatabase(String token) async {
-
     // Create instance if not initialized
-    if (_prefs == null) 
-      _prefs = await SharedPreferences.getInstance();
+    if (_prefs == null) _prefs = await SharedPreferences.getInstance();
 
     // Assume user is logged in for this example
     String deviceToken = _prefs.getString('device_token');
     String userId = _prefs.getString('uid');
 
     // User not logged
-    if (userId == null || deviceToken != null)
-      return;
+    if (userId == null || deviceToken != null) return;
 
     print("Saving token $token to database");
 
@@ -295,7 +372,6 @@ class LoginProvider with ChangeNotifier {
     notifyListeners();
   }
 }
-
 
 class AuthResult {
   // status codes

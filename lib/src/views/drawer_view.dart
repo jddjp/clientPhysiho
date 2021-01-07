@@ -2,9 +2,12 @@ import 'package:flutter/material.dart';
 import 'package:clientPhysiho/src/config/colors.dart';
 import 'package:clientPhysiho/src/helpers/extension_helper.dart';
 import 'package:clientPhysiho/src/providers/login_provider.dart';
-import 'package:clientPhysiho/src/views/about_view.dart';
+import 'package:clientPhysiho/src/views/login_view.dart';
 import 'package:provider/provider.dart';
 import 'package:url_launcher/url_launcher.dart';
+
+import '../config/colors.dart';
+import '../providers/login_provider.dart';
 
 class DrawerView extends StatelessWidget {
   static const routeName = 'drawer';
@@ -24,6 +27,22 @@ class DrawerView extends StatelessWidget {
               fit: BoxFit.contain,
             )),
           ),
+          (context.watch<LoginProvider>().isLoggedIn() &&
+                  context.watch<LoginProvider>().currentUser['name'] != null
+              ? ListTile(
+                  title:
+                      Text(context.watch<LoginProvider>().currentUser['name']),
+                  leading: Icon(Icons.account_circle_outlined,
+                      color: appColorPrimary),
+                )
+              : ListTile(
+                  title: Text("Iniciar sesión"),
+                  leading: Icon(Icons.account_circle_outlined,
+                      color: appColorPrimary),
+                  onTap: () {
+                    launchScreen(context, LoginView.routeName);
+                  },
+                )),
           ListTile(
             title: Text('Soporte'),
             leading: Icon(Icons.help_outline, color: appColorPrimary),
@@ -40,19 +59,21 @@ class DrawerView extends StatelessWidget {
           ),
           ListTile(
             title: Text('Acerca de'),
-            leading: Icon(Icons.account_circle, color: appColorPrimary),
+            leading: Icon(Icons.info_outline, color: appColorPrimary),
             //launchScreen(context, AboutPage.routeName),
             onTap: () => Navigator.pushNamed(context, 'about'),
           ),
-          ListTile(
-            title: Text('Cerrar sesión'),
-            leading: Icon(Icons.subdirectory_arrow_left_rounded,
-                color: appColorPrimary),
-            onTap: () {
-              Provider.of<LoginProvider>(context, listen: false).logout();
-              //launchScreen(context, LoginView.routeName);
-            },
-          ),
+          (context.watch<LoginProvider>().isLoggedIn()
+              ? ListTile(
+                  title: Text('Cerrar sesión'),
+                  leading: Icon(Icons.subdirectory_arrow_left_rounded,
+                      color: appColorPrimary),
+                  onTap: () {
+                    Provider.of<LoginProvider>(context, listen: false).logout();
+                    //launchScreen(context, LoginView.routeName);
+                  },
+                )
+              : Container()),
         ],
       ),
     );

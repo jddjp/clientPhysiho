@@ -1,5 +1,4 @@
 import 'package:clippy_flutter/arc.dart';
-import 'package:firebase_auth/firebase_auth.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_svg/svg.dart';
 import 'package:clientPhysiho/src/components/default_button.dart';
@@ -8,12 +7,10 @@ import 'package:clientPhysiho/src/config/constants.dart';
 import 'package:clientPhysiho/src/config/images.dart';
 import 'package:clientPhysiho/src/config/strings.dart';
 import 'package:clientPhysiho/src/helpers/extension_helper.dart';
-import 'package:clientPhysiho/src/helpers/size_helper.dart';
 import 'package:clientPhysiho/src/helpers/widget_helper.dart';
 import 'package:clientPhysiho/src/providers/login_provider.dart';
 import 'package:clientPhysiho/src/views/complete_profile_view.dart';
 import 'package:clientPhysiho/src/views/create_account_view.dart';
-import 'package:clientPhysiho/src/views/home_view.dart';
 import 'package:loading_overlay/loading_overlay.dart';
 import 'package:provider/provider.dart';
 
@@ -33,7 +30,7 @@ class _LoginViewState extends State<LoginView> {
         var valueColor, VoidCallback onPressed) {
       return SizedBox(
         width: double.infinity,
-        height: getProportionateScreenHeight(50),
+        height: 50.0,
         child: FlatButton.icon(
           shape: RoundedRectangleBorder(
               borderRadius: BorderRadius.circular(50),
@@ -43,9 +40,7 @@ class _LoginViewState extends State<LoginView> {
           icon: SvgPicture.asset(icon, color: iconColor, width: 18, height: 18),
           label: Text(
             value,
-            style: TextStyle(
-                fontSize: getProportionateScreenWidth(textSizeMedium),
-                color: valueColor),
+            style: TextStyle(fontSize: textSizeMedium, color: valueColor),
           ),
         ),
       );
@@ -102,15 +97,14 @@ class _LoginViewState extends State<LoginView> {
                   ),
                   Container(
                     alignment: Alignment.bottomCenter,
-                    padding: EdgeInsets.all(
-                        getProportionateScreenWidth(spacing_standard_new)),
+                    padding: EdgeInsets.all(spacing_standard_new),
                     child: Column(
                       children: <Widget>[
                         SizedBox(height: width * 0.1),
-                        text("Bienvenido(a)",
+                        text("Ingresar",
                             textColor: whiteColor,
                             fontWeight: fontBold,
-                            fontSize: getProportionateScreenWidth(30)),
+                            fontSize: textSizeLarge),
                         SizedBox(height: width * 0.12),
                         socialButton(
                             whiteColor,
@@ -118,7 +112,12 @@ class _LoginViewState extends State<LoginView> {
                             "Ingresar con Google",
                             googleColor,
                             textPrimaryColor, () {
-                          context.read<LoginProvider>().login("google");
+                          Provider.of<LoginProvider>(context, listen: false)
+                              .login("google")
+                              .then((value) {
+                            launchScreen(
+                                context, CompleteProfileView.routeName);
+                          });
                         }),
                         SizedBox(height: width * 0.05),
                         socialButton(
@@ -127,7 +126,14 @@ class _LoginViewState extends State<LoginView> {
                             "Ingresar con Facebook",
                             whiteColor,
                             whiteColor, () {
-                          context.read<LoginProvider>().login("facebook");
+                          Provider.of<LoginProvider>(context, listen: false)
+                              .login("facebook")
+                              .then((value) {
+                            launchScreen(
+                                context, CompleteProfileView.routeName);
+                          });
+                          /*Provider.of<LoginProvider>(context, listen: false)
+                              .loginFacebook();*/
                         }),
                         SizedBox(height: width * 0.05),
                         Row(

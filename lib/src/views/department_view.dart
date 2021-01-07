@@ -213,9 +213,7 @@ class _DepartmentViewState extends StateMVC<DepartmentView> {
                               mainAxisAlignment: MainAxisAlignment.center,
                               children: [
                                 CachedNetworkImage(
-                                    imageUrl: _con.department['cover'] != ''
-                                        ? _con.department['cover']['url']
-                                        : 'https://firebasestorage.googleapis.com/v0/b/fisioterapia-cfb53.appspot.com/o/covers%2FVjSTmpYfxHVbo0ve.jpeg?alt=media&token=08281a69-31f9-45d6-8b94-b3d2ec9e86e2',
+                                    imageUrl: _con.department['icon'],
                                     width: 100,
                                     height: 90),
                                 text(_con.department['name'],

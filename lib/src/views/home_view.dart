@@ -2,6 +2,7 @@ import 'package:cached_network_image/cached_network_image.dart';
 import 'package:clippy_flutter/clippy_flutter.dart';
 import 'package:cloud_firestore/cloud_firestore.dart';
 import 'package:flutter/material.dart';
+import 'package:geocoding/geocoding.dart';
 import 'package:clientPhysiho/src/components/business_item.dart';
 import 'package:clientPhysiho/src/components/offers_item.dart';
 import 'package:clientPhysiho/src/components/search_input_widget.dart';
@@ -20,7 +21,7 @@ import 'package:carousel_slider/carousel_slider.dart';
 
 class HomeView extends StatefulWidget {
   // Route name for this view
-  static const routeName = '/';
+  static const routeName = 'home';
 
   @override
   _HomeViewState createState() => _HomeViewState();
@@ -30,6 +31,7 @@ class _HomeViewState extends State<HomeView> {
   Future<QuerySnapshot> _departmentSnapshot;
   Future<QuerySnapshot> _lastBusinessesSnapshot;
   Future<QuerySnapshot> _offersSnapshot;
+  Placemark currentAddress;
 
   @override
   void initState() {
@@ -57,9 +59,49 @@ class _HomeViewState extends State<HomeView> {
     // Change status bar color
     changeStatusColor(primaryColor);
 
+    currentAddress = context.watch<CartProvider>().getAddress(context);
+
     return Scaffold(
       backgroundColor: Color(0xFFFCFBFB),
       drawer: DrawerView(),
+      bottomNavigationBar: context.watch<CartProvider>().hasOrderInProgress()
+          ? Container(
+              height: 80,
+              decoration: boxDecoration(radius: 0),
+              padding: EdgeInsets.all(spacing_standard_new),
+              child: InkWell(
+                onTap: () {
+                  launchScreen(context, TrackingView.routeName,
+                      arguments: context.read<CartProvider>().orderInProgress);
+                  //context.read<CartProvider>().clearOrderInProgress();
+                },
+                child: Container(
+                  padding:
+                      EdgeInsets.symmetric(horizontal: spacing_standard_new),
+                  decoration: boxDecoration(bgColor: appColorAccent),
+                  child: Row(
+                    children: [
+                      Icon(
+                        Icons.delivery_dining,
+                        color: Colors.white,
+                      ),
+                      SizedBox(
+                        width: spacing_standard,
+                      ),
+                      Expanded(
+                        child: text("Hay un pedido en progreso",
+                            textColor: Colors.white),
+                      ),
+                      Icon(
+                        Icons.arrow_forward,
+                        color: Colors.white,
+                      )
+                    ],
+                  ),
+                ),
+              ),
+            )
+          : Container(height: 0),
       body: SafeArea(
         child: SingleChildScrollView(
           child: Column(
@@ -80,28 +122,39 @@ class _HomeViewState extends State<HomeView> {
                   child: Row(
                     mainAxisAlignment: MainAxisAlignment.spaceBetween,
                     children: <Widget>[
+                      Builder(builder: (context) {
+                        return IconButton(
+                            icon: Icon(
+                              Icons.menu,
+                              color: whiteColor,
+                            ),
+                            onPressed: () => Scaffold.of(context).openDrawer());
+                      }),
+                      Expanded(
+                          child: Text(
+                        "${currentAddress.street}, ${currentAddress.subLocality}",
+                        overflow: TextOverflow.ellipsis,
+                        style: TextStyle(color: Colors.white),
+                      )),
                       Row(
                         children: <Widget>[
-                          Builder(builder: (context) {
-                            return IconButton(
-                              icon: Icon(
-                                Icons.menu,
-                                color: whiteColor,
-                              ),
-                              onPressed: () =>
-                                  Scaffold.of(context).openDrawer(),
-                            );
-                          }),
-                          text(
-                              "${context.watch<LocationProvider>().address.thoroughfare} ${context.watch<LocationProvider>().address.name}",
-                              textColor: Colors.white),
+                          IconButton(
+                            icon: Icon(
+                              Icons.shopping_cart,
+                              color: Colors.white,
+                            ),
+                            onPressed: () {
+                              launchScreen(context, CartView.routeName);
+                              // finish(context);
+                            },
+                          ),
                         ],
                       ),
                     ],
                   ),
                 ),
                 Container(
-                    transform: Matrix4.translationValues(0.0, 145.0, 0.0),
+                    transform: Matrix4.translationValues(0.0, 100.0, 0.0),
                     height: 120,
                     child: FutureBuilder<QuerySnapshot>(
                         future: _departmentSnapshot,
@@ -121,11 +174,6 @@ class _HomeViewState extends State<HomeView> {
                             scrollDirection: Axis.horizontal,
                             children:
                                 snapshot.data.docs.map((DocumentSnapshot doc) {
-                              print(
-                                  "==============home_view=====================");
-                              print(doc['logo']['url']);
-                              print(doc['index'].toString());
-                              print(doc['index'].toString().isEmpty);
                               return GestureDetector(
                                 onTap: () {
                                   // View department
@@ -156,7 +204,7 @@ class _HomeViewState extends State<HomeView> {
                                       Container(
                                         margin: EdgeInsets.only(top: 10),
                                         child: Text(
-                                          doc['name'].toString(),
+                                          doc['name'],
                                           overflow: TextOverflow.ellipsis,
                                           maxLines: 2,
                                           textAlign: TextAlign.center,

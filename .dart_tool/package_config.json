@@ -224,6 +224,12 @@
       "languageVersion": "2.2"
     },
     {
+      "name": "flutter_web_auth",
+      "rootUri": "file:///C:/src/flutter/.pub-cache/hosted/pub.dartlang.org/flutter_web_auth-0.2.4",
+      "packageUri": "lib/",
+      "languageVersion": "2.1"
+    },
+    {
       "name": "flutter_web_plugins",
       "rootUri": "file:///C:/src/flutter/packages/flutter_web_plugins",
       "packageUri": "lib/",
@@ -494,6 +500,12 @@
       "languageVersion": "2.1"
     },
     {
+      "name": "sign_in_with_apple",
+      "rootUri": "file:///C:/src/flutter/.pub-cache/hosted/pub.dartlang.org/sign_in_with_apple-2.5.4",
+      "packageUri": "lib/",
+      "languageVersion": "2.3"
+    },
+    {
       "name": "sky_engine",
       "rootUri": "file:///C:/src/flutter/bin/cache/pkg/sky_engine",
       "packageUri": "lib/",
@@ -644,7 +656,7 @@
       "languageVersion": "2.7"
     }
   ],
-  "generated": "2021-01-05T04:16:19.266208Z",
+  "generated": "2021-01-06T01:04:42.351157Z",
   "generator": "pub",
   "generatorVersion": "2.10.4"
 }

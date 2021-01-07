@@ -26,50 +26,48 @@ class _ItemWidgetState extends State<ItemWidget> {
       child: Column(
         children: [
           Container(
-            margin: EdgeInsets.only(
-                right: spacing_standard_new,
-                left: spacing_standard_new,
-                bottom: spacing_standard_new),
-            child: Row(
-              mainAxisAlignment: MainAxisAlignment.spaceBetween,
-              //crossAxisAlignment: CrossAxisAlignment.start,
-              children: <Widget>[
-                widget.item['image'] != null
-                    ? ClipRRect(
-                        borderRadius:
-                            BorderRadius.all(Radius.circular(spacing_middle)),
-                        child: CachedNetworkImage(
-                            imageUrl: widget.item['image']['url'],
-                            width: width * 0.23,
-                            height: width * 0.23,
-                            fit: BoxFit.cover),
-                      )
-                    : Container(),
-                SizedBox(width: spacing_middle),
-                Expanded(
-                  child: Column(
-                    crossAxisAlignment: CrossAxisAlignment.start,
-                    mainAxisAlignment: MainAxisAlignment.start,
-                    children: <Widget>[
-                      text(widget.item['name'], fontWeight: fontSemibold),
-                      text(widget.item['description'],
-                          textColor: textSecondaryColor,
-                          fontSize: textSizeSMedium,
-                          maxLine: 2
-                          ),
-                      Row(
-                        children: [
-                          text("\$${widget.item['price']}",
-                              textColor: appColorAccent,
-                              fontWeight: fontSemibold)
-                        ],
-                      )
-                    ],
+              margin: EdgeInsets.only(
+                  right: spacing_standard_new,
+                  left: spacing_standard_new,
+                  bottom: spacing_standard_new),
+              child: Row(
+                mainAxisAlignment: MainAxisAlignment.spaceBetween,
+                //crossAxisAlignment: CrossAxisAlignment.start,
+                children: <Widget>[
+                  widget.item['image'] != null
+                      ? ClipRRect(
+                          borderRadius:
+                              BorderRadius.all(Radius.circular(spacing_middle)),
+                          child: CachedNetworkImage(
+                              imageUrl: widget.item['image']['url'],
+                              width: width * 0.23,
+                              height: width * 0.23,
+                              fit: BoxFit.cover),
+                        )
+                      : Container(),
+                  SizedBox(width: spacing_middle),
+                  Expanded(
+                    child: Column(
+                      crossAxisAlignment: CrossAxisAlignment.start,
+                      mainAxisAlignment: MainAxisAlignment.start,
+                      children: <Widget>[
+                        text(widget.item['name'], fontWeight: fontSemibold),
+                        text(widget.item['description'],
+                            textColor: textSecondaryColor,
+                            fontSize: textSizeSMedium,
+                            maxLine: 2),
+                        Row(
+                          children: [
+                            text("\$${widget.item['price']}",
+                                textColor: appColorAccent,
+                                fontWeight: fontSemibold)
+                          ],
+                        )
+                      ],
+                    ),
                   ),
-                ),
-              ],
-            )
-          )
+                ],
+              ))
         ],
       ),
     );

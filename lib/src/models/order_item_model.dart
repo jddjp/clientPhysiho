@@ -1,5 +1,3 @@
-
-
 import 'package:clientPhysiho/src/models/item_model.dart';
 
 class OrderItemModel {

@@ -3,7 +3,6 @@ import 'package:clientPhysiho/src/config/colors.dart';
 import 'package:clientPhysiho/src/config/constants.dart';
 
 class StepperCounter extends StatelessWidget {
-
   final double iconSize;
   final VoidCallback onIncrement;
   final VoidCallback onDecrement;

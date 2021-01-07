@@ -10,9 +10,8 @@ import 'package:mvc_pattern/mvc_pattern.dart';
 import 'package:provider/provider.dart';
 
 class OrderController extends ControllerMVC {
-
   bool isLoading = true;
-  Map<String,String> errors = {};
+  Map<String, String> errors = {};
 
   OrderItemModel orderItem;
   ItemModel item;
@@ -62,7 +61,7 @@ class OrderController extends ControllerMVC {
     // Get item options for orderItem
     QuerySnapshot querySnapshot =
         await itemRef.collection('options').orderBy('index').get();
-    
+
     querySnapshot.docs.forEach((doc) {
       ItemOptionModel option =
           ItemOptionModel.fromJSON({...doc.data(), "id": doc.id});
@@ -130,11 +129,13 @@ class OrderController extends ControllerMVC {
 
   void validateOption(ItemOptionModel option) {
     // Search on selected items
-    int minRequired = option.min == null ? (option.required == true ? 1 : 0) : option.min;
-    var selectedOptions = orderItem.options.where((element) => element['optionId'] == option.id);
+    int minRequired =
+        option.min == null ? (option.required == true ? 1 : 0) : option.min;
+    var selectedOptions =
+        orderItem.options.where((element) => element['optionId'] == option.id);
     int count = selectedOptions.length;
 
-    if(option.type == 'addon') {
+    if (option.type == 'addon') {
       count = 0;
       selectedOptions.forEach((option) {
         count += option['quantity'];
@@ -142,13 +143,13 @@ class OrderController extends ControllerMVC {
     }
 
     if (count < minRequired) {
-        errors[option.id] = "Elige $minRequired opciones";
+      errors[option.id] = "Elige $minRequired opciones";
     } else {
       errors[option.id] = null;
     }
 
     // Update state if not main price
-    if(option.main == false) {
+    if (option.main == false) {
       setState(() {});
     }
   }
@@ -163,16 +164,14 @@ class OrderController extends ControllerMVC {
     // Remove NULL errors
     errors.removeWhere((key, value) => value == null);
 
-    if (errors.length == 0 ) {
+    if (errors.length == 0) {
       // Set data
       orderItem.price = unitPrice;
       orderItem.total = totalPrice;
       // Add to cart
       Provider.of<CartProvider>(context, listen: false).addItem(orderItem);
     } else {
-      Fluttertoast.showToast(
-        msg: "Te falta confgiurar este producto"
-      );
+      Fluttertoast.showToast(msg: "Te falta confgiurar este producto");
     }
 
     return errors.length == 0;

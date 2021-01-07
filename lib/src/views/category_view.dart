@@ -36,7 +36,8 @@ class _CategoryViewState extends State<CategoryView> {
   Widget build(BuildContext context) {
     return Scaffold(
         appBar: AppBar(
-          title: text(widget.categoryName, fontWeight: fontSemibold, fontSize: textSizeNormal),
+          title: text(widget.categoryName,
+              fontWeight: fontSemibold, fontSize: textSizeNormal),
           backgroundColor: whiteColor,
         ),
         body: SafeArea(
@@ -58,13 +59,15 @@ class _CategoryViewState extends State<CategoryView> {
                   return Text('Something went wrong');
                 }
 
-                  if (snapshot.connectionState == ConnectionState.waiting) {
-                    return Center(child: CircularProgressIndicator());
-                  }
-                  if (snapshot.data.docs.length == 0){
-                      return Center(child: text("Esperalos muy pronto", textColor: blackColor),);
-                    }
-                  return ListView.builder(
+                if (snapshot.connectionState == ConnectionState.waiting) {
+                  return Center(child: CircularProgressIndicator());
+                }
+                if (snapshot.data.docs.length == 0) {
+                  return Center(
+                    child: text("Esperalos muy pronto", textColor: blackColor),
+                  );
+                }
+                return ListView.builder(
                     primary: false,
                     scrollDirection: Axis.vertical,
                     shrinkWrap: true,
@@ -74,14 +77,8 @@ class _CategoryViewState extends State<CategoryView> {
                         ...snapshot.data.docs[index].data(),
                         "id": snapshot.data.docs[index].id,
                       });
-                    }
-                  );
-                }
-              ),
-            ]
-          )
-        )
-      )
-    );
+                    });
+              }),
+        ]))));
   }
 }

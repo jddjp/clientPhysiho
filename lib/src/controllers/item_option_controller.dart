@@ -1,4 +1,3 @@
-
 import 'package:flutter/material.dart';
 import 'package:fluttertoast/fluttertoast.dart';
 import 'package:clientPhysiho/main.dart';
@@ -6,24 +5,23 @@ import 'package:clientPhysiho/src/models/item_option_model.dart';
 import 'package:mvc_pattern/mvc_pattern.dart';
 
 class ItemOptionController extends ControllerMVC {
-
   ItemOptionModel itemOption;
   double _defaultPrice;
   SingleItemOption _selectedOption; // For radio state change
-  Map<String,int>  _selectedOptions  = {}; // From here we will handle item price { index: quantity }
-  Map<String,bool> _checkboxSelected = {}; // For checkboxes controll
+  Map<String, int> _selectedOptions =
+      {}; // From here we will handle item price { index: quantity }
+  Map<String, bool> _checkboxSelected = {}; // For checkboxes controll
 
   void Function(ItemOptionModel, Map) _triggerChange;
 
   // Getters
   SingleItemOption get selectedOption => _selectedOption;
-  Map<String,int> get selectedOptions => _selectedOptions;
-  Map<String,bool> get checkboxSelected => _checkboxSelected;
+  Map<String, int> get selectedOptions => _selectedOptions;
+  Map<String, bool> get checkboxSelected => _checkboxSelected;
 
   // Dynamic getters
   int get selectedCount {
-    if (itemOption.type == 'choose')
-      return _selectedOptions.length;
+    if (itemOption.type == 'choose') return _selectedOptions.length;
 
     int count = 0;
     _selectedOptions.forEach((id, quantity) {
@@ -31,14 +29,23 @@ class ItemOptionController extends ControllerMVC {
     });
     return count;
   }
-  int get max => itemOption.multiple || itemOption.type == 'addon' ? (itemOption.max != null ? itemOption.max : 50) : 1;
+
+  int get max => itemOption.multiple || itemOption.type == 'addon'
+      ? (itemOption.max != null ? itemOption.max : 50)
+      : 1;
   bool get maxReached => selectedCount >= max;
   String get subtitle {
-    return itemOption.multiple == true ? (
-      itemOption.max != null && itemOption.min != null 
-      ? (itemOption.max != itemOption.min ? "Elige entre ${itemOption.min} y ${itemOption.max} opciones" : "Elige ${itemOption.min} opciones")
-      : (itemOption.max != null ? "Elige hasta ${itemOption.max} opciones" : (itemOption.min != null ? "Debes elegir ${itemOption.min} o más opciones" : ""))
-    ) : (itemOption.required == true ? "Elige una opción" : "");
+    return itemOption.multiple == true
+        ? (itemOption.max != null && itemOption.min != null
+            ? (itemOption.max != itemOption.min
+                ? "Elige entre ${itemOption.min} y ${itemOption.max} opciones"
+                : "Elige ${itemOption.min} opciones")
+            : (itemOption.max != null
+                ? "Elige hasta ${itemOption.max} opciones"
+                : (itemOption.min != null
+                    ? "Debes elegir ${itemOption.min} o más opciones"
+                    : "")))
+        : (itemOption.required == true ? "Elige una opción" : "");
   }
 
   // Setters
@@ -48,14 +55,15 @@ class ItemOptionController extends ControllerMVC {
     _triggerChange = onChange;
   }
 
-  ItemOptionController (ItemOptionModel option, double price, onChange) {
+  ItemOptionController(ItemOptionModel option, double price, onChange) {
     itemOption = option;
     _defaultPrice = price;
     _triggerChange = onChange;
 
     if (itemOption.main) {
-      int mainPriceIndex = itemOption.options.lastIndexWhere((element) => element.price == _defaultPrice);
-      if (mainPriceIndex > -1 ) {
+      int mainPriceIndex = itemOption.options
+          .lastIndexWhere((element) => element.price == _defaultPrice);
+      if (mainPriceIndex > -1) {
         var mainPrice = itemOption.options[mainPriceIndex];
         _selectedOption = mainPrice;
         _triggerChange(itemOption, {mainPrice.id: 1});
@@ -72,9 +80,7 @@ class ItemOptionController extends ControllerMVC {
 
   void incrementOption(SingleItemOption opt) {
     if (maxReached) {
-      Fluttertoast.showToast(
-        msg: "Sólo puedes elegir $max opciones"
-      );
+      Fluttertoast.showToast(msg: "Sólo puedes elegir $max opciones");
       return;
     }
 
@@ -94,10 +100,8 @@ class ItemOptionController extends ControllerMVC {
     }
   }
 
-  void onChangeOption (SingleItemOption opt, { bool selected }) {
-
+  void onChangeOption(SingleItemOption opt, {bool selected}) {
     if (itemOption.type == 'choose' && opt.active) {
-
       if (itemOption.max == 1 || itemOption.multiple == false) {
         setState(() {
           _selectedOption = opt; // For radio buttons
@@ -121,9 +125,7 @@ class ItemOptionController extends ControllerMVC {
         } else {
           if (maxReached) {
             if (max > 1) {
-              Fluttertoast.showToast(
-                msg: "Sólo puedes elegir $max opciones"
-              );
+              Fluttertoast.showToast(msg: "Sólo puedes elegir $max opciones");
               return;
             }
             // Reset

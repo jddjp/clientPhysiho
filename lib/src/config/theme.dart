@@ -1,5 +1,3 @@
-
-
 import 'package:flutter/material.dart';
 import 'package:google_fonts/google_fonts.dart';
 import 'package:clientPhysiho/src/config/colors.dart';
@@ -26,7 +24,7 @@ ThemeData getThemeData() {
 ColorScheme colorScheme() {
   return ColorScheme.light(
     primary: appColorPrimary,
-      primaryVariant: appColorPrimary,
+    primaryVariant: appColorPrimary,
   );
 }
 
@@ -37,16 +35,15 @@ InputDecorationTheme inputDecorationTheme() {
     gapPadding: 10,
   );
   return InputDecorationTheme(
-    // If  you are using latest version of flutter then lable text and hint text shown like this
-    // if you r using flutter less then 1.20.* then maybe this is not working properly
-    // if we are define our floatingLabelBehavior in our theme then it's not applayed
-    // floatingLabelBehavior: FloatingLabelBehavior.always,
-    contentPadding: EdgeInsets.symmetric(horizontal: 42, vertical: 17),
-    enabledBorder: outlineInputBorder,
-    focusedBorder: outlineInputBorder,
-    border: outlineInputBorder,
-    labelStyle: TextStyle(color: textPrimaryColor)
-  );
+      // If  you are using latest version of flutter then lable text and hint text shown like this
+      // if you r using flutter less then 1.20.* then maybe this is not working properly
+      // if we are define our floatingLabelBehavior in our theme then it's not applayed
+      // floatingLabelBehavior: FloatingLabelBehavior.always,
+      contentPadding: EdgeInsets.symmetric(horizontal: 42, vertical: 17),
+      enabledBorder: outlineInputBorder,
+      focusedBorder: outlineInputBorder,
+      border: outlineInputBorder,
+      labelStyle: TextStyle(color: textPrimaryColor));
 }
 
 TextTheme textTheme() {

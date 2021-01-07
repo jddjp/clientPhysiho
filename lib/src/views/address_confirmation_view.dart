@@ -17,7 +17,7 @@ const apiKey = "AIzaSyBhDflq5iJrXIcKpeq0IzLQPQpOboX91lY";
 
 class AddressConfirmation extends StatefulWidget {
   static const routeName = 'AddressConfirmation';
-  
+
   @override
   AddressConfirmationState createState() => AddressConfirmationState();
 }
@@ -41,8 +41,10 @@ class AddressConfirmationState extends State<AddressConfirmation> {
             MapPage(
               onChange: (LatLng location) async {
                 // Get address info
-                Provider.of<CartProvider>(context, listen: false).calculateDeliveryData(userLocation: location);
-                List<Placemark> placemarks = await placemarkFromCoordinates(location.latitude, location.longitude);
+                Provider.of<CartProvider>(context, listen: false)
+                    .calculateDeliveryData(userLocation: location);
+                List<Placemark> placemarks = await placemarkFromCoordinates(
+                    location.latitude, location.longitude);
                 setState(() {
                   currentLocation = location;
                   currentAddress = placemarks[0];
@@ -53,7 +55,10 @@ class AddressConfirmationState extends State<AddressConfirmation> {
               alignment: Alignment.bottomCenter,
               child: Container(
                 alignment: Alignment.center,
-                height: width * (context.watch<CartProvider>().hasService == false ? 0.65 : 0.55),
+                height: width *
+                    (context.watch<CartProvider>().hasService == false
+                        ? 0.65
+                        : 0.55),
                 width: width,
                 decoration: BoxDecoration(
                     borderRadius: BorderRadius.only(
@@ -66,21 +71,33 @@ class AddressConfirmationState extends State<AddressConfirmation> {
                   mainAxisSize: MainAxisSize.max,
                   crossAxisAlignment: CrossAxisAlignment.start,
                   children: <Widget>[
-                    context.watch<CartProvider>().hasService == false ? AlertWidget(
-                      bgColor: Colors.red,
-                      alertText: "Lo sentimos aún no tenemos cobertura en esta dirección.",
-                    ) : Container(),
+                    context.watch<CartProvider>().hasService == false
+                        ? AlertWidget(
+                            bgColor: Colors.red,
+                            alertText:
+                                "Lo sentimos aún no tenemos cobertura en esta dirección.",
+                          )
+                        : Container(),
                     text("Configurar información de entrega:"),
                     SizedBox(
                       height: spacing_standard,
                     ),
-                    text("Dirección", textColor: food_textColorSecondary, fontSize: textSizeSMedium),
-                    currentAddress != null ? text("${currentAddress.street}, ${currentAddress.subLocality}", maxLine: null) : text("${lastAddress.street}, ${lastAddress.subLocality}", maxLine: null),
+                    text("Dirección",
+                        textColor: food_textColorSecondary,
+                        fontSize: textSizeSMedium),
+                    currentAddress != null
+                        ? text(
+                            "${currentAddress.street}, ${currentAddress.subLocality}",
+                            maxLine: null)
+                        : text(
+                            "${lastAddress.street}, ${lastAddress.subLocality}",
+                            maxLine: null),
                     Container(
                       height: 0.5,
                       color: food_view_color,
                       width: width,
-                      margin: EdgeInsets.only(top: spacing_standard, bottom: spacing_standard_new),
+                      margin: EdgeInsets.only(
+                          top: spacing_standard, bottom: spacing_standard_new),
                     ),
                     Row(
                       children: <Widget>[
@@ -103,16 +120,22 @@ class AddressConfirmationState extends State<AddressConfirmation> {
                           flex: 1,
                           child: GestureDetector(
                             onTap: () {
-                                //launchScreen(context, FoodAddAddress.tag);
-                                if (currentLocation != null) {
-                                  Provider.of<CartProvider>(context, listen: false).setAddress(context, currentLocation);
-                                }
-                                back(context);
+                              //launchScreen(context, FoodAddAddress.tag);
+                              if (currentLocation != null) {
+                                Provider.of<CartProvider>(context,
+                                        listen: false)
+                                    .setAddress(context, currentLocation);
+                              }
+                              back(context);
                             },
-                              child: Container(   
-                                padding: EdgeInsets.only(top: spacing_standard, bottom: spacing_standard),
-                                decoration: boxDecoration(bgColor: food_colorPrimary, radius: 50),
-                                child: text("Confirmar ubicación", textColor: food_white, isCentered: true),
+                            child: Container(
+                              padding: EdgeInsets.only(
+                                  top: spacing_control,
+                                  bottom: spacing_control),
+                              decoration: boxDecoration(
+                                  bgColor: food_colorPrimary, radius: 50),
+                              child: text("Confirmar ubicación",
+                                  textColor: food_white, isCentered: true),
                             ),
                           ),
                         )
@@ -130,12 +153,9 @@ class AddressConfirmationState extends State<AddressConfirmation> {
 }
 
 class MapPage extends StatefulWidget {
-
   final void Function(LatLng) onChange;
 
-  MapPage({
-    @required this.onChange
-  });
+  MapPage({@required this.onChange});
 
   @override
   State<StatefulWidget> createState() => MapPageState();
@@ -144,7 +164,7 @@ class MapPage extends StatefulWidget {
 class MapPageState extends State<MapPage> {
   BitmapDescriptor pinLocationIcon;
   List<Marker> _markers = [];
-  String currentAddress ='';
+  String currentAddress = '';
   Completer<GoogleMapController> _controller = Completer();
 
   @override
@@ -154,29 +174,33 @@ class MapPageState extends State<MapPage> {
   }
 
   void setCustomMapPin() async {
-    pinLocationIcon = await BitmapDescriptor.fromAssetImage(ImageConfiguration(devicePixelRatio: 2.5), food_ic_map);
+    pinLocationIcon = await BitmapDescriptor.fromAssetImage(
+        ImageConfiguration(devicePixelRatio: 2.5), food_ic_map);
   }
 
   @override
   Widget build(BuildContext context) {
     LatLng pinPosition = context.watch<CartProvider>().getLocation(context);
-    CameraPosition initialLocation = CameraPosition(zoom: 17, bearing: 30, target: pinPosition);
+    CameraPosition initialLocation =
+        CameraPosition(zoom: 17, bearing: 30, target: pinPosition);
 
     return GoogleMap(
-      myLocationEnabled: true,
-      compassEnabled: true,
-      markers: Set.from(_markers),
-      onTap: _handleTap,
-      initialCameraPosition: initialLocation,
-      onMapCreated: (GoogleMapController controller) {
-        //controller.setMapStyle(Utils.mapStyles);
-        _controller.complete(controller);
-        setState(() {
-          _markers.add(Marker(markerId: MarkerId('value'), position: pinPosition/*, icon: pinLocationIcon*/));
+        myLocationEnabled: true,
+        compassEnabled: true,
+        markers: Set.from(_markers),
+        onTap: _handleTap,
+        initialCameraPosition: initialLocation,
+        onMapCreated: (GoogleMapController controller) {
+          //controller.setMapStyle(Utils.mapStyles);
+          _controller.complete(controller);
+          setState(() {
+            _markers.add(Marker(
+                markerId: MarkerId('value'),
+                position: pinPosition /*, icon: pinLocationIcon*/));
+          });
         });
-      }
-    );
   }
+
   _handleTap(LatLng tappedPoint) {
     // Trigger onChange location
     widget.onChange(tappedPoint);
@@ -184,19 +208,15 @@ class MapPageState extends State<MapPage> {
     // Add marker to map
     setState(() {
       _markers = [];
-      _markers.add(
-        Marker(
+      _markers.add(Marker(
           markerId: MarkerId(tappedPoint.toString()),
           position: tappedPoint,
           draggable: true,
-          icon: BitmapDescriptor.defaultMarkerWithHue(BitmapDescriptor.hueOrange)
-        )
-      );
-    }); 
+          icon: BitmapDescriptor.defaultMarkerWithHue(
+              BitmapDescriptor.hueOrange)));
+    });
   }
 }
-
-
 
 class Utils {
   static String mapStyles = '''[

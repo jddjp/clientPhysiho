@@ -13,7 +13,7 @@ class OffersItem extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
     return GestureDetector(
-      onTap: () => {},
+      onTap: () => _onOfferTap(offers, context),
       child: Container(
         decoration: boxDecoration(
           showShadow: true,
@@ -21,10 +21,7 @@ class OffersItem extends StatelessWidget {
         child: ClipRRect(
           borderRadius: BorderRadius.all(Radius.circular(spacing_middle)),
           child: CachedNetworkImage(
-              imageUrl: offers['cover'] != ''
-                  ? offers['cover']['url']
-                  : 'https://firebasestorage.googleapis.com/v0/b/fisioterapia-cfb53.appspot.com/o/covers%2FVjSTmpYfxHVbo0ve.jpeg?alt=media&token=08281a69-31f9-45d6-8b94-b3d2ec9e86e2',
-              fit: BoxFit.cover),
+              imageUrl: offers['cover']['url'], fit: BoxFit.cover),
         ),
       ),
     );

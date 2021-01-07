@@ -1,23 +1,23 @@
 [
     {
-        "merged": "D:\\Documentos\\Core_Business\\Proyectos Moviles\\Fisioterapia\\clientPhysiho\\build\\app\\intermediates\\res\\merged\\debug\\drawable-xxhdpi-v4_abc_textfield_search_default_mtrl_alpha.9.png.flat",
-        "source": "C:\\Users\\saulm\\.gradle\\caches\\transforms-2\\files-2.1\\e5977849638f4db14ee09096a5a3147e\\appcompat-1.1.0\\res\\drawable-xxhdpi-v4\\abc_textfield_search_default_mtrl_alpha.9.png"
+        "merged": "D:\\Documentos\\Core_Business\\Proyectos Moviles\\Fisioterapia\\clientPhysiho\\build\\app\\intermediates\\res\\merged\\debug\\layout_notification_action.xml.flat",
+        "source": "C:\\Users\\saulm\\.gradle\\caches\\transforms-2\\files-2.1\\60bcdf937a69ab7807eabfbf34627aee\\core-1.1.0\\res\\layout\\notification_action.xml"
     },
     {
         "merged": "D:\\Documentos\\Core_Business\\Proyectos Moviles\\Fisioterapia\\clientPhysiho\\build\\app\\intermediates\\res\\merged\\debug\\drawable-hdpi-v4_common_full_open_on_phone.png.flat",
         "source": "C:\\Users\\saulm\\.gradle\\caches\\transforms-2\\files-2.1\\3a04cbfa3b635ae4131224a81a3c4510\\play-services-base-17.1.0\\res\\drawable-hdpi-v4\\common_full_open_on_phone.png"
     },
     {
-        "merged": "D:\\Documentos\\Core_Business\\Proyectos Moviles\\Fisioterapia\\clientPhysiho\\build\\app\\intermediates\\res\\merged\\debug\\layout_notification_action.xml.flat",
-        "source": "C:\\Users\\saulm\\.gradle\\caches\\transforms-2\\files-2.1\\60bcdf937a69ab7807eabfbf34627aee\\core-1.1.0\\res\\layout\\notification_action.xml"
-    },
-    {
-        "merged": "D:\\Documentos\\Core_Business\\Proyectos Moviles\\Fisioterapia\\clientPhysiho\\build\\app\\intermediates\\res\\merged\\debug\\mipmap-mdpi_launcher_icon.png.flat",
-        "source": "D:\\Documentos\\Core_Business\\Proyectos Moviles\\Fisioterapia\\clientPhysiho\\android\\app\\src\\main\\res\\mipmap-mdpi\\launcher_icon.png"
+        "merged": "D:\\Documentos\\Core_Business\\Proyectos Moviles\\Fisioterapia\\clientPhysiho\\build\\app\\intermediates\\res\\merged\\debug\\drawable-xxhdpi-v4_abc_textfield_search_default_mtrl_alpha.9.png.flat",
+        "source": "C:\\Users\\saulm\\.gradle\\caches\\transforms-2\\files-2.1\\e5977849638f4db14ee09096a5a3147e\\appcompat-1.1.0\\res\\drawable-xxhdpi-v4\\abc_textfield_search_default_mtrl_alpha.9.png"
     },
     {
         "merged": "D:\\Documentos\\Core_Business\\Proyectos Moviles\\Fisioterapia\\clientPhysiho\\build\\app\\intermediates\\res\\merged\\debug\\drawable_client_physiho.png.flat",
         "source": "D:\\Documentos\\Core_Business\\Proyectos Moviles\\Fisioterapia\\clientPhysiho\\android\\app\\src\\main\\res\\drawable\\client_physiho.png"
+    },
+    {
+        "merged": "D:\\Documentos\\Core_Business\\Proyectos Moviles\\Fisioterapia\\clientPhysiho\\build\\app\\intermediates\\res\\merged\\debug\\mipmap-mdpi_launcher_icon.png.flat",
+        "source": "D:\\Documentos\\Core_Business\\Proyectos Moviles\\Fisioterapia\\clientPhysiho\\android\\app\\src\\main\\res\\mipmap-mdpi\\launcher_icon.png"
     },
     {
         "merged": "D:\\Documentos\\Core_Business\\Proyectos Moviles\\Fisioterapia\\clientPhysiho\\build\\app\\intermediates\\res\\merged\\debug\\drawable-mdpi-v4_googleg_disabled_color_18.png.flat",
@@ -52,12 +52,12 @@
         "source": "C:\\Users\\saulm\\.gradle\\caches\\transforms-2\\files-2.1\\4b9bc99b27f0190b51cedfebf24b7c65\\media-1.0.0\\res\\layout\\notification_template_big_media_narrow_custom.xml"
     },
     {
-        "merged": "D:\\Documentos\\Core_Business\\Proyectos Moviles\\Fisioterapia\\clientPhysiho\\build\\app\\intermediates\\res\\merged\\debug\\color_abc_tint_default.xml.flat",
-        "source": "C:\\Users\\saulm\\.gradle\\caches\\transforms-2\\files-2.1\\e5977849638f4db14ee09096a5a3147e\\appcompat-1.1.0\\res\\color\\abc_tint_default.xml"
-    },
-    {
         "merged": "D:\\Documentos\\Core_Business\\Proyectos Moviles\\Fisioterapia\\clientPhysiho\\build\\app\\intermediates\\res\\merged\\debug\\drawable_btn_radio_on_to_off_mtrl_animation.xml.flat",
         "source": "C:\\Users\\saulm\\.gradle\\caches\\transforms-2\\files-2.1\\e5977849638f4db14ee09096a5a3147e\\appcompat-1.1.0\\res\\drawable\\btn_radio_on_to_off_mtrl_animation.xml"
+    },
+    {
+        "merged": "D:\\Documentos\\Core_Business\\Proyectos Moviles\\Fisioterapia\\clientPhysiho\\build\\app\\intermediates\\res\\merged\\debug\\color_abc_tint_default.xml.flat",
+        "source": "C:\\Users\\saulm\\.gradle\\caches\\transforms-2\\files-2.1\\e5977849638f4db14ee09096a5a3147e\\appcompat-1.1.0\\res\\color\\abc_tint_default.xml"
     },
     {
         "merged": "D:\\Documentos\\Core_Business\\Proyectos Moviles\\Fisioterapia\\clientPhysiho\\build\\app\\intermediates\\res\\merged\\debug\\interpolator_btn_radio_to_on_mtrl_animation_interpolator_0.xml.flat",
@@ -80,24 +80,24 @@
         "source": "C:\\Users\\saulm\\.gradle\\caches\\transforms-2\\files-2.1\\e5977849638f4db14ee09096a5a3147e\\appcompat-1.1.0\\res\\color\\abc_background_cache_hint_selector_material_light.xml"
     },
     {
-        "merged": "D:\\Documentos\\Core_Business\\Proyectos Moviles\\Fisioterapia\\clientPhysiho\\build\\app\\intermediates\\res\\merged\\debug\\drawable-hdpi-v4_abc_text_select_handle_right_mtrl_dark.png.flat",
-        "source": "C:\\Users\\saulm\\.gradle\\caches\\transforms-2\\files-2.1\\e5977849638f4db14ee09096a5a3147e\\appcompat-1.1.0\\res\\drawable-hdpi-v4\\abc_text_select_handle_right_mtrl_dark.png"
-    },
-    {
         "merged": "D:\\Documentos\\Core_Business\\Proyectos Moviles\\Fisioterapia\\clientPhysiho\\build\\app\\intermediates\\res\\merged\\debug\\drawable-hdpi-v4_abc_ic_menu_share_mtrl_alpha.png.flat",
         "source": "C:\\Users\\saulm\\.gradle\\caches\\transforms-2\\files-2.1\\e5977849638f4db14ee09096a5a3147e\\appcompat-1.1.0\\res\\drawable-hdpi-v4\\abc_ic_menu_share_mtrl_alpha.png"
+    },
+    {
+        "merged": "D:\\Documentos\\Core_Business\\Proyectos Moviles\\Fisioterapia\\clientPhysiho\\build\\app\\intermediates\\res\\merged\\debug\\drawable-hdpi-v4_abc_text_select_handle_right_mtrl_dark.png.flat",
+        "source": "C:\\Users\\saulm\\.gradle\\caches\\transforms-2\\files-2.1\\e5977849638f4db14ee09096a5a3147e\\appcompat-1.1.0\\res\\drawable-hdpi-v4\\abc_text_select_handle_right_mtrl_dark.png"
     },
     {
         "merged": "D:\\Documentos\\Core_Business\\Proyectos Moviles\\Fisioterapia\\clientPhysiho\\build\\app\\intermediates\\res\\merged\\debug\\drawable-xxhdpi-v4_abc_ic_star_half_black_48dp.png.flat",
         "source": "C:\\Users\\saulm\\.gradle\\caches\\transforms-2\\files-2.1\\e5977849638f4db14ee09096a5a3147e\\appcompat-1.1.0\\res\\drawable-xxhdpi-v4\\abc_ic_star_half_black_48dp.png"
     },
     {
-        "merged": "D:\\Documentos\\Core_Business\\Proyectos Moviles\\Fisioterapia\\clientPhysiho\\build\\app\\intermediates\\res\\merged\\debug\\mipmap-xhdpi_launcher_iconph.png.flat",
-        "source": "D:\\Documentos\\Core_Business\\Proyectos Moviles\\Fisioterapia\\clientPhysiho\\android\\app\\src\\main\\res\\mipmap-xhdpi\\launcher_iconph.png"
-    },
-    {
         "merged": "D:\\Documentos\\Core_Business\\Proyectos Moviles\\Fisioterapia\\clientPhysiho\\build\\app\\intermediates\\res\\merged\\debug\\drawable-ldrtl-xxhdpi-v17_abc_spinner_mtrl_am_alpha.9.png.flat",
         "source": "C:\\Users\\saulm\\.gradle\\caches\\transforms-2\\files-2.1\\e5977849638f4db14ee09096a5a3147e\\appcompat-1.1.0\\res\\drawable-ldrtl-xxhdpi-v17\\abc_spinner_mtrl_am_alpha.9.png"
+    },
+    {
+        "merged": "D:\\Documentos\\Core_Business\\Proyectos Moviles\\Fisioterapia\\clientPhysiho\\build\\app\\intermediates\\res\\merged\\debug\\mipmap-xhdpi_launcher_iconph.png.flat",
+        "source": "D:\\Documentos\\Core_Business\\Proyectos Moviles\\Fisioterapia\\clientPhysiho\\android\\app\\src\\main\\res\\mipmap-xhdpi\\launcher_iconph.png"
     },
     {
         "merged": "D:\\Documentos\\Core_Business\\Proyectos Moviles\\Fisioterapia\\clientPhysiho\\build\\app\\intermediates\\res\\merged\\debug\\drawable_abc_switch_thumb_material.xml.flat",
@@ -112,12 +112,12 @@
         "source": "C:\\Users\\saulm\\.gradle\\caches\\transforms-2\\files-2.1\\e5977849638f4db14ee09096a5a3147e\\appcompat-1.1.0\\res\\drawable-xxxhdpi-v4\\abc_ic_star_black_48dp.png"
     },
     {
-        "merged": "D:\\Documentos\\Core_Business\\Proyectos Moviles\\Fisioterapia\\clientPhysiho\\build\\app\\intermediates\\res\\merged\\debug\\anim_btn_checkbox_to_checked_icon_null_animation.xml.flat",
-        "source": "C:\\Users\\saulm\\.gradle\\caches\\transforms-2\\files-2.1\\e5977849638f4db14ee09096a5a3147e\\appcompat-1.1.0\\res\\anim\\btn_checkbox_to_checked_icon_null_animation.xml"
-    },
-    {
         "merged": "D:\\Documentos\\Core_Business\\Proyectos Moviles\\Fisioterapia\\clientPhysiho\\build\\app\\intermediates\\res\\merged\\debug\\drawable-v21_abc_list_divider_material.xml.flat",
         "source": "C:\\Users\\saulm\\.gradle\\caches\\transforms-2\\files-2.1\\e5977849638f4db14ee09096a5a3147e\\appcompat-1.1.0\\res\\drawable-v21\\abc_list_divider_material.xml"
+    },
+    {
+        "merged": "D:\\Documentos\\Core_Business\\Proyectos Moviles\\Fisioterapia\\clientPhysiho\\build\\app\\intermediates\\res\\merged\\debug\\anim_btn_checkbox_to_checked_icon_null_animation.xml.flat",
+        "source": "C:\\Users\\saulm\\.gradle\\caches\\transforms-2\\files-2.1\\e5977849638f4db14ee09096a5a3147e\\appcompat-1.1.0\\res\\anim\\btn_checkbox_to_checked_icon_null_animation.xml"
     },
     {
         "merged": "D:\\Documentos\\Core_Business\\Proyectos Moviles\\Fisioterapia\\clientPhysiho\\build\\app\\intermediates\\res\\merged\\debug\\color_abc_hint_foreground_material_light.xml.flat",
@@ -128,20 +128,20 @@
         "source": "C:\\Users\\saulm\\.gradle\\caches\\transforms-2\\files-2.1\\e5977849638f4db14ee09096a5a3147e\\appcompat-1.1.0\\res\\drawable-mdpi-v4\\abc_text_select_handle_right_mtrl_dark.png"
     },
     {
-        "merged": "D:\\Documentos\\Core_Business\\Proyectos Moviles\\Fisioterapia\\clientPhysiho\\build\\app\\intermediates\\res\\merged\\debug\\drawable_tooltip_frame_light.xml.flat",
-        "source": "C:\\Users\\saulm\\.gradle\\caches\\transforms-2\\files-2.1\\e5977849638f4db14ee09096a5a3147e\\appcompat-1.1.0\\res\\drawable\\tooltip_frame_light.xml"
-    },
-    {
         "merged": "D:\\Documentos\\Core_Business\\Proyectos Moviles\\Fisioterapia\\clientPhysiho\\build\\app\\intermediates\\res\\merged\\debug\\drawable-xhdpi-v4_com_facebook_tooltip_black_background.9.png.flat",
         "source": "C:\\Users\\saulm\\.gradle\\caches\\transforms-2\\files-2.1\\59efa3361abf2b2f092b9802b3b47852\\facebook-login-8.1.0\\res\\drawable-xhdpi-v4\\com_facebook_tooltip_black_background.9.png"
     },
     {
-        "merged": "D:\\Documentos\\Core_Business\\Proyectos Moviles\\Fisioterapia\\clientPhysiho\\build\\app\\intermediates\\res\\merged\\debug\\anim_btn_checkbox_to_unchecked_check_path_merged_animation.xml.flat",
-        "source": "C:\\Users\\saulm\\.gradle\\caches\\transforms-2\\files-2.1\\e5977849638f4db14ee09096a5a3147e\\appcompat-1.1.0\\res\\anim\\btn_checkbox_to_unchecked_check_path_merged_animation.xml"
+        "merged": "D:\\Documentos\\Core_Business\\Proyectos Moviles\\Fisioterapia\\clientPhysiho\\build\\app\\intermediates\\res\\merged\\debug\\drawable_tooltip_frame_light.xml.flat",
+        "source": "C:\\Users\\saulm\\.gradle\\caches\\transforms-2\\files-2.1\\e5977849638f4db14ee09096a5a3147e\\appcompat-1.1.0\\res\\drawable\\tooltip_frame_light.xml"
     },
     {
         "merged": "D:\\Documentos\\Core_Business\\Proyectos Moviles\\Fisioterapia\\clientPhysiho\\build\\app\\intermediates\\res\\merged\\debug\\color_switch_thumb_material_dark.xml.flat",
         "source": "C:\\Users\\saulm\\.gradle\\caches\\transforms-2\\files-2.1\\e5977849638f4db14ee09096a5a3147e\\appcompat-1.1.0\\res\\color\\switch_thumb_material_dark.xml"
+    },
+    {
+        "merged": "D:\\Documentos\\Core_Business\\Proyectos Moviles\\Fisioterapia\\clientPhysiho\\build\\app\\intermediates\\res\\merged\\debug\\anim_btn_checkbox_to_unchecked_check_path_merged_animation.xml.flat",
+        "source": "C:\\Users\\saulm\\.gradle\\caches\\transforms-2\\files-2.1\\e5977849638f4db14ee09096a5a3147e\\appcompat-1.1.0\\res\\anim\\btn_checkbox_to_unchecked_check_path_merged_animation.xml"
     },
     {
         "merged": "D:\\Documentos\\Core_Business\\Proyectos Moviles\\Fisioterapia\\clientPhysiho\\build\\app\\intermediates\\res\\merged\\debug\\drawable-v21_abc_dialog_material_background.xml.flat",
@@ -156,12 +156,12 @@
         "source": "C:\\Users\\saulm\\.gradle\\caches\\transforms-2\\files-2.1\\e5977849638f4db14ee09096a5a3147e\\appcompat-1.1.0\\res\\drawable-ldrtl-xxxhdpi-v17\\abc_ic_menu_copy_mtrl_am_alpha.png"
     },
     {
-        "merged": "D:\\Documentos\\Core_Business\\Proyectos Moviles\\Fisioterapia\\clientPhysiho\\build\\app\\intermediates\\res\\merged\\debug\\drawable-hdpi-v4_com_facebook_tooltip_black_background.9.png.flat",
-        "source": "C:\\Users\\saulm\\.gradle\\caches\\transforms-2\\files-2.1\\59efa3361abf2b2f092b9802b3b47852\\facebook-login-8.1.0\\res\\drawable-hdpi-v4\\com_facebook_tooltip_black_background.9.png"
-    },
-    {
         "merged": "D:\\Documentos\\Core_Business\\Proyectos Moviles\\Fisioterapia\\clientPhysiho\\build\\app\\intermediates\\res\\merged\\debug\\anim_abc_slide_out_bottom.xml.flat",
         "source": "C:\\Users\\saulm\\.gradle\\caches\\transforms-2\\files-2.1\\e5977849638f4db14ee09096a5a3147e\\appcompat-1.1.0\\res\\anim\\abc_slide_out_bottom.xml"
+    },
+    {
+        "merged": "D:\\Documentos\\Core_Business\\Proyectos Moviles\\Fisioterapia\\clientPhysiho\\build\\app\\intermediates\\res\\merged\\debug\\drawable-hdpi-v4_com_facebook_tooltip_black_background.9.png.flat",
+        "source": "C:\\Users\\saulm\\.gradle\\caches\\transforms-2\\files-2.1\\59efa3361abf2b2f092b9802b3b47852\\facebook-login-8.1.0\\res\\drawable-hdpi-v4\\com_facebook_tooltip_black_background.9.png"
     },
     {
         "merged": "D:\\Documentos\\Core_Business\\Proyectos Moviles\\Fisioterapia\\clientPhysiho\\build\\app\\intermediates\\res\\merged\\debug\\drawable-xxhdpi-v4_googleg_disabled_color_18.png.flat",
@@ -233,7 +233,7 @@
     },
     {
         "merged": "D:\\Documentos\\Core_Business\\Proyectos Moviles\\Fisioterapia\\clientPhysiho\\build\\app\\intermediates\\res\\merged\\debug\\layout_browser_actions_context_menu_row.xml.flat",
-        "source": "C:\\Users\\saulm\\.gradle\\caches\\transforms-2\\files-2.1\\12cd7dac0ae156d453ee2194b2050149\\browser-1.0.0\\res\\layout\\browser_actions_context_menu_row.xml"
+        "source": "C:\\Users\\saulm\\.gradle\\caches\\transforms-2\\files-2.1\\cbb1a1e8c77465f493c99860de4e5ee1\\browser-1.2.0\\res\\layout\\browser_actions_context_menu_row.xml"
     },
     {
         "merged": "D:\\Documentos\\Core_Business\\Proyectos Moviles\\Fisioterapia\\clientPhysiho\\build\\app\\intermediates\\res\\merged\\debug\\color_abc_tint_seek_thumb.xml.flat",
@@ -260,20 +260,20 @@
         "source": "C:\\Users\\saulm\\.gradle\\caches\\transforms-2\\files-2.1\\e5977849638f4db14ee09096a5a3147e\\appcompat-1.1.0\\res\\drawable-xhdpi-v4\\abc_btn_radio_to_on_mtrl_000.png"
     },
     {
-        "merged": "D:\\Documentos\\Core_Business\\Proyectos Moviles\\Fisioterapia\\clientPhysiho\\build\\app\\intermediates\\res\\merged\\debug\\drawable-xhdpi-v4_abc_ic_star_half_black_16dp.png.flat",
-        "source": "C:\\Users\\saulm\\.gradle\\caches\\transforms-2\\files-2.1\\e5977849638f4db14ee09096a5a3147e\\appcompat-1.1.0\\res\\drawable-xhdpi-v4\\abc_ic_star_half_black_16dp.png"
-    },
-    {
-        "merged": "D:\\Documentos\\Core_Business\\Proyectos Moviles\\Fisioterapia\\clientPhysiho\\build\\app\\intermediates\\res\\merged\\debug\\layout_com_facebook_smart_device_dialog_fragment.xml.flat",
-        "source": "C:\\Users\\saulm\\.gradle\\caches\\transforms-2\\files-2.1\\ddd1924ff4d77c086f19b0242908a223\\facebook-common-8.1.0\\res\\layout\\com_facebook_smart_device_dialog_fragment.xml"
+        "merged": "D:\\Documentos\\Core_Business\\Proyectos Moviles\\Fisioterapia\\clientPhysiho\\build\\app\\intermediates\\res\\merged\\debug\\anim_abc_fade_out.xml.flat",
+        "source": "C:\\Users\\saulm\\.gradle\\caches\\transforms-2\\files-2.1\\e5977849638f4db14ee09096a5a3147e\\appcompat-1.1.0\\res\\anim\\abc_fade_out.xml"
     },
     {
         "merged": "D:\\Documentos\\Core_Business\\Proyectos Moviles\\Fisioterapia\\clientPhysiho\\build\\app\\intermediates\\res\\merged\\debug\\drawable-hdpi-v4_abc_scrubber_primary_mtrl_alpha.9.png.flat",
         "source": "C:\\Users\\saulm\\.gradle\\caches\\transforms-2\\files-2.1\\e5977849638f4db14ee09096a5a3147e\\appcompat-1.1.0\\res\\drawable-hdpi-v4\\abc_scrubber_primary_mtrl_alpha.9.png"
     },
     {
-        "merged": "D:\\Documentos\\Core_Business\\Proyectos Moviles\\Fisioterapia\\clientPhysiho\\build\\app\\intermediates\\res\\merged\\debug\\anim_abc_fade_out.xml.flat",
-        "source": "C:\\Users\\saulm\\.gradle\\caches\\transforms-2\\files-2.1\\e5977849638f4db14ee09096a5a3147e\\appcompat-1.1.0\\res\\anim\\abc_fade_out.xml"
+        "merged": "D:\\Documentos\\Core_Business\\Proyectos Moviles\\Fisioterapia\\clientPhysiho\\build\\app\\intermediates\\res\\merged\\debug\\layout_com_facebook_smart_device_dialog_fragment.xml.flat",
+        "source": "C:\\Users\\saulm\\.gradle\\caches\\transforms-2\\files-2.1\\ddd1924ff4d77c086f19b0242908a223\\facebook-common-8.1.0\\res\\layout\\com_facebook_smart_device_dialog_fragment.xml"
+    },
+    {
+        "merged": "D:\\Documentos\\Core_Business\\Proyectos Moviles\\Fisioterapia\\clientPhysiho\\build\\app\\intermediates\\res\\merged\\debug\\drawable-xhdpi-v4_abc_ic_star_half_black_16dp.png.flat",
+        "source": "C:\\Users\\saulm\\.gradle\\caches\\transforms-2\\files-2.1\\e5977849638f4db14ee09096a5a3147e\\appcompat-1.1.0\\res\\drawable-xhdpi-v4\\abc_ic_star_half_black_16dp.png"
     },
     {
         "merged": "D:\\Documentos\\Core_Business\\Proyectos Moviles\\Fisioterapia\\clientPhysiho\\build\\app\\intermediates\\res\\merged\\debug\\drawable-xhdpi-v4_abc_scrubber_control_to_pressed_mtrl_000.png.flat",
@@ -304,16 +304,16 @@
         "source": "C:\\Users\\saulm\\.gradle\\caches\\transforms-2\\files-2.1\\e5977849638f4db14ee09096a5a3147e\\appcompat-1.1.0\\res\\drawable-xhdpi-v4\\abc_text_select_handle_middle_mtrl_light.png"
     },
     {
-        "merged": "D:\\Documentos\\Core_Business\\Proyectos Moviles\\Fisioterapia\\clientPhysiho\\build\\app\\intermediates\\res\\merged\\debug\\drawable-xxhdpi-v4_abc_list_selector_disabled_holo_light.9.png.flat",
-        "source": "C:\\Users\\saulm\\.gradle\\caches\\transforms-2\\files-2.1\\e5977849638f4db14ee09096a5a3147e\\appcompat-1.1.0\\res\\drawable-xxhdpi-v4\\abc_list_selector_disabled_holo_light.9.png"
+        "merged": "D:\\Documentos\\Core_Business\\Proyectos Moviles\\Fisioterapia\\clientPhysiho\\build\\app\\intermediates\\res\\merged\\debug\\interpolator_btn_radio_to_off_mtrl_animation_interpolator_0.xml.flat",
+        "source": "C:\\Users\\saulm\\.gradle\\caches\\transforms-2\\files-2.1\\e5977849638f4db14ee09096a5a3147e\\appcompat-1.1.0\\res\\interpolator\\btn_radio_to_off_mtrl_animation_interpolator_0.xml"
     },
     {
         "merged": "D:\\Documentos\\Core_Business\\Proyectos Moviles\\Fisioterapia\\clientPhysiho\\build\\app\\intermediates\\res\\merged\\debug\\layout_abc_activity_chooser_view.xml.flat",
         "source": "C:\\Users\\saulm\\.gradle\\caches\\transforms-2\\files-2.1\\e5977849638f4db14ee09096a5a3147e\\appcompat-1.1.0\\res\\layout\\abc_activity_chooser_view.xml"
     },
     {
-        "merged": "D:\\Documentos\\Core_Business\\Proyectos Moviles\\Fisioterapia\\clientPhysiho\\build\\app\\intermediates\\res\\merged\\debug\\interpolator_btn_radio_to_off_mtrl_animation_interpolator_0.xml.flat",
-        "source": "C:\\Users\\saulm\\.gradle\\caches\\transforms-2\\files-2.1\\e5977849638f4db14ee09096a5a3147e\\appcompat-1.1.0\\res\\interpolator\\btn_radio_to_off_mtrl_animation_interpolator_0.xml"
+        "merged": "D:\\Documentos\\Core_Business\\Proyectos Moviles\\Fisioterapia\\clientPhysiho\\build\\app\\intermediates\\res\\merged\\debug\\drawable-xxhdpi-v4_abc_list_selector_disabled_holo_light.9.png.flat",
+        "source": "C:\\Users\\saulm\\.gradle\\caches\\transforms-2\\files-2.1\\e5977849638f4db14ee09096a5a3147e\\appcompat-1.1.0\\res\\drawable-xxhdpi-v4\\abc_list_selector_disabled_holo_light.9.png"
     },
     {
         "merged": "D:\\Documentos\\Core_Business\\Proyectos Moviles\\Fisioterapia\\clientPhysiho\\build\\app\\intermediates\\res\\merged\\debug\\drawable-xxhdpi-v4_abc_ic_menu_selectall_mtrl_alpha.png.flat",
@@ -328,12 +328,12 @@
         "source": "C:\\Users\\saulm\\.gradle\\caches\\transforms-2\\files-2.1\\e5977849638f4db14ee09096a5a3147e\\appcompat-1.1.0\\res\\anim\\btn_radio_to_off_mtrl_dot_group_animation.xml"
     },
     {
-        "merged": "D:\\Documentos\\Core_Business\\Proyectos Moviles\\Fisioterapia\\clientPhysiho\\build\\app\\intermediates\\res\\merged\\debug\\drawable_common_google_signin_btn_icon_dark_focused.xml.flat",
-        "source": "C:\\Users\\saulm\\.gradle\\caches\\transforms-2\\files-2.1\\3a04cbfa3b635ae4131224a81a3c4510\\play-services-base-17.1.0\\res\\drawable\\common_google_signin_btn_icon_dark_focused.xml"
-    },
-    {
         "merged": "D:\\Documentos\\Core_Business\\Proyectos Moviles\\Fisioterapia\\clientPhysiho\\build\\app\\intermediates\\res\\merged\\debug\\interpolator_btn_checkbox_checked_mtrl_animation_interpolator_1.xml.flat",
         "source": "C:\\Users\\saulm\\.gradle\\caches\\transforms-2\\files-2.1\\e5977849638f4db14ee09096a5a3147e\\appcompat-1.1.0\\res\\interpolator\\btn_checkbox_checked_mtrl_animation_interpolator_1.xml"
+    },
+    {
+        "merged": "D:\\Documentos\\Core_Business\\Proyectos Moviles\\Fisioterapia\\clientPhysiho\\build\\app\\intermediates\\res\\merged\\debug\\drawable_common_google_signin_btn_icon_dark_focused.xml.flat",
+        "source": "C:\\Users\\saulm\\.gradle\\caches\\transforms-2\\files-2.1\\3a04cbfa3b635ae4131224a81a3c4510\\play-services-base-17.1.0\\res\\drawable\\common_google_signin_btn_icon_dark_focused.xml"
     },
     {
         "merged": "D:\\Documentos\\Core_Business\\Proyectos Moviles\\Fisioterapia\\clientPhysiho\\build\\app\\intermediates\\res\\merged\\debug\\drawable-mdpi-v4_notify_panel_notification_icon_bg.png.flat",
@@ -356,12 +356,12 @@
         "source": "C:\\Users\\saulm\\.gradle\\caches\\transforms-2\\files-2.1\\e5977849638f4db14ee09096a5a3147e\\appcompat-1.1.0\\res\\drawable-mdpi-v4\\abc_scrubber_track_mtrl_alpha.9.png"
     },
     {
-        "merged": "D:\\Documentos\\Core_Business\\Proyectos Moviles\\Fisioterapia\\clientPhysiho\\build\\app\\intermediates\\res\\merged\\debug\\layout_browser_actions_context_menu_page.xml.flat",
-        "source": "C:\\Users\\saulm\\.gradle\\caches\\transforms-2\\files-2.1\\12cd7dac0ae156d453ee2194b2050149\\browser-1.0.0\\res\\layout\\browser_actions_context_menu_page.xml"
-    },
-    {
         "merged": "D:\\Documentos\\Core_Business\\Proyectos Moviles\\Fisioterapia\\clientPhysiho\\build\\app\\intermediates\\res\\merged\\debug\\drawable-hdpi-v4_notify_panel_notification_icon_bg.png.flat",
         "source": "C:\\Users\\saulm\\.gradle\\caches\\transforms-2\\files-2.1\\60bcdf937a69ab7807eabfbf34627aee\\core-1.1.0\\res\\drawable-hdpi-v4\\notify_panel_notification_icon_bg.png"
+    },
+    {
+        "merged": "D:\\Documentos\\Core_Business\\Proyectos Moviles\\Fisioterapia\\clientPhysiho\\build\\app\\intermediates\\res\\merged\\debug\\layout_browser_actions_context_menu_page.xml.flat",
+        "source": "C:\\Users\\saulm\\.gradle\\caches\\transforms-2\\files-2.1\\cbb1a1e8c77465f493c99860de4e5ee1\\browser-1.2.0\\res\\layout\\browser_actions_context_menu_page.xml"
     },
     {
         "merged": "D:\\Documentos\\Core_Business\\Proyectos Moviles\\Fisioterapia\\clientPhysiho\\build\\app\\intermediates\\res\\merged\\debug\\layout_abc_screen_simple.xml.flat",
@@ -404,12 +404,12 @@
         "source": "C:\\Users\\saulm\\.gradle\\caches\\transforms-2\\files-2.1\\e5977849638f4db14ee09096a5a3147e\\appcompat-1.1.0\\res\\drawable-xxxhdpi-v4\\abc_text_select_handle_left_mtrl_dark.png"
     },
     {
-        "merged": "D:\\Documentos\\Core_Business\\Proyectos Moviles\\Fisioterapia\\clientPhysiho\\build\\app\\intermediates\\res\\merged\\debug\\drawable-mdpi-v4_abc_ic_menu_share_mtrl_alpha.png.flat",
-        "source": "C:\\Users\\saulm\\.gradle\\caches\\transforms-2\\files-2.1\\e5977849638f4db14ee09096a5a3147e\\appcompat-1.1.0\\res\\drawable-mdpi-v4\\abc_ic_menu_share_mtrl_alpha.png"
-    },
-    {
         "merged": "D:\\Documentos\\Core_Business\\Proyectos Moviles\\Fisioterapia\\clientPhysiho\\build\\app\\intermediates\\res\\merged\\debug\\interpolator_btn_checkbox_unchecked_mtrl_animation_interpolator_0.xml.flat",
         "source": "C:\\Users\\saulm\\.gradle\\caches\\transforms-2\\files-2.1\\e5977849638f4db14ee09096a5a3147e\\appcompat-1.1.0\\res\\interpolator\\btn_checkbox_unchecked_mtrl_animation_interpolator_0.xml"
+    },
+    {
+        "merged": "D:\\Documentos\\Core_Business\\Proyectos Moviles\\Fisioterapia\\clientPhysiho\\build\\app\\intermediates\\res\\merged\\debug\\drawable-mdpi-v4_abc_ic_menu_share_mtrl_alpha.png.flat",
+        "source": "C:\\Users\\saulm\\.gradle\\caches\\transforms-2\\files-2.1\\e5977849638f4db14ee09096a5a3147e\\appcompat-1.1.0\\res\\drawable-mdpi-v4\\abc_ic_menu_share_mtrl_alpha.png"
     },
     {
         "merged": "D:\\Documentos\\Core_Business\\Proyectos Moviles\\Fisioterapia\\clientPhysiho\\build\\app\\intermediates\\res\\merged\\debug\\drawable-xxxhdpi-v4_abc_text_select_handle_left_mtrl_light.png.flat",
@@ -466,6 +466,10 @@
     {
         "merged": "D:\\Documentos\\Core_Business\\Proyectos Moviles\\Fisioterapia\\clientPhysiho\\build\\app\\intermediates\\res\\merged\\debug\\drawable-mdpi-v4_abc_text_select_handle_left_mtrl_dark.png.flat",
         "source": "C:\\Users\\saulm\\.gradle\\caches\\transforms-2\\files-2.1\\e5977849638f4db14ee09096a5a3147e\\appcompat-1.1.0\\res\\drawable-mdpi-v4\\abc_text_select_handle_left_mtrl_dark.png"
+    },
+    {
+        "merged": "D:\\Documentos\\Core_Business\\Proyectos Moviles\\Fisioterapia\\clientPhysiho\\build\\app\\intermediates\\res\\merged\\debug\\xml_image_share_filepaths.xml.flat",
+        "source": "C:\\Users\\saulm\\.gradle\\caches\\transforms-2\\files-2.1\\cbb1a1e8c77465f493c99860de4e5ee1\\browser-1.2.0\\res\\xml\\image_share_filepaths.xml"
     },
     {
         "merged": "D:\\Documentos\\Core_Business\\Proyectos Moviles\\Fisioterapia\\clientPhysiho\\build\\app\\intermediates\\res\\merged\\debug\\layout_abc_action_menu_layout.xml.flat",
@@ -1416,12 +1420,12 @@
         "source": "C:\\Users\\saulm\\.gradle\\caches\\transforms-2\\files-2.1\\60bcdf937a69ab7807eabfbf34627aee\\core-1.1.0\\res\\layout\\notification_action_tombstone.xml"
     },
     {
-        "merged": "D:\\Documentos\\Core_Business\\Proyectos Moviles\\Fisioterapia\\clientPhysiho\\build\\app\\intermediates\\res\\merged\\debug\\drawable-mdpi-v4_abc_list_pressed_holo_dark.9.png.flat",
-        "source": "C:\\Users\\saulm\\.gradle\\caches\\transforms-2\\files-2.1\\e5977849638f4db14ee09096a5a3147e\\appcompat-1.1.0\\res\\drawable-mdpi-v4\\abc_list_pressed_holo_dark.9.png"
-    },
-    {
         "merged": "D:\\Documentos\\Core_Business\\Proyectos Moviles\\Fisioterapia\\clientPhysiho\\build\\app\\intermediates\\res\\merged\\debug\\drawable_client_physiho12.png.flat",
         "source": "D:\\Documentos\\Core_Business\\Proyectos Moviles\\Fisioterapia\\clientPhysiho\\android\\app\\src\\main\\res\\drawable\\client_physiho12.png"
+    },
+    {
+        "merged": "D:\\Documentos\\Core_Business\\Proyectos Moviles\\Fisioterapia\\clientPhysiho\\build\\app\\intermediates\\res\\merged\\debug\\drawable-mdpi-v4_abc_list_pressed_holo_dark.9.png.flat",
+        "source": "C:\\Users\\saulm\\.gradle\\caches\\transforms-2\\files-2.1\\e5977849638f4db14ee09096a5a3147e\\appcompat-1.1.0\\res\\drawable-mdpi-v4\\abc_list_pressed_holo_dark.9.png"
     },
     {
         "merged": "D:\\Documentos\\Core_Business\\Proyectos Moviles\\Fisioterapia\\clientPhysiho\\build\\app\\intermediates\\res\\merged\\debug\\drawable_abc_ic_arrow_drop_right_black_24dp.xml.flat",

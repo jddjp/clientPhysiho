@@ -6,21 +6,17 @@ class HighlightText extends StatelessWidget {
   final String highlight;
   final bool isLast;
 
-  final TextStyle textStyle = TextStyle(
-      fontSize: 17.0
-    );
+  final TextStyle textStyle = TextStyle(fontSize: 17.0);
 
-  HighlightText({
-    Key key,
-    @required this.text,
-    @required this.highlight,
-    @required this.isLast
-  }) : super(key: key);
+  HighlightText(
+      {Key key,
+      @required this.text,
+      @required this.highlight,
+      @required this.isLast})
+      : super(key: key);
 
   @override
   Widget build(BuildContext context) {
-    
-
     String text = this.text ?? '';
     if ((highlight?.isEmpty ?? true) || text.isEmpty) {
       return Text(text, style: textStyle);
@@ -56,7 +52,8 @@ class HighlightText extends StatelessWidget {
   }
 
   TextSpan _highlightSpan(String content) {
-    return TextSpan(text: content, style: textStyle.copyWith(fontWeight: FontWeight.bold));
+    return TextSpan(
+        text: content, style: textStyle.copyWith(fontWeight: FontWeight.bold));
   }
 
   TextSpan _normalSpan(String content) {

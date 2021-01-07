@@ -4,15 +4,10 @@ import 'package:clientPhysiho/src/config/constants.dart';
 import 'package:clientPhysiho/src/helpers/widget_helper.dart';
 
 class AlertWidget extends StatelessWidget {
-
   Color bgColor;
   String alertText;
 
-  AlertWidget({
-    this.bgColor,
-    this.alertText
-  });
-
+  AlertWidget({this.bgColor, this.alertText});
 
   @override
   Widget build(BuildContext context) {
@@ -20,7 +15,8 @@ class AlertWidget extends StatelessWidget {
       decoration: boxDecoration(bgColor: bgColor),
       padding: EdgeInsets.all(spacing_standard),
       margin: EdgeInsets.only(bottom: spacing_standard),
-      child: text(alertText, textColor: whiteColor, maxLine: null, fontSize: textSizeSMedium),
+      child: text(alertText,
+          textColor: whiteColor, maxLine: null, fontSize: textSizeSMedium),
     );
   }
 }

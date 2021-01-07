@@ -1,7 +1,6 @@
 import 'package:flutter/material.dart';
 import 'package:clientPhysiho/src/config/colors.dart';
 import 'package:clientPhysiho/src/config/constants.dart';
-import 'package:clientPhysiho/src/helpers/size_helper.dart';
 
 class DefaultButton extends StatelessWidget {
   const DefaultButton({
@@ -16,7 +15,7 @@ class DefaultButton extends StatelessWidget {
   Widget build(BuildContext context) {
     return SizedBox(
       width: double.infinity,
-      height: getProportionateScreenHeight(56),
+      height: 56.0,
       child: FlatButton(
         shape: RoundedRectangleBorder(borderRadius: BorderRadius.circular(50)),
         color: appColorAccent,
@@ -24,7 +23,7 @@ class DefaultButton extends StatelessWidget {
         child: Text(
           text,
           style: TextStyle(
-            fontSize: getProportionateScreenWidth(textSizeMedium),
+            fontSize: textSizeMedium,
             color: Colors.white,
           ),
         ),

@@ -16,6 +16,7 @@ const appLayout_background = Color(0xFFF6F8F7);
 
 const googleColor = Color(0xFFDB4437);
 const facebookColor = Color(0xFF3b5998);
+const appleColor = Color(0xFF151515);
 
 const food_colorPrimary = Color(0xFF2b58a5);
 const food_colorPrimaryDark = Color(0xFF3B8BEA);

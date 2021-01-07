@@ -8,7 +8,6 @@ import 'package:clientPhysiho/src/components/default_button.dart';
 import 'package:clientPhysiho/src/config/colors.dart';
 import 'package:clientPhysiho/src/config/constants.dart';
 import 'package:clientPhysiho/src/helpers/extension_helper.dart';
-import 'package:clientPhysiho/src/helpers/size_helper.dart';
 import 'package:clientPhysiho/src/helpers/widget_helper.dart';
 
 class CreateAccountView extends StatefulWidget {
@@ -25,36 +24,35 @@ class _CreateAccountViewState extends State<CreateAccountView> {
 
   final _codeController = TextEditingController();
 
-
   Future<bool> loginPhoneNumber(BuildContext context, String phone) async {
     FirebaseAuth _auth = FirebaseAuth.instance;
 
     _auth.verifyPhoneNumber(
-      phoneNumber: "+52$phone", 
-      verificationCompleted: (AuthCredential credential) async {
-        // ANDROID ONLY!
-        Navigator.of(context).pop();
+        phoneNumber: "+52$phone",
+        verificationCompleted: (AuthCredential credential) async {
+          // ANDROID ONLY!
+          Navigator.of(context).pop();
 
-        UserCredential userCredential =
+          UserCredential userCredential =
               await _auth.signInWithCredential(credential);
 
-        Provider.of<LoginProvider>(context, listen: false).afterSignIn(userCredential);
-      }, 
-      verificationFailed: (FirebaseAuthException e) {
-        print("verificationFailed");
-        print(e);
-      }, 
-      codeSent: (String verificationId, [int forceResendingToken]) {
-        launchScreen(context, OPTView.routeName, arguments: {
+          Provider.of<LoginProvider>(context, listen: false)
+              .afterSignIn(userCredential);
+        },
+        verificationFailed: (FirebaseAuthException e) {
+          print("verificationFailed");
+          print(e);
+        },
+        codeSent: (String verificationId, [int forceResendingToken]) {
+          launchScreen(context, OPTView.routeName, arguments: {
             'phoneNumber': phoneNumber,
             'verificationId': verificationId
-        });
-      }, 
-      codeAutoRetrievalTimeout: (String verificationId) {
+          });
+        },
+        codeAutoRetrievalTimeout: (String verificationId) {
           print("retrieval");
-      },
-      timeout: Duration(seconds: 60)
-    );
+        },
+        timeout: Duration(seconds: 60));
   }
 
   @override
@@ -67,13 +65,17 @@ class _CreateAccountViewState extends State<CreateAccountView> {
       margin: EdgeInsets.only(
           left: spacing_standard_new, right: spacing_standard_new),
       child: text("¿Cuál es tu número de teléfono?",
-          fontWeight: fontBold, isLongText: true, fontSize: getProportionateScreenWidth(textSizeNormal)),
+          fontWeight: fontBold, isLongText: true, fontSize: textSizeNormal),
     );
 
     var mSubLabel = Container(
       margin: EdgeInsets.only(
           left: spacing_standard_new, right: spacing_standard_new),
-      child: text("Tu número no se almacenará ni usará como método de contacto hasta que te registres y aceptes nuestros Términos y Condiciones y Política de privacidad.", isLongText: true, textColor: textSecondaryColor, fontSize: getProportionateScreenWidth(textSizeSmall)),
+      child: text(
+          "Tu número no se almacenará ni usará como método de contacto hasta que te registres y aceptes nuestros Términos y Condiciones y Política de privacidad.",
+          isLongText: true,
+          textColor: textSecondaryColor,
+          fontSize: textSizeSmall),
     );
 
     return Scaffold(
@@ -106,23 +108,24 @@ class _CreateAccountViewState extends State<CreateAccountView> {
               child: Container(),
             ),
             Container(
-              margin: EdgeInsets.only(left: spacing_standard_new, right: spacing_standard_new),
+              margin: EdgeInsets.only(
+                  left: spacing_standard_new, right: spacing_standard_new),
               child: DefaultButton(
                 text: "Continuar",
                 press: () async {
                   if (_formKey.currentState.validate()) {
-
-                     _formKey.currentState.save();
+                    _formKey.currentState.save();
 
                     // Save phoneNumber on App Global State
                     //await context.read<LoginProvider>().verifyPhoneNumber(phoneNumber, context);
-                    Provider.of<LoginProvider>(context, listen: false).verifyPhoneNumber(phoneNumber, context);
+                    Provider.of<LoginProvider>(context, listen: false)
+                        .verifyPhoneNumber(phoneNumber, context);
                     //loginPhoneNumber(context, phoneNumber);
                   }
                 },
               ),
             ),
-            SizedBox(height: getProportionateScreenHeight(spacing_large)),
+            SizedBox(height: spacing_large),
           ],
         ),
       ),
@@ -132,7 +135,7 @@ class _CreateAccountViewState extends State<CreateAccountView> {
   Widget buildPhoneNumberFormField() {
     return Container(
         margin: EdgeInsets.only(
-          left: spacing_standard_new, right: spacing_standard_new),
+            left: spacing_standard_new, right: spacing_standard_new),
         child: TextFormField(
           keyboardType: TextInputType.phone,
           autofocus: true,
@@ -143,7 +146,7 @@ class _CreateAccountViewState extends State<CreateAccountView> {
             if (value.isEmpty) {
               return "Ingresa tu número de teléfono";
             }
-            if ( !regex.hasMatch(value)) {
+            if (!regex.hasMatch(value)) {
               return "Ingresa un número a 10 dígitos válido";
             }
             return null;

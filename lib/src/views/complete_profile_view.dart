@@ -2,11 +2,11 @@ import 'package:cloud_firestore/cloud_firestore.dart';
 import 'package:flutter/material.dart';
 import 'package:clientPhysiho/src/components/default_button.dart';
 import 'package:clientPhysiho/src/config/constants.dart';
-import 'package:clientPhysiho/src/helpers/size_helper.dart';
 import 'package:clientPhysiho/src/providers/login_provider.dart';
 import 'package:clientPhysiho/src/views/home_view.dart';
 import 'package:loading_overlay/loading_overlay.dart';
 import 'package:provider/provider.dart';
+import 'package:clientPhysiho/src/helpers/widget_helper.dart';
 
 class CompleteProfileView extends StatefulWidget {
   static const routeName = 'complete_profile';
@@ -25,7 +25,6 @@ class _CompleteProfileViewState extends State<CompleteProfileView> {
 
   @override
   Widget build(BuildContext context) {
-
     return Scaffold(
       body: LoadingOverlay(
         isLoading: context.watch<LoginProvider>().currentUser == null,
@@ -33,36 +32,38 @@ class _CompleteProfileViewState extends State<CompleteProfileView> {
           child: SizedBox(
             width: double.infinity,
             child: Padding(
-              padding: EdgeInsets.symmetric(
-                  horizontal: getProportionateScreenWidth(20)),
+              padding: EdgeInsets.symmetric(horizontal: spacing_standard_new),
               child: SingleChildScrollView(
                 child: Column(
                   children: [
-                    SizedBox(height: SizeConfig.screenHeight * 0.05),
-                    Text("Completar perfil", style: headingStyle),
+                    SizedBox(height: 40.0),
+                    text("Completar perfil", fontSize: textSizeNormal),
                     Text(
                       "Completa tus datos para poder continuar",
                       textAlign: TextAlign.center,
                     ),
-                    SizedBox(height: SizeConfig.screenHeight * 0.06),
+                    SizedBox(height: 45.0),
                     Form(
                       key: _formKey,
                       child: Column(
-                              children: [
-                                buildNameFormField(context.watch<LoginProvider>().currentUser['nombre']),
-                                SizedBox(
-                                    height: getProportionateScreenHeight(30)),
-                                buildPhoneNumberFormField(context.watch<LoginProvider>().currentUser['telefono']),
-                                SizedBox(
-                                    height: getProportionateScreenHeight(30)),
-                                buildEmailFormField(context.watch<LoginProvider>().currentUser['correo']),
-                                SizedBox(
-                                    height: getProportionateScreenHeight(40)),
-                                DefaultButton(
-                                  text: "Continuar",
-                                  press: () async {
-                                    if (_formKey.currentState.validate()) {
-                                      _formKey.currentState.save();
+                        children: [
+                          buildNameFormField(context
+                              .watch<LoginProvider>()
+                              .currentUser['nombre']),
+                          SizedBox(height: spacing_large),
+                          buildPhoneNumberFormField(context
+                              .watch<LoginProvider>()
+                              .currentUser['telefono']),
+                          SizedBox(height: spacing_large),
+                          buildEmailFormField(context
+                              .watch<LoginProvider>()
+                              .currentUser['correo']),
+                          SizedBox(height: 40.0),
+                          DefaultButton(
+                            text: "Continuar",
+                            press: () async {
+                              if (_formKey.currentState.validate()) {
+                                _formKey.currentState.save();
 
                                       await FirebaseFirestore.instance.collection('customers')
                                         .doc(context.read<LoginProvider>().currentUser['id'])
@@ -74,23 +75,27 @@ class _CompleteProfileViewState extends State<CompleteProfileView> {
                                           'updated_at': FieldValue.serverTimestamp()
                                         });
 
-                                      context.read<LoginProvider>().checkLoginState().then((value) {
-                                          // Redirect and remove all screens
-                                          Navigator.pushNamedAndRemoveUntil(context, HomeView.routeName, (route) => false);
-                                      });
-                                    }
-                                  },
-                                ),
-                              ],
-                            ),
+                                Provider.of<LoginProvider>(context,
+                                        listen: false)
+                                    .checkLoginState()
+                                    .then((value) {
+                                  // Redirect and remove all screens
+                                  Navigator.pushNamedAndRemoveUntil(context,
+                                      HomeView.routeName, (route) => false);
+                                });
+                              }
+                            },
+                          ),
+                        ],
+                      ),
                     ),
-                    SizedBox(height: getProportionateScreenHeight(30)),
+                    SizedBox(height: spacing_large),
                     Text(
                       "Al continuar, confirmas que está de acuerdo \ncon nuestros Términos y condiciones",
                       textAlign: TextAlign.center,
                       style: Theme.of(context).textTheme.caption,
                     ),
-                    SizedBox(height: SizeConfig.screenHeight * 0.1),
+                    SizedBox(height: 80.0),
                     GestureDetector(
                       onTap: () {
                         context.read<LoginProvider>().logout();
@@ -114,6 +119,7 @@ class _CompleteProfileViewState extends State<CompleteProfileView> {
     return TextFormField(
       onSaved: (newValue) => name = newValue,
       initialValue: defaultName,
+      autofocus: true,
       validator: (value) {
         if (value.isEmpty) {
           return "Por favor ingresa tu nombre";
@@ -138,16 +144,16 @@ class _CompleteProfileViewState extends State<CompleteProfileView> {
       readOnly: defaultValue != null,
       onSaved: (newValue) => phoneNumber = newValue,
       validator: (value) {
-            Pattern pattern = r'^[0-9]{10}$';
-            RegExp regex = new RegExp(pattern);
-            if (value.isEmpty) {
-              return "Ingresa tu número de teléfono";
-            }
-            if ( !regex.hasMatch(value)) {
-              return "Ingresa un número a 10 dígitos válido";
-            }
-            return null;
-          },
+        Pattern pattern = r'^[0-9]{10}$';
+        RegExp regex = new RegExp(pattern);
+        if (value.isEmpty) {
+          return "Ingresa tu número de teléfono";
+        }
+        if (!regex.hasMatch(value)) {
+          return "Ingresa un número a 10 dígitos válido";
+        }
+        return null;
+      },
       decoration: InputDecoration(
         labelText: "Número de teléfono",
         hintText: "Ingresa tu número de teléfono",

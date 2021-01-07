@@ -1,26 +1,28 @@
 -- Merging decision tree log ---
 manifest
-ADDED from D:\Documentos\Core_Business\Proyectos Moviles\Fisioterapia\clientPhysiho\android\app\src\main\AndroidManifest.xml:1:1-78:12
-INJECTED from D:\Documentos\Core_Business\Proyectos Moviles\Fisioterapia\clientPhysiho\android\app\src\main\AndroidManifest.xml:1:1-78:12
-INJECTED from D:\Documentos\Core_Business\Proyectos Moviles\Fisioterapia\clientPhysiho\android\app\src\main\AndroidManifest.xml:1:1-78:12
-INJECTED from D:\Documentos\Core_Business\Proyectos Moviles\Fisioterapia\clientPhysiho\android\app\src\main\AndroidManifest.xml:1:1-78:12
-MERGED from D:\Documentos\Core_Business\Proyectos Moviles\Fisioterapia\clientPhysiho\android\app\src\main\AndroidManifest.xml:1:1-78:12
-MERGED from [:google_sign_in] D:\Documentos\Core_Business\Proyectos Moviles\Fisioterapia\clientPhysiho\build\google_sign_in\intermediates\library_manifest\debug\AndroidManifest.xml:2:1-9:12
-MERGED from [:fluttertoast] D:\Documentos\Core_Business\Proyectos Moviles\Fisioterapia\clientPhysiho\build\fluttertoast\intermediates\library_manifest\debug\AndroidManifest.xml:2:1-7:12
-MERGED from [:sqflite] D:\Documentos\Core_Business\Proyectos Moviles\Fisioterapia\clientPhysiho\build\sqflite\intermediates\library_manifest\debug\AndroidManifest.xml:2:1-7:12
-MERGED from [:flutter_statusbarcolor] D:\Documentos\Core_Business\Proyectos Moviles\Fisioterapia\clientPhysiho\build\flutter_statusbarcolor\intermediates\library_manifest\debug\AndroidManifest.xml:2:1-7:12
+ADDED from D:\Documentos\Core_Business\Proyectos Moviles\Fisioterapia\clientPhysiho\android\app\src\main\AndroidManifest.xml:1:1-79:12
+INJECTED from D:\Documentos\Core_Business\Proyectos Moviles\Fisioterapia\clientPhysiho\android\app\src\main\AndroidManifest.xml:1:1-79:12
+INJECTED from D:\Documentos\Core_Business\Proyectos Moviles\Fisioterapia\clientPhysiho\android\app\src\main\AndroidManifest.xml:1:1-79:12
+INJECTED from D:\Documentos\Core_Business\Proyectos Moviles\Fisioterapia\clientPhysiho\android\app\src\main\AndroidManifest.xml:1:1-79:12
+MERGED from D:\Documentos\Core_Business\Proyectos Moviles\Fisioterapia\clientPhysiho\android\app\src\main\AndroidManifest.xml:1:1-79:12
 MERGED from [:google_maps_flutter] D:\Documentos\Core_Business\Proyectos Moviles\Fisioterapia\clientPhysiho\build\google_maps_flutter\intermediates\library_manifest\debug\AndroidManifest.xml:2:1-7:12
 MERGED from [:flutter_plugin_android_lifecycle] D:\Documentos\Core_Business\Proyectos Moviles\Fisioterapia\clientPhysiho\build\flutter_plugin_android_lifecycle\intermediates\library_manifest\debug\AndroidManifest.xml:2:1-7:12
 MERGED from [:geocoding] D:\Documentos\Core_Business\Proyectos Moviles\Fisioterapia\clientPhysiho\build\geocoding\intermediates\library_manifest\debug\AndroidManifest.xml:2:1-7:12
-MERGED from [:geolocator] D:\Documentos\Core_Business\Proyectos Moviles\Fisioterapia\clientPhysiho\build\geolocator\intermediates\library_manifest\debug\AndroidManifest.xml:2:1-7:12
-MERGED from [:firebase_messaging] D:\Documentos\Core_Business\Proyectos Moviles\Fisioterapia\clientPhysiho\build\firebase_messaging\intermediates\library_manifest\debug\AndroidManifest.xml:2:1-20:12
-MERGED from [:url_launcher] D:\Documentos\Core_Business\Proyectos Moviles\Fisioterapia\clientPhysiho\build\url_launcher\intermediates\library_manifest\debug\AndroidManifest.xml:2:1-14:12
-MERGED from [:flutter_facebook_auth] D:\Documentos\Core_Business\Proyectos Moviles\Fisioterapia\clientPhysiho\build\flutter_facebook_auth\intermediates\library_manifest\debug\AndroidManifest.xml:2:1-7:12
-MERGED from [:path_provider] D:\Documentos\Core_Business\Proyectos Moviles\Fisioterapia\clientPhysiho\build\path_provider\intermediates\library_manifest\debug\AndroidManifest.xml:2:1-7:12
 MERGED from [:cloud_firestore] D:\Documentos\Core_Business\Proyectos Moviles\Fisioterapia\clientPhysiho\build\cloud_firestore\intermediates\library_manifest\debug\AndroidManifest.xml:2:1-15:12
-MERGED from [:shared_preferences] D:\Documentos\Core_Business\Proyectos Moviles\Fisioterapia\clientPhysiho\build\shared_preferences\intermediates\library_manifest\debug\AndroidManifest.xml:2:1-7:12
+MERGED from [:sign_in_with_apple] D:\Documentos\Core_Business\Proyectos Moviles\Fisioterapia\clientPhysiho\build\sign_in_with_apple\intermediates\library_manifest\debug\AndroidManifest.xml:2:1-7:12
+MERGED from [:google_sign_in] D:\Documentos\Core_Business\Proyectos Moviles\Fisioterapia\clientPhysiho\build\google_sign_in\intermediates\library_manifest\debug\AndroidManifest.xml:2:1-9:12
+MERGED from [:flutter_facebook_auth] D:\Documentos\Core_Business\Proyectos Moviles\Fisioterapia\clientPhysiho\build\flutter_facebook_auth\intermediates\library_manifest\debug\AndroidManifest.xml:2:1-7:12
 MERGED from [:firebase_auth] D:\Documentos\Core_Business\Proyectos Moviles\Fisioterapia\clientPhysiho\build\firebase_auth\intermediates\library_manifest\debug\AndroidManifest.xml:2:1-15:12
+MERGED from [:shared_preferences] D:\Documentos\Core_Business\Proyectos Moviles\Fisioterapia\clientPhysiho\build\shared_preferences\intermediates\library_manifest\debug\AndroidManifest.xml:2:1-7:12
+MERGED from [:firebase_messaging] D:\Documentos\Core_Business\Proyectos Moviles\Fisioterapia\clientPhysiho\build\firebase_messaging\intermediates\library_manifest\debug\AndroidManifest.xml:2:1-20:12
+MERGED from [:flutter_statusbarcolor] D:\Documentos\Core_Business\Proyectos Moviles\Fisioterapia\clientPhysiho\build\flutter_statusbarcolor\intermediates\library_manifest\debug\AndroidManifest.xml:2:1-7:12
 MERGED from [:firebase_core] D:\Documentos\Core_Business\Proyectos Moviles\Fisioterapia\clientPhysiho\build\firebase_core\intermediates\library_manifest\debug\AndroidManifest.xml:2:1-15:12
+MERGED from [:fluttertoast] D:\Documentos\Core_Business\Proyectos Moviles\Fisioterapia\clientPhysiho\build\fluttertoast\intermediates\library_manifest\debug\AndroidManifest.xml:2:1-7:12
+MERGED from [:geolocator] D:\Documentos\Core_Business\Proyectos Moviles\Fisioterapia\clientPhysiho\build\geolocator\intermediates\library_manifest\debug\AndroidManifest.xml:2:1-7:12
+MERGED from [:sqflite] D:\Documentos\Core_Business\Proyectos Moviles\Fisioterapia\clientPhysiho\build\sqflite\intermediates\library_manifest\debug\AndroidManifest.xml:2:1-7:12
+MERGED from [:url_launcher] D:\Documentos\Core_Business\Proyectos Moviles\Fisioterapia\clientPhysiho\build\url_launcher\intermediates\library_manifest\debug\AndroidManifest.xml:2:1-14:12
+MERGED from [:flutter_web_auth] D:\Documentos\Core_Business\Proyectos Moviles\Fisioterapia\clientPhysiho\build\flutter_web_auth\intermediates\library_manifest\debug\AndroidManifest.xml:2:1-7:12
+MERGED from [:path_provider] D:\Documentos\Core_Business\Proyectos Moviles\Fisioterapia\clientPhysiho\build\path_provider\intermediates\library_manifest\debug\AndroidManifest.xml:2:1-7:12
 MERGED from [androidx.multidex:multidex:2.0.0] C:\Users\saulm\.gradle\caches\transforms-2\files-2.1\ce6d845566efe803bb66b00e1f6fdabb\multidex-2.0.0\AndroidManifest.xml:17:1-22:12
 MERGED from [com.google.firebase:firebase-analytics-ktx:17.6.0] C:\Users\saulm\.gradle\caches\transforms-2\files-2.1\1f5abc26894844cef729e6c7530541b4\firebase-analytics-ktx-17.6.0\AndroidManifest.xml:2:1-17:12
 MERGED from [com.google.firebase:firebase-common-ktx:19.3.0] C:\Users\saulm\.gradle\caches\transforms-2\files-2.1\3e62432fde5fcf90609bb7a2150176b9\firebase-common-ktx-19.3.0\AndroidManifest.xml:2:1-21:12
@@ -32,26 +34,26 @@ MERGED from [com.google.firebase:firebase-firestore:21.7.1] C:\Users\saulm\.grad
 MERGED from [com.google.android.gms:play-services-maps:17.0.0] C:\Users\saulm\.gradle\caches\transforms-2\files-2.1\af25e9045506d4953d742dddeecabb8e\play-services-maps-17.0.0\AndroidManifest.xml:17:1-38:12
 MERGED from [com.google.android.gms:play-services-auth:16.0.1] C:\Users\saulm\.gradle\caches\transforms-2\files-2.1\0d54235d6ad061ac7933b33ab43d2e4a\jetified-play-services-auth-16.0.1\AndroidManifest.xml:17:1-39:12
 MERGED from [com.google.android.gms:play-services-location:17.0.0] C:\Users\saulm\.gradle\caches\transforms-2\files-2.1\29d722ef4cbe9e9872d8d8139868345b\play-services-location-17.0.0\AndroidManifest.xml:2:1-9:12
-MERGED from [com.google.android.gms:play-services-auth-api-phone:16.0.0] C:\Users\saulm\.gradle\caches\transforms-2\files-2.1\c406884acb81f49e6bdb698c69f817aa\jetified-play-services-auth-api-phone-16.0.0\AndroidManifest.xml:2:1-7:12
-MERGED from [com.google.android.gms:play-services-auth-base:16.0.0] C:\Users\saulm\.gradle\caches\transforms-2\files-2.1\f2a227b47154340b0fbd67d05875f58b\jetified-play-services-auth-base-16.0.0\AndroidManifest.xml:2:1-7:12
+MERGED from [com.google.firebase:firebase-auth-interop:19.0.0] C:\Users\saulm\.gradle\caches\transforms-2\files-2.1\4e8176bf1e4d045c152ac0f35f163148\firebase-auth-interop-19.0.0\AndroidManifest.xml:2:1-10:12
+MERGED from [com.google.firebase:firebase-datatransport:17.0.3] C:\Users\saulm\.gradle\caches\transforms-2\files-2.1\caebf1427fe4a80f81548ae507338a98\firebase-datatransport-17.0.3\AndroidManifest.xml:15:1-34:12
 MERGED from [com.google.firebase:firebase-iid:20.3.0] C:\Users\saulm\.gradle\caches\transforms-2\files-2.1\ee142d8f3633d4d5661ad93456ca7b03\firebase-iid-20.3.0\AndroidManifest.xml:17:1-47:12
-MERGED from [com.google.android.gms:play-services-cloud-messaging:16.0.0] C:\Users\saulm\.gradle\caches\transforms-2\files-2.1\49d8c9062eb3740aaf18f7d73a59ae74\play-services-cloud-messaging-16.0.0\AndroidManifest.xml:2:1-13:12
 MERGED from [com.google.android.gms:play-services-measurement-api:17.6.0] C:\Users\saulm\.gradle\caches\transforms-2\files-2.1\f03075187a3db9a239413647c5afb670\play-services-measurement-api-17.6.0\AndroidManifest.xml:17:1-36:12
 MERGED from [com.google.firebase:firebase-installations:16.3.3] C:\Users\saulm\.gradle\caches\transforms-2\files-2.1\7d91b3a02ff199a11c3208b3994a973a\firebase-installations-16.3.3\AndroidManifest.xml:2:1-23:12
-MERGED from [com.google.firebase:firebase-installations-interop:16.0.0] C:\Users\saulm\.gradle\caches\transforms-2\files-2.1\6eb95629b13ecfd6aede439fe6350147\firebase-installations-interop-16.0.0\AndroidManifest.xml:15:1-23:12
-MERGED from [com.google.firebase:firebase-datatransport:17.0.3] C:\Users\saulm\.gradle\caches\transforms-2\files-2.1\caebf1427fe4a80f81548ae507338a98\firebase-datatransport-17.0.3\AndroidManifest.xml:15:1-34:12
-MERGED from [com.google.firebase:firebase-auth-interop:19.0.0] C:\Users\saulm\.gradle\caches\transforms-2\files-2.1\4e8176bf1e4d045c152ac0f35f163148\firebase-auth-interop-19.0.0\AndroidManifest.xml:2:1-10:12
 MERGED from [com.google.firebase:firebase-common:19.3.1] C:\Users\saulm\.gradle\caches\transforms-2\files-2.1\060ccd5c5b72589f8bc653ff8344889c\jetified-firebase-common-19.3.1\AndroidManifest.xml:15:1-40:12
+MERGED from [com.google.android.gms:play-services-auth-api-phone:16.0.0] C:\Users\saulm\.gradle\caches\transforms-2\files-2.1\c406884acb81f49e6bdb698c69f817aa\jetified-play-services-auth-api-phone-16.0.0\AndroidManifest.xml:2:1-7:12
+MERGED from [com.google.android.gms:play-services-auth-base:16.0.0] C:\Users\saulm\.gradle\caches\transforms-2\files-2.1\f2a227b47154340b0fbd67d05875f58b\jetified-play-services-auth-base-16.0.0\AndroidManifest.xml:2:1-7:12
 MERGED from [com.google.firebase:firebase-database-collection:17.0.1] C:\Users\saulm\.gradle\caches\transforms-2\files-2.1\d8ea8cfe55eaf862e7e95d45950d583a\firebase-database-collection-17.0.1\AndroidManifest.xml:2:1-9:12
 MERGED from [com.google.firebase:firebase-iid-interop:17.0.0] C:\Users\saulm\.gradle\caches\transforms-2\files-2.1\1f11bd0b3299d9dafdb06695573743ee\firebase-iid-interop-17.0.0\AndroidManifest.xml:2:1-10:12
 MERGED from [com.google.android.gms:play-services-base:17.1.0] C:\Users\saulm\.gradle\caches\transforms-2\files-2.1\3a04cbfa3b635ae4131224a81a3c4510\play-services-base-17.1.0\AndroidManifest.xml:17:1-29:12
+MERGED from [com.google.android.gms:play-services-cloud-messaging:16.0.0] C:\Users\saulm\.gradle\caches\transforms-2\files-2.1\49d8c9062eb3740aaf18f7d73a59ae74\play-services-cloud-messaging-16.0.0\AndroidManifest.xml:2:1-13:12
+MERGED from [com.google.firebase:firebase-installations-interop:16.0.0] C:\Users\saulm\.gradle\caches\transforms-2\files-2.1\6eb95629b13ecfd6aede439fe6350147\firebase-installations-interop-16.0.0\AndroidManifest.xml:15:1-23:12
 MERGED from [com.google.android.gms:play-services-tasks:17.0.0] C:\Users\saulm\.gradle\caches\transforms-2\files-2.1\6eb0d43e0203920802a42b1c160db416\play-services-tasks-17.0.0\AndroidManifest.xml:2:1-9:12
-MERGED from [com.google.android.gms:play-services-places-placereport:17.0.0] C:\Users\saulm\.gradle\caches\transforms-2\files-2.1\2d4733d569f7e9b17db1f8be722c77e9\play-services-places-placereport-17.0.0\AndroidManifest.xml:17:1-24:12
 MERGED from [com.google.android.gms:play-services-measurement:17.6.0] C:\Users\saulm\.gradle\caches\transforms-2\files-2.1\4f5ff8f75122c45887f276d4a13908eb\play-services-measurement-17.6.0\AndroidManifest.xml:17:1-46:12
 MERGED from [com.google.android.gms:play-services-measurement-sdk:17.6.0] C:\Users\saulm\.gradle\caches\transforms-2\files-2.1\2ea4a49f816a2cdc4cac7b8acf4351e0\play-services-measurement-sdk-17.6.0\AndroidManifest.xml:17:1-25:12
 MERGED from [com.google.android.gms:play-services-measurement-impl:17.6.0] C:\Users\saulm\.gradle\caches\transforms-2\files-2.1\166ffd5db9fdd7b073f29fc84f721453\play-services-measurement-impl-17.6.0\AndroidManifest.xml:17:1-31:12
 MERGED from [com.google.android.gms:play-services-stats:17.0.0] C:\Users\saulm\.gradle\caches\transforms-2\files-2.1\e988960bc0fc9a3586f5eef60eb5d9b7\play-services-stats-17.0.0\AndroidManifest.xml:2:1-9:12
 MERGED from [com.google.firebase:firebase-measurement-connector:18.0.0] C:\Users\saulm\.gradle\caches\transforms-2\files-2.1\a31167b4f3bad6ed086ab6e987f1fbfe\firebase-measurement-connector-18.0.0\AndroidManifest.xml:17:1-25:12
+MERGED from [com.google.android.gms:play-services-places-placereport:17.0.0] C:\Users\saulm\.gradle\caches\transforms-2\files-2.1\2d4733d569f7e9b17db1f8be722c77e9\play-services-places-placereport-17.0.0\AndroidManifest.xml:17:1-24:12
 MERGED from [com.google.android.gms:play-services-ads-identifier:17.0.0] C:\Users\saulm\.gradle\caches\transforms-2\files-2.1\9b13932ba9a57439603f63641c249395\play-services-ads-identifier-17.0.0\AndroidManifest.xml:17:1-24:12
 MERGED from [com.google.android.gms:play-services-measurement-sdk-api:17.6.0] C:\Users\saulm\.gradle\caches\transforms-2\files-2.1\c54ecfcb6e3fe18ec34fa69a4a6ee104\play-services-measurement-sdk-api-17.6.0\AndroidManifest.xml:17:1-27:12
 MERGED from [com.google.android.gms:play-services-measurement-base:17.6.0] C:\Users\saulm\.gradle\caches\transforms-2\files-2.1\b9c743a2f5826607703f29a953cdf4b6\play-services-measurement-base-17.6.0\AndroidManifest.xml:2:1-9:12
@@ -61,7 +63,7 @@ MERGED from [com.facebook.android:facebook-common:8.1.0] C:\Users\saulm\.gradle\
 MERGED from [androidx.appcompat:appcompat:1.1.0] C:\Users\saulm\.gradle\caches\transforms-2\files-2.1\e5977849638f4db14ee09096a5a3147e\appcompat-1.1.0\AndroidManifest.xml:17:1-24:12
 MERGED from [androidx.legacy:legacy-support-v4:1.0.0] C:\Users\saulm\.gradle\caches\transforms-2\files-2.1\e706904d0c469815a1a53d3869f0233a\legacy-support-v4-1.0.0\AndroidManifest.xml:17:1-22:12
 MERGED from [androidx.fragment:fragment:1.1.0] C:\Users\saulm\.gradle\caches\transforms-2\files-2.1\a132dbf8dbad281e669e1070741420a4\fragment-1.1.0\AndroidManifest.xml:17:1-24:12
-MERGED from [androidx.browser:browser:1.0.0] C:\Users\saulm\.gradle\caches\transforms-2\files-2.1\12cd7dac0ae156d453ee2194b2050149\browser-1.0.0\AndroidManifest.xml:17:1-22:12
+MERGED from [androidx.browser:browser:1.2.0] C:\Users\saulm\.gradle\caches\transforms-2\files-2.1\cbb1a1e8c77465f493c99860de4e5ee1\browser-1.2.0\AndroidManifest.xml:17:1-24:12
 MERGED from [androidx.legacy:legacy-support-core-ui:1.0.0] C:\Users\saulm\.gradle\caches\transforms-2\files-2.1\4ae7710d2a8bd33f31c9b3605c9962be\legacy-support-core-ui-1.0.0\AndroidManifest.xml:17:1-22:12
 MERGED from [androidx.viewpager:viewpager:1.0.0] C:\Users\saulm\.gradle\caches\transforms-2\files-2.1\c540649e0b76495ca13562347627e206\viewpager-1.0.0\AndroidManifest.xml:17:1-22:12
 MERGED from [com.facebook.android:facebook-core:8.1.0] C:\Users\saulm\.gradle\caches\transforms-2\files-2.1\42d404f931b009e4e4c805ff77e59efa\jetified-facebook-core-8.1.0\AndroidManifest.xml:21:1-53:12
@@ -87,6 +89,7 @@ MERGED from [androidx.localbroadcastmanager:localbroadcastmanager:1.0.0] C:\User
 MERGED from [com.google.firebase:firebase-components:16.0.0] C:\Users\saulm\.gradle\caches\transforms-2\files-2.1\563fdbd21eb1f47931ca380fc59fc67b\jetified-firebase-components-16.0.0\AndroidManifest.xml:15:1-23:12
 MERGED from [androidx.arch.core:core-runtime:2.0.0] C:\Users\saulm\.gradle\caches\transforms-2\files-2.1\2bbe84e8a9e7463b784acffd06700355\core-runtime-2.0.0\AndroidManifest.xml:17:1-22:12
 MERGED from [androidx.versionedparcelable:versionedparcelable:1.1.0] C:\Users\saulm\.gradle\caches\transforms-2\files-2.1\c8f62fdbf53f2e013b6bf5c99d136167\versionedparcelable-1.1.0\AndroidManifest.xml:17:1-27:12
+MERGED from [androidx.interpolator:interpolator:1.0.0] C:\Users\saulm\.gradle\caches\transforms-2\files-2.1\498b737ccfd511192b85d48b031772cc\interpolator-1.0.0\AndroidManifest.xml:17:1-22:12
 MERGED from [com.google.android.datatransport:transport-backend-cct:2.2.0] C:\Users\saulm\.gradle\caches\transforms-2\files-2.1\e67255568fb3a808f0edeab906fe9891\transport-backend-cct-2.2.0\AndroidManifest.xml:15:1-38:12
 MERGED from [com.google.android.datatransport:transport-runtime:2.2.0] C:\Users\saulm\.gradle\caches\transforms-2\files-2.1\fb13625c4fea721a21dc56ef4bb5a3ad\transport-runtime-2.2.0\AndroidManifest.xml:15:1-41:12
 MERGED from [com.google.firebase:firebase-encoders-json:16.0.0] C:\Users\saulm\.gradle\caches\transforms-2\files-2.1\8ba5f9124e702ede37c87f743c319a18\firebase-encoders-json-16.0.0\AndroidManifest.xml:15:1-23:12
@@ -95,10 +98,9 @@ MERGED from [androidx.cardview:cardview:1.0.0] C:\Users\saulm\.gradle\caches\tra
 MERGED from [androidx.cursoradapter:cursoradapter:1.0.0] C:\Users\saulm\.gradle\caches\transforms-2\files-2.1\e7b2a1fd46e40e0059475db3b04fce36\cursoradapter-1.0.0\AndroidManifest.xml:17:1-22:12
 MERGED from [androidx.documentfile:documentfile:1.0.0] C:\Users\saulm\.gradle\caches\transforms-2\files-2.1\02cab93c7402f591730cea071b79aeae\documentfile-1.0.0\AndroidManifest.xml:17:1-22:12
 MERGED from [androidx.print:print:1.0.0] C:\Users\saulm\.gradle\caches\transforms-2\files-2.1\52e750b3541f8c9731a5d475e8dd23f4\print-1.0.0\AndroidManifest.xml:17:1-22:12
-MERGED from [androidx.interpolator:interpolator:1.0.0] C:\Users\saulm\.gradle\caches\transforms-2\files-2.1\498b737ccfd511192b85d48b031772cc\interpolator-1.0.0\AndroidManifest.xml:17:1-22:12
 MERGED from [io.grpc:grpc-android:1.28.0] C:\Users\saulm\.gradle\caches\transforms-2\files-2.1\a774a72fca3941a6aa3815fef1d6d9cc\grpc-android-1.28.0\AndroidManifest.xml:2:1-13:12
-MERGED from [com.google.android.datatransport:transport-api:2.2.0] C:\Users\saulm\.gradle\caches\transforms-2\files-2.1\d177ebfc728e2ff3783258a2487f75a5\transport-api-2.2.0\AndroidManifest.xml:15:1-22:12
 MERGED from [com.google.firebase:protolite-well-known-types:17.1.0] C:\Users\saulm\.gradle\caches\transforms-2\files-2.1\8dd0fb18f905bbf10aee8c6f60f3032d\protolite-well-known-types-17.1.0\AndroidManifest.xml:2:1-11:12
+MERGED from [com.google.android.datatransport:transport-api:2.2.0] C:\Users\saulm\.gradle\caches\transforms-2\files-2.1\d177ebfc728e2ff3783258a2487f75a5\transport-api-2.2.0\AndroidManifest.xml:15:1-22:12
 MERGED from [com.android.installreferrer:installreferrer:1.0] C:\Users\saulm\.gradle\caches\transforms-2\files-2.1\b486ccdaf9760fc3bb1651c80b3a0605\jetified-installreferrer-1.0\AndroidManifest.xml:2:1-13:12
 INJECTED from D:\Documentos\Core_Business\Proyectos Moviles\Fisioterapia\clientPhysiho\android\app\src\debug\AndroidManifest.xml:1:1-7:12
 INJECTED from D:\Documentos\Core_Business\Proyectos Moviles\Fisioterapia\clientPhysiho\android\app\src\debug\AndroidManifest.xml:1:1-7:12
@@ -109,11 +111,11 @@ INJECTED from D:\Documentos\Core_Business\Proyectos Moviles\Fisioterapia\clientP
 		INJECTED from D:\Documentos\Core_Business\Proyectos Moviles\Fisioterapia\clientPhysiho\android\app\src\debug\AndroidManifest.xml
 	android:versionName
 		INJECTED from D:\Documentos\Core_Business\Proyectos Moviles\Fisioterapia\clientPhysiho\android\app\src\main\AndroidManifest.xml
-		ADDED from D:\Documentos\Core_Business\Proyectos Moviles\Fisioterapia\clientPhysiho\android\app\src\main\AndroidManifest.xml:1:1-78:12
+		ADDED from D:\Documentos\Core_Business\Proyectos Moviles\Fisioterapia\clientPhysiho\android\app\src\main\AndroidManifest.xml:1:1-79:12
 		INJECTED from D:\Documentos\Core_Business\Proyectos Moviles\Fisioterapia\clientPhysiho\android\app\src\debug\AndroidManifest.xml
 	android:versionCode
 		INJECTED from D:\Documentos\Core_Business\Proyectos Moviles\Fisioterapia\clientPhysiho\android\app\src\main\AndroidManifest.xml
-		ADDED from D:\Documentos\Core_Business\Proyectos Moviles\Fisioterapia\clientPhysiho\android\app\src\main\AndroidManifest.xml:1:1-78:12
+		ADDED from D:\Documentos\Core_Business\Proyectos Moviles\Fisioterapia\clientPhysiho\android\app\src\main\AndroidManifest.xml:1:1-79:12
 		INJECTED from D:\Documentos\Core_Business\Proyectos Moviles\Fisioterapia\clientPhysiho\android\app\src\debug\AndroidManifest.xml
 	xmlns:android
 		ADDED from D:\Documentos\Core_Business\Proyectos Moviles\Fisioterapia\clientPhysiho\android\app\src\main\AndroidManifest.xml:1:11-69
@@ -129,12 +131,12 @@ MERGED from [com.google.android.gms:play-services-maps:17.0.0] C:\Users\saulm\.g
 MERGED from [com.google.android.gms:play-services-maps:17.0.0] C:\Users\saulm\.gradle\caches\transforms-2\files-2.1\af25e9045506d4953d742dddeecabb8e\play-services-maps-17.0.0\AndroidManifest.xml:24:5-67
 MERGED from [com.google.firebase:firebase-iid:20.3.0] C:\Users\saulm\.gradle\caches\transforms-2\files-2.1\ee142d8f3633d4d5661ad93456ca7b03\firebase-iid-20.3.0\AndroidManifest.xml:23:5-67
 MERGED from [com.google.firebase:firebase-iid:20.3.0] C:\Users\saulm\.gradle\caches\transforms-2\files-2.1\ee142d8f3633d4d5661ad93456ca7b03\firebase-iid-20.3.0\AndroidManifest.xml:23:5-67
-MERGED from [com.google.android.gms:play-services-cloud-messaging:16.0.0] C:\Users\saulm\.gradle\caches\transforms-2\files-2.1\49d8c9062eb3740aaf18f7d73a59ae74\play-services-cloud-messaging-16.0.0\AndroidManifest.xml:8:5-67
-MERGED from [com.google.android.gms:play-services-cloud-messaging:16.0.0] C:\Users\saulm\.gradle\caches\transforms-2\files-2.1\49d8c9062eb3740aaf18f7d73a59ae74\play-services-cloud-messaging-16.0.0\AndroidManifest.xml:8:5-67
 MERGED from [com.google.android.gms:play-services-measurement-api:17.6.0] C:\Users\saulm\.gradle\caches\transforms-2\files-2.1\f03075187a3db9a239413647c5afb670\play-services-measurement-api-17.6.0\AndroidManifest.xml:22:5-67
 MERGED from [com.google.android.gms:play-services-measurement-api:17.6.0] C:\Users\saulm\.gradle\caches\transforms-2\files-2.1\f03075187a3db9a239413647c5afb670\play-services-measurement-api-17.6.0\AndroidManifest.xml:22:5-67
 MERGED from [com.google.firebase:firebase-installations:16.3.3] C:\Users\saulm\.gradle\caches\transforms-2\files-2.1\7d91b3a02ff199a11c3208b3994a973a\firebase-installations-16.3.3\AndroidManifest.xml:11:5-67
 MERGED from [com.google.firebase:firebase-installations:16.3.3] C:\Users\saulm\.gradle\caches\transforms-2\files-2.1\7d91b3a02ff199a11c3208b3994a973a\firebase-installations-16.3.3\AndroidManifest.xml:11:5-67
+MERGED from [com.google.android.gms:play-services-cloud-messaging:16.0.0] C:\Users\saulm\.gradle\caches\transforms-2\files-2.1\49d8c9062eb3740aaf18f7d73a59ae74\play-services-cloud-messaging-16.0.0\AndroidManifest.xml:8:5-67
+MERGED from [com.google.android.gms:play-services-cloud-messaging:16.0.0] C:\Users\saulm\.gradle\caches\transforms-2\files-2.1\49d8c9062eb3740aaf18f7d73a59ae74\play-services-cloud-messaging-16.0.0\AndroidManifest.xml:8:5-67
 MERGED from [com.google.android.gms:play-services-measurement:17.6.0] C:\Users\saulm\.gradle\caches\transforms-2\files-2.1\4f5ff8f75122c45887f276d4a13908eb\play-services-measurement-17.6.0\AndroidManifest.xml:23:5-67
 MERGED from [com.google.android.gms:play-services-measurement:17.6.0] C:\Users\saulm\.gradle\caches\transforms-2\files-2.1\4f5ff8f75122c45887f276d4a13908eb\play-services-measurement-17.6.0\AndroidManifest.xml:23:5-67
 MERGED from [com.google.android.gms:play-services-measurement-impl:17.6.0] C:\Users\saulm\.gradle\caches\transforms-2\files-2.1\166ffd5db9fdd7b073f29fc84f721453\play-services-measurement-impl-17.6.0\AndroidManifest.xml:23:5-67
@@ -154,17 +156,17 @@ ADDED from D:\Documentos\Core_Business\Proyectos Moviles\Fisioterapia\clientPhys
 	android:name
 		ADDED from D:\Documentos\Core_Business\Proyectos Moviles\Fisioterapia\clientPhysiho\android\app\src\main\AndroidManifest.xml:5:22-78
 application
-ADDED from D:\Documentos\Core_Business\Proyectos Moviles\Fisioterapia\clientPhysiho\android\app\src\main\AndroidManifest.xml:11:5-77:19
-MERGED from [:firebase_messaging] D:\Documentos\Core_Business\Proyectos Moviles\Fisioterapia\clientPhysiho\build\firebase_messaging\intermediates\library_manifest\debug\AndroidManifest.xml:7:5-18:19
-MERGED from [:firebase_messaging] D:\Documentos\Core_Business\Proyectos Moviles\Fisioterapia\clientPhysiho\build\firebase_messaging\intermediates\library_manifest\debug\AndroidManifest.xml:7:5-18:19
-MERGED from [:url_launcher] D:\Documentos\Core_Business\Proyectos Moviles\Fisioterapia\clientPhysiho\build\url_launcher\intermediates\library_manifest\debug\AndroidManifest.xml:7:5-12:19
-MERGED from [:url_launcher] D:\Documentos\Core_Business\Proyectos Moviles\Fisioterapia\clientPhysiho\build\url_launcher\intermediates\library_manifest\debug\AndroidManifest.xml:7:5-12:19
+ADDED from D:\Documentos\Core_Business\Proyectos Moviles\Fisioterapia\clientPhysiho\android\app\src\main\AndroidManifest.xml:11:5-78:19
 MERGED from [:cloud_firestore] D:\Documentos\Core_Business\Proyectos Moviles\Fisioterapia\clientPhysiho\build\cloud_firestore\intermediates\library_manifest\debug\AndroidManifest.xml:7:5-13:19
 MERGED from [:cloud_firestore] D:\Documentos\Core_Business\Proyectos Moviles\Fisioterapia\clientPhysiho\build\cloud_firestore\intermediates\library_manifest\debug\AndroidManifest.xml:7:5-13:19
 MERGED from [:firebase_auth] D:\Documentos\Core_Business\Proyectos Moviles\Fisioterapia\clientPhysiho\build\firebase_auth\intermediates\library_manifest\debug\AndroidManifest.xml:7:5-13:19
 MERGED from [:firebase_auth] D:\Documentos\Core_Business\Proyectos Moviles\Fisioterapia\clientPhysiho\build\firebase_auth\intermediates\library_manifest\debug\AndroidManifest.xml:7:5-13:19
+MERGED from [:firebase_messaging] D:\Documentos\Core_Business\Proyectos Moviles\Fisioterapia\clientPhysiho\build\firebase_messaging\intermediates\library_manifest\debug\AndroidManifest.xml:7:5-18:19
+MERGED from [:firebase_messaging] D:\Documentos\Core_Business\Proyectos Moviles\Fisioterapia\clientPhysiho\build\firebase_messaging\intermediates\library_manifest\debug\AndroidManifest.xml:7:5-18:19
 MERGED from [:firebase_core] D:\Documentos\Core_Business\Proyectos Moviles\Fisioterapia\clientPhysiho\build\firebase_core\intermediates\library_manifest\debug\AndroidManifest.xml:7:5-13:19
 MERGED from [:firebase_core] D:\Documentos\Core_Business\Proyectos Moviles\Fisioterapia\clientPhysiho\build\firebase_core\intermediates\library_manifest\debug\AndroidManifest.xml:7:5-13:19
+MERGED from [:url_launcher] D:\Documentos\Core_Business\Proyectos Moviles\Fisioterapia\clientPhysiho\build\url_launcher\intermediates\library_manifest\debug\AndroidManifest.xml:7:5-12:19
+MERGED from [:url_launcher] D:\Documentos\Core_Business\Proyectos Moviles\Fisioterapia\clientPhysiho\build\url_launcher\intermediates\library_manifest\debug\AndroidManifest.xml:7:5-12:19
 MERGED from [com.google.firebase:firebase-analytics-ktx:17.6.0] C:\Users\saulm\.gradle\caches\transforms-2\files-2.1\1f5abc26894844cef729e6c7530541b4\firebase-analytics-ktx-17.6.0\AndroidManifest.xml:7:5-15:19
 MERGED from [com.google.firebase:firebase-analytics-ktx:17.6.0] C:\Users\saulm\.gradle\caches\transforms-2\files-2.1\1f5abc26894844cef729e6c7530541b4\firebase-analytics-ktx-17.6.0\AndroidManifest.xml:7:5-15:19
 MERGED from [com.google.firebase:firebase-common-ktx:19.3.0] C:\Users\saulm\.gradle\caches\transforms-2\files-2.1\3e62432fde5fcf90609bb7a2150176b9\firebase-common-ktx-19.3.0\AndroidManifest.xml:11:5-19:19
@@ -185,16 +187,16 @@ MERGED from [com.google.android.gms:play-services-auth:16.0.1] C:\Users\saulm\.g
 MERGED from [com.google.android.gms:play-services-auth:16.0.1] C:\Users\saulm\.gradle\caches\transforms-2\files-2.1\0d54235d6ad061ac7933b33ab43d2e4a\jetified-play-services-auth-16.0.1\AndroidManifest.xml:22:5-37:19
 MERGED from [com.google.android.gms:play-services-location:17.0.0] C:\Users\saulm\.gradle\caches\transforms-2\files-2.1\29d722ef4cbe9e9872d8d8139868345b\play-services-location-17.0.0\AndroidManifest.xml:7:5-20
 MERGED from [com.google.android.gms:play-services-location:17.0.0] C:\Users\saulm\.gradle\caches\transforms-2\files-2.1\29d722ef4cbe9e9872d8d8139868345b\play-services-location-17.0.0\AndroidManifest.xml:7:5-20
+MERGED from [com.google.firebase:firebase-auth-interop:19.0.0] C:\Users\saulm\.gradle\caches\transforms-2\files-2.1\4e8176bf1e4d045c152ac0f35f163148\firebase-auth-interop-19.0.0\AndroidManifest.xml:7:5-8:19
+MERGED from [com.google.firebase:firebase-auth-interop:19.0.0] C:\Users\saulm\.gradle\caches\transforms-2\files-2.1\4e8176bf1e4d045c152ac0f35f163148\firebase-auth-interop-19.0.0\AndroidManifest.xml:7:5-8:19
+MERGED from [com.google.firebase:firebase-datatransport:17.0.3] C:\Users\saulm\.gradle\caches\transforms-2\files-2.1\caebf1427fe4a80f81548ae507338a98\firebase-datatransport-17.0.3\AndroidManifest.xml:24:5-32:19
+MERGED from [com.google.firebase:firebase-datatransport:17.0.3] C:\Users\saulm\.gradle\caches\transforms-2\files-2.1\caebf1427fe4a80f81548ae507338a98\firebase-datatransport-17.0.3\AndroidManifest.xml:24:5-32:19
 MERGED from [com.google.firebase:firebase-iid:20.3.0] C:\Users\saulm\.gradle\caches\transforms-2\files-2.1\ee142d8f3633d4d5661ad93456ca7b03\firebase-iid-20.3.0\AndroidManifest.xml:28:5-45:19
 MERGED from [com.google.firebase:firebase-iid:20.3.0] C:\Users\saulm\.gradle\caches\transforms-2\files-2.1\ee142d8f3633d4d5661ad93456ca7b03\firebase-iid-20.3.0\AndroidManifest.xml:28:5-45:19
 MERGED from [com.google.android.gms:play-services-measurement-api:17.6.0] C:\Users\saulm\.gradle\caches\transforms-2\files-2.1\f03075187a3db9a239413647c5afb670\play-services-measurement-api-17.6.0\AndroidManifest.xml:26:5-34:19
 MERGED from [com.google.android.gms:play-services-measurement-api:17.6.0] C:\Users\saulm\.gradle\caches\transforms-2\files-2.1\f03075187a3db9a239413647c5afb670\play-services-measurement-api-17.6.0\AndroidManifest.xml:26:5-34:19
 MERGED from [com.google.firebase:firebase-installations:16.3.3] C:\Users\saulm\.gradle\caches\transforms-2\files-2.1\7d91b3a02ff199a11c3208b3994a973a\firebase-installations-16.3.3\AndroidManifest.xml:13:5-21:19
 MERGED from [com.google.firebase:firebase-installations:16.3.3] C:\Users\saulm\.gradle\caches\transforms-2\files-2.1\7d91b3a02ff199a11c3208b3994a973a\firebase-installations-16.3.3\AndroidManifest.xml:13:5-21:19
-MERGED from [com.google.firebase:firebase-datatransport:17.0.3] C:\Users\saulm\.gradle\caches\transforms-2\files-2.1\caebf1427fe4a80f81548ae507338a98\firebase-datatransport-17.0.3\AndroidManifest.xml:24:5-32:19
-MERGED from [com.google.firebase:firebase-datatransport:17.0.3] C:\Users\saulm\.gradle\caches\transforms-2\files-2.1\caebf1427fe4a80f81548ae507338a98\firebase-datatransport-17.0.3\AndroidManifest.xml:24:5-32:19
-MERGED from [com.google.firebase:firebase-auth-interop:19.0.0] C:\Users\saulm\.gradle\caches\transforms-2\files-2.1\4e8176bf1e4d045c152ac0f35f163148\firebase-auth-interop-19.0.0\AndroidManifest.xml:7:5-8:19
-MERGED from [com.google.firebase:firebase-auth-interop:19.0.0] C:\Users\saulm\.gradle\caches\transforms-2\files-2.1\4e8176bf1e4d045c152ac0f35f163148\firebase-auth-interop-19.0.0\AndroidManifest.xml:7:5-8:19
 MERGED from [com.google.firebase:firebase-common:19.3.1] C:\Users\saulm\.gradle\caches\transforms-2\files-2.1\060ccd5c5b72589f8bc653ff8344889c\jetified-firebase-common-19.3.1\AndroidManifest.xml:25:5-38:19
 MERGED from [com.google.firebase:firebase-common:19.3.1] C:\Users\saulm\.gradle\caches\transforms-2\files-2.1\060ccd5c5b72589f8bc653ff8344889c\jetified-firebase-common-19.3.1\AndroidManifest.xml:25:5-38:19
 MERGED from [com.google.firebase:firebase-iid-interop:17.0.0] C:\Users\saulm\.gradle\caches\transforms-2\files-2.1\1f11bd0b3299d9dafdb06695573743ee\firebase-iid-interop-17.0.0\AndroidManifest.xml:7:5-8:19
@@ -203,8 +205,6 @@ MERGED from [com.google.android.gms:play-services-base:17.1.0] C:\Users\saulm\.g
 MERGED from [com.google.android.gms:play-services-base:17.1.0] C:\Users\saulm\.gradle\caches\transforms-2\files-2.1\3a04cbfa3b635ae4131224a81a3c4510\play-services-base-17.1.0\AndroidManifest.xml:22:5-27:19
 MERGED from [com.google.android.gms:play-services-tasks:17.0.0] C:\Users\saulm\.gradle\caches\transforms-2\files-2.1\6eb0d43e0203920802a42b1c160db416\play-services-tasks-17.0.0\AndroidManifest.xml:7:5-20
 MERGED from [com.google.android.gms:play-services-tasks:17.0.0] C:\Users\saulm\.gradle\caches\transforms-2\files-2.1\6eb0d43e0203920802a42b1c160db416\play-services-tasks-17.0.0\AndroidManifest.xml:7:5-20
-MERGED from [com.google.android.gms:play-services-places-placereport:17.0.0] C:\Users\saulm\.gradle\caches\transforms-2\files-2.1\2d4733d569f7e9b17db1f8be722c77e9\play-services-places-placereport-17.0.0\AndroidManifest.xml:22:5-20
-MERGED from [com.google.android.gms:play-services-places-placereport:17.0.0] C:\Users\saulm\.gradle\caches\transforms-2\files-2.1\2d4733d569f7e9b17db1f8be722c77e9\play-services-places-placereport-17.0.0\AndroidManifest.xml:22:5-20
 MERGED from [com.google.android.gms:play-services-measurement:17.6.0] C:\Users\saulm\.gradle\caches\transforms-2\files-2.1\4f5ff8f75122c45887f276d4a13908eb\play-services-measurement-17.6.0\AndroidManifest.xml:28:5-44:19
 MERGED from [com.google.android.gms:play-services-measurement:17.6.0] C:\Users\saulm\.gradle\caches\transforms-2\files-2.1\4f5ff8f75122c45887f276d4a13908eb\play-services-measurement-17.6.0\AndroidManifest.xml:28:5-44:19
 MERGED from [com.google.android.gms:play-services-measurement-sdk:17.6.0] C:\Users\saulm\.gradle\caches\transforms-2\files-2.1\2ea4a49f816a2cdc4cac7b8acf4351e0\play-services-measurement-sdk-17.6.0\AndroidManifest.xml:22:5-23:19
@@ -215,6 +215,8 @@ MERGED from [com.google.android.gms:play-services-stats:17.0.0] C:\Users\saulm\.
 MERGED from [com.google.android.gms:play-services-stats:17.0.0] C:\Users\saulm\.gradle\caches\transforms-2\files-2.1\e988960bc0fc9a3586f5eef60eb5d9b7\play-services-stats-17.0.0\AndroidManifest.xml:7:5-20
 MERGED from [com.google.firebase:firebase-measurement-connector:18.0.0] C:\Users\saulm\.gradle\caches\transforms-2\files-2.1\a31167b4f3bad6ed086ab6e987f1fbfe\firebase-measurement-connector-18.0.0\AndroidManifest.xml:22:5-23:19
 MERGED from [com.google.firebase:firebase-measurement-connector:18.0.0] C:\Users\saulm\.gradle\caches\transforms-2\files-2.1\a31167b4f3bad6ed086ab6e987f1fbfe\firebase-measurement-connector-18.0.0\AndroidManifest.xml:22:5-23:19
+MERGED from [com.google.android.gms:play-services-places-placereport:17.0.0] C:\Users\saulm\.gradle\caches\transforms-2\files-2.1\2d4733d569f7e9b17db1f8be722c77e9\play-services-places-placereport-17.0.0\AndroidManifest.xml:22:5-20
+MERGED from [com.google.android.gms:play-services-places-placereport:17.0.0] C:\Users\saulm\.gradle\caches\transforms-2\files-2.1\2d4733d569f7e9b17db1f8be722c77e9\play-services-places-placereport-17.0.0\AndroidManifest.xml:22:5-20
 MERGED from [com.google.android.gms:play-services-ads-identifier:17.0.0] C:\Users\saulm\.gradle\caches\transforms-2\files-2.1\9b13932ba9a57439603f63641c249395\play-services-ads-identifier-17.0.0\AndroidManifest.xml:22:5-20
 MERGED from [com.google.android.gms:play-services-ads-identifier:17.0.0] C:\Users\saulm\.gradle\caches\transforms-2\files-2.1\9b13932ba9a57439603f63641c249395\play-services-ads-identifier-17.0.0\AndroidManifest.xml:22:5-20
 MERGED from [com.google.android.gms:play-services-measurement-base:17.6.0] C:\Users\saulm\.gradle\caches\transforms-2\files-2.1\b9c743a2f5826607703f29a953cdf4b6\play-services-measurement-base-17.6.0\AndroidManifest.xml:7:5-20
@@ -260,135 +262,141 @@ ADDED from D:\Documentos\Core_Business\Proyectos Moviles\Fisioterapia\clientPhys
 	android:name
 		ADDED from D:\Documentos\Core_Business\Proyectos Moviles\Fisioterapia\clientPhysiho\android\app\src\main\AndroidManifest.xml:18:11-81
 activity#core.business.client.clientPhysiho.MainActivity
-ADDED from D:\Documentos\Core_Business\Proyectos Moviles\Fisioterapia\clientPhysiho\android\app\src\main\AndroidManifest.xml:20:9-52:20
+ADDED from D:\Documentos\Core_Business\Proyectos Moviles\Fisioterapia\clientPhysiho\android\app\src\main\AndroidManifest.xml:20:9-53:20
+	android:screenOrientation
+		ADDED from D:\Documentos\Core_Business\Proyectos Moviles\Fisioterapia\clientPhysiho\android\app\src\main\AndroidManifest.xml:22:13-49
 	android:launchMode
-		ADDED from D:\Documentos\Core_Business\Proyectos Moviles\Fisioterapia\clientPhysiho\android\app\src\main\AndroidManifest.xml:22:13-43
+		ADDED from D:\Documentos\Core_Business\Proyectos Moviles\Fisioterapia\clientPhysiho\android\app\src\main\AndroidManifest.xml:23:13-43
 	android:hardwareAccelerated
-		ADDED from D:\Documentos\Core_Business\Proyectos Moviles\Fisioterapia\clientPhysiho\android\app\src\main\AndroidManifest.xml:25:13-47
+		ADDED from D:\Documentos\Core_Business\Proyectos Moviles\Fisioterapia\clientPhysiho\android\app\src\main\AndroidManifest.xml:26:13-47
 	android:windowSoftInputMode
-		ADDED from D:\Documentos\Core_Business\Proyectos Moviles\Fisioterapia\clientPhysiho\android\app\src\main\AndroidManifest.xml:26:13-55
+		ADDED from D:\Documentos\Core_Business\Proyectos Moviles\Fisioterapia\clientPhysiho\android\app\src\main\AndroidManifest.xml:27:13-55
 	android:configChanges
-		ADDED from D:\Documentos\Core_Business\Proyectos Moviles\Fisioterapia\clientPhysiho\android\app\src\main\AndroidManifest.xml:24:13-163
+		ADDED from D:\Documentos\Core_Business\Proyectos Moviles\Fisioterapia\clientPhysiho\android\app\src\main\AndroidManifest.xml:25:13-163
 	android:theme
-		ADDED from D:\Documentos\Core_Business\Proyectos Moviles\Fisioterapia\clientPhysiho\android\app\src\main\AndroidManifest.xml:23:13-47
+		ADDED from D:\Documentos\Core_Business\Proyectos Moviles\Fisioterapia\clientPhysiho\android\app\src\main\AndroidManifest.xml:24:13-47
 	android:name
 		ADDED from D:\Documentos\Core_Business\Proyectos Moviles\Fisioterapia\clientPhysiho\android\app\src\main\AndroidManifest.xml:21:13-41
 meta-data#io.flutter.embedding.android.NormalTheme
-ADDED from D:\Documentos\Core_Business\Proyectos Moviles\Fisioterapia\clientPhysiho\android\app\src\main\AndroidManifest.xml:31:13-34:17
+ADDED from D:\Documentos\Core_Business\Proyectos Moviles\Fisioterapia\clientPhysiho\android\app\src\main\AndroidManifest.xml:32:13-35:17
 	android:resource
-		ADDED from D:\Documentos\Core_Business\Proyectos Moviles\Fisioterapia\clientPhysiho\android\app\src\main\AndroidManifest.xml:33:15-52
+		ADDED from D:\Documentos\Core_Business\Proyectos Moviles\Fisioterapia\clientPhysiho\android\app\src\main\AndroidManifest.xml:34:15-52
 	android:name
-		ADDED from D:\Documentos\Core_Business\Proyectos Moviles\Fisioterapia\clientPhysiho\android\app\src\main\AndroidManifest.xml:32:15-70
+		ADDED from D:\Documentos\Core_Business\Proyectos Moviles\Fisioterapia\clientPhysiho\android\app\src\main\AndroidManifest.xml:33:15-70
 meta-data#io.flutter.embedding.android.SplashScreenDrawable
-ADDED from D:\Documentos\Core_Business\Proyectos Moviles\Fisioterapia\clientPhysiho\android\app\src\main\AndroidManifest.xml:40:13-43:17
+ADDED from D:\Documentos\Core_Business\Proyectos Moviles\Fisioterapia\clientPhysiho\android\app\src\main\AndroidManifest.xml:41:13-44:17
 	android:resource
-		ADDED from D:\Documentos\Core_Business\Proyectos Moviles\Fisioterapia\clientPhysiho\android\app\src\main\AndroidManifest.xml:42:15-61
+		ADDED from D:\Documentos\Core_Business\Proyectos Moviles\Fisioterapia\clientPhysiho\android\app\src\main\AndroidManifest.xml:43:15-61
 	android:name
-		ADDED from D:\Documentos\Core_Business\Proyectos Moviles\Fisioterapia\clientPhysiho\android\app\src\main\AndroidManifest.xml:41:15-79
+		ADDED from D:\Documentos\Core_Business\Proyectos Moviles\Fisioterapia\clientPhysiho\android\app\src\main\AndroidManifest.xml:42:15-79
 intent-filter#action:name:android.intent.action.MAIN+category:name:android.intent.category.LAUNCHER
-ADDED from D:\Documentos\Core_Business\Proyectos Moviles\Fisioterapia\clientPhysiho\android\app\src\main\AndroidManifest.xml:44:13-47:29
+ADDED from D:\Documentos\Core_Business\Proyectos Moviles\Fisioterapia\clientPhysiho\android\app\src\main\AndroidManifest.xml:45:13-48:29
 action#android.intent.action.MAIN
-ADDED from D:\Documentos\Core_Business\Proyectos Moviles\Fisioterapia\clientPhysiho\android\app\src\main\AndroidManifest.xml:45:17-68
+ADDED from D:\Documentos\Core_Business\Proyectos Moviles\Fisioterapia\clientPhysiho\android\app\src\main\AndroidManifest.xml:46:17-68
 	android:name
-		ADDED from D:\Documentos\Core_Business\Proyectos Moviles\Fisioterapia\clientPhysiho\android\app\src\main\AndroidManifest.xml:45:25-66
+		ADDED from D:\Documentos\Core_Business\Proyectos Moviles\Fisioterapia\clientPhysiho\android\app\src\main\AndroidManifest.xml:46:25-66
 category#android.intent.category.LAUNCHER
-ADDED from D:\Documentos\Core_Business\Proyectos Moviles\Fisioterapia\clientPhysiho\android\app\src\main\AndroidManifest.xml:46:17-76
+ADDED from D:\Documentos\Core_Business\Proyectos Moviles\Fisioterapia\clientPhysiho\android\app\src\main\AndroidManifest.xml:47:17-76
 	android:name
-		ADDED from D:\Documentos\Core_Business\Proyectos Moviles\Fisioterapia\clientPhysiho\android\app\src\main\AndroidManifest.xml:46:27-74
+		ADDED from D:\Documentos\Core_Business\Proyectos Moviles\Fisioterapia\clientPhysiho\android\app\src\main\AndroidManifest.xml:47:27-74
 intent-filter#action:name:FLUTTER_NOTIFICATION_CLICK+category:name:android.intent.category.DEFAULT
-ADDED from D:\Documentos\Core_Business\Proyectos Moviles\Fisioterapia\clientPhysiho\android\app\src\main\AndroidManifest.xml:48:13-51:29
+ADDED from D:\Documentos\Core_Business\Proyectos Moviles\Fisioterapia\clientPhysiho\android\app\src\main\AndroidManifest.xml:49:13-52:29
 action#FLUTTER_NOTIFICATION_CLICK
-ADDED from D:\Documentos\Core_Business\Proyectos Moviles\Fisioterapia\clientPhysiho\android\app\src\main\AndroidManifest.xml:49:17-69
+ADDED from D:\Documentos\Core_Business\Proyectos Moviles\Fisioterapia\clientPhysiho\android\app\src\main\AndroidManifest.xml:50:17-69
 	android:name
-		ADDED from D:\Documentos\Core_Business\Proyectos Moviles\Fisioterapia\clientPhysiho\android\app\src\main\AndroidManifest.xml:49:25-66
+		ADDED from D:\Documentos\Core_Business\Proyectos Moviles\Fisioterapia\clientPhysiho\android\app\src\main\AndroidManifest.xml:50:25-66
 category#android.intent.category.DEFAULT
-ADDED from D:\Documentos\Core_Business\Proyectos Moviles\Fisioterapia\clientPhysiho\android\app\src\main\AndroidManifest.xml:50:17-76
+ADDED from D:\Documentos\Core_Business\Proyectos Moviles\Fisioterapia\clientPhysiho\android\app\src\main\AndroidManifest.xml:51:17-76
 	android:name
-		ADDED from D:\Documentos\Core_Business\Proyectos Moviles\Fisioterapia\clientPhysiho\android\app\src\main\AndroidManifest.xml:50:27-73
+		ADDED from D:\Documentos\Core_Business\Proyectos Moviles\Fisioterapia\clientPhysiho\android\app\src\main\AndroidManifest.xml:51:27-73
 meta-data#flutterEmbedding
-ADDED from D:\Documentos\Core_Business\Proyectos Moviles\Fisioterapia\clientPhysiho\android\app\src\main\AndroidManifest.xml:55:9-57:33
+ADDED from D:\Documentos\Core_Business\Proyectos Moviles\Fisioterapia\clientPhysiho\android\app\src\main\AndroidManifest.xml:56:9-58:33
 	android:value
-		ADDED from D:\Documentos\Core_Business\Proyectos Moviles\Fisioterapia\clientPhysiho\android\app\src\main\AndroidManifest.xml:57:13-30
+		ADDED from D:\Documentos\Core_Business\Proyectos Moviles\Fisioterapia\clientPhysiho\android\app\src\main\AndroidManifest.xml:58:13-30
 	android:name
-		ADDED from D:\Documentos\Core_Business\Proyectos Moviles\Fisioterapia\clientPhysiho\android\app\src\main\AndroidManifest.xml:56:13-44
+		ADDED from D:\Documentos\Core_Business\Proyectos Moviles\Fisioterapia\clientPhysiho\android\app\src\main\AndroidManifest.xml:57:13-44
 meta-data#com.facebook.sdk.ApplicationId
-ADDED from D:\Documentos\Core_Business\Proyectos Moviles\Fisioterapia\clientPhysiho\android\app\src\main\AndroidManifest.xml:60:9-61:52
+ADDED from D:\Documentos\Core_Business\Proyectos Moviles\Fisioterapia\clientPhysiho\android\app\src\main\AndroidManifest.xml:61:9-62:52
 	android:value
-		ADDED from D:\Documentos\Core_Business\Proyectos Moviles\Fisioterapia\clientPhysiho\android\app\src\main\AndroidManifest.xml:61:11-50
+		ADDED from D:\Documentos\Core_Business\Proyectos Moviles\Fisioterapia\clientPhysiho\android\app\src\main\AndroidManifest.xml:62:11-50
 	android:name
-		ADDED from D:\Documentos\Core_Business\Proyectos Moviles\Fisioterapia\clientPhysiho\android\app\src\main\AndroidManifest.xml:60:20-65
+		ADDED from D:\Documentos\Core_Business\Proyectos Moviles\Fisioterapia\clientPhysiho\android\app\src\main\AndroidManifest.xml:61:20-65
 activity#com.facebook.FacebookActivity
-ADDED from D:\Documentos\Core_Business\Proyectos Moviles\Fisioterapia\clientPhysiho\android\app\src\main\AndroidManifest.xml:63:9-66:48
+ADDED from D:\Documentos\Core_Business\Proyectos Moviles\Fisioterapia\clientPhysiho\android\app\src\main\AndroidManifest.xml:64:9-67:48
 MERGED from [com.facebook.android:facebook-common:8.1.0] C:\Users\saulm\.gradle\caches\transforms-2\files-2.1\ddd1924ff4d77c086f19b0242908a223\facebook-common-8.1.0\AndroidManifest.xml:30:9-33:66
 MERGED from [com.facebook.android:facebook-common:8.1.0] C:\Users\saulm\.gradle\caches\transforms-2\files-2.1\ddd1924ff4d77c086f19b0242908a223\facebook-common-8.1.0\AndroidManifest.xml:30:9-33:66
 	android:label
-		ADDED from D:\Documentos\Core_Business\Proyectos Moviles\Fisioterapia\clientPhysiho\android\app\src\main\AndroidManifest.xml:66:13-45
+		ADDED from D:\Documentos\Core_Business\Proyectos Moviles\Fisioterapia\clientPhysiho\android\app\src\main\AndroidManifest.xml:67:13-45
 	android:configChanges
-		ADDED from D:\Documentos\Core_Business\Proyectos Moviles\Fisioterapia\clientPhysiho\android\app\src\main\AndroidManifest.xml:64:13-118
+		ADDED from D:\Documentos\Core_Business\Proyectos Moviles\Fisioterapia\clientPhysiho\android\app\src\main\AndroidManifest.xml:65:13-118
 	android:theme
 		ADDED from [com.facebook.android:facebook-common:8.1.0] C:\Users\saulm\.gradle\caches\transforms-2\files-2.1\ddd1924ff4d77c086f19b0242908a223\facebook-common-8.1.0\AndroidManifest.xml:33:13-63
 	android:name
-		ADDED from D:\Documentos\Core_Business\Proyectos Moviles\Fisioterapia\clientPhysiho\android\app\src\main\AndroidManifest.xml:63:19-63
+		ADDED from D:\Documentos\Core_Business\Proyectos Moviles\Fisioterapia\clientPhysiho\android\app\src\main\AndroidManifest.xml:64:19-63
 activity#com.facebook.CustomTabActivity
-ADDED from D:\Documentos\Core_Business\Proyectos Moviles\Fisioterapia\clientPhysiho\android\app\src\main\AndroidManifest.xml:67:9-76:20
+ADDED from D:\Documentos\Core_Business\Proyectos Moviles\Fisioterapia\clientPhysiho\android\app\src\main\AndroidManifest.xml:68:9-77:20
 MERGED from [com.facebook.android:facebook-common:8.1.0] C:\Users\saulm\.gradle\caches\transforms-2\files-2.1\ddd1924ff4d77c086f19b0242908a223\facebook-common-8.1.0\AndroidManifest.xml:35:9-49:20
 MERGED from [com.facebook.android:facebook-common:8.1.0] C:\Users\saulm\.gradle\caches\transforms-2\files-2.1\ddd1924ff4d77c086f19b0242908a223\facebook-common-8.1.0\AndroidManifest.xml:35:9-49:20
 	tools:node
 		ADDED from [com.facebook.android:facebook-common:8.1.0] C:\Users\saulm\.gradle\caches\transforms-2\files-2.1\ddd1924ff4d77c086f19b0242908a223\facebook-common-8.1.0\AndroidManifest.xml:38:13-31
 	android:exported
-		ADDED from D:\Documentos\Core_Business\Proyectos Moviles\Fisioterapia\clientPhysiho\android\app\src\main\AndroidManifest.xml:69:13-36
+		ADDED from D:\Documentos\Core_Business\Proyectos Moviles\Fisioterapia\clientPhysiho\android\app\src\main\AndroidManifest.xml:70:13-36
 	android:name
-		ADDED from D:\Documentos\Core_Business\Proyectos Moviles\Fisioterapia\clientPhysiho\android\app\src\main\AndroidManifest.xml:68:13-58
+		ADDED from D:\Documentos\Core_Business\Proyectos Moviles\Fisioterapia\clientPhysiho\android\app\src\main\AndroidManifest.xml:69:13-58
 intent-filter#action:name:android.intent.action.VIEW+category:name:android.intent.category.BROWSABLE+category:name:android.intent.category.DEFAULT+data:scheme:@string/fb_login_protocol_scheme
-ADDED from D:\Documentos\Core_Business\Proyectos Moviles\Fisioterapia\clientPhysiho\android\app\src\main\AndroidManifest.xml:70:13-75:29
+ADDED from D:\Documentos\Core_Business\Proyectos Moviles\Fisioterapia\clientPhysiho\android\app\src\main\AndroidManifest.xml:71:13-76:29
 action#android.intent.action.VIEW
-ADDED from D:\Documentos\Core_Business\Proyectos Moviles\Fisioterapia\clientPhysiho\android\app\src\main\AndroidManifest.xml:71:17-69
+ADDED from D:\Documentos\Core_Business\Proyectos Moviles\Fisioterapia\clientPhysiho\android\app\src\main\AndroidManifest.xml:72:17-69
 	android:name
-		ADDED from D:\Documentos\Core_Business\Proyectos Moviles\Fisioterapia\clientPhysiho\android\app\src\main\AndroidManifest.xml:71:25-66
+		ADDED from D:\Documentos\Core_Business\Proyectos Moviles\Fisioterapia\clientPhysiho\android\app\src\main\AndroidManifest.xml:72:25-66
 category#android.intent.category.BROWSABLE
-ADDED from D:\Documentos\Core_Business\Proyectos Moviles\Fisioterapia\clientPhysiho\android\app\src\main\AndroidManifest.xml:73:17-78
+ADDED from D:\Documentos\Core_Business\Proyectos Moviles\Fisioterapia\clientPhysiho\android\app\src\main\AndroidManifest.xml:74:17-78
 	android:name
-		ADDED from D:\Documentos\Core_Business\Proyectos Moviles\Fisioterapia\clientPhysiho\android\app\src\main\AndroidManifest.xml:73:27-75
+		ADDED from D:\Documentos\Core_Business\Proyectos Moviles\Fisioterapia\clientPhysiho\android\app\src\main\AndroidManifest.xml:74:27-75
 data
-ADDED from D:\Documentos\Core_Business\Proyectos Moviles\Fisioterapia\clientPhysiho\android\app\src\main\AndroidManifest.xml:74:17-75
+ADDED from D:\Documentos\Core_Business\Proyectos Moviles\Fisioterapia\clientPhysiho\android\app\src\main\AndroidManifest.xml:75:17-75
 	android:scheme
-		ADDED from D:\Documentos\Core_Business\Proyectos Moviles\Fisioterapia\clientPhysiho\android\app\src\main\AndroidManifest.xml:74:23-72
+		ADDED from D:\Documentos\Core_Business\Proyectos Moviles\Fisioterapia\clientPhysiho\android\app\src\main\AndroidManifest.xml:75:23-72
 uses-sdk
 INJECTED from D:\Documentos\Core_Business\Proyectos Moviles\Fisioterapia\clientPhysiho\android\app\src\main\AndroidManifest.xml reason: use-sdk injection requested
 INJECTED from D:\Documentos\Core_Business\Proyectos Moviles\Fisioterapia\clientPhysiho\android\app\src\main\AndroidManifest.xml
 INJECTED from D:\Documentos\Core_Business\Proyectos Moviles\Fisioterapia\clientPhysiho\android\app\src\main\AndroidManifest.xml
-MERGED from [:google_sign_in] D:\Documentos\Core_Business\Proyectos Moviles\Fisioterapia\clientPhysiho\build\google_sign_in\intermediates\library_manifest\debug\AndroidManifest.xml:5:5-44
-MERGED from [:google_sign_in] D:\Documentos\Core_Business\Proyectos Moviles\Fisioterapia\clientPhysiho\build\google_sign_in\intermediates\library_manifest\debug\AndroidManifest.xml:5:5-44
-MERGED from [:fluttertoast] D:\Documentos\Core_Business\Proyectos Moviles\Fisioterapia\clientPhysiho\build\fluttertoast\intermediates\library_manifest\debug\AndroidManifest.xml:5:5-44
-MERGED from [:fluttertoast] D:\Documentos\Core_Business\Proyectos Moviles\Fisioterapia\clientPhysiho\build\fluttertoast\intermediates\library_manifest\debug\AndroidManifest.xml:5:5-44
-MERGED from [:sqflite] D:\Documentos\Core_Business\Proyectos Moviles\Fisioterapia\clientPhysiho\build\sqflite\intermediates\library_manifest\debug\AndroidManifest.xml:5:5-44
-MERGED from [:sqflite] D:\Documentos\Core_Business\Proyectos Moviles\Fisioterapia\clientPhysiho\build\sqflite\intermediates\library_manifest\debug\AndroidManifest.xml:5:5-44
-MERGED from [:flutter_statusbarcolor] D:\Documentos\Core_Business\Proyectos Moviles\Fisioterapia\clientPhysiho\build\flutter_statusbarcolor\intermediates\library_manifest\debug\AndroidManifest.xml:5:5-44
-MERGED from [:flutter_statusbarcolor] D:\Documentos\Core_Business\Proyectos Moviles\Fisioterapia\clientPhysiho\build\flutter_statusbarcolor\intermediates\library_manifest\debug\AndroidManifest.xml:5:5-44
 MERGED from [:google_maps_flutter] D:\Documentos\Core_Business\Proyectos Moviles\Fisioterapia\clientPhysiho\build\google_maps_flutter\intermediates\library_manifest\debug\AndroidManifest.xml:5:5-44
 MERGED from [:google_maps_flutter] D:\Documentos\Core_Business\Proyectos Moviles\Fisioterapia\clientPhysiho\build\google_maps_flutter\intermediates\library_manifest\debug\AndroidManifest.xml:5:5-44
 MERGED from [:flutter_plugin_android_lifecycle] D:\Documentos\Core_Business\Proyectos Moviles\Fisioterapia\clientPhysiho\build\flutter_plugin_android_lifecycle\intermediates\library_manifest\debug\AndroidManifest.xml:5:5-44
 MERGED from [:flutter_plugin_android_lifecycle] D:\Documentos\Core_Business\Proyectos Moviles\Fisioterapia\clientPhysiho\build\flutter_plugin_android_lifecycle\intermediates\library_manifest\debug\AndroidManifest.xml:5:5-44
 MERGED from [:geocoding] D:\Documentos\Core_Business\Proyectos Moviles\Fisioterapia\clientPhysiho\build\geocoding\intermediates\library_manifest\debug\AndroidManifest.xml:5:5-44
 MERGED from [:geocoding] D:\Documentos\Core_Business\Proyectos Moviles\Fisioterapia\clientPhysiho\build\geocoding\intermediates\library_manifest\debug\AndroidManifest.xml:5:5-44
-MERGED from [:geolocator] D:\Documentos\Core_Business\Proyectos Moviles\Fisioterapia\clientPhysiho\build\geolocator\intermediates\library_manifest\debug\AndroidManifest.xml:5:5-44
-MERGED from [:geolocator] D:\Documentos\Core_Business\Proyectos Moviles\Fisioterapia\clientPhysiho\build\geolocator\intermediates\library_manifest\debug\AndroidManifest.xml:5:5-44
-MERGED from [:firebase_messaging] D:\Documentos\Core_Business\Proyectos Moviles\Fisioterapia\clientPhysiho\build\firebase_messaging\intermediates\library_manifest\debug\AndroidManifest.xml:5:5-44
-MERGED from [:firebase_messaging] D:\Documentos\Core_Business\Proyectos Moviles\Fisioterapia\clientPhysiho\build\firebase_messaging\intermediates\library_manifest\debug\AndroidManifest.xml:5:5-44
-MERGED from [:url_launcher] D:\Documentos\Core_Business\Proyectos Moviles\Fisioterapia\clientPhysiho\build\url_launcher\intermediates\library_manifest\debug\AndroidManifest.xml:5:5-44
-MERGED from [:url_launcher] D:\Documentos\Core_Business\Proyectos Moviles\Fisioterapia\clientPhysiho\build\url_launcher\intermediates\library_manifest\debug\AndroidManifest.xml:5:5-44
-MERGED from [:flutter_facebook_auth] D:\Documentos\Core_Business\Proyectos Moviles\Fisioterapia\clientPhysiho\build\flutter_facebook_auth\intermediates\library_manifest\debug\AndroidManifest.xml:5:5-44
-MERGED from [:flutter_facebook_auth] D:\Documentos\Core_Business\Proyectos Moviles\Fisioterapia\clientPhysiho\build\flutter_facebook_auth\intermediates\library_manifest\debug\AndroidManifest.xml:5:5-44
-MERGED from [:path_provider] D:\Documentos\Core_Business\Proyectos Moviles\Fisioterapia\clientPhysiho\build\path_provider\intermediates\library_manifest\debug\AndroidManifest.xml:5:5-44
-MERGED from [:path_provider] D:\Documentos\Core_Business\Proyectos Moviles\Fisioterapia\clientPhysiho\build\path_provider\intermediates\library_manifest\debug\AndroidManifest.xml:5:5-44
 MERGED from [:cloud_firestore] D:\Documentos\Core_Business\Proyectos Moviles\Fisioterapia\clientPhysiho\build\cloud_firestore\intermediates\library_manifest\debug\AndroidManifest.xml:5:5-44
 MERGED from [:cloud_firestore] D:\Documentos\Core_Business\Proyectos Moviles\Fisioterapia\clientPhysiho\build\cloud_firestore\intermediates\library_manifest\debug\AndroidManifest.xml:5:5-44
-MERGED from [:shared_preferences] D:\Documentos\Core_Business\Proyectos Moviles\Fisioterapia\clientPhysiho\build\shared_preferences\intermediates\library_manifest\debug\AndroidManifest.xml:5:5-44
-MERGED from [:shared_preferences] D:\Documentos\Core_Business\Proyectos Moviles\Fisioterapia\clientPhysiho\build\shared_preferences\intermediates\library_manifest\debug\AndroidManifest.xml:5:5-44
+MERGED from [:sign_in_with_apple] D:\Documentos\Core_Business\Proyectos Moviles\Fisioterapia\clientPhysiho\build\sign_in_with_apple\intermediates\library_manifest\debug\AndroidManifest.xml:5:5-44
+MERGED from [:sign_in_with_apple] D:\Documentos\Core_Business\Proyectos Moviles\Fisioterapia\clientPhysiho\build\sign_in_with_apple\intermediates\library_manifest\debug\AndroidManifest.xml:5:5-44
+MERGED from [:google_sign_in] D:\Documentos\Core_Business\Proyectos Moviles\Fisioterapia\clientPhysiho\build\google_sign_in\intermediates\library_manifest\debug\AndroidManifest.xml:5:5-44
+MERGED from [:google_sign_in] D:\Documentos\Core_Business\Proyectos Moviles\Fisioterapia\clientPhysiho\build\google_sign_in\intermediates\library_manifest\debug\AndroidManifest.xml:5:5-44
+MERGED from [:flutter_facebook_auth] D:\Documentos\Core_Business\Proyectos Moviles\Fisioterapia\clientPhysiho\build\flutter_facebook_auth\intermediates\library_manifest\debug\AndroidManifest.xml:5:5-44
+MERGED from [:flutter_facebook_auth] D:\Documentos\Core_Business\Proyectos Moviles\Fisioterapia\clientPhysiho\build\flutter_facebook_auth\intermediates\library_manifest\debug\AndroidManifest.xml:5:5-44
 MERGED from [:firebase_auth] D:\Documentos\Core_Business\Proyectos Moviles\Fisioterapia\clientPhysiho\build\firebase_auth\intermediates\library_manifest\debug\AndroidManifest.xml:5:5-44
 MERGED from [:firebase_auth] D:\Documentos\Core_Business\Proyectos Moviles\Fisioterapia\clientPhysiho\build\firebase_auth\intermediates\library_manifest\debug\AndroidManifest.xml:5:5-44
+MERGED from [:shared_preferences] D:\Documentos\Core_Business\Proyectos Moviles\Fisioterapia\clientPhysiho\build\shared_preferences\intermediates\library_manifest\debug\AndroidManifest.xml:5:5-44
+MERGED from [:shared_preferences] D:\Documentos\Core_Business\Proyectos Moviles\Fisioterapia\clientPhysiho\build\shared_preferences\intermediates\library_manifest\debug\AndroidManifest.xml:5:5-44
+MERGED from [:firebase_messaging] D:\Documentos\Core_Business\Proyectos Moviles\Fisioterapia\clientPhysiho\build\firebase_messaging\intermediates\library_manifest\debug\AndroidManifest.xml:5:5-44
+MERGED from [:firebase_messaging] D:\Documentos\Core_Business\Proyectos Moviles\Fisioterapia\clientPhysiho\build\firebase_messaging\intermediates\library_manifest\debug\AndroidManifest.xml:5:5-44
+MERGED from [:flutter_statusbarcolor] D:\Documentos\Core_Business\Proyectos Moviles\Fisioterapia\clientPhysiho\build\flutter_statusbarcolor\intermediates\library_manifest\debug\AndroidManifest.xml:5:5-44
+MERGED from [:flutter_statusbarcolor] D:\Documentos\Core_Business\Proyectos Moviles\Fisioterapia\clientPhysiho\build\flutter_statusbarcolor\intermediates\library_manifest\debug\AndroidManifest.xml:5:5-44
 MERGED from [:firebase_core] D:\Documentos\Core_Business\Proyectos Moviles\Fisioterapia\clientPhysiho\build\firebase_core\intermediates\library_manifest\debug\AndroidManifest.xml:5:5-44
 MERGED from [:firebase_core] D:\Documentos\Core_Business\Proyectos Moviles\Fisioterapia\clientPhysiho\build\firebase_core\intermediates\library_manifest\debug\AndroidManifest.xml:5:5-44
+MERGED from [:fluttertoast] D:\Documentos\Core_Business\Proyectos Moviles\Fisioterapia\clientPhysiho\build\fluttertoast\intermediates\library_manifest\debug\AndroidManifest.xml:5:5-44
+MERGED from [:fluttertoast] D:\Documentos\Core_Business\Proyectos Moviles\Fisioterapia\clientPhysiho\build\fluttertoast\intermediates\library_manifest\debug\AndroidManifest.xml:5:5-44
+MERGED from [:geolocator] D:\Documentos\Core_Business\Proyectos Moviles\Fisioterapia\clientPhysiho\build\geolocator\intermediates\library_manifest\debug\AndroidManifest.xml:5:5-44
+MERGED from [:geolocator] D:\Documentos\Core_Business\Proyectos Moviles\Fisioterapia\clientPhysiho\build\geolocator\intermediates\library_manifest\debug\AndroidManifest.xml:5:5-44
+MERGED from [:sqflite] D:\Documentos\Core_Business\Proyectos Moviles\Fisioterapia\clientPhysiho\build\sqflite\intermediates\library_manifest\debug\AndroidManifest.xml:5:5-44
+MERGED from [:sqflite] D:\Documentos\Core_Business\Proyectos Moviles\Fisioterapia\clientPhysiho\build\sqflite\intermediates\library_manifest\debug\AndroidManifest.xml:5:5-44
+MERGED from [:url_launcher] D:\Documentos\Core_Business\Proyectos Moviles\Fisioterapia\clientPhysiho\build\url_launcher\intermediates\library_manifest\debug\AndroidManifest.xml:5:5-44
+MERGED from [:url_launcher] D:\Documentos\Core_Business\Proyectos Moviles\Fisioterapia\clientPhysiho\build\url_launcher\intermediates\library_manifest\debug\AndroidManifest.xml:5:5-44
+MERGED from [:flutter_web_auth] D:\Documentos\Core_Business\Proyectos Moviles\Fisioterapia\clientPhysiho\build\flutter_web_auth\intermediates\library_manifest\debug\AndroidManifest.xml:5:5-44
+MERGED from [:flutter_web_auth] D:\Documentos\Core_Business\Proyectos Moviles\Fisioterapia\clientPhysiho\build\flutter_web_auth\intermediates\library_manifest\debug\AndroidManifest.xml:5:5-44
+MERGED from [:path_provider] D:\Documentos\Core_Business\Proyectos Moviles\Fisioterapia\clientPhysiho\build\path_provider\intermediates\library_manifest\debug\AndroidManifest.xml:5:5-44
+MERGED from [:path_provider] D:\Documentos\Core_Business\Proyectos Moviles\Fisioterapia\clientPhysiho\build\path_provider\intermediates\library_manifest\debug\AndroidManifest.xml:5:5-44
 MERGED from [androidx.multidex:multidex:2.0.0] C:\Users\saulm\.gradle\caches\transforms-2\files-2.1\ce6d845566efe803bb66b00e1f6fdabb\multidex-2.0.0\AndroidManifest.xml:20:5-43
 MERGED from [androidx.multidex:multidex:2.0.0] C:\Users\saulm\.gradle\caches\transforms-2\files-2.1\ce6d845566efe803bb66b00e1f6fdabb\multidex-2.0.0\AndroidManifest.xml:20:5-43
 MERGED from [com.google.firebase:firebase-analytics-ktx:17.6.0] C:\Users\saulm\.gradle\caches\transforms-2\files-2.1\1f5abc26894844cef729e6c7530541b4\firebase-analytics-ktx-17.6.0\AndroidManifest.xml:5:5-44
@@ -411,36 +419,34 @@ MERGED from [com.google.android.gms:play-services-auth:16.0.1] C:\Users\saulm\.g
 MERGED from [com.google.android.gms:play-services-auth:16.0.1] C:\Users\saulm\.gradle\caches\transforms-2\files-2.1\0d54235d6ad061ac7933b33ab43d2e4a\jetified-play-services-auth-16.0.1\AndroidManifest.xml:20:5-44
 MERGED from [com.google.android.gms:play-services-location:17.0.0] C:\Users\saulm\.gradle\caches\transforms-2\files-2.1\29d722ef4cbe9e9872d8d8139868345b\play-services-location-17.0.0\AndroidManifest.xml:5:5-44
 MERGED from [com.google.android.gms:play-services-location:17.0.0] C:\Users\saulm\.gradle\caches\transforms-2\files-2.1\29d722ef4cbe9e9872d8d8139868345b\play-services-location-17.0.0\AndroidManifest.xml:5:5-44
-MERGED from [com.google.android.gms:play-services-auth-api-phone:16.0.0] C:\Users\saulm\.gradle\caches\transforms-2\files-2.1\c406884acb81f49e6bdb698c69f817aa\jetified-play-services-auth-api-phone-16.0.0\AndroidManifest.xml:5:5-44
-MERGED from [com.google.android.gms:play-services-auth-api-phone:16.0.0] C:\Users\saulm\.gradle\caches\transforms-2\files-2.1\c406884acb81f49e6bdb698c69f817aa\jetified-play-services-auth-api-phone-16.0.0\AndroidManifest.xml:5:5-44
-MERGED from [com.google.android.gms:play-services-auth-base:16.0.0] C:\Users\saulm\.gradle\caches\transforms-2\files-2.1\f2a227b47154340b0fbd67d05875f58b\jetified-play-services-auth-base-16.0.0\AndroidManifest.xml:5:5-44
-MERGED from [com.google.android.gms:play-services-auth-base:16.0.0] C:\Users\saulm\.gradle\caches\transforms-2\files-2.1\f2a227b47154340b0fbd67d05875f58b\jetified-play-services-auth-base-16.0.0\AndroidManifest.xml:5:5-44
+MERGED from [com.google.firebase:firebase-auth-interop:19.0.0] C:\Users\saulm\.gradle\caches\transforms-2\files-2.1\4e8176bf1e4d045c152ac0f35f163148\firebase-auth-interop-19.0.0\AndroidManifest.xml:5:5-44
+MERGED from [com.google.firebase:firebase-auth-interop:19.0.0] C:\Users\saulm\.gradle\caches\transforms-2\files-2.1\4e8176bf1e4d045c152ac0f35f163148\firebase-auth-interop-19.0.0\AndroidManifest.xml:5:5-44
+MERGED from [com.google.firebase:firebase-datatransport:17.0.3] C:\Users\saulm\.gradle\caches\transforms-2\files-2.1\caebf1427fe4a80f81548ae507338a98\firebase-datatransport-17.0.3\AndroidManifest.xml:19:5-21:41
+MERGED from [com.google.firebase:firebase-datatransport:17.0.3] C:\Users\saulm\.gradle\caches\transforms-2\files-2.1\caebf1427fe4a80f81548ae507338a98\firebase-datatransport-17.0.3\AndroidManifest.xml:19:5-21:41
 MERGED from [com.google.firebase:firebase-iid:20.3.0] C:\Users\saulm\.gradle\caches\transforms-2\files-2.1\ee142d8f3633d4d5661ad93456ca7b03\firebase-iid-20.3.0\AndroidManifest.xml:20:5-44
 MERGED from [com.google.firebase:firebase-iid:20.3.0] C:\Users\saulm\.gradle\caches\transforms-2\files-2.1\ee142d8f3633d4d5661ad93456ca7b03\firebase-iid-20.3.0\AndroidManifest.xml:20:5-44
-MERGED from [com.google.android.gms:play-services-cloud-messaging:16.0.0] C:\Users\saulm\.gradle\caches\transforms-2\files-2.1\49d8c9062eb3740aaf18f7d73a59ae74\play-services-cloud-messaging-16.0.0\AndroidManifest.xml:5:5-44
-MERGED from [com.google.android.gms:play-services-cloud-messaging:16.0.0] C:\Users\saulm\.gradle\caches\transforms-2\files-2.1\49d8c9062eb3740aaf18f7d73a59ae74\play-services-cloud-messaging-16.0.0\AndroidManifest.xml:5:5-44
 MERGED from [com.google.android.gms:play-services-measurement-api:17.6.0] C:\Users\saulm\.gradle\caches\transforms-2\files-2.1\f03075187a3db9a239413647c5afb670\play-services-measurement-api-17.6.0\AndroidManifest.xml:20:5-44
 MERGED from [com.google.android.gms:play-services-measurement-api:17.6.0] C:\Users\saulm\.gradle\caches\transforms-2\files-2.1\f03075187a3db9a239413647c5afb670\play-services-measurement-api-17.6.0\AndroidManifest.xml:20:5-44
 MERGED from [com.google.firebase:firebase-installations:16.3.3] C:\Users\saulm\.gradle\caches\transforms-2\files-2.1\7d91b3a02ff199a11c3208b3994a973a\firebase-installations-16.3.3\AndroidManifest.xml:6:5-8:41
 MERGED from [com.google.firebase:firebase-installations:16.3.3] C:\Users\saulm\.gradle\caches\transforms-2\files-2.1\7d91b3a02ff199a11c3208b3994a973a\firebase-installations-16.3.3\AndroidManifest.xml:6:5-8:41
-MERGED from [com.google.firebase:firebase-installations-interop:16.0.0] C:\Users\saulm\.gradle\caches\transforms-2\files-2.1\6eb95629b13ecfd6aede439fe6350147\firebase-installations-interop-16.0.0\AndroidManifest.xml:19:5-21:41
-MERGED from [com.google.firebase:firebase-installations-interop:16.0.0] C:\Users\saulm\.gradle\caches\transforms-2\files-2.1\6eb95629b13ecfd6aede439fe6350147\firebase-installations-interop-16.0.0\AndroidManifest.xml:19:5-21:41
-MERGED from [com.google.firebase:firebase-datatransport:17.0.3] C:\Users\saulm\.gradle\caches\transforms-2\files-2.1\caebf1427fe4a80f81548ae507338a98\firebase-datatransport-17.0.3\AndroidManifest.xml:19:5-21:41
-MERGED from [com.google.firebase:firebase-datatransport:17.0.3] C:\Users\saulm\.gradle\caches\transforms-2\files-2.1\caebf1427fe4a80f81548ae507338a98\firebase-datatransport-17.0.3\AndroidManifest.xml:19:5-21:41
-MERGED from [com.google.firebase:firebase-auth-interop:19.0.0] C:\Users\saulm\.gradle\caches\transforms-2\files-2.1\4e8176bf1e4d045c152ac0f35f163148\firebase-auth-interop-19.0.0\AndroidManifest.xml:5:5-44
-MERGED from [com.google.firebase:firebase-auth-interop:19.0.0] C:\Users\saulm\.gradle\caches\transforms-2\files-2.1\4e8176bf1e4d045c152ac0f35f163148\firebase-auth-interop-19.0.0\AndroidManifest.xml:5:5-44
 MERGED from [com.google.firebase:firebase-common:19.3.1] C:\Users\saulm\.gradle\caches\transforms-2\files-2.1\060ccd5c5b72589f8bc653ff8344889c\jetified-firebase-common-19.3.1\AndroidManifest.xml:20:5-22:41
 MERGED from [com.google.firebase:firebase-common:19.3.1] C:\Users\saulm\.gradle\caches\transforms-2\files-2.1\060ccd5c5b72589f8bc653ff8344889c\jetified-firebase-common-19.3.1\AndroidManifest.xml:20:5-22:41
+MERGED from [com.google.android.gms:play-services-auth-api-phone:16.0.0] C:\Users\saulm\.gradle\caches\transforms-2\files-2.1\c406884acb81f49e6bdb698c69f817aa\jetified-play-services-auth-api-phone-16.0.0\AndroidManifest.xml:5:5-44
+MERGED from [com.google.android.gms:play-services-auth-api-phone:16.0.0] C:\Users\saulm\.gradle\caches\transforms-2\files-2.1\c406884acb81f49e6bdb698c69f817aa\jetified-play-services-auth-api-phone-16.0.0\AndroidManifest.xml:5:5-44
+MERGED from [com.google.android.gms:play-services-auth-base:16.0.0] C:\Users\saulm\.gradle\caches\transforms-2\files-2.1\f2a227b47154340b0fbd67d05875f58b\jetified-play-services-auth-base-16.0.0\AndroidManifest.xml:5:5-44
+MERGED from [com.google.android.gms:play-services-auth-base:16.0.0] C:\Users\saulm\.gradle\caches\transforms-2\files-2.1\f2a227b47154340b0fbd67d05875f58b\jetified-play-services-auth-base-16.0.0\AndroidManifest.xml:5:5-44
 MERGED from [com.google.firebase:firebase-database-collection:17.0.1] C:\Users\saulm\.gradle\caches\transforms-2\files-2.1\d8ea8cfe55eaf862e7e95d45950d583a\firebase-database-collection-17.0.1\AndroidManifest.xml:5:5-7:41
 MERGED from [com.google.firebase:firebase-database-collection:17.0.1] C:\Users\saulm\.gradle\caches\transforms-2\files-2.1\d8ea8cfe55eaf862e7e95d45950d583a\firebase-database-collection-17.0.1\AndroidManifest.xml:5:5-7:41
 MERGED from [com.google.firebase:firebase-iid-interop:17.0.0] C:\Users\saulm\.gradle\caches\transforms-2\files-2.1\1f11bd0b3299d9dafdb06695573743ee\firebase-iid-interop-17.0.0\AndroidManifest.xml:5:5-44
 MERGED from [com.google.firebase:firebase-iid-interop:17.0.0] C:\Users\saulm\.gradle\caches\transforms-2\files-2.1\1f11bd0b3299d9dafdb06695573743ee\firebase-iid-interop-17.0.0\AndroidManifest.xml:5:5-44
 MERGED from [com.google.android.gms:play-services-base:17.1.0] C:\Users\saulm\.gradle\caches\transforms-2\files-2.1\3a04cbfa3b635ae4131224a81a3c4510\play-services-base-17.1.0\AndroidManifest.xml:20:5-44
 MERGED from [com.google.android.gms:play-services-base:17.1.0] C:\Users\saulm\.gradle\caches\transforms-2\files-2.1\3a04cbfa3b635ae4131224a81a3c4510\play-services-base-17.1.0\AndroidManifest.xml:20:5-44
+MERGED from [com.google.android.gms:play-services-cloud-messaging:16.0.0] C:\Users\saulm\.gradle\caches\transforms-2\files-2.1\49d8c9062eb3740aaf18f7d73a59ae74\play-services-cloud-messaging-16.0.0\AndroidManifest.xml:5:5-44
+MERGED from [com.google.android.gms:play-services-cloud-messaging:16.0.0] C:\Users\saulm\.gradle\caches\transforms-2\files-2.1\49d8c9062eb3740aaf18f7d73a59ae74\play-services-cloud-messaging-16.0.0\AndroidManifest.xml:5:5-44
+MERGED from [com.google.firebase:firebase-installations-interop:16.0.0] C:\Users\saulm\.gradle\caches\transforms-2\files-2.1\6eb95629b13ecfd6aede439fe6350147\firebase-installations-interop-16.0.0\AndroidManifest.xml:19:5-21:41
+MERGED from [com.google.firebase:firebase-installations-interop:16.0.0] C:\Users\saulm\.gradle\caches\transforms-2\files-2.1\6eb95629b13ecfd6aede439fe6350147\firebase-installations-interop-16.0.0\AndroidManifest.xml:19:5-21:41
 MERGED from [com.google.android.gms:play-services-tasks:17.0.0] C:\Users\saulm\.gradle\caches\transforms-2\files-2.1\6eb0d43e0203920802a42b1c160db416\play-services-tasks-17.0.0\AndroidManifest.xml:5:5-44
 MERGED from [com.google.android.gms:play-services-tasks:17.0.0] C:\Users\saulm\.gradle\caches\transforms-2\files-2.1\6eb0d43e0203920802a42b1c160db416\play-services-tasks-17.0.0\AndroidManifest.xml:5:5-44
-MERGED from [com.google.android.gms:play-services-places-placereport:17.0.0] C:\Users\saulm\.gradle\caches\transforms-2\files-2.1\2d4733d569f7e9b17db1f8be722c77e9\play-services-places-placereport-17.0.0\AndroidManifest.xml:20:5-44
-MERGED from [com.google.android.gms:play-services-places-placereport:17.0.0] C:\Users\saulm\.gradle\caches\transforms-2\files-2.1\2d4733d569f7e9b17db1f8be722c77e9\play-services-places-placereport-17.0.0\AndroidManifest.xml:20:5-44
 MERGED from [com.google.android.gms:play-services-measurement:17.6.0] C:\Users\saulm\.gradle\caches\transforms-2\files-2.1\4f5ff8f75122c45887f276d4a13908eb\play-services-measurement-17.6.0\AndroidManifest.xml:20:5-44
 MERGED from [com.google.android.gms:play-services-measurement:17.6.0] C:\Users\saulm\.gradle\caches\transforms-2\files-2.1\4f5ff8f75122c45887f276d4a13908eb\play-services-measurement-17.6.0\AndroidManifest.xml:20:5-44
 MERGED from [com.google.android.gms:play-services-measurement-sdk:17.6.0] C:\Users\saulm\.gradle\caches\transforms-2\files-2.1\2ea4a49f816a2cdc4cac7b8acf4351e0\play-services-measurement-sdk-17.6.0\AndroidManifest.xml:20:5-44
@@ -451,6 +457,8 @@ MERGED from [com.google.android.gms:play-services-stats:17.0.0] C:\Users\saulm\.
 MERGED from [com.google.android.gms:play-services-stats:17.0.0] C:\Users\saulm\.gradle\caches\transforms-2\files-2.1\e988960bc0fc9a3586f5eef60eb5d9b7\play-services-stats-17.0.0\AndroidManifest.xml:5:5-44
 MERGED from [com.google.firebase:firebase-measurement-connector:18.0.0] C:\Users\saulm\.gradle\caches\transforms-2\files-2.1\a31167b4f3bad6ed086ab6e987f1fbfe\firebase-measurement-connector-18.0.0\AndroidManifest.xml:20:5-44
 MERGED from [com.google.firebase:firebase-measurement-connector:18.0.0] C:\Users\saulm\.gradle\caches\transforms-2\files-2.1\a31167b4f3bad6ed086ab6e987f1fbfe\firebase-measurement-connector-18.0.0\AndroidManifest.xml:20:5-44
+MERGED from [com.google.android.gms:play-services-places-placereport:17.0.0] C:\Users\saulm\.gradle\caches\transforms-2\files-2.1\2d4733d569f7e9b17db1f8be722c77e9\play-services-places-placereport-17.0.0\AndroidManifest.xml:20:5-44
+MERGED from [com.google.android.gms:play-services-places-placereport:17.0.0] C:\Users\saulm\.gradle\caches\transforms-2\files-2.1\2d4733d569f7e9b17db1f8be722c77e9\play-services-places-placereport-17.0.0\AndroidManifest.xml:20:5-44
 MERGED from [com.google.android.gms:play-services-ads-identifier:17.0.0] C:\Users\saulm\.gradle\caches\transforms-2\files-2.1\9b13932ba9a57439603f63641c249395\play-services-ads-identifier-17.0.0\AndroidManifest.xml:20:5-44
 MERGED from [com.google.android.gms:play-services-ads-identifier:17.0.0] C:\Users\saulm\.gradle\caches\transforms-2\files-2.1\9b13932ba9a57439603f63641c249395\play-services-ads-identifier-17.0.0\AndroidManifest.xml:20:5-44
 MERGED from [com.google.android.gms:play-services-measurement-sdk-api:17.6.0] C:\Users\saulm\.gradle\caches\transforms-2\files-2.1\c54ecfcb6e3fe18ec34fa69a4a6ee104\play-services-measurement-sdk-api-17.6.0\AndroidManifest.xml:20:5-44
@@ -469,8 +477,8 @@ MERGED from [androidx.legacy:legacy-support-v4:1.0.0] C:\Users\saulm\.gradle\cac
 MERGED from [androidx.legacy:legacy-support-v4:1.0.0] C:\Users\saulm\.gradle\caches\transforms-2\files-2.1\e706904d0c469815a1a53d3869f0233a\legacy-support-v4-1.0.0\AndroidManifest.xml:20:5-44
 MERGED from [androidx.fragment:fragment:1.1.0] C:\Users\saulm\.gradle\caches\transforms-2\files-2.1\a132dbf8dbad281e669e1070741420a4\fragment-1.1.0\AndroidManifest.xml:20:5-22:41
 MERGED from [androidx.fragment:fragment:1.1.0] C:\Users\saulm\.gradle\caches\transforms-2\files-2.1\a132dbf8dbad281e669e1070741420a4\fragment-1.1.0\AndroidManifest.xml:20:5-22:41
-MERGED from [androidx.browser:browser:1.0.0] C:\Users\saulm\.gradle\caches\transforms-2\files-2.1\12cd7dac0ae156d453ee2194b2050149\browser-1.0.0\AndroidManifest.xml:20:5-44
-MERGED from [androidx.browser:browser:1.0.0] C:\Users\saulm\.gradle\caches\transforms-2\files-2.1\12cd7dac0ae156d453ee2194b2050149\browser-1.0.0\AndroidManifest.xml:20:5-44
+MERGED from [androidx.browser:browser:1.2.0] C:\Users\saulm\.gradle\caches\transforms-2\files-2.1\cbb1a1e8c77465f493c99860de4e5ee1\browser-1.2.0\AndroidManifest.xml:20:5-22:41
+MERGED from [androidx.browser:browser:1.2.0] C:\Users\saulm\.gradle\caches\transforms-2\files-2.1\cbb1a1e8c77465f493c99860de4e5ee1\browser-1.2.0\AndroidManifest.xml:20:5-22:41
 MERGED from [androidx.legacy:legacy-support-core-ui:1.0.0] C:\Users\saulm\.gradle\caches\transforms-2\files-2.1\4ae7710d2a8bd33f31c9b3605c9962be\legacy-support-core-ui-1.0.0\AndroidManifest.xml:20:5-44
 MERGED from [androidx.legacy:legacy-support-core-ui:1.0.0] C:\Users\saulm\.gradle\caches\transforms-2\files-2.1\4ae7710d2a8bd33f31c9b3605c9962be\legacy-support-core-ui-1.0.0\AndroidManifest.xml:20:5-44
 MERGED from [androidx.viewpager:viewpager:1.0.0] C:\Users\saulm\.gradle\caches\transforms-2\files-2.1\c540649e0b76495ca13562347627e206\viewpager-1.0.0\AndroidManifest.xml:20:5-44
@@ -521,6 +529,8 @@ MERGED from [androidx.arch.core:core-runtime:2.0.0] C:\Users\saulm\.gradle\cache
 MERGED from [androidx.arch.core:core-runtime:2.0.0] C:\Users\saulm\.gradle\caches\transforms-2\files-2.1\2bbe84e8a9e7463b784acffd06700355\core-runtime-2.0.0\AndroidManifest.xml:20:5-44
 MERGED from [androidx.versionedparcelable:versionedparcelable:1.1.0] C:\Users\saulm\.gradle\caches\transforms-2\files-2.1\c8f62fdbf53f2e013b6bf5c99d136167\versionedparcelable-1.1.0\AndroidManifest.xml:20:5-22:41
 MERGED from [androidx.versionedparcelable:versionedparcelable:1.1.0] C:\Users\saulm\.gradle\caches\transforms-2\files-2.1\c8f62fdbf53f2e013b6bf5c99d136167\versionedparcelable-1.1.0\AndroidManifest.xml:20:5-22:41
+MERGED from [androidx.interpolator:interpolator:1.0.0] C:\Users\saulm\.gradle\caches\transforms-2\files-2.1\498b737ccfd511192b85d48b031772cc\interpolator-1.0.0\AndroidManifest.xml:20:5-44
+MERGED from [androidx.interpolator:interpolator:1.0.0] C:\Users\saulm\.gradle\caches\transforms-2\files-2.1\498b737ccfd511192b85d48b031772cc\interpolator-1.0.0\AndroidManifest.xml:20:5-44
 MERGED from [com.google.android.datatransport:transport-backend-cct:2.2.0] C:\Users\saulm\.gradle\caches\transforms-2\files-2.1\e67255568fb3a808f0edeab906fe9891\transport-backend-cct-2.2.0\AndroidManifest.xml:19:5-21:41
 MERGED from [com.google.android.datatransport:transport-backend-cct:2.2.0] C:\Users\saulm\.gradle\caches\transforms-2\files-2.1\e67255568fb3a808f0edeab906fe9891\transport-backend-cct-2.2.0\AndroidManifest.xml:19:5-21:41
 MERGED from [com.google.android.datatransport:transport-runtime:2.2.0] C:\Users\saulm\.gradle\caches\transforms-2\files-2.1\fb13625c4fea721a21dc56ef4bb5a3ad\transport-runtime-2.2.0\AndroidManifest.xml:18:5-20:41
@@ -537,14 +547,12 @@ MERGED from [androidx.documentfile:documentfile:1.0.0] C:\Users\saulm\.gradle\ca
 MERGED from [androidx.documentfile:documentfile:1.0.0] C:\Users\saulm\.gradle\caches\transforms-2\files-2.1\02cab93c7402f591730cea071b79aeae\documentfile-1.0.0\AndroidManifest.xml:20:5-44
 MERGED from [androidx.print:print:1.0.0] C:\Users\saulm\.gradle\caches\transforms-2\files-2.1\52e750b3541f8c9731a5d475e8dd23f4\print-1.0.0\AndroidManifest.xml:20:5-44
 MERGED from [androidx.print:print:1.0.0] C:\Users\saulm\.gradle\caches\transforms-2\files-2.1\52e750b3541f8c9731a5d475e8dd23f4\print-1.0.0\AndroidManifest.xml:20:5-44
-MERGED from [androidx.interpolator:interpolator:1.0.0] C:\Users\saulm\.gradle\caches\transforms-2\files-2.1\498b737ccfd511192b85d48b031772cc\interpolator-1.0.0\AndroidManifest.xml:20:5-44
-MERGED from [androidx.interpolator:interpolator:1.0.0] C:\Users\saulm\.gradle\caches\transforms-2\files-2.1\498b737ccfd511192b85d48b031772cc\interpolator-1.0.0\AndroidManifest.xml:20:5-44
 MERGED from [io.grpc:grpc-android:1.28.0] C:\Users\saulm\.gradle\caches\transforms-2\files-2.1\a774a72fca3941a6aa3815fef1d6d9cc\grpc-android-1.28.0\AndroidManifest.xml:7:5-9:41
 MERGED from [io.grpc:grpc-android:1.28.0] C:\Users\saulm\.gradle\caches\transforms-2\files-2.1\a774a72fca3941a6aa3815fef1d6d9cc\grpc-android-1.28.0\AndroidManifest.xml:7:5-9:41
-MERGED from [com.google.android.datatransport:transport-api:2.2.0] C:\Users\saulm\.gradle\caches\transforms-2\files-2.1\d177ebfc728e2ff3783258a2487f75a5\transport-api-2.2.0\AndroidManifest.xml:18:5-20:41
-MERGED from [com.google.android.datatransport:transport-api:2.2.0] C:\Users\saulm\.gradle\caches\transforms-2\files-2.1\d177ebfc728e2ff3783258a2487f75a5\transport-api-2.2.0\AndroidManifest.xml:18:5-20:41
 MERGED from [com.google.firebase:protolite-well-known-types:17.1.0] C:\Users\saulm\.gradle\caches\transforms-2\files-2.1\8dd0fb18f905bbf10aee8c6f60f3032d\protolite-well-known-types-17.1.0\AndroidManifest.xml:7:5-9:41
 MERGED from [com.google.firebase:protolite-well-known-types:17.1.0] C:\Users\saulm\.gradle\caches\transforms-2\files-2.1\8dd0fb18f905bbf10aee8c6f60f3032d\protolite-well-known-types-17.1.0\AndroidManifest.xml:7:5-9:41
+MERGED from [com.google.android.datatransport:transport-api:2.2.0] C:\Users\saulm\.gradle\caches\transforms-2\files-2.1\d177ebfc728e2ff3783258a2487f75a5\transport-api-2.2.0\AndroidManifest.xml:18:5-20:41
+MERGED from [com.google.android.datatransport:transport-api:2.2.0] C:\Users\saulm\.gradle\caches\transforms-2\files-2.1\d177ebfc728e2ff3783258a2487f75a5\transport-api-2.2.0\AndroidManifest.xml:18:5-20:41
 MERGED from [com.android.installreferrer:installreferrer:1.0] C:\Users\saulm\.gradle\caches\transforms-2\files-2.1\b486ccdaf9760fc3bb1651c80b3a0605\jetified-installreferrer-1.0\AndroidManifest.xml:5:5-7:41
 MERGED from [com.android.installreferrer:installreferrer:1.0] C:\Users\saulm\.gradle\caches\transforms-2\files-2.1\b486ccdaf9760fc3bb1651c80b3a0605\jetified-installreferrer-1.0\AndroidManifest.xml:5:5-7:41
 INJECTED from D:\Documentos\Core_Business\Proyectos Moviles\Fisioterapia\clientPhysiho\android\app\src\debug\AndroidManifest.xml
@@ -555,22 +563,12 @@ INJECTED from D:\Documentos\Core_Business\Proyectos Moviles\Fisioterapia\clientP
 	android:minSdkVersion
 		INJECTED from D:\Documentos\Core_Business\Proyectos Moviles\Fisioterapia\clientPhysiho\android\app\src\main\AndroidManifest.xml
 		INJECTED from D:\Documentos\Core_Business\Proyectos Moviles\Fisioterapia\clientPhysiho\android\app\src\debug\AndroidManifest.xml
-service#io.flutter.plugins.firebasemessaging.FlutterFirebaseMessagingService
-ADDED from [:firebase_messaging] D:\Documentos\Core_Business\Proyectos Moviles\Fisioterapia\clientPhysiho\build\firebase_messaging\intermediates\library_manifest\debug\AndroidManifest.xml:8:9-12:19
-	android:name
-		ADDED from [:firebase_messaging] D:\Documentos\Core_Business\Proyectos Moviles\Fisioterapia\clientPhysiho\build\firebase_messaging\intermediates\library_manifest\debug\AndroidManifest.xml:8:18-101
-intent-filter#action:name:com.google.firebase.MESSAGING_EVENT
-ADDED from [:firebase_messaging] D:\Documentos\Core_Business\Proyectos Moviles\Fisioterapia\clientPhysiho\build\firebase_messaging\intermediates\library_manifest\debug\AndroidManifest.xml:9:13-11:29
-action#com.google.firebase.MESSAGING_EVENT
-ADDED from [:firebase_messaging] D:\Documentos\Core_Business\Proyectos Moviles\Fisioterapia\clientPhysiho\build\firebase_messaging\intermediates\library_manifest\debug\AndroidManifest.xml:10:17-78
-	android:name
-		ADDED from [:firebase_messaging] D:\Documentos\Core_Business\Proyectos Moviles\Fisioterapia\clientPhysiho\build\firebase_messaging\intermediates\library_manifest\debug\AndroidManifest.xml:10:25-75
 service#com.google.firebase.components.ComponentDiscoveryService
-ADDED from [:firebase_messaging] D:\Documentos\Core_Business\Proyectos Moviles\Fisioterapia\clientPhysiho\build\firebase_messaging\intermediates\library_manifest\debug\AndroidManifest.xml:13:9-17:19
-MERGED from [:cloud_firestore] D:\Documentos\Core_Business\Proyectos Moviles\Fisioterapia\clientPhysiho\build\cloud_firestore\intermediates\library_manifest\debug\AndroidManifest.xml:8:9-12:19
-MERGED from [:cloud_firestore] D:\Documentos\Core_Business\Proyectos Moviles\Fisioterapia\clientPhysiho\build\cloud_firestore\intermediates\library_manifest\debug\AndroidManifest.xml:8:9-12:19
+ADDED from [:cloud_firestore] D:\Documentos\Core_Business\Proyectos Moviles\Fisioterapia\clientPhysiho\build\cloud_firestore\intermediates\library_manifest\debug\AndroidManifest.xml:8:9-12:19
 MERGED from [:firebase_auth] D:\Documentos\Core_Business\Proyectos Moviles\Fisioterapia\clientPhysiho\build\firebase_auth\intermediates\library_manifest\debug\AndroidManifest.xml:8:9-12:19
 MERGED from [:firebase_auth] D:\Documentos\Core_Business\Proyectos Moviles\Fisioterapia\clientPhysiho\build\firebase_auth\intermediates\library_manifest\debug\AndroidManifest.xml:8:9-12:19
+MERGED from [:firebase_messaging] D:\Documentos\Core_Business\Proyectos Moviles\Fisioterapia\clientPhysiho\build\firebase_messaging\intermediates\library_manifest\debug\AndroidManifest.xml:13:9-17:19
+MERGED from [:firebase_messaging] D:\Documentos\Core_Business\Proyectos Moviles\Fisioterapia\clientPhysiho\build\firebase_messaging\intermediates\library_manifest\debug\AndroidManifest.xml:13:9-17:19
 MERGED from [:firebase_core] D:\Documentos\Core_Business\Proyectos Moviles\Fisioterapia\clientPhysiho\build\firebase_core\intermediates\library_manifest\debug\AndroidManifest.xml:8:9-12:19
 MERGED from [:firebase_core] D:\Documentos\Core_Business\Proyectos Moviles\Fisioterapia\clientPhysiho\build\firebase_core\intermediates\library_manifest\debug\AndroidManifest.xml:8:9-12:19
 MERGED from [com.google.firebase:firebase-analytics-ktx:17.6.0] C:\Users\saulm\.gradle\caches\transforms-2\files-2.1\1f5abc26894844cef729e6c7530541b4\firebase-analytics-ktx-17.6.0\AndroidManifest.xml:8:9-14:19
@@ -583,14 +581,14 @@ MERGED from [com.google.firebase:firebase-auth:19.4.0] C:\Users\saulm\.gradle\ca
 MERGED from [com.google.firebase:firebase-auth:19.4.0] C:\Users\saulm\.gradle\caches\transforms-2\files-2.1\e17e1c98c294b0fa27444c2b8b656166\firebase-auth-19.4.0\AndroidManifest.xml:33:9-39:19
 MERGED from [com.google.firebase:firebase-firestore:21.7.1] C:\Users\saulm\.gradle\caches\transforms-2\files-2.1\00a2b8c2455ad63782a612b0edfeec9e\jetified-firebase-firestore-21.7.1\AndroidManifest.xml:17:9-23:19
 MERGED from [com.google.firebase:firebase-firestore:21.7.1] C:\Users\saulm\.gradle\caches\transforms-2\files-2.1\00a2b8c2455ad63782a612b0edfeec9e\jetified-firebase-firestore-21.7.1\AndroidManifest.xml:17:9-23:19
+MERGED from [com.google.firebase:firebase-datatransport:17.0.3] C:\Users\saulm\.gradle\caches\transforms-2\files-2.1\caebf1427fe4a80f81548ae507338a98\firebase-datatransport-17.0.3\AndroidManifest.xml:25:9-31:19
+MERGED from [com.google.firebase:firebase-datatransport:17.0.3] C:\Users\saulm\.gradle\caches\transforms-2\files-2.1\caebf1427fe4a80f81548ae507338a98\firebase-datatransport-17.0.3\AndroidManifest.xml:25:9-31:19
 MERGED from [com.google.firebase:firebase-iid:20.3.0] C:\Users\saulm\.gradle\caches\transforms-2\files-2.1\ee142d8f3633d4d5661ad93456ca7b03\firebase-iid-20.3.0\AndroidManifest.xml:29:9-35:19
 MERGED from [com.google.firebase:firebase-iid:20.3.0] C:\Users\saulm\.gradle\caches\transforms-2\files-2.1\ee142d8f3633d4d5661ad93456ca7b03\firebase-iid-20.3.0\AndroidManifest.xml:29:9-35:19
 MERGED from [com.google.android.gms:play-services-measurement-api:17.6.0] C:\Users\saulm\.gradle\caches\transforms-2\files-2.1\f03075187a3db9a239413647c5afb670\play-services-measurement-api-17.6.0\AndroidManifest.xml:27:9-33:19
 MERGED from [com.google.android.gms:play-services-measurement-api:17.6.0] C:\Users\saulm\.gradle\caches\transforms-2\files-2.1\f03075187a3db9a239413647c5afb670\play-services-measurement-api-17.6.0\AndroidManifest.xml:27:9-33:19
 MERGED from [com.google.firebase:firebase-installations:16.3.3] C:\Users\saulm\.gradle\caches\transforms-2\files-2.1\7d91b3a02ff199a11c3208b3994a973a\firebase-installations-16.3.3\AndroidManifest.xml:14:9-20:19
 MERGED from [com.google.firebase:firebase-installations:16.3.3] C:\Users\saulm\.gradle\caches\transforms-2\files-2.1\7d91b3a02ff199a11c3208b3994a973a\firebase-installations-16.3.3\AndroidManifest.xml:14:9-20:19
-MERGED from [com.google.firebase:firebase-datatransport:17.0.3] C:\Users\saulm\.gradle\caches\transforms-2\files-2.1\caebf1427fe4a80f81548ae507338a98\firebase-datatransport-17.0.3\AndroidManifest.xml:25:9-31:19
-MERGED from [com.google.firebase:firebase-datatransport:17.0.3] C:\Users\saulm\.gradle\caches\transforms-2\files-2.1\caebf1427fe4a80f81548ae507338a98\firebase-datatransport-17.0.3\AndroidManifest.xml:25:9-31:19
 MERGED from [com.google.firebase:firebase-common:19.3.1] C:\Users\saulm\.gradle\caches\transforms-2\files-2.1\060ccd5c5b72589f8bc653ff8344889c\jetified-firebase-common-19.3.1\AndroidManifest.xml:33:9-37:35
 MERGED from [com.google.firebase:firebase-common:19.3.1] C:\Users\saulm\.gradle\caches\transforms-2\files-2.1\060ccd5c5b72589f8bc653ff8344889c\jetified-firebase-common-19.3.1\AndroidManifest.xml:33:9-37:35
 	android:exported
@@ -600,21 +598,7 @@ MERGED from [com.google.firebase:firebase-common:19.3.1] C:\Users\saulm\.gradle\
 	android:directBootAware
 		ADDED from [com.google.firebase:firebase-common:19.3.1] C:\Users\saulm\.gradle\caches\transforms-2\files-2.1\060ccd5c5b72589f8bc653ff8344889c\jetified-firebase-common-19.3.1\AndroidManifest.xml:35:13-43
 	android:name
-		ADDED from [:firebase_messaging] D:\Documentos\Core_Business\Proyectos Moviles\Fisioterapia\clientPhysiho\build\firebase_messaging\intermediates\library_manifest\debug\AndroidManifest.xml:13:18-89
-meta-data#com.google.firebase.components:io.flutter.plugins.firebasemessaging.FlutterFirebaseAppRegistrar
-ADDED from [:firebase_messaging] D:\Documentos\Core_Business\Proyectos Moviles\Fisioterapia\clientPhysiho\build\firebase_messaging\intermediates\library_manifest\debug\AndroidManifest.xml:14:13-16:85
-	android:value
-		ADDED from [:firebase_messaging] D:\Documentos\Core_Business\Proyectos Moviles\Fisioterapia\clientPhysiho\build\firebase_messaging\intermediates\library_manifest\debug\AndroidManifest.xml:16:17-82
-	android:name
-		ADDED from [:firebase_messaging] D:\Documentos\Core_Business\Proyectos Moviles\Fisioterapia\clientPhysiho\build\firebase_messaging\intermediates\library_manifest\debug\AndroidManifest.xml:15:17-127
-activity#io.flutter.plugins.urllauncher.WebViewActivity
-ADDED from [:url_launcher] D:\Documentos\Core_Business\Proyectos Moviles\Fisioterapia\clientPhysiho\build\url_launcher\intermediates\library_manifest\debug\AndroidManifest.xml:8:9-11:74
-	android:exported
-		ADDED from [:url_launcher] D:\Documentos\Core_Business\Proyectos Moviles\Fisioterapia\clientPhysiho\build\url_launcher\intermediates\library_manifest\debug\AndroidManifest.xml:10:13-37
-	android:theme
-		ADDED from [:url_launcher] D:\Documentos\Core_Business\Proyectos Moviles\Fisioterapia\clientPhysiho\build\url_launcher\intermediates\library_manifest\debug\AndroidManifest.xml:11:13-71
-	android:name
-		ADDED from [:url_launcher] D:\Documentos\Core_Business\Proyectos Moviles\Fisioterapia\clientPhysiho\build\url_launcher\intermediates\library_manifest\debug\AndroidManifest.xml:9:13-74
+		ADDED from [:cloud_firestore] D:\Documentos\Core_Business\Proyectos Moviles\Fisioterapia\clientPhysiho\build\cloud_firestore\intermediates\library_manifest\debug\AndroidManifest.xml:8:18-89
 meta-data#com.google.firebase.components:io.flutter.plugins.firebase.firestore.FlutterFirebaseFirestoreRegistrar
 ADDED from [:cloud_firestore] D:\Documentos\Core_Business\Proyectos Moviles\Fisioterapia\clientPhysiho\build\cloud_firestore\intermediates\library_manifest\debug\AndroidManifest.xml:9:13-11:85
 	android:value
@@ -627,12 +611,36 @@ ADDED from [:firebase_auth] D:\Documentos\Core_Business\Proyectos Moviles\Fisiot
 		ADDED from [:firebase_auth] D:\Documentos\Core_Business\Proyectos Moviles\Fisioterapia\clientPhysiho\build\firebase_auth\intermediates\library_manifest\debug\AndroidManifest.xml:11:17-82
 	android:name
 		ADDED from [:firebase_auth] D:\Documentos\Core_Business\Proyectos Moviles\Fisioterapia\clientPhysiho\build\firebase_auth\intermediates\library_manifest\debug\AndroidManifest.xml:10:17-124
+service#io.flutter.plugins.firebasemessaging.FlutterFirebaseMessagingService
+ADDED from [:firebase_messaging] D:\Documentos\Core_Business\Proyectos Moviles\Fisioterapia\clientPhysiho\build\firebase_messaging\intermediates\library_manifest\debug\AndroidManifest.xml:8:9-12:19
+	android:name
+		ADDED from [:firebase_messaging] D:\Documentos\Core_Business\Proyectos Moviles\Fisioterapia\clientPhysiho\build\firebase_messaging\intermediates\library_manifest\debug\AndroidManifest.xml:8:18-101
+intent-filter#action:name:com.google.firebase.MESSAGING_EVENT
+ADDED from [:firebase_messaging] D:\Documentos\Core_Business\Proyectos Moviles\Fisioterapia\clientPhysiho\build\firebase_messaging\intermediates\library_manifest\debug\AndroidManifest.xml:9:13-11:29
+action#com.google.firebase.MESSAGING_EVENT
+ADDED from [:firebase_messaging] D:\Documentos\Core_Business\Proyectos Moviles\Fisioterapia\clientPhysiho\build\firebase_messaging\intermediates\library_manifest\debug\AndroidManifest.xml:10:17-78
+	android:name
+		ADDED from [:firebase_messaging] D:\Documentos\Core_Business\Proyectos Moviles\Fisioterapia\clientPhysiho\build\firebase_messaging\intermediates\library_manifest\debug\AndroidManifest.xml:10:25-75
+meta-data#com.google.firebase.components:io.flutter.plugins.firebasemessaging.FlutterFirebaseAppRegistrar
+ADDED from [:firebase_messaging] D:\Documentos\Core_Business\Proyectos Moviles\Fisioterapia\clientPhysiho\build\firebase_messaging\intermediates\library_manifest\debug\AndroidManifest.xml:14:13-16:85
+	android:value
+		ADDED from [:firebase_messaging] D:\Documentos\Core_Business\Proyectos Moviles\Fisioterapia\clientPhysiho\build\firebase_messaging\intermediates\library_manifest\debug\AndroidManifest.xml:16:17-82
+	android:name
+		ADDED from [:firebase_messaging] D:\Documentos\Core_Business\Proyectos Moviles\Fisioterapia\clientPhysiho\build\firebase_messaging\intermediates\library_manifest\debug\AndroidManifest.xml:15:17-127
 meta-data#com.google.firebase.components:io.flutter.plugins.firebase.core.FlutterFirebaseCoreRegistrar
 ADDED from [:firebase_core] D:\Documentos\Core_Business\Proyectos Moviles\Fisioterapia\clientPhysiho\build\firebase_core\intermediates\library_manifest\debug\AndroidManifest.xml:9:13-11:85
 	android:value
 		ADDED from [:firebase_core] D:\Documentos\Core_Business\Proyectos Moviles\Fisioterapia\clientPhysiho\build\firebase_core\intermediates\library_manifest\debug\AndroidManifest.xml:11:17-82
 	android:name
 		ADDED from [:firebase_core] D:\Documentos\Core_Business\Proyectos Moviles\Fisioterapia\clientPhysiho\build\firebase_core\intermediates\library_manifest\debug\AndroidManifest.xml:10:17-124
+activity#io.flutter.plugins.urllauncher.WebViewActivity
+ADDED from [:url_launcher] D:\Documentos\Core_Business\Proyectos Moviles\Fisioterapia\clientPhysiho\build\url_launcher\intermediates\library_manifest\debug\AndroidManifest.xml:8:9-11:74
+	android:exported
+		ADDED from [:url_launcher] D:\Documentos\Core_Business\Proyectos Moviles\Fisioterapia\clientPhysiho\build\url_launcher\intermediates\library_manifest\debug\AndroidManifest.xml:10:13-37
+	android:theme
+		ADDED from [:url_launcher] D:\Documentos\Core_Business\Proyectos Moviles\Fisioterapia\clientPhysiho\build\url_launcher\intermediates\library_manifest\debug\AndroidManifest.xml:11:13-71
+	android:name
+		ADDED from [:url_launcher] D:\Documentos\Core_Business\Proyectos Moviles\Fisioterapia\clientPhysiho\build\url_launcher\intermediates\library_manifest\debug\AndroidManifest.xml:9:13-74
 meta-data#com.google.firebase.components:com.google.firebase.analytics.ktx.FirebaseAnalyticsKtxRegistrar
 ADDED from [com.google.firebase:firebase-analytics-ktx:17.6.0] C:\Users\saulm\.gradle\caches\transforms-2\files-2.1\1f5abc26894844cef729e6c7530541b4\firebase-analytics-ktx-17.6.0\AndroidManifest.xml:11:13-13:85
 	android:value
@@ -687,12 +695,12 @@ MERGED from [com.google.android.gms:play-services-maps:17.0.0] C:\Users\saulm\.g
 MERGED from [com.google.android.gms:play-services-maps:17.0.0] C:\Users\saulm\.gradle\caches\transforms-2\files-2.1\af25e9045506d4953d742dddeecabb8e\play-services-maps-17.0.0\AndroidManifest.xml:23:5-79
 MERGED from [com.google.firebase:firebase-iid:20.3.0] C:\Users\saulm\.gradle\caches\transforms-2\files-2.1\ee142d8f3633d4d5661ad93456ca7b03\firebase-iid-20.3.0\AndroidManifest.xml:22:5-79
 MERGED from [com.google.firebase:firebase-iid:20.3.0] C:\Users\saulm\.gradle\caches\transforms-2\files-2.1\ee142d8f3633d4d5661ad93456ca7b03\firebase-iid-20.3.0\AndroidManifest.xml:22:5-79
-MERGED from [com.google.android.gms:play-services-cloud-messaging:16.0.0] C:\Users\saulm\.gradle\caches\transforms-2\files-2.1\49d8c9062eb3740aaf18f7d73a59ae74\play-services-cloud-messaging-16.0.0\AndroidManifest.xml:7:5-79
-MERGED from [com.google.android.gms:play-services-cloud-messaging:16.0.0] C:\Users\saulm\.gradle\caches\transforms-2\files-2.1\49d8c9062eb3740aaf18f7d73a59ae74\play-services-cloud-messaging-16.0.0\AndroidManifest.xml:7:5-79
 MERGED from [com.google.android.gms:play-services-measurement-api:17.6.0] C:\Users\saulm\.gradle\caches\transforms-2\files-2.1\f03075187a3db9a239413647c5afb670\play-services-measurement-api-17.6.0\AndroidManifest.xml:23:5-79
 MERGED from [com.google.android.gms:play-services-measurement-api:17.6.0] C:\Users\saulm\.gradle\caches\transforms-2\files-2.1\f03075187a3db9a239413647c5afb670\play-services-measurement-api-17.6.0\AndroidManifest.xml:23:5-79
 MERGED from [com.google.firebase:firebase-installations:16.3.3] C:\Users\saulm\.gradle\caches\transforms-2\files-2.1\7d91b3a02ff199a11c3208b3994a973a\firebase-installations-16.3.3\AndroidManifest.xml:10:5-79
 MERGED from [com.google.firebase:firebase-installations:16.3.3] C:\Users\saulm\.gradle\caches\transforms-2\files-2.1\7d91b3a02ff199a11c3208b3994a973a\firebase-installations-16.3.3\AndroidManifest.xml:10:5-79
+MERGED from [com.google.android.gms:play-services-cloud-messaging:16.0.0] C:\Users\saulm\.gradle\caches\transforms-2\files-2.1\49d8c9062eb3740aaf18f7d73a59ae74\play-services-cloud-messaging-16.0.0\AndroidManifest.xml:7:5-79
+MERGED from [com.google.android.gms:play-services-cloud-messaging:16.0.0] C:\Users\saulm\.gradle\caches\transforms-2\files-2.1\49d8c9062eb3740aaf18f7d73a59ae74\play-services-cloud-messaging-16.0.0\AndroidManifest.xml:7:5-79
 MERGED from [com.google.android.gms:play-services-measurement:17.6.0] C:\Users\saulm\.gradle\caches\transforms-2\files-2.1\4f5ff8f75122c45887f276d4a13908eb\play-services-measurement-17.6.0\AndroidManifest.xml:24:5-79
 MERGED from [com.google.android.gms:play-services-measurement:17.6.0] C:\Users\saulm\.gradle\caches\transforms-2\files-2.1\4f5ff8f75122c45887f276d4a13908eb\play-services-measurement-17.6.0\AndroidManifest.xml:24:5-79
 MERGED from [com.google.android.gms:play-services-measurement-impl:17.6.0] C:\Users\saulm\.gradle\caches\transforms-2\files-2.1\166ffd5db9fdd7b073f29fc84f721453\play-services-measurement-impl-17.6.0\AndroidManifest.xml:24:5-79
@@ -743,12 +751,18 @@ ADDED from [com.google.android.gms:play-services-auth:16.0.1] C:\Users\saulm\.gr
 		ADDED from [com.google.android.gms:play-services-auth:16.0.1] C:\Users\saulm\.gradle\caches\transforms-2\files-2.1\0d54235d6ad061ac7933b33ab43d2e4a\jetified-play-services-auth-16.0.1\AndroidManifest.xml:36:13-107
 	android:name
 		ADDED from [com.google.android.gms:play-services-auth:16.0.1] C:\Users\saulm\.gradle\caches\transforms-2\files-2.1\0d54235d6ad061ac7933b33ab43d2e4a\jetified-play-services-auth-16.0.1\AndroidManifest.xml:34:13-89
+meta-data#com.google.firebase.components:com.google.firebase.datatransport.TransportRegistrar
+ADDED from [com.google.firebase:firebase-datatransport:17.0.3] C:\Users\saulm\.gradle\caches\transforms-2\files-2.1\caebf1427fe4a80f81548ae507338a98\firebase-datatransport-17.0.3\AndroidManifest.xml:28:13-30:85
+	android:value
+		ADDED from [com.google.firebase:firebase-datatransport:17.0.3] C:\Users\saulm\.gradle\caches\transforms-2\files-2.1\caebf1427fe4a80f81548ae507338a98\firebase-datatransport-17.0.3\AndroidManifest.xml:30:17-82
+	android:name
+		ADDED from [com.google.firebase:firebase-datatransport:17.0.3] C:\Users\saulm\.gradle\caches\transforms-2\files-2.1\caebf1427fe4a80f81548ae507338a98\firebase-datatransport-17.0.3\AndroidManifest.xml:29:17-115
 uses-permission#android.permission.WAKE_LOCK
 ADDED from [com.google.firebase:firebase-iid:20.3.0] C:\Users\saulm\.gradle\caches\transforms-2\files-2.1\ee142d8f3633d4d5661ad93456ca7b03\firebase-iid-20.3.0\AndroidManifest.xml:24:5-68
-MERGED from [com.google.android.gms:play-services-cloud-messaging:16.0.0] C:\Users\saulm\.gradle\caches\transforms-2\files-2.1\49d8c9062eb3740aaf18f7d73a59ae74\play-services-cloud-messaging-16.0.0\AndroidManifest.xml:9:5-68
-MERGED from [com.google.android.gms:play-services-cloud-messaging:16.0.0] C:\Users\saulm\.gradle\caches\transforms-2\files-2.1\49d8c9062eb3740aaf18f7d73a59ae74\play-services-cloud-messaging-16.0.0\AndroidManifest.xml:9:5-68
 MERGED from [com.google.android.gms:play-services-measurement-api:17.6.0] C:\Users\saulm\.gradle\caches\transforms-2\files-2.1\f03075187a3db9a239413647c5afb670\play-services-measurement-api-17.6.0\AndroidManifest.xml:24:5-68
 MERGED from [com.google.android.gms:play-services-measurement-api:17.6.0] C:\Users\saulm\.gradle\caches\transforms-2\files-2.1\f03075187a3db9a239413647c5afb670\play-services-measurement-api-17.6.0\AndroidManifest.xml:24:5-68
+MERGED from [com.google.android.gms:play-services-cloud-messaging:16.0.0] C:\Users\saulm\.gradle\caches\transforms-2\files-2.1\49d8c9062eb3740aaf18f7d73a59ae74\play-services-cloud-messaging-16.0.0\AndroidManifest.xml:9:5-68
+MERGED from [com.google.android.gms:play-services-cloud-messaging:16.0.0] C:\Users\saulm\.gradle\caches\transforms-2\files-2.1\49d8c9062eb3740aaf18f7d73a59ae74\play-services-cloud-messaging-16.0.0\AndroidManifest.xml:9:5-68
 MERGED from [com.google.android.gms:play-services-measurement:17.6.0] C:\Users\saulm\.gradle\caches\transforms-2\files-2.1\4f5ff8f75122c45887f276d4a13908eb\play-services-measurement-17.6.0\AndroidManifest.xml:25:5-68
 MERGED from [com.google.android.gms:play-services-measurement:17.6.0] C:\Users\saulm\.gradle\caches\transforms-2\files-2.1\4f5ff8f75122c45887f276d4a13908eb\play-services-measurement-17.6.0\AndroidManifest.xml:25:5-68
 MERGED from [com.google.android.gms:play-services-measurement-impl:17.6.0] C:\Users\saulm\.gradle\caches\transforms-2\files-2.1\166ffd5db9fdd7b073f29fc84f721453\play-services-measurement-impl-17.6.0\AndroidManifest.xml:25:5-68
@@ -795,12 +809,6 @@ ADDED from [com.google.firebase:firebase-installations:16.3.3] C:\Users\saulm\.g
 		ADDED from [com.google.firebase:firebase-installations:16.3.3] C:\Users\saulm\.gradle\caches\transforms-2\files-2.1\7d91b3a02ff199a11c3208b3994a973a\firebase-installations-16.3.3\AndroidManifest.xml:19:17-82
 	android:name
 		ADDED from [com.google.firebase:firebase-installations:16.3.3] C:\Users\saulm\.gradle\caches\transforms-2\files-2.1\7d91b3a02ff199a11c3208b3994a973a\firebase-installations-16.3.3\AndroidManifest.xml:18:17-127
-meta-data#com.google.firebase.components:com.google.firebase.datatransport.TransportRegistrar
-ADDED from [com.google.firebase:firebase-datatransport:17.0.3] C:\Users\saulm\.gradle\caches\transforms-2\files-2.1\caebf1427fe4a80f81548ae507338a98\firebase-datatransport-17.0.3\AndroidManifest.xml:28:13-30:85
-	android:value
-		ADDED from [com.google.firebase:firebase-datatransport:17.0.3] C:\Users\saulm\.gradle\caches\transforms-2\files-2.1\caebf1427fe4a80f81548ae507338a98\firebase-datatransport-17.0.3\AndroidManifest.xml:30:17-82
-	android:name
-		ADDED from [com.google.firebase:firebase-datatransport:17.0.3] C:\Users\saulm\.gradle\caches\transforms-2\files-2.1\caebf1427fe4a80f81548ae507338a98\firebase-datatransport-17.0.3\AndroidManifest.xml:29:17-115
 provider#com.google.firebase.provider.FirebaseInitProvider
 ADDED from [com.google.firebase:firebase-common:19.3.1] C:\Users\saulm\.gradle\caches\transforms-2\files-2.1\060ccd5c5b72589f8bc653ff8344889c\jetified-firebase-common-19.3.1\AndroidManifest.xml:26:9-31:39
 	android:authorities

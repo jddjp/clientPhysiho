@@ -27,9 +27,16 @@ class _CheckoutViewState extends State<CheckoutView> {
           crossAxisAlignment: CrossAxisAlignment.center,
           mainAxisAlignment: MainAxisAlignment.center,
           children: [
-            Image.asset("assets/images/progress.gif", width: 120,),
-            text("¡Estamos creando tu pedido!", isCentered: true, fontWeight: fontSemibold, fontSize: textSizeLargeMedium),
-            text("Espera por favor...", maxLine: null, isCentered: true, textColor: textSecondaryColor)
+            Image.asset(
+              "assets/images/progress.gif",
+              width: 120,
+            ),
+            text("¡Estamos creando tu pedido!",
+                isCentered: true,
+                fontWeight: fontSemibold,
+                fontSize: textSizeLargeMedium),
+            text("Espera por favor...",
+                maxLine: null, isCentered: true, textColor: textSecondaryColor)
           ],
         ),
       ),

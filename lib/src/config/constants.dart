@@ -1,7 +1,7 @@
 import 'package:flutter/material.dart';
 import 'package:clientPhysiho/src/helpers/size_helper.dart';
 
-const primaryColor = Color(0xff93e5e3);
+const primaryColor = Color(0xff2b58a5);
 const pantoneblueColor = Color(0xff00a7ff);
 
 /*fonts*/
@@ -70,3 +70,17 @@ const DELIVERY_ZONE1 = 2500.0;
 const DELIVERY_ZONE2 = 4000.0;
 const DELIVERY_ZONE3 = 6000.0;
 const DELIVERY_ZONE4 = 7500.0;
+
+const DISCOUNT_SUBTOTAL = 'order';
+const DISCOUNT_DELIVERY = 'delivery';
+const DISCOUNT_TOTAL = 'default';
+
+const WEEK_DAYS = {
+  "1": "monday",
+  "2": "tuesday",
+  "3": "wednesday",
+  "4": "thursday",
+  "5": "friday",
+  "6": "saturday",
+  "7": "sunday"
+};
