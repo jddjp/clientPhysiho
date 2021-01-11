@@ -28,10 +28,10 @@ class DrawerView extends StatelessWidget {
             )),
           ),
           (context.watch<LoginProvider>().isLoggedIn() &&
-                  context.watch<LoginProvider>().currentUser['name'] != null
+                  context.watch<LoginProvider>().currentUser['nombre'] != null
               ? ListTile(
-                  title:
-                      Text(context.watch<LoginProvider>().currentUser['name']),
+                  title: Text(
+                      context.watch<LoginProvider>().currentUser['nombre']),
                   leading: Icon(Icons.account_circle_outlined,
                       color: appColorPrimary),
                 )
