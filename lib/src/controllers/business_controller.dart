@@ -14,15 +14,10 @@ class BusinessController extends ControllerMVC {
 
   void asyncData(String businessId) async {
     DocumentReference businessRef =
-        FirebaseFirestore.instance.collection('businesses').doc(businessId);
-    QuerySnapshot sectionsSnapshot = await FirebaseFirestore.instance
-        .collection('sections')
-        .where('business', isEqualTo: businessRef)
-        .orderBy('index')
-        .get();
+        FirebaseFirestore.instance.collection('services').doc(businessId);
     QuerySnapshot itemsSnapshot = await FirebaseFirestore.instance
         .collection('items')
-        .where('business', isEqualTo: businessRef)
+        .where('services', isEqualTo: businessRef)
         .orderBy('index')
         .get();
 
@@ -33,14 +28,11 @@ class BusinessController extends ControllerMVC {
     Map<String, List> _itemsMap = {};
     itemsSnapshot.docs.forEach((doc) {
       Map<String, dynamic> item = doc.data();
-      if (_itemsMap[item['section'].id] == null) {
-        _itemsMap[item['section'].id] = new List();
-      }
-      _itemsMap[item['section'].id].add({...item, "id": doc.id});
+
+      _itemsMap[item['id']].add({...item, "id": doc.id});
     });
 
     setState(() {
-      sections = sectionsSnapshot.docs;
       items = _itemsMap;
       isLoading = false;
     });

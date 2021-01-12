@@ -7,3 +7,7 @@ const food_ic_apple = "assets/images/food_ic_apple.svg";
 const ic_stopwatch = "assets/images/stopwatch.png";
 const ic_item_default = "assets/images/stopwatch.png";
 const food_ic_map = "assets/images/food/food_ic_map.png";
+const db7_ic_home = "assets/images/db7_ic_home.svg";
+const db7_ic_leaf = "assets/images/db7_ic_leaf.svg";
+const db7_ic_chat = "assets/images/db7_ic_chat.svg";
+const db7_ic_user = "assets/images/db7_ic_user.svg";

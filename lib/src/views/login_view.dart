@@ -58,7 +58,7 @@ class _LoginViewState extends State<LoginView> {
                 image: DecorationImage(
                     colorFilter: new ColorFilter.mode(
                         Colors.black.withOpacity(0.8), BlendMode.dstATop),
-                    image: new AssetImage('assets/images/backgroundLogin.png'),
+                    image: new AssetImage('assets/images/login.png'),
                     fit: BoxFit.fitHeight),
               ),
             ),

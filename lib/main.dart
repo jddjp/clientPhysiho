@@ -255,9 +255,6 @@ class _PhysihoAppState extends State<PhysihoApp> {
                 print("==============LOCATION_VIEW=====================");
                 return LocationView();
                 // if orderInProgress == logged_out then redirect to cart_view
-              } else if (_prefs.getBool("cartWithItems") == true) {
-                print("==============CART_VIEW=====================");
-                return CartView();
               } else {
                 // Go to Home
                 print(_prefs.getBool('locationPermission'));

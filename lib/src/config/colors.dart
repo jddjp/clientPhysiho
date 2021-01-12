@@ -50,3 +50,6 @@ const food_ShadowColor = Color(0X95E9EBF0);
 const food_ShadowColors = Color(0XFFE2E2E2);
 const food_orange_light = Color(0xFFFDF8F2);
 const login_colorPrimary = Color(0xFFBEEDEA);
+const dbShadowColor = Color(0x95E9EBF0);
+const db7_textColorSecondary = Color(0xFF757575);
+const db7_colorPrimary = Color(0xFF19D077);
