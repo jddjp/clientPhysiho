@@ -1,3 +1,4 @@
+import 'package:clientPhysiho/src/views/complete_profile_view.dart';
 import 'package:flutter/material.dart';
 import 'package:clientPhysiho/src/config/colors.dart';
 import 'package:clientPhysiho/src/helpers/extension_helper.dart';
@@ -34,6 +35,9 @@ class DrawerView extends StatelessWidget {
                       context.watch<LoginProvider>().currentUser['nombre']),
                   leading: Icon(Icons.account_circle_outlined,
                       color: appColorPrimary),
+                  onTap: () {
+                    launchScreen(context, CompleteProfileView.routeName);
+                  },
                 )
               : ListTile(
                   title: Text("Iniciar sesión"),

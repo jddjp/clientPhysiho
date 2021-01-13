@@ -5,14 +5,14 @@ import 'package:mvc_pattern/mvc_pattern.dart';
 class BusinessController extends ControllerMVC {
   bool isLoading = true;
   Map<String, dynamic> business;
-  List<QueryDocumentSnapshot> sections;
-  Map<String, List> items;
+  List<QueryDocumentSnapshot> items;
 
   BusinessController(String businessId) {
     asyncData(businessId);
   }
 
   void asyncData(String businessId) async {
+    print(businessId);
     DocumentReference businessRef =
         FirebaseFirestore.instance.collection('services').doc(businessId);
     QuerySnapshot itemsSnapshot = await FirebaseFirestore.instance
@@ -25,15 +25,8 @@ class BusinessController extends ControllerMVC {
     DocumentSnapshot businessDoc = await businessRef.get();
     business = {...businessDoc.data(), "id": businessDoc.id};
 
-    Map<String, List> _itemsMap = {};
-    itemsSnapshot.docs.forEach((doc) {
-      Map<String, dynamic> item = doc.data();
-
-      _itemsMap[item['id']].add({...item, "id": doc.id});
-    });
-
     setState(() {
-      items = _itemsMap;
+      items = itemsSnapshot.docs;
       isLoading = false;
     });
   }

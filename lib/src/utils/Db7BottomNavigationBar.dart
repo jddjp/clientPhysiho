@@ -307,8 +307,6 @@ class _BottomNavigationTile extends StatelessWidget {
         size = (flex * 1000.0).round();
         break;
     }
-    print('this');
-    print(onTap);
 
     return Expanded(
       flex: size,

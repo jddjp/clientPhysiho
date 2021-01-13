@@ -11,3 +11,4 @@ const db7_ic_home = "assets/images/db7_ic_home.svg";
 const db7_ic_leaf = "assets/images/db7_ic_leaf.svg";
 const db7_ic_chat = "assets/images/db7_ic_chat.svg";
 const db7_ic_user = "assets/images/db7_ic_user.svg";
+const db7_ic_calendar = "assets/images/iconmonstr-calendar-4.svg";

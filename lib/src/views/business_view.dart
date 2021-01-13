@@ -49,11 +49,11 @@ class _BusinessViewState extends StateMVC<BusinessView> {
   Widget build(BuildContext context) {
     double expandHeight = MediaQuery.of(context).size.height * 0.3;
     var width = MediaQuery.of(context).size.width;
+    print('Business');
     print(_con.business['name']);
+    print(_con.business['logo']['url']);
 
     return Scaffold(
-      backgroundColor: appLayout_background,
-      drawer: DrawerView(),
       bottomNavigationBar: Container(
         decoration: BoxDecoration(boxShadow: [
           BoxShadow(
@@ -86,6 +86,106 @@ class _BusinessViewState extends StateMVC<BusinessView> {
           onTap: _onItemTapped,
           type: Db7BottomNavigationBarType.fixed,
         ),
+      ),
+      body: Stack(
+        alignment: Alignment.bottomLeft,
+        children: [
+          Container(
+            decoration: BoxDecoration(
+              color: const Color(0xff7c94b6),
+              backgroundBlendMode: BlendMode.color,
+              image: DecorationImage(
+                  colorFilter: new ColorFilter.mode(
+                      Colors.black.withOpacity(0.8), BlendMode.dstATop),
+                  image: new AssetImage('assets/images/fondoph.png'),
+                  fit: BoxFit.fitHeight),
+            ),
+          ),
+          LoadingOverlay(
+            isLoading: _con.isLoading,
+            child: _con.business == null
+                ? Container()
+                : NestedScrollView(
+                    headerSliverBuilder:
+                        (BuildContext context, bool innerBoxScrolled) {
+                      changeStatusColor(
+                          innerBoxScrolled ? Colors.white : Colors.transparent);
+                      return <Widget>[
+                        SliverAppBar(
+                          expandedHeight: expandHeight,
+                          floating: false,
+                          forceElevated: innerBoxScrolled,
+                          pinned: true,
+                          titleSpacing: 0,
+                          backgroundColor: primaryColor,
+                          title: Container(
+                            height: 60,
+                            child: Container(
+                              width: width,
+                              child: Row(
+                                mainAxisAlignment:
+                                    MainAxisAlignment.spaceBetween,
+                                children: <Widget>[
+                                  innerBoxScrolled == true
+                                      ? text(_con.business['name'],
+                                          fontWeight: fontSemibold,
+                                          fontSize: textSizeNormal)
+                                      : Container(),
+                                ],
+                              ),
+                            ),
+                          ),
+                          flexibleSpace: FlexibleSpaceBar(
+                            background: Container(
+                              child: CachedNetworkImage(
+                                  imageUrl: _con.business['cover'] != ""
+                                      ? _con.business['cover']['url']
+                                      : 'https://firebasestorage.googleapis.com/v0/b/hermez-delivery.appspot.com/o/businesses%2Flogo.png?alt=media&token=8f1908d5-0a1d-4cd7-9e68-086a4f63fbf0',
+                                  height: expandHeight,
+                                  fit: BoxFit.cover),
+                            ),
+                            collapseMode: CollapseMode.pin,
+                          ),
+                        ),
+                      ];
+                    },
+                    body: Stack(
+                      children: [
+                        Padding(
+                          padding: EdgeInsets.all(14),
+                          child: Column(
+                            children: [
+                              Row(
+                                mainAxisAlignment:
+                                    MainAxisAlignment.spaceBetween,
+                                children: [
+                                  text(_con.business['name'],
+                                      textColor: Colors.black)
+                                ],
+                              ),
+                              SizedBox(height: spacing_standard),
+                              _con.items != null
+                                  ? ListView.builder(
+                                      primary: false,
+                                      scrollDirection: Axis.vertical,
+                                      shrinkWrap: true,
+                                      itemCount: _con.items.length,
+                                      itemBuilder:
+                                          (BuildContext context, int index) {
+                                        return ItemWidget(item: {
+                                          ..._con.items[index].data(),
+                                          "id": _con.items[index].id,
+                                        });
+                                      })
+                                  : Container()
+                            ],
+                          ),
+                        ),
+                      ],
+                    ),
+                  ),
+          ),
+        ],
       ),
     );
   }

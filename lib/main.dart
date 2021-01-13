@@ -1,3 +1,4 @@
+import 'package:clientPhysiho/src/views/service_view.dart';
 import 'package:firebase_messaging/firebase_messaging.dart';
 import 'package:flutter/material.dart';
 
@@ -154,9 +155,9 @@ class _PhysihoAppState extends State<PhysihoApp> {
                 builder: (_) => DepartmentView(department: args));
             break;
           // business view
-          case BusinessView.routeName:
+          case ServiceView.routeName:
             return MaterialPageRoute(
-                builder: (_) => BusinessView(businessId: args));
+                builder: (_) => ServiceView(serviceId: args));
             break;
           // item view
           case ItemView.routeName:
