@@ -49,44 +49,8 @@ class _ServiceViewState extends StateMVC<ServiceView> {
   Widget build(BuildContext context) {
     double expandHeight = MediaQuery.of(context).size.height * 0.3;
     var width = MediaQuery.of(context).size.width;
-    print('Business');
-    print(_con.service['name']);
-    print(_con.service['logo']['url']);
-
+    changeStatusColor(pantoneTwo);
     return Scaffold(
-      bottomNavigationBar: Container(
-        decoration: BoxDecoration(boxShadow: [
-          BoxShadow(
-              color: dbShadowColor,
-              offset: Offset.fromDirection(3, 1),
-              spreadRadius: 1,
-              blurRadius: 5)
-        ]),
-        child: Db7BottomNavigationBar(
-          items: const <Db7BottomNavigationBarItem>[
-            Db7BottomNavigationBarItem(
-                icon: db7_ic_home,
-                title: Text("Inicio", style: TextStyle(fontSize: 16))),
-            Db7BottomNavigationBarItem(
-                icon: db7_ic_leaf,
-                title: Text("Service", style: TextStyle(fontSize: 16))),
-            Db7BottomNavigationBarItem(
-                icon: db7_ic_chat,
-                title: Text("Notice", style: TextStyle(fontSize: 16))),
-            Db7BottomNavigationBarItem(
-                icon: db7_ic_user,
-                title: Text("Perfil", style: TextStyle(fontSize: 16))),
-          ],
-          currentIndex: _selectedIndex,
-          unselectedIconTheme:
-              IconThemeData(color: db7_textColorSecondary, size: 24),
-          selectedIconTheme: IconThemeData(color: db7_colorPrimary, size: 24),
-          unselectedItemColor: db7_textColorSecondary,
-          selectedItemColor: db7_colorPrimary,
-          onTap: _onItemTapped,
-          type: Db7BottomNavigationBarType.fixed,
-        ),
-      ),
       body: Stack(
         alignment: Alignment.bottomLeft,
         children: [

@@ -29,7 +29,7 @@ class _HomeServiceViewState extends State<HomeServiceView> {
   @override
   Widget build(BuildContext context) {
     // Change status bar color
-    changeStatusColor(pantoneThree);
+    changeStatusColor(pantoneTwo);
     return Scaffold(
       body: Stack(
         children: <Widget>[
@@ -57,7 +57,7 @@ class _HomeServiceViewState extends State<HomeServiceView> {
                         child: new Container(
                             height: (MediaQuery.of(context).size.height * 0.1),
                             width: MediaQuery.of(context).size.width,
-                            color: pantoneThree),
+                            color: pantoneTwo),
                       ),
                       Container(
                         width: MediaQuery.of(context).size.width,
