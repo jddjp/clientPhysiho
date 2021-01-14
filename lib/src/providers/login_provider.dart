@@ -134,12 +134,12 @@ class LoginProvider with ChangeNotifier {
       }
       // Save new user
       await FirebaseFirestore.instance
-          .collection('users')
+          .collection('customers')
           .doc(_userData.uid)
           .set({
-        'name': _userData.displayName,
-        'email': _userData.email,
-        'phone': phoneNumber,
+        'nombre': _userData.displayName,
+        'correo': _userData.email,
+        'telefono': phoneNumber,
         'photo': {'path': null, 'url': _userData.photoURL},
         'active': true,
         'completed': false, // We required that user complete their profile
@@ -314,11 +314,11 @@ class LoginProvider with ChangeNotifier {
 
     // Get logged user data
     if (_prefs.getString('uid') != null) {
-      DocumentSnapshot userDoc = await FirebaseFirestore.instance.collection('customers').doc(_prefs.getString('uid')).get();
-      _currentUser = {
-        ...userDoc.data(),
-        "id": userDoc.id
-      };
+      DocumentSnapshot userDoc = await FirebaseFirestore.instance
+          .collection('customers')
+          .doc(_prefs.getString('uid'))
+          .get();
+      _currentUser = {...userDoc.data(), "id": userDoc.id};
       _loggedIn = true;
     }
 
@@ -347,11 +347,11 @@ class LoginProvider with ChangeNotifier {
     _prefs.setString('device_token', token);
 
     await FirebaseFirestore.instance
-      .collection('customers')
-      .doc(userId)
-      .update({
-        'tokens': FieldValue.arrayUnion([token]),
-      });
+        .collection('customers')
+        .doc(userId)
+        .update({
+      'tokens': FieldValue.arrayUnion([token]),
+    });
   }
 
   // Close sessión
