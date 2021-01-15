@@ -49,7 +49,7 @@ class _HomeViewState extends State<HomeView> {
   final List<Widget> _children = [
     HomeServiceView(),
     DrawerView(),
-    LoginView(),
+    // LoginView(),
     CompleteProfileView()
   ];
 
