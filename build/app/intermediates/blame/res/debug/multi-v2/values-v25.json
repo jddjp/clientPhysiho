@@ -1,10 +1,10 @@
 {
     "logs": [
         {
-            "outputFile": "D:\\Documentos\\Core_Business\\Proyectos Moviles\\Fisioterapia\\clientPhysiho\\build\\app\\intermediates\\incremental\\mergeDebugResources\\merged.dir\\values-v25\\values-v25.xml",
+            "outputFile": "C:\\Users\\pam_9\\OneDrive\\Documentos\\Trabajo\\clientphysiho\\build\\app\\intermediates\\incremental\\mergeDebugResources\\merged.dir\\values-v25\\values-v25.xml",
             "map": [
                 {
-                    "source": "C:\\Users\\saulm\\.gradle\\caches\\transforms-2\\files-2.1\\e5977849638f4db14ee09096a5a3147e\\appcompat-1.1.0\\res\\values-v25\\values-v25.xml",
+                    "source": "C:\\Users\\pam_9\\.gradle\\caches\\transforms-2\\files-2.1\\e5977849638f4db14ee09096a5a3147e\\appcompat-1.1.0\\res\\values-v25\\values-v25.xml",
                     "from": {
                         "startLines": "2,3,4,6",
                         "startColumns": "4,4,4,4",

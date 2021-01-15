@@ -8,6 +8,13 @@ import 'package:loading_overlay/loading_overlay.dart';
 import 'package:provider/provider.dart';
 import 'package:clientPhysiho/src/helpers/widget_helper.dart';
 
+import 'package:clientPhysiho/src/config/colors.dart';
+import 'package:clientPhysiho/src/helpers/extension_helper.dart';
+import 'package:clientPhysiho/src/providers/login_provider.dart';
+import 'package:clientPhysiho/src/views/login_view.dart';
+import '../config/colors.dart';
+import '../providers/login_provider.dart';
+
 class CompleteProfileView extends StatefulWidget {
   static const routeName = 'complete_profile';
 
@@ -26,92 +33,131 @@ class _CompleteProfileViewState extends State<CompleteProfileView> {
   @override
   Widget build(BuildContext context) {
     return Scaffold(
-      body: LoadingOverlay(
-        isLoading: context.watch<LoginProvider>().currentUser == null,
-        child: SafeArea(
-          child: SizedBox(
-            width: double.infinity,
-            child: Padding(
-              padding: EdgeInsets.symmetric(horizontal: spacing_standard_new),
-              child: SingleChildScrollView(
-                child: Column(
-                  children: [
-                    SizedBox(height: 40.0),
-                    text("Completar perfil", fontSize: textSizeNormal),
-                    Text(
-                      "Completa tus datos para poder continuar",
-                      textAlign: TextAlign.center,
-                    ),
-                    SizedBox(height: 45.0),
-                    Form(
-                      key: _formKey,
+      body: (context.watch<LoginProvider>().isLoggedIn() &&
+              context.watch<LoginProvider>().currentUser['nombre'] != null
+          ? LoadingOverlay(
+              isLoading: context.watch<LoginProvider>().currentUser == null,
+              child: SafeArea(
+                child: SizedBox(
+                  width: double.infinity,
+                  child: Padding(
+                    padding:
+                        EdgeInsets.symmetric(horizontal: spacing_standard_new),
+                    child: SingleChildScrollView(
                       child: Column(
                         children: [
-                          buildNameFormField(context
-                              .watch<LoginProvider>()
-                              .currentUser['nombre']),
-                          SizedBox(height: spacing_large),
-                          buildPhoneNumberFormField(context
-                              .watch<LoginProvider>()
-                              .currentUser['telefono']),
-                          SizedBox(height: spacing_large),
-                          buildEmailFormField(context
-                              .watch<LoginProvider>()
-                              .currentUser['correo']),
                           SizedBox(height: 40.0),
-                          DefaultButton(
-                            text: "Continuar",
-                            press: () async {
-                              if (_formKey.currentState.validate()) {
-                                _formKey.currentState.save();
-
-                                      await FirebaseFirestore.instance.collection('customers')
-                                        .doc(context.read<LoginProvider>().currentUser['id'])
-                                        .update({
-                                          'nombre': name,
-                                          'telefono': phoneNumber,
-                                          'correo': email,
-                                          'completed': true,
-                                          'updated_at': FieldValue.serverTimestamp()
-                                        });
-
-                                Provider.of<LoginProvider>(context,
-                                        listen: false)
-                                    .checkLoginState()
-                                    .then((value) {
-                                  // Redirect and remove all screens
-                                  Navigator.pushNamedAndRemoveUntil(context,
-                                      HomeView.routeName, (route) => false);
-                                });
-                              }
-                            },
+                          text("Completar perfil", fontSize: textSizeNormal),
+                          Text(
+                            "Completa tus datos para poder continuar",
+                            textAlign: TextAlign.center,
                           ),
+                          SizedBox(height: 45.0),
+                          Form(
+                            key: _formKey,
+                            child: Column(
+                              children: [
+                                buildNameFormField(context
+                                    .watch<LoginProvider>()
+                                    .currentUser['nombre']),
+                                SizedBox(height: spacing_large),
+                                buildPhoneNumberFormField(context
+                                    .watch<LoginProvider>()
+                                    .currentUser['telefono']),
+                                SizedBox(height: spacing_large),
+                                buildEmailFormField(context
+                                    .watch<LoginProvider>()
+                                    .currentUser['correo']),
+                                SizedBox(height: 40.0),
+                                DefaultButton(
+                                  text: "Continuar",
+                                  press: () async {
+                                    if (_formKey.currentState.validate()) {
+                                      _formKey.currentState.save();
+
+                                      await FirebaseFirestore.instance
+                                          .collection('customers')
+                                          .doc(context
+                                              .read<LoginProvider>()
+                                              .currentUser['id'])
+                                          .update({
+                                        'nombre': name,
+                                        'telefono': phoneNumber,
+                                        'correo': email,
+                                        'completed': true,
+                                        'updated_at':
+                                            FieldValue.serverTimestamp()
+                                      });
+
+                                      Provider.of<LoginProvider>(context,
+                                              listen: false)
+                                          .checkLoginState()
+                                          .then((value) {
+                                        // Redirect and remove all screens
+                                        Navigator.pushNamedAndRemoveUntil(
+                                            context,
+                                            HomeView.routeName,
+                                            (route) => false);
+                                      });
+                                    }
+                                  },
+                                ),
+                              ],
+                            ),
+                          ),
+                          SizedBox(height: spacing_large),
+                          Text(
+                            "Al continuar, confirmas que está de acuerdo \ncon nuestros Términos y condiciones",
+                            textAlign: TextAlign.center,
+                            style: Theme.of(context).textTheme.caption,
+                          ),
+                          SizedBox(height: 80.0),
+                          GestureDetector(
+                            onTap: () {
+                              context.read<LoginProvider>().logout();
+                            },
+                            child: Text(
+                              "Cerrar sesión",
+                              style: TextStyle(
+                                  decoration: TextDecoration.underline),
+                            ),
+                          )
                         ],
                       ),
                     ),
-                    SizedBox(height: spacing_large),
-                    Text(
-                      "Al continuar, confirmas que está de acuerdo \ncon nuestros Términos y condiciones",
-                      textAlign: TextAlign.center,
-                      style: Theme.of(context).textTheme.caption,
-                    ),
-                    SizedBox(height: 80.0),
-                    GestureDetector(
-                      onTap: () {
-                        context.read<LoginProvider>().logout();
-                      },
-                      child: Text(
-                        "Cerrar sesión",
-                        style: TextStyle(decoration: TextDecoration.underline),
-                      ),
-                    )
-                  ],
+                  ),
                 ),
               ),
-            ),
-          ),
-        ),
-      ),
+            )
+          : Stack(
+              alignment: Alignment.center,
+              children: [
+                Container(
+                  margin: EdgeInsets.only(
+                      top: MediaQuery.of(context).size.height / 2),
+                  child: ListTile(
+                    title: Text(
+                      "Iniciar Sesión",
+                      style: TextStyle(
+                          color: Colors.black,
+                          fontSize: 20,
+                          fontFamily: 'Franklin Gothic'),
+                      textAlign: TextAlign.center,
+                    ),
+                    leading: Container(
+                      margin: EdgeInsets.only(left: 100),
+                      child: Icon(
+                        Icons.account_circle_outlined,
+                        color: appColorPrimary,
+                      ),
+                    ),
+                    onTap: () {
+                      launchScreen(context, LoginView.routeName);
+                    },
+                  ),
+                ),
+              ],
+            )),
     );
   }
 

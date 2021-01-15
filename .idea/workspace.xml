@@ -1,9 +1,7 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <project version="4">
   <component name="ChangeListManager">
-    <list default="true" id="986c6129-4db8-4ad9-b6bf-5f416e6443c1" name="Default Changelist" comment="login provider">
-      <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
-    </list>
+    <list default="true" id="986c6129-4db8-4ad9-b6bf-5f416e6443c1" name="Default Changelist" comment="" />
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
     <option name="HIGHLIGHT_NON_ACTIVE_CHANGELIST" value="false" />
@@ -45,7 +43,8 @@
       <workItem from="1610489699768" duration="92000" />
       <workItem from="1610499722949" duration="1378000" />
       <workItem from="1610573177112" duration="1258000" />
-      <workItem from="1610593074563" duration="2145000" />
+      <workItem from="1610593074563" duration="1016000" />
+      <workItem from="1610669089477" duration="762000" />
     </task>
     <task id="LOCAL-00001" summary="first commit">
       <created>1609821287888</created>
@@ -82,12 +81,12 @@
       <option name="project" value="LOCAL" />
       <updated>1610517734105</updated>
     </task>
-    <task id="LOCAL-00006" summary="login provider">
-      <created>1610597483325</created>
+    <task id="LOCAL-00006" summary="changes services and navigation bar">
+      <created>1610670628311</created>
       <option name="number" value="00006" />
       <option name="presentableId" value="LOCAL-00006" />
       <option name="project" value="LOCAL" />
-      <updated>1610597483326</updated>
+      <updated>1610670628311</updated>
     </task>
     <option name="localTasksCounter" value="7" />
     <servers />
@@ -113,8 +112,23 @@
     <MESSAGE value="first commit" />
     <MESSAGE value="changes" />
     <MESSAGE value="changes navigation" />
+    <MESSAGE value="perfil  autenticacion" />
     <MESSAGE value="changes services and navigation bar" />
-    <MESSAGE value="login provider" />
-    <option name="LAST_COMMIT_MESSAGE" value="login provider" />
+    <option name="LAST_COMMIT_MESSAGE" value="changes services and navigation bar" />
+  </component>
+  <component name="WindowStateProjectService">
+    <state x="180" y="0" key="CommitChangelistDialog2" timestamp="1610670588588">
+      <screen x="0" y="0" width="1366" height="728" />
+    </state>
+    <state x="180" y="0" key="CommitChangelistDialog2/0.0.1366.728@0.0.1366.728" timestamp="1610670588588" />
+    <state x="275" y="97" key="Vcs.Push.Dialog.v2" timestamp="1610597873657">
+      <screen x="0" y="0" width="1366" height="728" />
+    </state>
+    <state x="275" y="97" key="Vcs.Push.Dialog.v2/0.0.1366.728@0.0.1366.728" timestamp="1610597873657" />
+    <state x="500" y="278" key="com.intellij.openapi.vcs.update.UpdateOrStatusOptionsDialogupdate-v2" timestamp="1610669141574">
+      <screen x="0" y="0" width="1366" height="728" />
+    </state>
+    <state x="500" y="278" key="com.intellij.openapi.vcs.update.UpdateOrStatusOptionsDialogupdate-v2/0.0.1366.728/1366.0.1920.1040@0.0.1366.728" timestamp="1610669141574" />
+    <state x="500" y="278" key="com.intellij.openapi.vcs.update.UpdateOrStatusOptionsDialogupdate-v2/0.0.1366.728@0.0.1366.728" timestamp="1610597977053" />
   </component>
 </project>
