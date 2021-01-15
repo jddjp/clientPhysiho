@@ -21,7 +21,6 @@ class _HomeServiceViewState extends State<HomeServiceView> {
     _servicesSnapshot = FirebaseFirestore.instance
         .collection('services')
         .where('active', isEqualTo: true)
-        .orderBy('index')
         .get();
     super.initState();
   }
