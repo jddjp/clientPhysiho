@@ -14,6 +14,7 @@ import 'package:clientPhysiho/src/providers/cart_provider.dart';
 import 'package:clientPhysiho/src/services/search_delegate.dart';
 import 'package:clientPhysiho/src/views/cart_view.dart';
 import 'package:loading_overlay/loading_overlay.dart';
+import 'package:lottie/lottie.dart';
 import 'package:mvc_pattern/mvc_pattern.dart';
 import 'package:provider/provider.dart';
 
@@ -49,10 +50,11 @@ class _ServiceViewState extends StateMVC<ServiceView> {
   Widget build(BuildContext context) {
     double expandHeight = MediaQuery.of(context).size.height * 0.3;
     var width = MediaQuery.of(context).size.width;
-    changeStatusColor(pantoneTwo);
+    changeStatusColor(Colors.transparent);
+    print('ServiceView');
+    print(_con.isLoading);
     return Scaffold(
       body: Stack(
-        alignment: Alignment.bottomLeft,
         children: [
           Container(
             decoration: BoxDecoration(
@@ -65,72 +67,103 @@ class _ServiceViewState extends StateMVC<ServiceView> {
                   fit: BoxFit.fitHeight),
             ),
           ),
-          LoadingOverlay(
-            isLoading: _con.isLoading,
-            child: _con.service == null
-                ? Container()
-                : NestedScrollView(
-                    headerSliverBuilder:
-                        (BuildContext context, bool innerBoxScrolled) {
-                      changeStatusColor(
-                          innerBoxScrolled ? Colors.white : Colors.transparent);
-                      return <Widget>[
-                        SliverAppBar(
-                          expandedHeight: expandHeight,
-                          floating: false,
-                          forceElevated: innerBoxScrolled,
-                          pinned: true,
-                          titleSpacing: 0,
-                          backgroundColor: primaryColor,
-                          title: Container(
-                            height: 60,
-                            child: Container(
-                              width: width,
-                              child: Row(
-                                mainAxisAlignment:
-                                    MainAxisAlignment.spaceBetween,
-                                children: <Widget>[
-                                  innerBoxScrolled == true
-                                      ? text(_con.service['name'],
-                                          fontWeight: fontSemibold,
-                                          fontSize: textSizeNormal)
-                                      : Container(),
-                                ],
+          _con.isLoading
+              ? Container(
+                  width: width,
+                  child: Lottie.asset('assets/images/8682-loading.json'),
+                )
+              : (_con.service == null
+                  ? Container()
+                  : NestedScrollView(
+                      headerSliverBuilder:
+                          (BuildContext context, bool innerBoxIsScrolled) {
+                        return <Widget>[
+                          SliverAppBar(
+                            expandedHeight: expandHeight,
+                            floating: false,
+                            pinned: true,
+                            titleSpacing: 0,
+                            title: Container(
+                              height: 60,
+                              child: Container(
+                                width: width,
+                                child: Row(
+                                  mainAxisAlignment:
+                                      MainAxisAlignment.spaceBetween,
+                                  children: [
+                                    innerBoxIsScrolled == true
+                                        ? text(_con.service['name'],
+                                            fontWeight: fontSemibold,
+                                            fontSize: textSizeNormal)
+                                        : Container()
+                                  ],
+                                ),
                               ),
                             ),
-                          ),
-                          flexibleSpace: FlexibleSpaceBar(
-                            background: Container(
-                              child: CachedNetworkImage(
+                            flexibleSpace: FlexibleSpaceBar(
+                              background: CachedNetworkImage(
                                   imageUrl: _con.service['cover'] != ""
                                       ? _con.service['cover']['url']
                                       : 'https://firebasestorage.googleapis.com/v0/b/hermez-delivery.appspot.com/o/businesses%2Flogo.png?alt=media&token=8f1908d5-0a1d-4cd7-9e68-086a4f63fbf0',
                                   height: expandHeight,
                                   fit: BoxFit.cover),
+                              collapseMode: CollapseMode.pin,
                             ),
-                            collapseMode: CollapseMode.pin,
-                          ),
-                        ),
-                      ];
-                    },
-                    body: Stack(
-                      children: [
-                        Expanded(
-                          child: Padding(
-                            padding: EdgeInsets.all(14),
-                            child: Column(
-                              children: [
-                                Row(
-                                  mainAxisAlignment:
-                                      MainAxisAlignment.spaceBetween,
-                                  children: [
-                                    text(_con.service['name'],
-                                        textColor: Colors.black)
-                                  ],
+                          )
+                        ];
+                      },
+                      body: Container(
+                        child: Column(
+                          children: [
+                            Container(
+                              padding: EdgeInsets.all(16.0),
+                              child: Column(
+                                children: [
+                                  Text(
+                                    _con.service['name'],
+                                    style: TextStyle(
+                                        fontSize: textSizeLarge,
+                                        fontWeight: fontSemibold),
+                                  ),
+                                  SizedBox(
+                                    height: spacing_standard,
+                                  ),
+                                  Container(
+                                    alignment: Alignment.center,
+                                    decoration: BoxDecoration(
+                                        border:
+                                            Border.all(color: pantoneFourteen),
+                                        borderRadius:
+                                            BorderRadius.circular(40)),
+                                    padding: EdgeInsets.all(16.0),
+                                    child: Text(
+                                      _con.service['description'],
+                                      style: TextStyle(
+                                          color: textSecondaryColor,
+                                          fontSize: 15.0),
+                                    ),
+                                  )
+                                ],
+                              ),
+                            ),
+                            SizedBox(height: spacing_standard),
+                            Container(
+                              alignment: Alignment.center,
+                              decoration: BoxDecoration(
+                                  border: Border.all(color: transparentColor),
+                                  borderRadius: BorderRadius.circular(40)),
+                              padding: EdgeInsets.all(16.0),
+                              child: Text(
+                                'Nuestros paquetes ofrecidos para este servicio',
+                                style: TextStyle(
+                                  color: pantoneTwelve,
+                                  fontSize: 18.0,
                                 ),
-                                SizedBox(height: spacing_standard),
-                                _con.items != null
-                                    ? ListView.builder(
+                              ),
+                            ),
+                            _con.items != null
+                                ? Expanded(
+                                    child: ListView.builder(
                                         primary: false,
                                         scrollDirection: Axis.vertical,
                                         shrinkWrap: true,
@@ -141,16 +174,11 @@ class _ServiceViewState extends StateMVC<ServiceView> {
                                             ..._con.items[index].data(),
                                             "id": _con.items[index].id,
                                           });
-                                        })
-                                    : Container()
-                              ],
-                            ),
-                          ),
-                        )
-                      ],
-                    ),
-                  ),
-          ),
+                                        }))
+                                : Container()
+                          ],
+                        ),
+                      )))
         ],
       ),
     );

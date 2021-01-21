@@ -57,9 +57,9 @@ class _LoginViewState extends State<LoginView> {
                 backgroundBlendMode: BlendMode.color,
                 image: DecorationImage(
                     colorFilter: new ColorFilter.mode(
-                        Colors.black.withOpacity(0.8), BlendMode.dstATop),
+                        Colors.black.withOpacity(0.9), BlendMode.dstATop),
                     image: new AssetImage('assets/images/IMAPH.png'),
-                    fit: BoxFit.fitHeight),
+                    fit: BoxFit.fitWidth),
               ),
             ),
             Container(
@@ -67,7 +67,7 @@ class _LoginViewState extends State<LoginView> {
               width: width,
               padding: EdgeInsets.only(top: 90, bottom: 0),
               child: Center(
-                child: Image.asset("assets/images/Physioh1shadow.png"),
+                child: Image.asset("assets/images/physiohLogin.png"),
               ),
             ),
             Container(
@@ -101,7 +101,7 @@ class _LoginViewState extends State<LoginView> {
                     child: Column(
                       children: <Widget>[
                         SizedBox(height: width * 0.1),
-                        text("Ingresar",
+                        text("Bienvenido",
                             textColor: whiteColor,
                             fontWeight: fontBold,
                             fontSize: textSizeLarge),
@@ -136,28 +136,6 @@ class _LoginViewState extends State<LoginView> {
                               .loginFacebook();*/
                         }),
                         SizedBox(height: width * 0.05),
-                        Row(
-                          mainAxisAlignment: MainAxisAlignment.spaceBetween,
-                          children: <Widget>[
-                            Container(
-                                height: 0.5,
-                                color: whiteColor,
-                                width: width * 0.07,
-                                margin:
-                                    EdgeInsets.only(right: spacing_standard)),
-                            text(food_lbl_or_use_your_mobile_email,
-                                textColor: whiteColor,
-                                textAllCaps: true,
-                                fontSize: textSizeSMedium),
-                            Container(
-                                height: 0.5,
-                                color: whiteColor,
-                                width: width * 0.07,
-                                margin:
-                                    EdgeInsets.only(left: spacing_standard)),
-                          ],
-                        ),
-                        SizedBox(height: width * 0.07),
                         DefaultButton(
                           text: "Usar número de teléfono",
                           press: () {

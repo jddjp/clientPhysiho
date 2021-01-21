@@ -12,6 +12,7 @@ class ServiceItem extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
     var width = MediaQuery.of(context).size.width;
+    print('serviceItem');
     return GestureDetector(
       onTap: () {
         launchScreen(context, ServiceView.routeName, arguments: services['id']);
@@ -32,9 +33,9 @@ class ServiceItem extends StatelessWidget {
             ClipRRect(
               borderRadius: BorderRadius.all(Radius.circular(spacing_middle)),
               child: CachedNetworkImage(
-                  imageUrl: services['logo'] != null
+                  imageUrl: services['logo'] != ""
                       ? services['logo']['url']
-                      : 'https://firebasestorage.googleapis.com/v0/b/hermez-delivery.appspot.com/o/businesses%2Flogo.png?alt=media&token=8f1908d5-0a1d-4cd7-9e68-086a4f63fbf0',
+                      : 'https://firebasestorage.googleapis.com/v0/b/fisioterapia-cfb53.appspot.com/o/profiles%2Fphysioh.png?alt=media&token=0c8c649f-4aac-4955-abaa-e5e93f5e9b2d',
                   width: width * 0.23,
                   height: width * 0.23,
                   fit: BoxFit.fill),

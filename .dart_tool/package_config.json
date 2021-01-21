@@ -338,6 +338,18 @@
       "languageVersion": "2.2"
     },
     {
+      "name": "logging",
+      "rootUri": "file:///C:/src/flutter/.pub-cache/hosted/pub.dartlang.org/logging-0.11.4",
+      "packageUri": "lib/",
+      "languageVersion": "2.0"
+    },
+    {
+      "name": "lottie",
+      "rootUri": "file:///C:/src/flutter/.pub-cache/hosted/pub.dartlang.org/lottie-0.7.0+1",
+      "packageUri": "lib/",
+      "languageVersion": "2.7"
+    },
+    {
       "name": "matcher",
       "rootUri": "file:///C:/src/flutter/.pub-cache/hosted/pub.dartlang.org/matcher-0.12.10-nullsafety.1",
       "packageUri": "lib/",
@@ -656,7 +668,7 @@
       "languageVersion": "2.7"
     }
   ],
-  "generated": "2021-01-06T01:04:42.351157Z",
+  "generated": "2021-01-21T05:37:27.161678Z",
   "generator": "pub",
   "generatorVersion": "2.10.4"
 }

@@ -1,3 +1,4 @@
+import 'package:clientPhysiho/src/helpers/extension_helper.dart';
 import 'package:flutter/material.dart';
 import 'package:geolocator/geolocator.dart';
 import 'package:clientPhysiho/src/config/colors.dart';
@@ -17,7 +18,7 @@ class _LocationViewState extends State<LocationView> {
   @override
   Widget build(BuildContext context) {
     var width = MediaQuery.of(context).size.width;
-
+    changeStatusColor(pantoneEleven);
     return Scaffold(
         body: Stack(
       children: <Widget>[
@@ -35,7 +36,7 @@ class _LocationViewState extends State<LocationView> {
                 Padding(
                   padding: const EdgeInsets.all(15.0),
                   child: text(
-                      'Necesitas habilitar la opción de compartir ubicación para usar Hermez',
+                      'Necesitas habilitar la opción de compartir ubicación para usar Physiho',
                       textColor: textSecondaryColor,
                       maxLine: null,
                       isCentered: true),
