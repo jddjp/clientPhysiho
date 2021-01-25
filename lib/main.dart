@@ -251,17 +251,17 @@ class _PhysihoAppState extends State<PhysihoApp> {
                     sourceLoading: "Cargando recursos generales...");
               }
 
-              if (_prefs.getBool('locationPermission') != true &&
+              /*if (_prefs.getBool('locationPermission') != true &&
                   !context.watch<LocationProvider>().hasPermission()) {
                 print("==============LOCATION_VIEW=====================");
                 return LocationView();
                 // if orderInProgress == logged_out then redirect to cart_view
-              } else {
-                // Go to Home
-                print(_prefs.getBool('locationPermission'));
-                print("==============HOME_VIEW=====================");
-                return HomeView();
-              }
+              } else {*/
+              // Go to Home
+              print(_prefs.getBool('locationPermission'));
+              print("==============HOME_VIEW=====================");
+              return HomeView();
+              //}
 
               // User logged in
               /*if (context.watch<LoginProvider>().isLoggedIn()) {

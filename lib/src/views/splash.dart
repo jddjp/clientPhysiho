@@ -11,7 +11,7 @@ class _SplashViewState extends State<SplashView> {
   @override
   Widget build(BuildContext context) {
     return Container(
-      child: child,
+      child: Text('splash'),
     );
   }
 }
