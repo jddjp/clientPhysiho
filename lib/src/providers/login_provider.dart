@@ -140,6 +140,9 @@ class LoginProvider with ChangeNotifier {
         'nombre': _userData.displayName,
         'correo': _userData.email,
         'telefono': phoneNumber,
+        'direccion': '',
+        'estado': '',
+        'municipio': '',
         'photo': {'path': null, 'url': _userData.photoURL},
         'active': true,
         'completed': false, // We required that user complete their profile

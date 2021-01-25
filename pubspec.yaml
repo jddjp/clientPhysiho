@@ -58,7 +58,8 @@ dependencies:
 
   flutter_statusbarcolor: ^0.2.3
   mvc_pattern: ^6.6.0
-
+  direct_select: ^1.1.0
+  http: ^0.12.2
 dev_dependencies:
   flutter_test:
     sdk: flutter
