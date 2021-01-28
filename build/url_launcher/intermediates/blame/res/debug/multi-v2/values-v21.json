@@ -1,10 +1,10 @@
 {
     "logs": [
         {
-            "outputFile": "D:\\Documentos\\Core_Business\\Proyectos Moviles\\Fisioterapia\\clientPhysiho\\build\\url_launcher\\intermediates\\res\\merged\\debug\\values-v21\\values-v21.xml",
+            "outputFile": "C:\\Users\\pam_9\\OneDrive\\Documentos\\Trabajo\\clientphysiho\\build\\url_launcher\\intermediates\\incremental\\mergeDebugResources\\merged.dir\\values-v21\\values-v21.xml",
             "map": [
                 {
-                    "source": "C:\\Users\\saulm\\.gradle\\caches\\transforms-2\\files-2.1\\60bcdf937a69ab7807eabfbf34627aee\\core-1.1.0\\res\\values-v21\\values-v21.xml",
+                    "source": "C:\\Users\\pam_9\\.gradle\\caches\\transforms-2\\files-2.1\\60bcdf937a69ab7807eabfbf34627aee\\core-1.1.0\\res\\values-v21\\values-v21.xml",
                     "from": {
                         "startLines": "2,3,4,5,6,7,8,9,10,13",
                         "startColumns": "4,4,4,4,4,4,4,4,4,4",
@@ -17,10 +17,10 @@
             ]
         },
         {
-            "outputFile": "D:\\Documentos\\Core_Business\\Proyectos Moviles\\Fisioterapia\\clientPhysiho\\build\\url_launcher\\intermediates\\incremental\\mergeDebugResources\\merged.dir\\values-v21\\values-v21.xml",
+            "outputFile": "C:\\Users\\pam_9\\OneDrive\\Documentos\\Trabajo\\clientphysiho\\build\\url_launcher\\intermediates\\res\\merged\\debug\\values-v21\\values-v21.xml",
             "map": [
                 {
-                    "source": "C:\\Users\\saulm\\.gradle\\caches\\transforms-2\\files-2.1\\60bcdf937a69ab7807eabfbf34627aee\\core-1.1.0\\res\\values-v21\\values-v21.xml",
+                    "source": "C:\\Users\\pam_9\\.gradle\\caches\\transforms-2\\files-2.1\\60bcdf937a69ab7807eabfbf34627aee\\core-1.1.0\\res\\values-v21\\values-v21.xml",
                     "from": {
                         "startLines": "2,3,4,5,6,7,8,9,10,13",
                         "startColumns": "4,4,4,4,4,4,4,4,4,4",

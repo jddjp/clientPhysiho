@@ -54,22 +54,7 @@ class _CompleteProfileViewState extends State<CompleteProfileView> {
     "Dinner",
     "3rd Snack",
   ];
-  final elements2 = [
-    "Cheese Steak",
-    "Chicken",
-    "Salad",
-  ];
-
-  final elements3 = [
-    "7am - 10am",
-    "11am - 2pm",
-    "3pm - 6pm",
-    "7pm-10pm",
-  ];
-
-  final elements4 = [
-    "selecciona",
-  ];
+  final elements4 = ["selecciona"];
   int selectedIndex1 = 0,
       selectedIndex2 = 0,
       selectedIndex3 = 0,
@@ -99,22 +84,6 @@ class _CompleteProfileViewState extends State<CompleteProfileView> {
         .toList();
   }
 
-  List<Widget> _buildItems2() {
-    return elements2
-        .map((val) => MySelectionItem(
-              title: val,
-            ))
-        .toList();
-  }
-
-  List<Widget> _buildItems3() {
-    return elements3
-        .map((val) => MySelectionItem(
-              title: val,
-            ))
-        .toList();
-  }
-
   List<Widget> _buildItems4() {
     return elements4
         .map((val) => MySelectionItem(
@@ -135,6 +104,7 @@ class _CompleteProfileViewState extends State<CompleteProfileView> {
     //_initialValue = 'starValue';
     _controller = TextEditingController(text: _valueSaved);
     print(_valueSaved);
+
     _getValue();
   }
 
@@ -144,10 +114,9 @@ class _CompleteProfileViewState extends State<CompleteProfileView> {
     await Future.delayed(const Duration(seconds: 3), () {
       setState(() {
         //_initialValue = 'circleValue';
-        _controller.text = 'selecciona estado';
+        _controller.text = 'Selecciona Estado';
       });
     });
-
     var url = 'https://api-sepomex.hckdrk.mx/query/get_estados';
 
     // Await the http get response, then decode the json-formatted response.
@@ -160,33 +129,28 @@ class _CompleteProfileViewState extends State<CompleteProfileView> {
     List<int> bytes = response.bodyBytes;
     if (response.statusCode == 200) {
       var body = utf8.decode(bytes);
-      print(body);
+
       var jsonResponse = jsonDecode(body);
       var itemCount = jsonResponse['response'];
       var itemCount2 = itemCount['estado'];
-      var itemCount3 = itemCount2[1]; //obtiene la posicion uno de la respuesta
 
       print('Number of books about http: $itemCount.');
       for (var a in itemCount2) {
-        print(a);
-        _items.add({
-          'value': a,
-          'label': a,
-          //        'icon': Icon(Icons.stop),
-          'icon': Icon(Icons.fiber_manual_record),
-        });
         estadosSelect.add(a);
       }
+
+      print(estadosSelect);
     } else {
       print('Request failed with status: ${response.statusCode}.');
     }
   }
 
   Future<void> _getvalue2(dynamic selectedIndex1) async {
-    await Future.delayed(const Duration(seconds: 3), () {
+    await Future.delayed(const Duration(seconds: 2), () {
       setState(() {
         //_initialValue = 'circleValue';
-        _controller.text = 'selecciona estado';
+        _controller.text = 'Selecciona Municipio ';
+        //'selecciona municipio';
       });
     });
     print(selectedIndex1);
@@ -194,27 +158,23 @@ class _CompleteProfileViewState extends State<CompleteProfileView> {
         selectedIndex1;
 
     // Await the http get response, then decode the json-formatted response.
-    var response = await http.get(url);
+    // var response = await http.get(url);
+    final response = await http.get(
+      url,
+      headers: <String, String>{
+        'Content-Type': 'application/json; charset=UTF-8',
+      },
+    );
+    List<int> bytes = response.bodyBytes;
     if (response.statusCode == 200) {
-      var jsonResponse = jsonDecode(response.body);
+      var body = utf8.decode(bytes);
+      print(body);
+      var jsonResponse = jsonDecode(body);
+      // var jsonResponse = jsonDecode(response.body);
       var itemCount = jsonResponse['response'];
       var itemCount2 = itemCount['municipios'];
-      var itemCount3 = itemCount2[1]; //obtiene la posicion uno de la respuesta
-
-      print('otra vez variable: $itemCount2.');
-      print('otra vez variable: $itemCount3.');
-
-      print('Number of books about http: $itemCount.');
 
       for (var a in itemCount2) {
-        print(a);
-        _items2.add({
-          'value': a,
-          'label': a,
-          //        'icon': Icon(Icons.stop),
-          'icon': Icon(Icons.fiber_manual_record),
-        });
-        print(_items);
         municipiosSelect.add(a);
       }
     } else {
@@ -278,7 +238,7 @@ class _CompleteProfileViewState extends State<CompleteProfileView> {
                                             padding: const EdgeInsets.only(
                                                 left: 10.0),
                                             child: Text(
-                                              "Selecciona Estado",
+                                              "Selecciona  Estado",
                                               style: TextStyle(
                                                   color: Colors.grey,
                                                   fontWeight: FontWeight.w500),
@@ -292,7 +252,9 @@ class _CompleteProfileViewState extends State<CompleteProfileView> {
                                                 title: selectedIndex1 != 0
                                                     ? estadosSelect[
                                                         selectedIndex1]
-                                                    : 'selecciona',
+                                                    : context
+                                                        .watch<LoginProvider>()
+                                                        .currentUser['estado'],
                                               ),
                                               onSelectedItemChanged: (index) {
                                                 setState(() {
@@ -315,7 +277,7 @@ class _CompleteProfileViewState extends State<CompleteProfileView> {
                                             padding: const EdgeInsets.only(
                                                 left: 10.0, top: 20.0),
                                             child: Text(
-                                              "Selecciona Municipio",
+                                              "Selecciona  Municipio",
                                               style: TextStyle(
                                                   color: Colors.grey,
                                                   fontWeight: FontWeight.w500),
@@ -329,7 +291,38 @@ class _CompleteProfileViewState extends State<CompleteProfileView> {
                                                 title: selectedIndex2 != 0
                                                     ? municipiosSelect[
                                                         selectedIndex2]
-                                                    : 'selecciona',
+                                                    : context
+                                                        .watch<LoginProvider>()
+                                                        .currentUser['municipio'],
+                                              ),
+                                              onSelectedItemChanged: (index) {
+                                                setState(() {
+                                                  selectedIndex2 = index;
+                                                  print(municipiosSelect[
+                                                      selectedIndex2]);
+                                                  /* _getvalue2(estadosSelect[
+                                                      selectedIndex1]); */
+                                                });
+                                              },
+                                              mode: DirectSelectMode.tap,
+                                              items: _buildItemsmunicipios() !=
+                                                          null &&
+                                                      _buildItemsmunicipios()
+                                                              .length >
+                                                          0
+                                                  ? _buildItemsmunicipios()
+                                                  : _buildItems4()),
+                                          /*  DirectSelect(
+                                              itemExtent: 35.0,
+                                              selectedIndex: selectedIndex2,
+                                              child: MySelectionItem(
+                                                isForList: false,
+                                                title: selectedIndex2 != 0
+                                                    ? municipiosSelect[
+                                                        selectedIndex2]
+                                                    : context
+                                                        .watch<LoginProvider>()
+                                                        .currentUser['municipio'],
                                               ),
                                               onSelectedItemChanged: (index) {
                                                 setState(() {
@@ -342,22 +335,10 @@ class _CompleteProfileViewState extends State<CompleteProfileView> {
                                                       _buildItemsmunicipios() !=
                                                           null
                                                   ? _buildItemsmunicipios()
-                                                  : _buildItems4()),
+                                                  : _buildItems4()), */
                                         ]),
                                   ),
                                 ),
-
-                                /* buildEstadoFormField(context
-                                    .watch<LoginProvider>()
-                                    .currentUser['estado']),
-                                SizedBox(height: 40.0), */
-                                /* buildMunicipioFormField(context
-                                    .watch<LoginProvider>()
-                                    .currentUser['municipio']),
-                                SizedBox(height: 40.0),
-                                SizedBox(height: 30),
-                                 */
-
                                 SizedBox(height: 30),
                                 DefaultButton(
                                   text: "Continuar",
@@ -427,8 +408,19 @@ class _CompleteProfileViewState extends State<CompleteProfileView> {
               alignment: Alignment.center,
               children: [
                 Container(
+                  decoration: BoxDecoration(
+                    color: const Color(0xff7c94b6),
+                    backgroundBlendMode: BlendMode.color,
+                    image: DecorationImage(
+                        colorFilter: new ColorFilter.mode(
+                            Colors.black.withOpacity(0.8), BlendMode.dstATop),
+                        image: new AssetImage('assets/images/fondoph.png'),
+                        fit: BoxFit.fill),
+                  ),
+                ),
+                Container(
                   margin: EdgeInsets.only(
-                      top: MediaQuery.of(context).size.height / 2),
+                      top: MediaQuery.of(context).size.height / 6),
                   child: ListTile(
                     title: Text(
                       "Iniciar Sesión",
@@ -534,50 +526,6 @@ class _CompleteProfileViewState extends State<CompleteProfileView> {
       decoration: InputDecoration(
         labelText: "Dirección",
         hintText: "Ingresa tu dirección",
-        // If  you are using latest version of flutter then lable text and hint text shown like this
-        // if you r using flutter less then 1.20.* then maybe this is not working properly
-        floatingLabelBehavior: FloatingLabelBehavior.always,
-        //suffixIcon: CustomSurffixIcon(svgIcon: "assets/icons/User.svg"),
-      ),
-    );
-  }
-
-  TextFormField buildEstadoFormField(defaultName) {
-    return TextFormField(
-      onSaved: (newValue) => estado = newValue,
-      initialValue: defaultName,
-      autofocus: true,
-      validator: (value) {
-        if (value.isEmpty) {
-          return "Por favor ingresa tu estado";
-        }
-        return null;
-      },
-      decoration: InputDecoration(
-        labelText: "Estado",
-        hintText: "Ingresa tu Estado",
-        // If  you are using latest version of flutter then lable text and hint text shown like this
-        // if you r using flutter less then 1.20.* then maybe this is not working properly
-        floatingLabelBehavior: FloatingLabelBehavior.always,
-        //suffixIcon: CustomSurffixIcon(svgIcon: "assets/icons/User.svg"),
-      ),
-    );
-  }
-
-  TextFormField buildMunicipioFormField(defaultName) {
-    return TextFormField(
-      onSaved: (newValue) => municipio = newValue,
-      initialValue: defaultName,
-      autofocus: true,
-      validator: (value) {
-        if (value.isEmpty) {
-          return "Por favor ingresa municipio";
-        }
-        return null;
-      },
-      decoration: InputDecoration(
-        labelText: "Municipio",
-        hintText: "Municipio",
         // If  you are using latest version of flutter then lable text and hint text shown like this
         // if you r using flutter less then 1.20.* then maybe this is not working properly
         floatingLabelBehavior: FloatingLabelBehavior.always,
