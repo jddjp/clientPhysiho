@@ -26,4 +26,26 @@ class StatesMProvider {
       return listState;
     }
   }
+
+  Future<List<dynamic>> municipio(String states) async {
+    print('provider');
+    print(states);
+    final result = await http.get(
+      'https://api-sepomex.hckdrk.mx/query/get_municipio_por_estado/' + states,
+    );
+    List<int> bytes = result.bodyBytes;
+    if (result.statusCode == 200) {
+      var body = utf8.decode(bytes);
+      var jsonResponse = jsonDecode(body);
+
+      print(jsonResponse['response']['municipios']);
+
+      List<dynamic> listMunicipios = new List();
+      for (var item in jsonResponse['response']['municipios']) {
+        listMunicipios.add(item);
+      }
+
+      return listMunicipios;
+    }
+  }
 }

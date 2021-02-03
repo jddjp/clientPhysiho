@@ -33,6 +33,7 @@ class _CompleteProfileViewState extends State<CompleteProfileView> {
   final List<String> errors = [];
 
   final states = new StatesMProvider().states();
+  final municipalities = new StatesMProvider();
   final municipiosSelect = ["selecciona"];
   String name;
   String phoneNumber;
@@ -50,13 +51,7 @@ class _CompleteProfileViewState extends State<CompleteProfileView> {
   String _valueToValidate2 = '';
   String _valueSaved2 = '';
 /**/
-  final elements1 = [
-    "Breakfast",
-    "Lunch",
-    "2nd Snack",
-    "Dinner",
-    "3rd Snack",
-  ];
+
   final elements4 = ["selecciona"];
   int selectedIndex1 = 0,
       selectedIndex2 = 0,
@@ -86,64 +81,23 @@ class _CompleteProfileViewState extends State<CompleteProfileView> {
         .toList();
   }
 
-  List<Widget> _buildItemsmunicipios() {
-    return municipiosSelect
-        .map((val) => MySelectionItem(
-              title: val,
-            ))
-        .toList();
-  }
+  List<Widget> _buildItemsmunicipios(List<dynamic> elements) {
+    // print(elements);
+    List<Widget> listMunicipios = new List();
 
-  List<Widget> _buildItems4() {
-    return elements4
-        .map((val) => MySelectionItem(
-              title: val,
-            ))
-        .toList();
-  }
-
-  Future<void> _getvalue2(dynamic selectedIndex1) async {
-    await Future.delayed(const Duration(seconds: 2), () {
-      setState(() {
-        //_initialValue = 'circleValue';
-        _controller.text = 'Selecciona Municipio ';
-        //'selecciona municipio';
-      });
+    elements.forEach((element) {
+      listMunicipios.add(MySelectionItem(
+        title: element,
+      ));
     });
-    //print(selectedIndex1);
-    var url = 'https://api-sepomex.hckdrk.mx/query/get_municipio_por_estado/' +
-        selectedIndex1;
+    selectedIndex2 = 0;
+    return listMunicipios;
 
-    // Await the http get response, then decode the json-formatted response.
-    // var response = await http.get(url);
-    final response = await http.get(
-      url,
-      headers: <String, String>{
-        'Content-Type': 'application/json; charset=UTF-8',
-      },
-    );
-    List<int> bytes = response.bodyBytes;
-    if (response.statusCode == 200) {
-      var body = utf8.decode(bytes);
-      //print(body);
-      var jsonResponse = jsonDecode(body);
-      // var jsonResponse = jsonDecode(response.body);
-      var itemCount = jsonResponse['response'];
-      var itemCount2 = itemCount['municipios'];
-      print(municipiosSelect);
-      municipiosSelect.clear();
-      print("limpiando");
-      print(municipiosSelect);
-      for (var a in itemCount2) {
-        municipiosSelect.add(a);
-      }
-      print(municipiosSelect);
-      _buildItemsmunicipios();
-      municipios = '';
-      selectedIndex2 = municipiosSelect.length;
-    } else {
-      print('Request failed with status: ${response.statusCode}.');
-    }
+    // return elements
+    //     .map((val) => MySelectionItem(
+    //           title: val,
+    //         ))
+    //     .toList();
   }
 
   @override
@@ -250,9 +204,15 @@ class _CompleteProfileViewState extends State<CompleteProfileView> {
                                                           estados = '';
                                                           selectedIndex1 =
                                                               index;
-                                                          _getvalue2(snapshot
-                                                                  .data[
+                                                          _valueChanged =
+                                                              snapshot.data[
+                                                                  selectedIndex1];
+                                                          print(snapshot.data[
                                                               selectedIndex1]);
+                                                          municipalities
+                                                              .municipio(snapshot
+                                                                      .data[
+                                                                  selectedIndex1]);
                                                         });
                                                       },
                                                       mode:
@@ -260,7 +220,7 @@ class _CompleteProfileViewState extends State<CompleteProfileView> {
                                                       items: _buildItemsestados(
                                                           snapshot.data),
                                                     ),
-                                                    Padding(
+                                                    /* Padding(
                                                       padding:
                                                           const EdgeInsets.only(
                                                               left: 10.0,
@@ -314,31 +274,89 @@ class _CompleteProfileViewState extends State<CompleteProfileView> {
                                                         mode: DirectSelectMode
                                                             .tap,
                                                         items:
-                                                            _buildItemsmunicipios()),
-                                                    /*  DirectSelect(
-                                              itemExtent: 35.0,
-                                              selectedIndex: selectedIndex2,
-                                              child: MySelectionItem(
-                                                isForList: false,
-                                                title: selectedIndex2 != 0
-                                                    ? municipiosSelect[
-                                                        selectedIndex2]
-                                                    : context
-                                                        .watch<LoginProvider>()
-                                                        .currentUser['municipio'],
-                                              ),
-                                              onSelectedItemChanged: (index) {
-                                                setState(() {
-                                                  selectedIndex2 = index;
-                                                });
-                                              },
-                                              items: _buildItemsmunicipios()
-                                                              .length >
-                                                          0 &&
-                                                      _buildItemsmunicipios() !=
-                                                          null
-                                                  ? _buildItemsmunicipios()
-                                                  : _buildItems4()), */
+                                                            _buildItemsmunicipios()), */
+                                                  ]),
+                                            ),
+                                          ),
+                                        ],
+                                      );
+                                    } else {
+                                      return Container(
+                                        child: Text('no data'),
+                                      );
+                                    }
+                                  },
+                                ),
+                                FutureBuilder(
+                                  future:
+                                      municipalities.municipio(_valueChanged),
+                                  builder: (BuildContext context,
+                                      AsyncSnapshot snapshot) {
+                                    print(_valueChanged);
+                                    print(snapshot.hasData);
+                                    if (snapshot.hasData) {
+                                      return Column(
+                                        children: [
+                                          Padding(
+                                            padding: const EdgeInsets.all(15.0),
+                                            child: Center(
+                                              child: Column(
+                                                  mainAxisAlignment:
+                                                      MainAxisAlignment.start,
+                                                  crossAxisAlignment:
+                                                      CrossAxisAlignment
+                                                          .stretch,
+                                                  children: <Widget>[
+                                                    Padding(
+                                                      padding:
+                                                          const EdgeInsets.only(
+                                                              left: 10.0),
+                                                      child: Text(
+                                                        "Selecciona  Municipio",
+                                                        style: TextStyle(
+                                                            color: Colors.grey,
+                                                            fontWeight:
+                                                                FontWeight
+                                                                    .w500),
+                                                      ),
+                                                    ),
+                                                    DirectSelect(
+                                                      itemExtent: 35.0,
+                                                      selectedIndex:
+                                                          selectedIndex2,
+                                                      child: MySelectionItem(
+                                                        isForList: false,
+                                                        title: context.watch<LoginProvider>().currentUser[
+                                                                        'municipio'] !=
+                                                                    null &&
+                                                                context.watch<LoginProvider>().currentUser[
+                                                                        'municipio'] !=
+                                                                    ''
+                                                            ? municipios != 'a'
+                                                                ? snapshot.data[
+                                                                    selectedIndex2]
+                                                                : context
+                                                                        .watch<
+                                                                            LoginProvider>()
+                                                                        .currentUser[
+                                                                    'municipio']
+                                                            : snapshot.data[
+                                                                selectedIndex2],
+                                                      ),
+                                                      onSelectedItemChanged:
+                                                          (index) {
+                                                        setState(() {
+                                                          municipios = '';
+                                                          selectedIndex2 =
+                                                              index;
+                                                        });
+                                                      },
+                                                      mode:
+                                                          DirectSelectMode.tap,
+                                                      items:
+                                                          _buildItemsmunicipios(
+                                                              snapshot.data),
+                                                    ),
                                                   ]),
                                             ),
                                           ),
