@@ -21,6 +21,7 @@ import 'package:clientPhysiho/src/views/create_account_view.dart';
 import 'package:clientPhysiho/src/views/department_view.dart';
 import 'package:clientPhysiho/src/views/home_view.dart';
 import 'package:clientPhysiho/src/views/item_view.dart';
+import 'package:clientPhysiho/src/views/agend_view.dart';
 import 'package:clientPhysiho/src/views/loading_view.dart';
 import 'package:clientPhysiho/src/views/location_view.dart';
 import 'package:clientPhysiho/src/views/login_view.dart';
@@ -30,6 +31,7 @@ import 'package:clientPhysiho/src/views/order_item_view.dart';
 import 'package:clientPhysiho/src/views/payment_view.dart';
 import 'package:clientPhysiho/src/views/tracking_view.dart';
 import 'package:flutter/services.dart';
+import 'package:flutter_localizations/flutter_localizations.dart';
 import 'package:provider/provider.dart';
 import 'package:shared_preferences/shared_preferences.dart';
 
@@ -131,8 +133,14 @@ class _PhysihoAppState extends State<PhysihoApp> {
   Widget build(BuildContext context) {
     return MaterialApp(
       debugShowCheckedModeBanner: false,
-      title: 'Hermez Delivery App',
+      title: 'Physiho App',
       theme: getThemeData(),
+      supportedLocales: [Locale('en'), Locale('es')],
+      localizationsDelegates: [
+        GlobalMaterialLocalizations.delegate,
+        GlobalWidgetsLocalizations.delegate,
+        GlobalCupertinoLocalizations.delegate
+      ],
       onGenerateRoute: (RouteSettings settings) {
         final args = settings.arguments;
 
@@ -158,6 +166,10 @@ class _PhysihoAppState extends State<PhysihoApp> {
           case ServiceView.routeName:
             return MaterialPageRoute(
                 builder: (_) => ServiceView(serviceId: args));
+            break;
+          // agend view
+          case AgendView.routeName:
+            return MaterialPageRoute(builder: (_) => AgendView());
             break;
           // item view
           case ItemView.routeName:
