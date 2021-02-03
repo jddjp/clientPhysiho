@@ -66,7 +66,7 @@ class _ItemWidgetState extends State<ItemWidget> {
                       mainAxisAlignment: MainAxisAlignment.spaceBetween,
                       children: <Widget>[
                         text(widget.item['name'], fontWeight: fontSemibold),
-                        text(widget.item['description'],
+                        text('Sesiones: ' + widget.item['sesion'].toString(),
                             textColor: textSecondaryColor,
                             fontSize: textSizeSMedium,
                             maxLine: 2),
@@ -75,9 +75,6 @@ class _ItemWidgetState extends State<ItemWidget> {
                             text("\$${widget.item['price']}",
                                 textColor: appColorAccent,
                                 fontWeight: fontSemibold),
-                            text("\$${widget.item['price']}",
-                                textColor: appColorAccent,
-                                fontWeight: fontSemibold)
                           ],
                         )
                       ],
@@ -88,20 +85,17 @@ class _ItemWidgetState extends State<ItemWidget> {
                       crossAxisAlignment: CrossAxisAlignment.start,
                       mainAxisAlignment: MainAxisAlignment.spaceBetween,
                       children: <Widget>[
-                        text(widget.item['name'], fontWeight: fontSemibold),
-                        text(widget.item['description'],
-                            textColor: textSecondaryColor,
-                            fontSize: textSizeSMedium,
-                            maxLine: 2),
-                        Row(
-                          children: [
-                            text("\$${widget.item['price']}",
-                                textColor: appColorAccent,
-                                fontWeight: fontSemibold),
-                            text("\$${widget.item['price']}",
-                                textColor: appColorAccent,
-                                fontWeight: fontSemibold)
-                          ],
+                        Container(
+                          padding: EdgeInsets.all(10),
+                          decoration: BoxDecoration(
+                              color: pantoneThree,
+                              borderRadius:
+                                  BorderRadius.all(Radius.circular(10))),
+                          child: Text(
+                            'Comprar',
+                            style: TextStyle(
+                                color: whiteColor, fontWeight: fontSemibold),
+                          ),
                         )
                       ],
                     ),

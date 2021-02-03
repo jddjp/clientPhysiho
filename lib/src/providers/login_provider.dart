@@ -334,6 +334,26 @@ class LoginProvider with ChangeNotifier {
     return Future.value();
   }
 
+  /// Check login status // cookies
+  Future<Map<String, dynamic>> checkInfo() async {
+    // Create instance if not initialized
+    if (_prefs == null) _prefs = await SharedPreferences.getInstance();
+
+    // Get logged user data
+    if (_prefs.getString('uid') != null) {
+      DocumentSnapshot userDoc = await FirebaseFirestore.instance
+          .collection('customers')
+          .doc(_prefs.getString('uid'))
+          .get();
+      _currentUser = {...userDoc.data(), "id": userDoc.id};
+    }
+
+    print(_currentUser);
+
+    // Promise
+    return _currentUser;
+  }
+
   Future<void> saveTokenToDatabase(String token) async {
     // Create instance if not initialized
     if (_prefs == null) _prefs = await SharedPreferences.getInstance();

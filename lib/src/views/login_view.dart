@@ -33,8 +33,8 @@ class _LoginViewState extends State<LoginView> {
         height: 50.0,
         child: FlatButton.icon(
           shape: RoundedRectangleBorder(
-              borderRadius: BorderRadius.circular(50),
-              side: BorderSide(color: whiteColor)),
+            borderRadius: BorderRadius.circular(50),
+          ),
           color: color,
           onPressed: onPressed,
           icon: SvgPicture.asset(icon, color: iconColor, width: 18, height: 18),
@@ -81,7 +81,7 @@ class _LoginViewState extends State<LoginView> {
                     child: new Container(
                         height: (MediaQuery.of(context).size.height),
                         width: MediaQuery.of(context).size.width,
-                        color: login_colorPrimary),
+                        color: pantoneTwo),
                   ),
                   Align(
                     alignment: Alignment.topCenter,
@@ -104,7 +104,7 @@ class _LoginViewState extends State<LoginView> {
                         text("Bienvenido",
                             textColor: whiteColor,
                             fontWeight: fontBold,
-                            fontSize: textSizeLarge),
+                            fontSize: textSizeXLarge),
                         SizedBox(height: width * 0.12),
                         socialButton(
                             whiteColor,

@@ -1,4 +1,4 @@
-# Referenced at C:\Users\pam_9\OneDrive\Documentos\Trabajo\clientphysiho\build\app\intermediates\merged_manifests\debug\AndroidManifest.xml:34
+# Referenced at D:\Documentos\Core_Business\Proyectos Moviles\Fisioterapia\clientPhysiho\build\app\intermediates\merged_manifests\debug\AndroidManifest.xml:34
 -keep class androidx.core.app.CoreComponentFactory { <init>(); }
-# Referenced at C:\Users\pam_9\OneDrive\Documentos\Trabajo\clientphysiho\build\app\intermediates\merged_manifests\debug\AndroidManifest.xml:34
+# Referenced at D:\Documentos\Core_Business\Proyectos Moviles\Fisioterapia\clientPhysiho\build\app\intermediates\merged_manifests\debug\AndroidManifest.xml:34
 -keep class io.flutter.app.FlutterApplication { <init>(); }

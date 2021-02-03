@@ -14,6 +14,7 @@ import 'package:clientPhysiho/src/providers/login_provider.dart';
 import 'package:clientPhysiho/src/views/login_view.dart';
 import '../config/colors.dart';
 import '../providers/login_provider.dart';
+import 'package:clientPhysiho/src/providers/get_states_m_provider.dart';
 
 import 'dart:convert';
 import 'package:http/http.dart' as http;
@@ -31,6 +32,8 @@ class _CompleteProfileViewState extends State<CompleteProfileView> {
   final _formKey = GlobalKey<FormState>();
   final List<String> errors = [];
 
+  final states = new StatesMProvider().states();
+  final municipiosSelect = ["selecciona"];
   String name;
   String phoneNumber;
   String email;
@@ -59,9 +62,24 @@ class _CompleteProfileViewState extends State<CompleteProfileView> {
       selectedIndex2 = 0,
       selectedIndex3 = 0,
       selectedIndex4 = 0;
-//estadosSelect
-  List<Widget> _buildItemsestados() {
-    return estadosSelect
+  var estados = 'a';
+  var municipios = 'a';
+
+  var estadosUser = new LoginProvider().checkInfo();
+  //*
+  @override
+  void initState() {
+    super.initState();
+
+    //_initialValue = 'starValue';
+    _controller = TextEditingController(text: _valueSaved);
+  }
+
+  // final estadosSelect = [];
+  //estadosSelect
+  List<Widget> _buildItemsestados(List<dynamic> elements) {
+    // print(elements);
+    return elements
         .map((val) => MySelectionItem(
               title: val,
             ))
@@ -76,73 +94,12 @@ class _CompleteProfileViewState extends State<CompleteProfileView> {
         .toList();
   }
 
-  List<Widget> _buildItems1() {
-    return elements1
-        .map((val) => MySelectionItem(
-              title: val,
-            ))
-        .toList();
-  }
-
   List<Widget> _buildItems4() {
     return elements4
         .map((val) => MySelectionItem(
               title: val,
             ))
         .toList();
-  }
-
-/* */
-  final List<Map<String, dynamic>> _items = [];
-  final estadosSelect = [];
-  final municipiosSelect = [];
-  final List<Map<String, dynamic>> _items2 = [];
-  @override
-  void initState() {
-    super.initState();
-
-    //_initialValue = 'starValue';
-    _controller = TextEditingController(text: _valueSaved);
-    print(_valueSaved);
-
-    _getValue();
-  }
-
-  /// This implementation is just to simulate a load data behavior
-  /// from a data base sqlite or from a API
-  Future<void> _getValue() async {
-    await Future.delayed(const Duration(seconds: 3), () {
-      setState(() {
-        //_initialValue = 'circleValue';
-        _controller.text = 'Selecciona Estado';
-      });
-    });
-    var url = 'https://api-sepomex.hckdrk.mx/query/get_estados';
-
-    // Await the http get response, then decode the json-formatted response.
-    final response = await http.get(
-      url,
-      headers: <String, String>{
-        'Content-Type': 'application/json; charset=UTF-8',
-      },
-    );
-    List<int> bytes = response.bodyBytes;
-    if (response.statusCode == 200) {
-      var body = utf8.decode(bytes);
-
-      var jsonResponse = jsonDecode(body);
-      var itemCount = jsonResponse['response'];
-      var itemCount2 = itemCount['estado'];
-
-      print('Number of books about http: $itemCount.');
-      for (var a in itemCount2) {
-        estadosSelect.add(a);
-      }
-
-      print(estadosSelect);
-    } else {
-      print('Request failed with status: ${response.statusCode}.');
-    }
   }
 
   Future<void> _getvalue2(dynamic selectedIndex1) async {
@@ -153,7 +110,7 @@ class _CompleteProfileViewState extends State<CompleteProfileView> {
         //'selecciona municipio';
       });
     });
-    print(selectedIndex1);
+    //print(selectedIndex1);
     var url = 'https://api-sepomex.hckdrk.mx/query/get_municipio_por_estado/' +
         selectedIndex1;
 
@@ -168,15 +125,22 @@ class _CompleteProfileViewState extends State<CompleteProfileView> {
     List<int> bytes = response.bodyBytes;
     if (response.statusCode == 200) {
       var body = utf8.decode(bytes);
-      print(body);
+      //print(body);
       var jsonResponse = jsonDecode(body);
       // var jsonResponse = jsonDecode(response.body);
       var itemCount = jsonResponse['response'];
       var itemCount2 = itemCount['municipios'];
-
+      print(municipiosSelect);
+      municipiosSelect.clear();
+      print("limpiando");
+      print(municipiosSelect);
       for (var a in itemCount2) {
         municipiosSelect.add(a);
       }
+      print(municipiosSelect);
+      _buildItemsmunicipios();
+      municipios = '';
+      selectedIndex2 = municipiosSelect.length;
     } else {
       print('Request failed with status: ${response.statusCode}.');
     }
@@ -184,6 +148,7 @@ class _CompleteProfileViewState extends State<CompleteProfileView> {
 
   @override
   Widget build(BuildContext context) {
+    print(estadosUser.toString());
     return Scaffold(
       body: (context.watch<LoginProvider>().isLoggedIn() &&
               context.watch<LoginProvider>().currentUser['nombre'] != null
@@ -225,94 +190,132 @@ class _CompleteProfileViewState extends State<CompleteProfileView> {
                                     .watch<LoginProvider>()
                                     .currentUser['direccion']),
                                 SizedBox(height: 40.0),
-                                Padding(
-                                  padding: const EdgeInsets.all(15.0),
-                                  child: Center(
-                                    child: Column(
-                                        mainAxisAlignment:
-                                            MainAxisAlignment.start,
-                                        crossAxisAlignment:
-                                            CrossAxisAlignment.stretch,
-                                        children: <Widget>[
+                                FutureBuilder(
+                                  future: states,
+                                  builder: (BuildContext context,
+                                      AsyncSnapshot snapshot) {
+                                    //print(snapshot);
+                                    if (snapshot.hasData) {
+                                      return Column(
+                                        children: [
                                           Padding(
-                                            padding: const EdgeInsets.only(
-                                                left: 10.0),
-                                            child: Text(
-                                              "Selecciona  Estado",
-                                              style: TextStyle(
-                                                  color: Colors.grey,
-                                                  fontWeight: FontWeight.w500),
-                                            ),
-                                          ),
-                                          DirectSelect(
-                                              itemExtent: 35.0,
-                                              selectedIndex: selectedIndex1,
-                                              child: MySelectionItem(
-                                                isForList: false,
-                                                title: selectedIndex1 != 0
-                                                    ? estadosSelect[
-                                                        selectedIndex1]
-                                                    : context
-                                                        .watch<LoginProvider>()
-                                                        .currentUser['estado'],
-                                              ),
-                                              onSelectedItemChanged: (index) {
-                                                setState(() {
-                                                  selectedIndex1 = index;
-                                                  print(estadosSelect[
-                                                      selectedIndex1]);
-                                                  _getvalue2(estadosSelect[
-                                                      selectedIndex1]);
-                                                });
-                                              },
-                                              mode: DirectSelectMode.tap,
-                                              items: _buildItemsestados() !=
-                                                          null &&
-                                                      _buildItemsestados()
-                                                              .length >
-                                                          0
-                                                  ? _buildItemsestados()
-                                                  : _buildItems4()),
-                                          Padding(
-                                            padding: const EdgeInsets.only(
-                                                left: 10.0, top: 20.0),
-                                            child: Text(
-                                              "Selecciona  Municipio",
-                                              style: TextStyle(
-                                                  color: Colors.grey,
-                                                  fontWeight: FontWeight.w500),
-                                            ),
-                                          ),
-                                          DirectSelect(
-                                              itemExtent: 35.0,
-                                              selectedIndex: selectedIndex2,
-                                              child: MySelectionItem(
-                                                isForList: false,
-                                                title: selectedIndex2 != 0
-                                                    ? municipiosSelect[
-                                                        selectedIndex2]
-                                                    : context
-                                                        .watch<LoginProvider>()
-                                                        .currentUser['municipio'],
-                                              ),
-                                              onSelectedItemChanged: (index) {
-                                                setState(() {
-                                                  selectedIndex2 = index;
-                                                  print(municipiosSelect[
-                                                      selectedIndex2]);
-                                                  /* _getvalue2(estadosSelect[
-                                                      selectedIndex1]); */
-                                                });
-                                              },
-                                              mode: DirectSelectMode.tap,
-                                              items: _buildItemsmunicipios() !=
-                                                          null &&
-                                                      _buildItemsmunicipios()
-                                                              .length >
-                                                          0
-                                                  ? _buildItemsmunicipios()
-                                                  : _buildItems4()),
-                                          /*  DirectSelect(
+                                            padding: const EdgeInsets.all(15.0),
+                                            child: Center(
+                                              child: Column(
+                                                  mainAxisAlignment:
+                                                      MainAxisAlignment.start,
+                                                  crossAxisAlignment:
+                                                      CrossAxisAlignment
+                                                          .stretch,
+                                                  children: <Widget>[
+                                                    Padding(
+                                                      padding:
+                                                          const EdgeInsets.only(
+                                                              left: 10.0),
+                                                      child: Text(
+                                                        "Selecciona  Estado",
+                                                        style: TextStyle(
+                                                            color: Colors.grey,
+                                                            fontWeight:
+                                                                FontWeight
+                                                                    .w500),
+                                                      ),
+                                                    ),
+                                                    DirectSelect(
+                                                      itemExtent: 35.0,
+                                                      selectedIndex:
+                                                          selectedIndex1,
+                                                      child: MySelectionItem(
+                                                        isForList: false,
+                                                        title: context.watch<LoginProvider>().currentUser[
+                                                                        'estado'] !=
+                                                                    null &&
+                                                                context.watch<LoginProvider>().currentUser[
+                                                                        'estado'] !=
+                                                                    ''
+                                                            ? estados != 'a'
+                                                                ? snapshot.data[
+                                                                    selectedIndex1]
+                                                                : context
+                                                                        .watch<
+                                                                            LoginProvider>()
+                                                                        .currentUser[
+                                                                    'estado']
+                                                            : snapshot.data[
+                                                                selectedIndex1],
+                                                      ),
+                                                      onSelectedItemChanged:
+                                                          (index) {
+                                                        setState(() {
+                                                          estados = '';
+                                                          selectedIndex1 =
+                                                              index;
+                                                          _getvalue2(snapshot
+                                                                  .data[
+                                                              selectedIndex1]);
+                                                        });
+                                                      },
+                                                      mode:
+                                                          DirectSelectMode.tap,
+                                                      items: _buildItemsestados(
+                                                          snapshot.data),
+                                                    ),
+                                                    Padding(
+                                                      padding:
+                                                          const EdgeInsets.only(
+                                                              left: 10.0,
+                                                              top: 20.0),
+                                                      child: Text(
+                                                        "Selecciona  Municipio",
+                                                        style: TextStyle(
+                                                            color: Colors.grey,
+                                                            fontWeight:
+                                                                FontWeight
+                                                                    .w500),
+                                                      ),
+                                                    ),
+                                                    DirectSelect(
+                                                        itemExtent: 35.0,
+                                                        selectedIndex:
+                                                            selectedIndex2,
+                                                        child: MySelectionItem(
+                                                          isForList: false,
+                                                          title: context.watch<LoginProvider>().currentUser[
+                                                                          'municipio'] !=
+                                                                      null &&
+                                                                  context.watch<LoginProvider>().currentUser[
+                                                                          'municipio'] !=
+                                                                      ''
+                                                              ? municipios !=
+                                                                      'a'
+                                                                  ? municipiosSelect[
+                                                                      selectedIndex2]
+                                                                  : context
+                                                                          .watch<
+                                                                              LoginProvider>()
+                                                                          .currentUser[
+                                                                      'municipio']
+                                                              : municipiosSelect[
+                                                                  selectedIndex2],
+                                                        ),
+                                                        onSelectedItemChanged:
+                                                            (index) {
+                                                          setState(() {
+                                                            selectedIndex2 =
+                                                                index;
+                                                            municipios = '';
+                                                            _buildItemsmunicipios();
+                                                            // print(municipiosSelect[
+                                                            //     selectedIndex2]);
+                                                            /* _getvalue2(estadosSelect[
+                                                                selectedIndex1]); */
+                                                          });
+                                                        },
+                                                        mode: DirectSelectMode
+                                                            .tap,
+                                                        items:
+                                                            _buildItemsmunicipios()),
+                                                    /*  DirectSelect(
                                               itemExtent: 35.0,
                                               selectedIndex: selectedIndex2,
                                               child: MySelectionItem(
@@ -336,44 +339,57 @@ class _CompleteProfileViewState extends State<CompleteProfileView> {
                                                           null
                                                   ? _buildItemsmunicipios()
                                                   : _buildItems4()), */
-                                        ]),
-                                  ),
-                                ),
-                                SizedBox(height: 30),
-                                DefaultButton(
-                                  text: "Continuar",
-                                  press: () async {
-                                    if (_formKey.currentState.validate()) {
-                                      _formKey.currentState.save();
+                                                  ]),
+                                            ),
+                                          ),
+                                          SizedBox(height: 30),
+                                          DefaultButton(
+                                            text: "Continuar",
+                                            press: () async {
+                                              if (_formKey.currentState
+                                                  .validate()) {
+                                                _formKey.currentState.save();
 
-                                      await FirebaseFirestore.instance
-                                          .collection('customers')
-                                          .doc(context
-                                              .read<LoginProvider>()
-                                              .currentUser['id'])
-                                          .update({
-                                        'nombre': name,
-                                        'telefono': phoneNumber,
-                                        'correo': email,
-                                        'direccion': direccion,
-                                        'estado': estadosSelect[selectedIndex1],
-                                        'municipio':
-                                            municipiosSelect[selectedIndex2],
-                                        'completed': true,
-                                        'updated_at':
-                                            FieldValue.serverTimestamp()
-                                      });
+                                                await FirebaseFirestore.instance
+                                                    .collection('customers')
+                                                    .doc(context
+                                                        .read<LoginProvider>()
+                                                        .currentUser['id'])
+                                                    .update({
+                                                  'nombre': name,
+                                                  'telefono': phoneNumber,
+                                                  'correo': email,
+                                                  'direccion': direccion,
+                                                  'estado': snapshot
+                                                      .data[selectedIndex1],
+                                                  'municipio': municipiosSelect[
+                                                      selectedIndex2],
+                                                  'completed': true,
+                                                  'updated_at': FieldValue
+                                                      .serverTimestamp()
+                                                });
 
-                                      Provider.of<LoginProvider>(context,
-                                              listen: false)
-                                          .checkLoginState()
-                                          .then((value) {
-                                        // Redirect and remove all screens
-                                        Navigator.pushNamedAndRemoveUntil(
-                                            context,
-                                            HomeView.routeName,
-                                            (route) => false);
-                                      });
+                                                Provider.of<LoginProvider>(
+                                                        context,
+                                                        listen: false)
+                                                    .checkLoginState()
+                                                    .then((value) {
+                                                  // Redirect and remove all screens
+                                                  Navigator
+                                                      .pushNamedAndRemoveUntil(
+                                                          context,
+                                                          HomeView.routeName,
+                                                          (route) => false);
+                                                });
+                                              }
+                                            },
+                                          ),
+                                        ],
+                                      );
+                                    } else {
+                                      return Container(
+                                        child: Text('no data'),
+                                      );
                                     }
                                   },
                                 ),
@@ -419,29 +435,48 @@ class _CompleteProfileViewState extends State<CompleteProfileView> {
                   ),
                 ),
                 Container(
-                  margin: EdgeInsets.only(
-                      top: MediaQuery.of(context).size.height / 6),
-                  child: ListTile(
-                    title: Text(
-                      "Iniciar Sesión",
-                      style: TextStyle(
-                          color: Colors.black,
-                          fontSize: 20,
-                          fontFamily: 'Franklin Gothic'),
-                      textAlign: TextAlign.center,
-                    ),
-                    leading: Container(
-                      margin: EdgeInsets.only(left: 100),
-                      child: Icon(
-                        Icons.account_circle_outlined,
-                        color: appColorPrimary,
-                      ),
-                    ),
-                    onTap: () {
-                      launchScreen(context, LoginView.routeName);
-                    },
-                  ),
-                ),
+                    margin: EdgeInsets.only(
+                        top: MediaQuery.of(context).size.height / 6),
+                    child: Column(
+                      mainAxisAlignment: MainAxisAlignment.center,
+                      children: [
+                        ListTile(
+                          title: Text(
+                            "Disfruta de nuestros servicios agenda y regístrate",
+                            style: TextStyle(
+                                color: Colors.black,
+                                fontSize: 20,
+                                fontFamily: 'Franklin Gothic',
+                                fontWeight: fontSemibold),
+                            textAlign: TextAlign.center,
+                          ),
+                          onTap: () {
+                            launchScreen(context, LoginView.routeName);
+                          },
+                        ),
+                        ListTile(
+                          title: Container(
+                            padding: EdgeInsets.all(10),
+                            decoration: BoxDecoration(
+                                color: pantoneFive,
+                                borderRadius:
+                                    BorderRadius.all(Radius.circular(20))),
+                            child: Text(
+                              "Click aqui para registrarte",
+                              style: TextStyle(
+                                  color: whiteColor,
+                                  fontSize: 20,
+                                  fontFamily: 'Franklin Gothic',
+                                  fontWeight: fontSemibold),
+                              textAlign: TextAlign.center,
+                            ),
+                          ),
+                          onTap: () {
+                            launchScreen(context, LoginView.routeName);
+                          },
+                        ),
+                      ],
+                    )),
               ],
             )),
     );

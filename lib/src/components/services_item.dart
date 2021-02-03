@@ -1,4 +1,5 @@
 import 'package:cached_network_image/cached_network_image.dart';
+import 'package:clientPhysiho/src/config/colors.dart';
 import 'package:clientPhysiho/src/config/constants.dart';
 import 'package:clientPhysiho/src/helpers/extension_helper.dart';
 import 'package:clientPhysiho/src/helpers/widget_helper.dart';
@@ -18,8 +19,12 @@ class ServiceItem extends StatelessWidget {
         launchScreen(context, ServiceView.routeName, arguments: services['id']);
       },
       child: Container(
-        decoration: boxDecoration(
-          showShadow: true,
+        decoration: BoxDecoration(
+          color: Colors.white,
+          border: Border.all(color: pantoneTwelve, width: 0.4),
+          borderRadius: BorderRadius.all(
+            Radius.circular(20),
+          ),
         ),
         margin: EdgeInsets.only(
             right: spacing_standard_new,

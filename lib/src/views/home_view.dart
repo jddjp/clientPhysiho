@@ -1,6 +1,7 @@
 import 'package:clientPhysiho/src/components/services_item.dart';
 import 'package:clientPhysiho/src/views/complete_profile_view.dart';
 import 'package:clientPhysiho/src/views/home_services_view.dart';
+import 'package:clientPhysiho/src/views/agend_view.dart';
 import 'package:clientPhysiho/src/views/login_view.dart';
 import 'package:cloud_firestore/cloud_firestore.dart';
 import 'package:flutter/material.dart';
@@ -48,7 +49,7 @@ class _HomeViewState extends State<HomeView> {
 
   final List<Widget> _children = [
     HomeServiceView(),
-    DrawerView(),
+    AgendView(),
     // LoginView(),
     CompleteProfileView()
   ];
