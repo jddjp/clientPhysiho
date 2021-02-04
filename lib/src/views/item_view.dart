@@ -12,6 +12,7 @@ import 'package:mvc_pattern/mvc_pattern.dart';
 import 'package:clientPhysiho/src/providers/login_provider.dart';
 import 'package:provider/provider.dart';
 import 'package:clientPhysiho/src/views/login_view.dart';
+import 'package:shared_preferences/shared_preferences.dart';
 
 class ItemView extends StatefulWidget {
   // Route name for this view
@@ -26,9 +27,27 @@ class ItemView extends StatefulWidget {
 }
 
 class _ItemViewState extends State<ItemView> {
+  SharedPreferences _idservices;
+
+  @override
+  void initState() {
+    super.initState();
+    initialize();
+    //_initialValue = 'starValue';
+  }
+
+  void initialize() async {
+    _idservices = await SharedPreferences.getInstance();
+    setState(() {});
+  }
+
   @override
   Widget build(BuildContext context) {
+    print(_idservices.getString('idservicio'));
+    print(_idservices.getString('idservicio'));
     print('ItemView');
+    print("pantalla de items compra?");
+    print(widget.item);
     var width = MediaQuery.of(context).size.width;
 
     return Scaffold(

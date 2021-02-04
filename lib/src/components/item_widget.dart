@@ -5,23 +5,45 @@ import 'package:clientPhysiho/src/config/constants.dart';
 import 'package:clientPhysiho/src/helpers/extension_helper.dart';
 import 'package:clientPhysiho/src/helpers/widget_helper.dart';
 import 'package:clientPhysiho/src/views/item_view.dart';
+import 'package:shared_preferences/shared_preferences.dart';
 
 class ItemWidget extends StatefulWidget {
   final Map<String, dynamic> item;
-
-  ItemWidget({Key key, this.item}) : super(key: key);
+  final String idservice;
+  ItemWidget({Key key, this.item, this.idservice}) : super(key: key);
 
   @override
   _ItemWidgetState createState() => _ItemWidgetState();
 }
 
 class _ItemWidgetState extends State<ItemWidget> {
+  SharedPreferences _idservices;
+  @override
+  void initState() {
+    super.initState();
+    initialize();
+    //initializeFlutterFire();
+  }
+
+  void initialize() async {
+    _idservices = await SharedPreferences.getInstance();
+    setState(() {});
+  }
+
   @override
   Widget build(BuildContext context) {
+    print("servicio ty");
+    print(widget.item["idservice"]);
     print(widget.item);
     var width = MediaQuery.of(context).size.width;
     return InkWell(
       onTap: () {
+        //id servicio y id de paquete de servicio
+        _idservices.setString('idservicio', widget.item["idservice"]);
+        _idservices.setString('idpaqueteservicio', widget.item["id"]);
+        print(widget.item["idservice"]);
+        print(widget.item["id"]);
+        print("guardando realizando set guardoado de id");
         launchScreen(context, ItemView.routeName, arguments: widget.item);
       },
       child: Column(

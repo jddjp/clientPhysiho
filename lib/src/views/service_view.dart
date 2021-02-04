@@ -173,6 +173,7 @@ class _ServiceViewState extends StateMVC<ServiceView> {
                                           return ItemWidget(item: {
                                             ..._con.items[index].data(),
                                             "id": _con.items[index].id,
+                                            "idservice": _con.service["id"],
                                           });
                                         }))
                                 : Container()

@@ -52,6 +52,7 @@
       <workItem from="1611892283627" duration="636000" />
       <workItem from="1612326890835" duration="418000" />
       <workItem from="1612334354694" duration="419000" />
+      <workItem from="1612412962214" duration="177000" />
     </task>
     <task id="LOCAL-00001" summary="first commit">
       <created>1609821287888</created>
@@ -123,7 +124,14 @@
       <option name="project" value="LOCAL" />
       <updated>1612334474704</updated>
     </task>
-    <option name="localTasksCounter" value="11" />
+    <task id="LOCAL-00011" summary="perfil">
+      <created>1612413037515</created>
+      <option name="number" value="00011" />
+      <option name="presentableId" value="LOCAL-00011" />
+      <option name="project" value="LOCAL" />
+      <updated>1612413037515</updated>
+    </task>
+    <option name="localTasksCounter" value="12" />
     <servers />
   </component>
   <component name="TypeScriptGeneratedFilesManager">
@@ -155,20 +163,24 @@
     <MESSAGE value="cambio en perfil de cliente select" />
     <MESSAGE value="update" />
     <MESSAGE value="update futurebuil select para esperar eventos e igualmente se agrego la parte del index que regresara ala posicionn 0 para que no fuera msa grande el siguiente select index" />
-    <option name="LAST_COMMIT_MESSAGE" value="update futurebuil select para esperar eventos e igualmente se agrego la parte del index que regresara ala posicionn 0 para que no fuera msa grande el siguiente select index" />
+    <MESSAGE value="perfil" />
+    <option name="LAST_COMMIT_MESSAGE" value="perfil" />
   </component>
   <component name="WindowStateProjectService">
-    <state x="189" y="0" key="CommitChangelistDialog2" timestamp="1612334430597">
+    <state x="0" y="0" key="CommitChangelistDialog2" timestamp="1612413010934">
       <screen x="0" y="0" width="1366" height="728" />
     </state>
     <state x="189" y="0" key="CommitChangelistDialog2/0.0.1366.728/-1920.-209.1920.1040@0.0.1366.728" timestamp="1612334430597" />
-    <state x="275" y="97" key="Vcs.Push.Dialog.v2" timestamp="1612334482574">
+    <state x="0" y="0" key="CommitChangelistDialog2/0.0.1366.728@0.0.1366.728" timestamp="1612413010934" />
+    <state x="275" y="97" key="Vcs.Push.Dialog.v2" timestamp="1612413043387">
       <screen x="0" y="0" width="1366" height="728" />
     </state>
     <state x="275" y="97" key="Vcs.Push.Dialog.v2/0.0.1366.728/-1920.-209.1920.1040@0.0.1366.728" timestamp="1612334482574" />
-    <state x="500" y="278" key="com.intellij.openapi.vcs.update.UpdateOrStatusOptionsDialogupdate-v2" timestamp="1612334364298">
+    <state x="275" y="97" key="Vcs.Push.Dialog.v2/0.0.1366.728@0.0.1366.728" timestamp="1612413043387" />
+    <state x="500" y="278" key="com.intellij.openapi.vcs.update.UpdateOrStatusOptionsDialogupdate-v2" timestamp="1612412982507">
       <screen x="0" y="0" width="1366" height="728" />
     </state>
     <state x="500" y="278" key="com.intellij.openapi.vcs.update.UpdateOrStatusOptionsDialogupdate-v2/0.0.1366.728/-1920.-209.1920.1040@0.0.1366.728" timestamp="1612334364298" />
+    <state x="500" y="278" key="com.intellij.openapi.vcs.update.UpdateOrStatusOptionsDialogupdate-v2/0.0.1366.728@0.0.1366.728" timestamp="1612412982507" />
   </component>
 </project>

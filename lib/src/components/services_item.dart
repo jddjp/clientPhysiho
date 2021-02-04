@@ -16,6 +16,8 @@ class ServiceItem extends StatelessWidget {
     print('serviceItem');
     return GestureDetector(
       onTap: () {
+        print("pucharar y guardar  prefernrense sharetpreferen");
+
         launchScreen(context, ServiceView.routeName, arguments: services['id']);
       },
       child: Container(

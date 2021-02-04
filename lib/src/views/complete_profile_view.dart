@@ -20,6 +20,8 @@ import 'dart:convert';
 import 'package:http/http.dart' as http;
 
 import 'package:direct_select/direct_select.dart';
+import 'package:shared_preferences/shared_preferences.dart';
+import 'package:clientPhysiho/src/views/item_view.dart';
 
 class CompleteProfileView extends StatefulWidget {
   static const routeName = 'complete_profile';
@@ -29,6 +31,8 @@ class CompleteProfileView extends StatefulWidget {
 }
 
 class _CompleteProfileViewState extends State<CompleteProfileView> {
+  SharedPreferences _idservices;
+
   final _formKey = GlobalKey<FormState>();
   final List<String> errors = [];
 
@@ -65,9 +69,15 @@ class _CompleteProfileViewState extends State<CompleteProfileView> {
   @override
   void initState() {
     super.initState();
+    initialize();
 
     //_initialValue = 'starValue';
     _controller = TextEditingController(text: _valueSaved);
+  }
+
+  void initialize() async {
+    _idservices = await SharedPreferences.getInstance();
+    setState(() {});
   }
 
   // final estadosSelect = [];
@@ -90,6 +100,7 @@ class _CompleteProfileViewState extends State<CompleteProfileView> {
         title: element,
       ));
     });
+    // selectedIndex2 = 0;
     return listMunicipios;
 
     // return elements
@@ -101,10 +112,12 @@ class _CompleteProfileViewState extends State<CompleteProfileView> {
 
   @override
   Widget build(BuildContext context) {
-    _valueChanged = context.watch<LoginProvider>().currentUser['estado'] != null
+    print(estadosUser.toString());
+    _valueChanged = context.watch<LoginProvider>().isLoggedIn() &&
+            context.watch<LoginProvider>().currentUser['estado'] != null
         ? context.watch<LoginProvider>().currentUser['estado']
         : '';
-    print(estadosUser.toString());
+
     return Scaffold(
       body: (context.watch<LoginProvider>().isLoggedIn() &&
               context.watch<LoginProvider>().currentUser['nombre'] != null
@@ -204,7 +217,6 @@ class _CompleteProfileViewState extends State<CompleteProfileView> {
                                                           (index) {
                                                         setState(() {
                                                           selectedIndex2 = 0;
-
                                                           estados = '';
                                                           selectedIndex1 =
                                                               index;
@@ -297,6 +309,9 @@ class _CompleteProfileViewState extends State<CompleteProfileView> {
                                                           municipios = '';
                                                           selectedIndex2 =
                                                               index;
+                                                          municipio = snapshot
+                                                                  .data[
+                                                              selectedIndex2];
                                                         });
                                                       },
                                                       mode:
@@ -308,53 +323,56 @@ class _CompleteProfileViewState extends State<CompleteProfileView> {
                                                   ]),
                                             ),
                                           ),
-                                          SizedBox(height: 30),
-                                          DefaultButton(
-                                            text: "Continuar",
-                                            press: () async {
-                                              if (_formKey.currentState
-                                                  .validate()) {
-                                                _formKey.currentState.save();
-
-                                                await FirebaseFirestore.instance
-                                                    .collection('customers')
-                                                    .doc(context
-                                                        .read<LoginProvider>()
-                                                        .currentUser['id'])
-                                                    .update({
-                                                  'nombre': name,
-                                                  'telefono': phoneNumber,
-                                                  'correo': email,
-                                                  'direccion': direccion,
-                                                  'estado': _valueChanged,
-                                                  'municipio': snapshot
-                                                      .data[selectedIndex2],
-                                                  'completed': true,
-                                                  'updated_at': FieldValue
-                                                      .serverTimestamp()
-                                                });
-
-                                                Provider.of<LoginProvider>(
-                                                        context,
-                                                        listen: false)
-                                                    .checkLoginState()
-                                                    .then((value) {
-                                                  // Redirect and remove all screens
-                                                  Navigator
-                                                      .pushNamedAndRemoveUntil(
-                                                          context,
-                                                          HomeView.routeName,
-                                                          (route) => false);
-                                                });
-                                              }
-                                            },
-                                          ),
                                         ],
                                       );
                                     } else {
                                       return Container(
                                         child: Text('no data'),
                                       );
+                                    }
+                                  },
+                                ),
+                                SizedBox(height: 30),
+                                DefaultButton(
+                                  text: "Continuar",
+                                  press: () async {
+                                    if (_formKey.currentState.validate()) {
+                                      _formKey.currentState.save();
+
+                                      await FirebaseFirestore.instance
+                                          .collection('customers')
+                                          .doc(context
+                                              .read<LoginProvider>()
+                                              .currentUser['id'])
+                                          .update({
+                                        'nombre': name,
+                                        'telefono': phoneNumber,
+                                        'correo': email,
+                                        'direccion': direccion,
+                                        'estado': _valueChanged,
+                                        'municipio': municipio,
+                                        'completed': true,
+                                        'updated_at':
+                                            FieldValue.serverTimestamp()
+                                      });
+
+                                      Provider.of<LoginProvider>(context,
+                                              listen: false)
+                                          .checkLoginState()
+                                          .then((value) {
+                                        // Redirect and remove all screens
+                                        Navigator.pushNamedAndRemoveUntil(
+                                            context, //idpaqueteservicio    idservicio
+                                            _idservices.getString(
+                                                            'idpaqueteservicio') !=
+                                                        null &&
+                                                    _idservices.getString(
+                                                            'idservicio') !=
+                                                        null
+                                                ? ItemView.routeName
+                                                : HomeView.routeName,
+                                            (route) => false);
+                                      });
                                     }
                                   },
                                 ),
