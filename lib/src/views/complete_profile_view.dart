@@ -90,7 +90,6 @@ class _CompleteProfileViewState extends State<CompleteProfileView> {
         title: element,
       ));
     });
-    selectedIndex2 = 0;
     return listMunicipios;
 
     // return elements
@@ -102,6 +101,9 @@ class _CompleteProfileViewState extends State<CompleteProfileView> {
 
   @override
   Widget build(BuildContext context) {
+    _valueChanged = context.watch<LoginProvider>().currentUser['estado'] != null
+        ? context.watch<LoginProvider>().currentUser['estado']
+        : '';
     print(estadosUser.toString());
     return Scaffold(
       body: (context.watch<LoginProvider>().isLoggedIn() &&
@@ -201,14 +203,15 @@ class _CompleteProfileViewState extends State<CompleteProfileView> {
                                                       onSelectedItemChanged:
                                                           (index) {
                                                         setState(() {
+                                                          selectedIndex2 = 0;
+
                                                           estados = '';
                                                           selectedIndex1 =
                                                               index;
                                                           _valueChanged =
                                                               snapshot.data[
                                                                   selectedIndex1];
-                                                          print(snapshot.data[
-                                                              selectedIndex1]);
+
                                                           municipalities
                                                               .municipio(snapshot
                                                                       .data[
@@ -220,61 +223,6 @@ class _CompleteProfileViewState extends State<CompleteProfileView> {
                                                       items: _buildItemsestados(
                                                           snapshot.data),
                                                     ),
-                                                    /* Padding(
-                                                      padding:
-                                                          const EdgeInsets.only(
-                                                              left: 10.0,
-                                                              top: 20.0),
-                                                      child: Text(
-                                                        "Selecciona  Municipio",
-                                                        style: TextStyle(
-                                                            color: Colors.grey,
-                                                            fontWeight:
-                                                                FontWeight
-                                                                    .w500),
-                                                      ),
-                                                    ),
-                                                    DirectSelect(
-                                                        itemExtent: 35.0,
-                                                        selectedIndex:
-                                                            selectedIndex2,
-                                                        child: MySelectionItem(
-                                                          isForList: false,
-                                                          title: context.watch<LoginProvider>().currentUser[
-                                                                          'municipio'] !=
-                                                                      null &&
-                                                                  context.watch<LoginProvider>().currentUser[
-                                                                          'municipio'] !=
-                                                                      ''
-                                                              ? municipios !=
-                                                                      'a'
-                                                                  ? municipiosSelect[
-                                                                      selectedIndex2]
-                                                                  : context
-                                                                          .watch<
-                                                                              LoginProvider>()
-                                                                          .currentUser[
-                                                                      'municipio']
-                                                              : municipiosSelect[
-                                                                  selectedIndex2],
-                                                        ),
-                                                        onSelectedItemChanged:
-                                                            (index) {
-                                                          setState(() {
-                                                            selectedIndex2 =
-                                                                index;
-                                                            municipios = '';
-                                                            _buildItemsmunicipios();
-                                                            // print(municipiosSelect[
-                                                            //     selectedIndex2]);
-                                                            /* _getvalue2(estadosSelect[
-                                                                selectedIndex1]); */
-                                                          });
-                                                        },
-                                                        mode: DirectSelectMode
-                                                            .tap,
-                                                        items:
-                                                            _buildItemsmunicipios()), */
                                                   ]),
                                             ),
                                           ),
@@ -378,10 +326,9 @@ class _CompleteProfileViewState extends State<CompleteProfileView> {
                                                   'telefono': phoneNumber,
                                                   'correo': email,
                                                   'direccion': direccion,
-                                                  'estado': snapshot
-                                                      .data[selectedIndex1],
-                                                  'municipio': municipiosSelect[
-                                                      selectedIndex2],
+                                                  'estado': _valueChanged,
+                                                  'municipio': snapshot
+                                                      .data[selectedIndex2],
                                                   'completed': true,
                                                   'updated_at': FieldValue
                                                       .serverTimestamp()
