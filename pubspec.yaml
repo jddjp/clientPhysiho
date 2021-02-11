@@ -59,6 +59,7 @@ dependencies:
   lottie: ^0.7.0+1
   table_calendar: ^2.3.3
   flutter_cupertino_localizations: ^1.0.1
+  date_field: ^1.0.5
 
   flutter_statusbarcolor: ^0.2.3
   mvc_pattern: ^6.6.0

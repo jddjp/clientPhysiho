@@ -12,35 +12,35 @@
 12         to allow setting breakpoints, to provide hot reload, etc.
 13    -->
 14    <uses-permission android:name="android.permission.INTERNET" />
-14-->C:\Users\pam_9\OneDrive\Documentos\Trabajo\clientphysiho\android\app\src\main\AndroidManifest.xml:3:5-66
-14-->C:\Users\pam_9\OneDrive\Documentos\Trabajo\clientphysiho\android\app\src\main\AndroidManifest.xml:3:22-64
+14-->D:\Documentos\Core_Business\Proyectos Moviles\Fisioterapia\clientPhysiho\android\app\src\main\AndroidManifest.xml:3:5-66
+14-->D:\Documentos\Core_Business\Proyectos Moviles\Fisioterapia\clientPhysiho\android\app\src\main\AndroidManifest.xml:3:22-64
 15    <uses-permission android:name="android.permission.ACCESS_FINE_LOCATION" />
-15-->C:\Users\pam_9\OneDrive\Documentos\Trabajo\clientphysiho\android\app\src\main\AndroidManifest.xml:4:5-78
-15-->C:\Users\pam_9\OneDrive\Documentos\Trabajo\clientphysiho\android\app\src\main\AndroidManifest.xml:4:22-76
+15-->D:\Documentos\Core_Business\Proyectos Moviles\Fisioterapia\clientPhysiho\android\app\src\main\AndroidManifest.xml:4:5-78
+15-->D:\Documentos\Core_Business\Proyectos Moviles\Fisioterapia\clientPhysiho\android\app\src\main\AndroidManifest.xml:4:22-76
 16    <uses-permission android:name="android.permission.ACCESS_COARSE_LOCATION" /> <!-- Although the *SdkVersion is captured in gradle build files, this is required for non gradle builds -->
-16-->C:\Users\pam_9\OneDrive\Documentos\Trabajo\clientphysiho\android\app\src\main\AndroidManifest.xml:5:5-80
-16-->C:\Users\pam_9\OneDrive\Documentos\Trabajo\clientphysiho\android\app\src\main\AndroidManifest.xml:5:22-78
+16-->D:\Documentos\Core_Business\Proyectos Moviles\Fisioterapia\clientPhysiho\android\app\src\main\AndroidManifest.xml:5:5-80
+16-->D:\Documentos\Core_Business\Proyectos Moviles\Fisioterapia\clientPhysiho\android\app\src\main\AndroidManifest.xml:5:22-78
 17    <!-- <uses-sdk android:minSdkVersion="14" /> -->
 18    <uses-permission android:name="android.permission.ACCESS_NETWORK_STATE" />
-18-->[com.google.firebase:firebase-firestore:21.7.1] C:\Users\pam_9\.gradle\caches\transforms-2\files-2.1\f5246d88c03044541ad0522916da2661\jetified-firebase-firestore-21.7.1\AndroidManifest.xml:13:5-79
-18-->[com.google.firebase:firebase-firestore:21.7.1] C:\Users\pam_9\.gradle\caches\transforms-2\files-2.1\f5246d88c03044541ad0522916da2661\jetified-firebase-firestore-21.7.1\AndroidManifest.xml:13:22-76
+18-->[com.google.firebase:firebase-firestore:21.7.1] C:\Users\Alexander\.gradle\caches\transforms-2\files-2.1\780cc1d1c31b3d670be2b8d21af6306b\jetified-firebase-firestore-21.7.1\AndroidManifest.xml:13:5-79
+18-->[com.google.firebase:firebase-firestore:21.7.1] C:\Users\Alexander\.gradle\caches\transforms-2\files-2.1\780cc1d1c31b3d670be2b8d21af6306b\jetified-firebase-firestore-21.7.1\AndroidManifest.xml:13:22-76
 19
 20    <uses-feature
-20-->[com.google.android.gms:play-services-maps:17.0.0] C:\Users\pam_9\.gradle\caches\transforms-2\files-2.1\af25e9045506d4953d742dddeecabb8e\play-services-maps-17.0.0\AndroidManifest.xml:26:5-28:35
+20-->[com.google.android.gms:play-services-maps:17.0.0] C:\Users\Alexander\.gradle\caches\transforms-2\files-2.1\af25e9045506d4953d742dddeecabb8e\play-services-maps-17.0.0\AndroidManifest.xml:26:5-28:35
 21        android:glEsVersion="0x00020000"
-21-->[com.google.android.gms:play-services-maps:17.0.0] C:\Users\pam_9\.gradle\caches\transforms-2\files-2.1\af25e9045506d4953d742dddeecabb8e\play-services-maps-17.0.0\AndroidManifest.xml:27:9-41
+21-->[com.google.android.gms:play-services-maps:17.0.0] C:\Users\Alexander\.gradle\caches\transforms-2\files-2.1\af25e9045506d4953d742dddeecabb8e\play-services-maps-17.0.0\AndroidManifest.xml:27:9-41
 22        android:required="true" />
-22-->[com.google.android.gms:play-services-maps:17.0.0] C:\Users\pam_9\.gradle\caches\transforms-2\files-2.1\af25e9045506d4953d742dddeecabb8e\play-services-maps-17.0.0\AndroidManifest.xml:28:9-32
+22-->[com.google.android.gms:play-services-maps:17.0.0] C:\Users\Alexander\.gradle\caches\transforms-2\files-2.1\af25e9045506d4953d742dddeecabb8e\play-services-maps-17.0.0\AndroidManifest.xml:28:9-32
 23
 24    <uses-permission android:name="android.permission.WAKE_LOCK" /> <!-- Required by older versions of Google Play services to create IID tokens -->
-24-->[com.google.firebase:firebase-iid:20.3.0] C:\Users\pam_9\.gradle\caches\transforms-2\files-2.1\ee142d8f3633d4d5661ad93456ca7b03\firebase-iid-20.3.0\AndroidManifest.xml:24:5-68
-24-->[com.google.firebase:firebase-iid:20.3.0] C:\Users\pam_9\.gradle\caches\transforms-2\files-2.1\ee142d8f3633d4d5661ad93456ca7b03\firebase-iid-20.3.0\AndroidManifest.xml:24:22-65
+24-->[com.google.firebase:firebase-iid:20.3.0] C:\Users\Alexander\.gradle\caches\transforms-2\files-2.1\ee142d8f3633d4d5661ad93456ca7b03\firebase-iid-20.3.0\AndroidManifest.xml:24:5-68
+24-->[com.google.firebase:firebase-iid:20.3.0] C:\Users\Alexander\.gradle\caches\transforms-2\files-2.1\ee142d8f3633d4d5661ad93456ca7b03\firebase-iid-20.3.0\AndroidManifest.xml:24:22-65
 25    <uses-permission android:name="com.google.android.c2dm.permission.RECEIVE" />
-25-->[com.google.firebase:firebase-iid:20.3.0] C:\Users\pam_9\.gradle\caches\transforms-2\files-2.1\ee142d8f3633d4d5661ad93456ca7b03\firebase-iid-20.3.0\AndroidManifest.xml:26:5-82
-25-->[com.google.firebase:firebase-iid:20.3.0] C:\Users\pam_9\.gradle\caches\transforms-2\files-2.1\ee142d8f3633d4d5661ad93456ca7b03\firebase-iid-20.3.0\AndroidManifest.xml:26:22-79
+25-->[com.google.firebase:firebase-iid:20.3.0] C:\Users\Alexander\.gradle\caches\transforms-2\files-2.1\ee142d8f3633d4d5661ad93456ca7b03\firebase-iid-20.3.0\AndroidManifest.xml:26:5-82
+25-->[com.google.firebase:firebase-iid:20.3.0] C:\Users\Alexander\.gradle\caches\transforms-2\files-2.1\ee142d8f3633d4d5661ad93456ca7b03\firebase-iid-20.3.0\AndroidManifest.xml:26:22-79
 26    <uses-permission android:name="com.google.android.finsky.permission.BIND_GET_INSTALL_REFERRER_SERVICE" />
-26-->[com.google.android.gms:play-services-measurement:17.6.0] C:\Users\pam_9\.gradle\caches\transforms-2\files-2.1\4f5ff8f75122c45887f276d4a13908eb\play-services-measurement-17.6.0\AndroidManifest.xml:26:5-110
-26-->[com.google.android.gms:play-services-measurement:17.6.0] C:\Users\pam_9\.gradle\caches\transforms-2\files-2.1\4f5ff8f75122c45887f276d4a13908eb\play-services-measurement-17.6.0\AndroidManifest.xml:26:22-107
+26-->[com.google.android.gms:play-services-measurement:17.6.0] C:\Users\Alexander\.gradle\caches\transforms-2\files-2.1\4f5ff8f75122c45887f276d4a13908eb\play-services-measurement-17.6.0\AndroidManifest.xml:26:5-110
+26-->[com.google.android.gms:play-services-measurement:17.6.0] C:\Users\Alexander\.gradle\caches\transforms-2\files-2.1\4f5ff8f75122c45887f276d4a13908eb\play-services-measurement-17.6.0\AndroidManifest.xml:26:22-107
 27    <!--
 28 io.flutter.app.FlutterApplication is an android.app.Application that
 29         calls FlutterMain.startInitialization(this); in its onCreate method.
@@ -49,47 +49,47 @@
 32         FlutterApplication and put your custom class here.
 33    -->
 34    <application
-34-->C:\Users\pam_9\OneDrive\Documentos\Trabajo\clientphysiho\android\app\src\main\AndroidManifest.xml:11:5-78:19
+34-->D:\Documentos\Core_Business\Proyectos Moviles\Fisioterapia\clientPhysiho\android\app\src\main\AndroidManifest.xml:11:5-78:19
 35        android:name="io.flutter.app.FlutterApplication"
-35-->C:\Users\pam_9\OneDrive\Documentos\Trabajo\clientphysiho\android\app\src\main\AndroidManifest.xml:12:9-57
+35-->D:\Documentos\Core_Business\Proyectos Moviles\Fisioterapia\clientPhysiho\android\app\src\main\AndroidManifest.xml:12:9-57
 36        android:appComponentFactory="androidx.core.app.CoreComponentFactory"
-36-->[androidx.core:core:1.1.0] C:\Users\pam_9\.gradle\caches\transforms-2\files-2.1\60bcdf937a69ab7807eabfbf34627aee\core-1.1.0\AndroidManifest.xml:24:18-86
+36-->[androidx.core:core:1.1.0] C:\Users\Alexander\.gradle\caches\transforms-2\files-2.1\60bcdf937a69ab7807eabfbf34627aee\core-1.1.0\AndroidManifest.xml:24:18-86
 37        android:debuggable="true"
 38        android:icon="@mipmap/launcher_iconph"
-38-->C:\Users\pam_9\OneDrive\Documentos\Trabajo\clientphysiho\android\app\src\main\AndroidManifest.xml:14:9-47
+38-->D:\Documentos\Core_Business\Proyectos Moviles\Fisioterapia\clientPhysiho\android\app\src\main\AndroidManifest.xml:14:9-47
 39        android:label="Physiho"
-39-->C:\Users\pam_9\OneDrive\Documentos\Trabajo\clientphysiho\android\app\src\main\AndroidManifest.xml:13:9-32
+39-->D:\Documentos\Core_Business\Proyectos Moviles\Fisioterapia\clientPhysiho\android\app\src\main\AndroidManifest.xml:13:9-32
 40        android:supportsRtl="true" >
-40-->[com.facebook.android:facebook-login:8.1.0] C:\Users\pam_9\.gradle\caches\transforms-2\files-2.1\59efa3361abf2b2f092b9802b3b47852\facebook-login-8.1.0\AndroidManifest.xml:28:18-44
+40-->[com.facebook.android:facebook-login:8.1.0] C:\Users\Alexander\.gradle\caches\transforms-2\files-2.1\59efa3361abf2b2f092b9802b3b47852\facebook-login-8.1.0\AndroidManifest.xml:28:18-44
 41        <meta-data
-41-->C:\Users\pam_9\OneDrive\Documentos\Trabajo\clientphysiho\android\app\src\main\AndroidManifest.xml:15:9-16:77
+41-->D:\Documentos\Core_Business\Proyectos Moviles\Fisioterapia\clientPhysiho\android\app\src\main\AndroidManifest.xml:15:9-16:77
 42            android:name="com.google.android.geo.API_KEY"
-42-->C:\Users\pam_9\OneDrive\Documentos\Trabajo\clientphysiho\android\app\src\main\AndroidManifest.xml:15:20-65
+42-->D:\Documentos\Core_Business\Proyectos Moviles\Fisioterapia\clientPhysiho\android\app\src\main\AndroidManifest.xml:15:20-65
 43            android:value="AIzaSyBZnQaGJWwvHH_rna9Jz8pjo_z_tt4564k" />
-43-->C:\Users\pam_9\OneDrive\Documentos\Trabajo\clientphysiho\android\app\src\main\AndroidManifest.xml:16:20-75
+43-->D:\Documentos\Core_Business\Proyectos Moviles\Fisioterapia\clientPhysiho\android\app\src\main\AndroidManifest.xml:16:20-75
 44        <meta-data
-44-->C:\Users\pam_9\OneDrive\Documentos\Trabajo\clientphysiho\android\app\src\main\AndroidManifest.xml:17:9-19:57
+44-->D:\Documentos\Core_Business\Proyectos Moviles\Fisioterapia\clientPhysiho\android\app\src\main\AndroidManifest.xml:17:9-19:57
 45            android:name="com.google.firebase.messaging.default_notification_icon"
-45-->C:\Users\pam_9\OneDrive\Documentos\Trabajo\clientphysiho\android\app\src\main\AndroidManifest.xml:18:11-81
+45-->D:\Documentos\Core_Business\Proyectos Moviles\Fisioterapia\clientPhysiho\android\app\src\main\AndroidManifest.xml:18:11-81
 46            android:resource="@drawable/client_physiho" />
-46-->C:\Users\pam_9\OneDrive\Documentos\Trabajo\clientphysiho\android\app\src\main\AndroidManifest.xml:19:11-54
+46-->D:\Documentos\Core_Business\Proyectos Moviles\Fisioterapia\clientPhysiho\android\app\src\main\AndroidManifest.xml:19:11-54
 47
 48        <activity
-48-->C:\Users\pam_9\OneDrive\Documentos\Trabajo\clientphysiho\android\app\src\main\AndroidManifest.xml:20:9-53:20
+48-->D:\Documentos\Core_Business\Proyectos Moviles\Fisioterapia\clientPhysiho\android\app\src\main\AndroidManifest.xml:20:9-53:20
 49            android:name="core.business.client.clientPhysiho.MainActivity"
-49-->C:\Users\pam_9\OneDrive\Documentos\Trabajo\clientphysiho\android\app\src\main\AndroidManifest.xml:21:13-41
+49-->D:\Documentos\Core_Business\Proyectos Moviles\Fisioterapia\clientPhysiho\android\app\src\main\AndroidManifest.xml:21:13-41
 50            android:configChanges="orientation|keyboardHidden|keyboard|screenSize|smallestScreenSize|locale|layoutDirection|fontScale|screenLayout|density|uiMode"
-50-->C:\Users\pam_9\OneDrive\Documentos\Trabajo\clientphysiho\android\app\src\main\AndroidManifest.xml:25:13-163
+50-->D:\Documentos\Core_Business\Proyectos Moviles\Fisioterapia\clientPhysiho\android\app\src\main\AndroidManifest.xml:25:13-163
 51            android:hardwareAccelerated="true"
-51-->C:\Users\pam_9\OneDrive\Documentos\Trabajo\clientphysiho\android\app\src\main\AndroidManifest.xml:26:13-47
+51-->D:\Documentos\Core_Business\Proyectos Moviles\Fisioterapia\clientPhysiho\android\app\src\main\AndroidManifest.xml:26:13-47
 52            android:launchMode="singleTop"
-52-->C:\Users\pam_9\OneDrive\Documentos\Trabajo\clientphysiho\android\app\src\main\AndroidManifest.xml:23:13-43
+52-->D:\Documentos\Core_Business\Proyectos Moviles\Fisioterapia\clientPhysiho\android\app\src\main\AndroidManifest.xml:23:13-43
 53            android:screenOrientation="portrait"
-53-->C:\Users\pam_9\OneDrive\Documentos\Trabajo\clientphysiho\android\app\src\main\AndroidManifest.xml:22:13-49
+53-->D:\Documentos\Core_Business\Proyectos Moviles\Fisioterapia\clientPhysiho\android\app\src\main\AndroidManifest.xml:22:13-49
 54            android:theme="@style/LaunchTheme"
-54-->C:\Users\pam_9\OneDrive\Documentos\Trabajo\clientphysiho\android\app\src\main\AndroidManifest.xml:24:13-47
+54-->D:\Documentos\Core_Business\Proyectos Moviles\Fisioterapia\clientPhysiho\android\app\src\main\AndroidManifest.xml:24:13-47
 55            android:windowSoftInputMode="adjustResize" >
-55-->C:\Users\pam_9\OneDrive\Documentos\Trabajo\clientphysiho\android\app\src\main\AndroidManifest.xml:27:13-55
+55-->D:\Documentos\Core_Business\Proyectos Moviles\Fisioterapia\clientPhysiho\android\app\src\main\AndroidManifest.xml:27:13-55
 56
 57            <!--
 58                 Specifies an Android theme to apply to this Activity as soon as
@@ -98,11 +98,11 @@
 61                 to determine the Window background behind the Flutter UI.
 62            -->
 63            <meta-data
-63-->C:\Users\pam_9\OneDrive\Documentos\Trabajo\clientphysiho\android\app\src\main\AndroidManifest.xml:32:13-35:17
+63-->D:\Documentos\Core_Business\Proyectos Moviles\Fisioterapia\clientPhysiho\android\app\src\main\AndroidManifest.xml:32:13-35:17
 64                android:name="io.flutter.embedding.android.NormalTheme"
-64-->C:\Users\pam_9\OneDrive\Documentos\Trabajo\clientphysiho\android\app\src\main\AndroidManifest.xml:33:15-70
+64-->D:\Documentos\Core_Business\Proyectos Moviles\Fisioterapia\clientPhysiho\android\app\src\main\AndroidManifest.xml:33:15-70
 65                android:resource="@style/NormalTheme" />
-65-->C:\Users\pam_9\OneDrive\Documentos\Trabajo\clientphysiho\android\app\src\main\AndroidManifest.xml:34:15-52
+65-->D:\Documentos\Core_Business\Proyectos Moviles\Fisioterapia\clientPhysiho\android\app\src\main\AndroidManifest.xml:34:15-52
 66            <!--
 67                 Displays an Android View that continues showing the launch screen
 68                 Drawable until Flutter paints its first frame, then this splash
@@ -111,31 +111,31 @@
 71                 Flutter's first frame.
 72            -->
 73            <meta-data
-73-->C:\Users\pam_9\OneDrive\Documentos\Trabajo\clientphysiho\android\app\src\main\AndroidManifest.xml:41:13-44:17
+73-->D:\Documentos\Core_Business\Proyectos Moviles\Fisioterapia\clientPhysiho\android\app\src\main\AndroidManifest.xml:41:13-44:17
 74                android:name="io.flutter.embedding.android.SplashScreenDrawable"
-74-->C:\Users\pam_9\OneDrive\Documentos\Trabajo\clientphysiho\android\app\src\main\AndroidManifest.xml:42:15-79
+74-->D:\Documentos\Core_Business\Proyectos Moviles\Fisioterapia\clientPhysiho\android\app\src\main\AndroidManifest.xml:42:15-79
 75                android:resource="@drawable/launch_background" />
-75-->C:\Users\pam_9\OneDrive\Documentos\Trabajo\clientphysiho\android\app\src\main\AndroidManifest.xml:43:15-61
+75-->D:\Documentos\Core_Business\Proyectos Moviles\Fisioterapia\clientPhysiho\android\app\src\main\AndroidManifest.xml:43:15-61
 76
 77            <intent-filter>
-77-->C:\Users\pam_9\OneDrive\Documentos\Trabajo\clientphysiho\android\app\src\main\AndroidManifest.xml:45:13-48:29
+77-->D:\Documentos\Core_Business\Proyectos Moviles\Fisioterapia\clientPhysiho\android\app\src\main\AndroidManifest.xml:45:13-48:29
 78                <action android:name="android.intent.action.MAIN" />
-78-->C:\Users\pam_9\OneDrive\Documentos\Trabajo\clientphysiho\android\app\src\main\AndroidManifest.xml:46:17-68
-78-->C:\Users\pam_9\OneDrive\Documentos\Trabajo\clientphysiho\android\app\src\main\AndroidManifest.xml:46:25-66
+78-->D:\Documentos\Core_Business\Proyectos Moviles\Fisioterapia\clientPhysiho\android\app\src\main\AndroidManifest.xml:46:17-68
+78-->D:\Documentos\Core_Business\Proyectos Moviles\Fisioterapia\clientPhysiho\android\app\src\main\AndroidManifest.xml:46:25-66
 79
 80                <category android:name="android.intent.category.LAUNCHER" />
-80-->C:\Users\pam_9\OneDrive\Documentos\Trabajo\clientphysiho\android\app\src\main\AndroidManifest.xml:47:17-76
-80-->C:\Users\pam_9\OneDrive\Documentos\Trabajo\clientphysiho\android\app\src\main\AndroidManifest.xml:47:27-74
+80-->D:\Documentos\Core_Business\Proyectos Moviles\Fisioterapia\clientPhysiho\android\app\src\main\AndroidManifest.xml:47:17-76
+80-->D:\Documentos\Core_Business\Proyectos Moviles\Fisioterapia\clientPhysiho\android\app\src\main\AndroidManifest.xml:47:27-74
 81            </intent-filter>
 82            <intent-filter>
-82-->C:\Users\pam_9\OneDrive\Documentos\Trabajo\clientphysiho\android\app\src\main\AndroidManifest.xml:49:13-52:29
+82-->D:\Documentos\Core_Business\Proyectos Moviles\Fisioterapia\clientPhysiho\android\app\src\main\AndroidManifest.xml:49:13-52:29
 83                <action android:name="FLUTTER_NOTIFICATION_CLICK" />
-83-->C:\Users\pam_9\OneDrive\Documentos\Trabajo\clientphysiho\android\app\src\main\AndroidManifest.xml:50:17-69
-83-->C:\Users\pam_9\OneDrive\Documentos\Trabajo\clientphysiho\android\app\src\main\AndroidManifest.xml:50:25-66
+83-->D:\Documentos\Core_Business\Proyectos Moviles\Fisioterapia\clientPhysiho\android\app\src\main\AndroidManifest.xml:50:17-69
+83-->D:\Documentos\Core_Business\Proyectos Moviles\Fisioterapia\clientPhysiho\android\app\src\main\AndroidManifest.xml:50:25-66
 84
 85                <category android:name="android.intent.category.DEFAULT" />
-85-->C:\Users\pam_9\OneDrive\Documentos\Trabajo\clientphysiho\android\app\src\main\AndroidManifest.xml:51:17-76
-85-->C:\Users\pam_9\OneDrive\Documentos\Trabajo\clientphysiho\android\app\src\main\AndroidManifest.xml:51:27-73
+85-->D:\Documentos\Core_Business\Proyectos Moviles\Fisioterapia\clientPhysiho\android\app\src\main\AndroidManifest.xml:51:17-76
+85-->D:\Documentos\Core_Business\Proyectos Moviles\Fisioterapia\clientPhysiho\android\app\src\main\AndroidManifest.xml:51:27-73
 86            </intent-filter>
 87        </activity>
 88        <!--
@@ -143,321 +143,321 @@
 90             This is used by the Flutter tool to generate GeneratedPluginRegistrant.java
 91        -->
 92        <meta-data
-92-->C:\Users\pam_9\OneDrive\Documentos\Trabajo\clientphysiho\android\app\src\main\AndroidManifest.xml:56:9-58:33
+92-->D:\Documentos\Core_Business\Proyectos Moviles\Fisioterapia\clientPhysiho\android\app\src\main\AndroidManifest.xml:56:9-58:33
 93            android:name="flutterEmbedding"
-93-->C:\Users\pam_9\OneDrive\Documentos\Trabajo\clientphysiho\android\app\src\main\AndroidManifest.xml:57:13-44
+93-->D:\Documentos\Core_Business\Proyectos Moviles\Fisioterapia\clientPhysiho\android\app\src\main\AndroidManifest.xml:57:13-44
 94            android:value="2" />
-94-->C:\Users\pam_9\OneDrive\Documentos\Trabajo\clientphysiho\android\app\src\main\AndroidManifest.xml:58:13-30
+94-->D:\Documentos\Core_Business\Proyectos Moviles\Fisioterapia\clientPhysiho\android\app\src\main\AndroidManifest.xml:58:13-30
 95
 96        <!-- Facebook Login configuration -->
 97        <meta-data
-97-->C:\Users\pam_9\OneDrive\Documentos\Trabajo\clientphysiho\android\app\src\main\AndroidManifest.xml:61:9-62:52
+97-->D:\Documentos\Core_Business\Proyectos Moviles\Fisioterapia\clientPhysiho\android\app\src\main\AndroidManifest.xml:61:9-62:52
 98            android:name="com.facebook.sdk.ApplicationId"
-98-->C:\Users\pam_9\OneDrive\Documentos\Trabajo\clientphysiho\android\app\src\main\AndroidManifest.xml:61:20-65
+98-->D:\Documentos\Core_Business\Proyectos Moviles\Fisioterapia\clientPhysiho\android\app\src\main\AndroidManifest.xml:61:20-65
 99            android:value="@string/facebook_app_id" />
-99-->C:\Users\pam_9\OneDrive\Documentos\Trabajo\clientphysiho\android\app\src\main\AndroidManifest.xml:62:11-50
+99-->D:\Documentos\Core_Business\Proyectos Moviles\Fisioterapia\clientPhysiho\android\app\src\main\AndroidManifest.xml:62:11-50
 100
 101        <activity
-101-->C:\Users\pam_9\OneDrive\Documentos\Trabajo\clientphysiho\android\app\src\main\AndroidManifest.xml:64:9-67:48
+101-->D:\Documentos\Core_Business\Proyectos Moviles\Fisioterapia\clientPhysiho\android\app\src\main\AndroidManifest.xml:64:9-67:48
 102            android:name="com.facebook.FacebookActivity"
-102-->C:\Users\pam_9\OneDrive\Documentos\Trabajo\clientphysiho\android\app\src\main\AndroidManifest.xml:64:19-63
+102-->D:\Documentos\Core_Business\Proyectos Moviles\Fisioterapia\clientPhysiho\android\app\src\main\AndroidManifest.xml:64:19-63
 103            android:configChanges="keyboard|keyboardHidden|screenLayout|screenSize|orientation"
-103-->C:\Users\pam_9\OneDrive\Documentos\Trabajo\clientphysiho\android\app\src\main\AndroidManifest.xml:65:13-118
+103-->D:\Documentos\Core_Business\Proyectos Moviles\Fisioterapia\clientPhysiho\android\app\src\main\AndroidManifest.xml:65:13-118
 104            android:label="@string/app_name"
-104-->C:\Users\pam_9\OneDrive\Documentos\Trabajo\clientphysiho\android\app\src\main\AndroidManifest.xml:67:13-45
+104-->D:\Documentos\Core_Business\Proyectos Moviles\Fisioterapia\clientPhysiho\android\app\src\main\AndroidManifest.xml:67:13-45
 105            android:theme="@style/com_facebook_activity_theme" />
-105-->[com.facebook.android:facebook-common:8.1.0] C:\Users\pam_9\.gradle\caches\transforms-2\files-2.1\ddd1924ff4d77c086f19b0242908a223\facebook-common-8.1.0\AndroidManifest.xml:33:13-63
+105-->[com.facebook.android:facebook-common:8.1.0] C:\Users\Alexander\.gradle\caches\transforms-2\files-2.1\ddd1924ff4d77c086f19b0242908a223\facebook-common-8.1.0\AndroidManifest.xml:33:13-63
 106        <activity
-106-->C:\Users\pam_9\OneDrive\Documentos\Trabajo\clientphysiho\android\app\src\main\AndroidManifest.xml:68:9-77:20
+106-->D:\Documentos\Core_Business\Proyectos Moviles\Fisioterapia\clientPhysiho\android\app\src\main\AndroidManifest.xml:68:9-77:20
 107            android:name="com.facebook.CustomTabActivity"
-107-->C:\Users\pam_9\OneDrive\Documentos\Trabajo\clientphysiho\android\app\src\main\AndroidManifest.xml:69:13-58
+107-->D:\Documentos\Core_Business\Proyectos Moviles\Fisioterapia\clientPhysiho\android\app\src\main\AndroidManifest.xml:69:13-58
 108            android:exported="true" >
-108-->C:\Users\pam_9\OneDrive\Documentos\Trabajo\clientphysiho\android\app\src\main\AndroidManifest.xml:70:13-36
+108-->D:\Documentos\Core_Business\Proyectos Moviles\Fisioterapia\clientPhysiho\android\app\src\main\AndroidManifest.xml:70:13-36
 109            <intent-filter>
-109-->C:\Users\pam_9\OneDrive\Documentos\Trabajo\clientphysiho\android\app\src\main\AndroidManifest.xml:71:13-76:29
+109-->D:\Documentos\Core_Business\Proyectos Moviles\Fisioterapia\clientPhysiho\android\app\src\main\AndroidManifest.xml:71:13-76:29
 110                <action android:name="android.intent.action.VIEW" />
-110-->C:\Users\pam_9\OneDrive\Documentos\Trabajo\clientphysiho\android\app\src\main\AndroidManifest.xml:72:17-69
-110-->C:\Users\pam_9\OneDrive\Documentos\Trabajo\clientphysiho\android\app\src\main\AndroidManifest.xml:72:25-66
+110-->D:\Documentos\Core_Business\Proyectos Moviles\Fisioterapia\clientPhysiho\android\app\src\main\AndroidManifest.xml:72:17-69
+110-->D:\Documentos\Core_Business\Proyectos Moviles\Fisioterapia\clientPhysiho\android\app\src\main\AndroidManifest.xml:72:25-66
 111
 112                <category android:name="android.intent.category.DEFAULT" />
-112-->C:\Users\pam_9\OneDrive\Documentos\Trabajo\clientphysiho\android\app\src\main\AndroidManifest.xml:51:17-76
-112-->C:\Users\pam_9\OneDrive\Documentos\Trabajo\clientphysiho\android\app\src\main\AndroidManifest.xml:51:27-73
+112-->D:\Documentos\Core_Business\Proyectos Moviles\Fisioterapia\clientPhysiho\android\app\src\main\AndroidManifest.xml:51:17-76
+112-->D:\Documentos\Core_Business\Proyectos Moviles\Fisioterapia\clientPhysiho\android\app\src\main\AndroidManifest.xml:51:27-73
 113                <category android:name="android.intent.category.BROWSABLE" />
-113-->C:\Users\pam_9\OneDrive\Documentos\Trabajo\clientphysiho\android\app\src\main\AndroidManifest.xml:74:17-78
-113-->C:\Users\pam_9\OneDrive\Documentos\Trabajo\clientphysiho\android\app\src\main\AndroidManifest.xml:74:27-75
+113-->D:\Documentos\Core_Business\Proyectos Moviles\Fisioterapia\clientPhysiho\android\app\src\main\AndroidManifest.xml:74:17-78
+113-->D:\Documentos\Core_Business\Proyectos Moviles\Fisioterapia\clientPhysiho\android\app\src\main\AndroidManifest.xml:74:27-75
 114
 115                <data android:scheme="@string/fb_login_protocol_scheme" />
-115-->C:\Users\pam_9\OneDrive\Documentos\Trabajo\clientphysiho\android\app\src\main\AndroidManifest.xml:75:17-75
-115-->C:\Users\pam_9\OneDrive\Documentos\Trabajo\clientphysiho\android\app\src\main\AndroidManifest.xml:75:23-72
+115-->D:\Documentos\Core_Business\Proyectos Moviles\Fisioterapia\clientPhysiho\android\app\src\main\AndroidManifest.xml:75:17-75
+115-->D:\Documentos\Core_Business\Proyectos Moviles\Fisioterapia\clientPhysiho\android\app\src\main\AndroidManifest.xml:75:23-72
 116            </intent-filter>
 117            <intent-filter>
-117-->[com.facebook.android:facebook-common:8.1.0] C:\Users\pam_9\.gradle\caches\transforms-2\files-2.1\ddd1924ff4d77c086f19b0242908a223\facebook-common-8.1.0\AndroidManifest.xml:39:13-48:29
+117-->[com.facebook.android:facebook-common:8.1.0] C:\Users\Alexander\.gradle\caches\transforms-2\files-2.1\ddd1924ff4d77c086f19b0242908a223\facebook-common-8.1.0\AndroidManifest.xml:39:13-48:29
 118                <action android:name="android.intent.action.VIEW" />
-118-->C:\Users\pam_9\OneDrive\Documentos\Trabajo\clientphysiho\android\app\src\main\AndroidManifest.xml:72:17-69
-118-->C:\Users\pam_9\OneDrive\Documentos\Trabajo\clientphysiho\android\app\src\main\AndroidManifest.xml:72:25-66
+118-->D:\Documentos\Core_Business\Proyectos Moviles\Fisioterapia\clientPhysiho\android\app\src\main\AndroidManifest.xml:72:17-69
+118-->D:\Documentos\Core_Business\Proyectos Moviles\Fisioterapia\clientPhysiho\android\app\src\main\AndroidManifest.xml:72:25-66
 119
 120                <category android:name="android.intent.category.DEFAULT" />
-120-->C:\Users\pam_9\OneDrive\Documentos\Trabajo\clientphysiho\android\app\src\main\AndroidManifest.xml:51:17-76
-120-->C:\Users\pam_9\OneDrive\Documentos\Trabajo\clientphysiho\android\app\src\main\AndroidManifest.xml:51:27-73
+120-->D:\Documentos\Core_Business\Proyectos Moviles\Fisioterapia\clientPhysiho\android\app\src\main\AndroidManifest.xml:51:17-76
+120-->D:\Documentos\Core_Business\Proyectos Moviles\Fisioterapia\clientPhysiho\android\app\src\main\AndroidManifest.xml:51:27-73
 121                <category android:name="android.intent.category.BROWSABLE" />
-121-->C:\Users\pam_9\OneDrive\Documentos\Trabajo\clientphysiho\android\app\src\main\AndroidManifest.xml:74:17-78
-121-->C:\Users\pam_9\OneDrive\Documentos\Trabajo\clientphysiho\android\app\src\main\AndroidManifest.xml:74:27-75
+121-->D:\Documentos\Core_Business\Proyectos Moviles\Fisioterapia\clientPhysiho\android\app\src\main\AndroidManifest.xml:74:17-78
+121-->D:\Documentos\Core_Business\Proyectos Moviles\Fisioterapia\clientPhysiho\android\app\src\main\AndroidManifest.xml:74:27-75
 122
 123                <data
-123-->C:\Users\pam_9\OneDrive\Documentos\Trabajo\clientphysiho\android\app\src\main\AndroidManifest.xml:75:17-75
+123-->D:\Documentos\Core_Business\Proyectos Moviles\Fisioterapia\clientPhysiho\android\app\src\main\AndroidManifest.xml:75:17-75
 124                    android:host="cct.core.business.client.clientPhysiho"
 125                    android:scheme="fbconnect" />
-125-->C:\Users\pam_9\OneDrive\Documentos\Trabajo\clientphysiho\android\app\src\main\AndroidManifest.xml:75:23-72
+125-->D:\Documentos\Core_Business\Proyectos Moviles\Fisioterapia\clientPhysiho\android\app\src\main\AndroidManifest.xml:75:23-72
 126            </intent-filter>
 127        </activity>
 128
 129        <service
-129-->[:cloud_firestore] C:\Users\pam_9\OneDrive\Documentos\Trabajo\clientphysiho\build\cloud_firestore\intermediates\library_manifest\debug\AndroidManifest.xml:8:9-12:19
+129-->[:cloud_firestore] D:\Documentos\Core_Business\Proyectos Moviles\Fisioterapia\clientPhysiho\build\cloud_firestore\intermediates\library_manifest\debug\AndroidManifest.xml:8:9-12:19
 130            android:name="com.google.firebase.components.ComponentDiscoveryService"
-130-->[:cloud_firestore] C:\Users\pam_9\OneDrive\Documentos\Trabajo\clientphysiho\build\cloud_firestore\intermediates\library_manifest\debug\AndroidManifest.xml:8:18-89
+130-->[:cloud_firestore] D:\Documentos\Core_Business\Proyectos Moviles\Fisioterapia\clientPhysiho\build\cloud_firestore\intermediates\library_manifest\debug\AndroidManifest.xml:8:18-89
 131            android:directBootAware="true"
-131-->[com.google.firebase:firebase-common:19.3.1] C:\Users\pam_9\.gradle\caches\transforms-2\files-2.1\3ffc1c6112822db537f3130e7e622028\jetified-firebase-common-19.3.1\AndroidManifest.xml:35:13-43
+131-->[com.google.firebase:firebase-common:19.3.1] C:\Users\Alexander\.gradle\caches\transforms-2\files-2.1\2c4a8b751c2b0f13425573d091e33ed3\jetified-firebase-common-19.3.1\AndroidManifest.xml:35:13-43
 132            android:exported="false" >
-132-->[com.google.firebase:firebase-analytics-ktx:17.6.0] C:\Users\pam_9\.gradle\caches\transforms-2\files-2.1\1f5abc26894844cef729e6c7530541b4\firebase-analytics-ktx-17.6.0\AndroidManifest.xml:10:13-37
+132-->[com.google.firebase:firebase-analytics-ktx:17.6.0] C:\Users\Alexander\.gradle\caches\transforms-2\files-2.1\1f5abc26894844cef729e6c7530541b4\firebase-analytics-ktx-17.6.0\AndroidManifest.xml:10:13-37
 133            <meta-data
-133-->[:cloud_firestore] C:\Users\pam_9\OneDrive\Documentos\Trabajo\clientphysiho\build\cloud_firestore\intermediates\library_manifest\debug\AndroidManifest.xml:9:13-11:85
+133-->[:cloud_firestore] D:\Documentos\Core_Business\Proyectos Moviles\Fisioterapia\clientPhysiho\build\cloud_firestore\intermediates\library_manifest\debug\AndroidManifest.xml:9:13-11:85
 134                android:name="com.google.firebase.components:io.flutter.plugins.firebase.firestore.FlutterFirebaseFirestoreRegistrar"
-134-->[:cloud_firestore] C:\Users\pam_9\OneDrive\Documentos\Trabajo\clientphysiho\build\cloud_firestore\intermediates\library_manifest\debug\AndroidManifest.xml:10:17-134
+134-->[:cloud_firestore] D:\Documentos\Core_Business\Proyectos Moviles\Fisioterapia\clientPhysiho\build\cloud_firestore\intermediates\library_manifest\debug\AndroidManifest.xml:10:17-134
 135                android:value="com.google.firebase.components.ComponentRegistrar" />
-135-->[:cloud_firestore] C:\Users\pam_9\OneDrive\Documentos\Trabajo\clientphysiho\build\cloud_firestore\intermediates\library_manifest\debug\AndroidManifest.xml:11:17-82
+135-->[:cloud_firestore] D:\Documentos\Core_Business\Proyectos Moviles\Fisioterapia\clientPhysiho\build\cloud_firestore\intermediates\library_manifest\debug\AndroidManifest.xml:11:17-82
 136            <meta-data
-136-->[:firebase_auth] C:\Users\pam_9\OneDrive\Documentos\Trabajo\clientphysiho\build\firebase_auth\intermediates\library_manifest\debug\AndroidManifest.xml:9:13-11:85
+136-->[:firebase_auth] D:\Documentos\Core_Business\Proyectos Moviles\Fisioterapia\clientPhysiho\build\firebase_auth\intermediates\library_manifest\debug\AndroidManifest.xml:9:13-11:85
 137                android:name="com.google.firebase.components:io.flutter.plugins.firebase.auth.FlutterFirebaseAuthRegistrar"
-137-->[:firebase_auth] C:\Users\pam_9\OneDrive\Documentos\Trabajo\clientphysiho\build\firebase_auth\intermediates\library_manifest\debug\AndroidManifest.xml:10:17-124
+137-->[:firebase_auth] D:\Documentos\Core_Business\Proyectos Moviles\Fisioterapia\clientPhysiho\build\firebase_auth\intermediates\library_manifest\debug\AndroidManifest.xml:10:17-124
 138                android:value="com.google.firebase.components.ComponentRegistrar" />
-138-->[:firebase_auth] C:\Users\pam_9\OneDrive\Documentos\Trabajo\clientphysiho\build\firebase_auth\intermediates\library_manifest\debug\AndroidManifest.xml:11:17-82
+138-->[:firebase_auth] D:\Documentos\Core_Business\Proyectos Moviles\Fisioterapia\clientPhysiho\build\firebase_auth\intermediates\library_manifest\debug\AndroidManifest.xml:11:17-82
 139            <meta-data
-139-->[:firebase_messaging] C:\Users\pam_9\OneDrive\Documentos\Trabajo\clientphysiho\build\firebase_messaging\intermediates\library_manifest\debug\AndroidManifest.xml:14:13-16:85
+139-->[:firebase_messaging] D:\Documentos\Core_Business\Proyectos Moviles\Fisioterapia\clientPhysiho\build\firebase_messaging\intermediates\library_manifest\debug\AndroidManifest.xml:14:13-16:85
 140                android:name="com.google.firebase.components:io.flutter.plugins.firebasemessaging.FlutterFirebaseAppRegistrar"
-140-->[:firebase_messaging] C:\Users\pam_9\OneDrive\Documentos\Trabajo\clientphysiho\build\firebase_messaging\intermediates\library_manifest\debug\AndroidManifest.xml:15:17-127
+140-->[:firebase_messaging] D:\Documentos\Core_Business\Proyectos Moviles\Fisioterapia\clientPhysiho\build\firebase_messaging\intermediates\library_manifest\debug\AndroidManifest.xml:15:17-127
 141                android:value="com.google.firebase.components.ComponentRegistrar" />
-141-->[:firebase_messaging] C:\Users\pam_9\OneDrive\Documentos\Trabajo\clientphysiho\build\firebase_messaging\intermediates\library_manifest\debug\AndroidManifest.xml:16:17-82
+141-->[:firebase_messaging] D:\Documentos\Core_Business\Proyectos Moviles\Fisioterapia\clientPhysiho\build\firebase_messaging\intermediates\library_manifest\debug\AndroidManifest.xml:16:17-82
 142            <meta-data
-142-->[:firebase_core] C:\Users\pam_9\OneDrive\Documentos\Trabajo\clientphysiho\build\firebase_core\intermediates\library_manifest\debug\AndroidManifest.xml:9:13-11:85
+142-->[:firebase_core] D:\Documentos\Core_Business\Proyectos Moviles\Fisioterapia\clientPhysiho\build\firebase_core\intermediates\library_manifest\debug\AndroidManifest.xml:9:13-11:85
 143                android:name="com.google.firebase.components:io.flutter.plugins.firebase.core.FlutterFirebaseCoreRegistrar"
-143-->[:firebase_core] C:\Users\pam_9\OneDrive\Documentos\Trabajo\clientphysiho\build\firebase_core\intermediates\library_manifest\debug\AndroidManifest.xml:10:17-124
+143-->[:firebase_core] D:\Documentos\Core_Business\Proyectos Moviles\Fisioterapia\clientPhysiho\build\firebase_core\intermediates\library_manifest\debug\AndroidManifest.xml:10:17-124
 144                android:value="com.google.firebase.components.ComponentRegistrar" />
-144-->[:firebase_core] C:\Users\pam_9\OneDrive\Documentos\Trabajo\clientphysiho\build\firebase_core\intermediates\library_manifest\debug\AndroidManifest.xml:11:17-82
+144-->[:firebase_core] D:\Documentos\Core_Business\Proyectos Moviles\Fisioterapia\clientPhysiho\build\firebase_core\intermediates\library_manifest\debug\AndroidManifest.xml:11:17-82
 145            <meta-data
-145-->[com.google.firebase:firebase-analytics-ktx:17.6.0] C:\Users\pam_9\.gradle\caches\transforms-2\files-2.1\1f5abc26894844cef729e6c7530541b4\firebase-analytics-ktx-17.6.0\AndroidManifest.xml:11:13-13:85
+145-->[com.google.firebase:firebase-analytics-ktx:17.6.0] C:\Users\Alexander\.gradle\caches\transforms-2\files-2.1\1f5abc26894844cef729e6c7530541b4\firebase-analytics-ktx-17.6.0\AndroidManifest.xml:11:13-13:85
 146                android:name="com.google.firebase.components:com.google.firebase.analytics.ktx.FirebaseAnalyticsKtxRegistrar"
-146-->[com.google.firebase:firebase-analytics-ktx:17.6.0] C:\Users\pam_9\.gradle\caches\transforms-2\files-2.1\1f5abc26894844cef729e6c7530541b4\firebase-analytics-ktx-17.6.0\AndroidManifest.xml:12:17-126
+146-->[com.google.firebase:firebase-analytics-ktx:17.6.0] C:\Users\Alexander\.gradle\caches\transforms-2\files-2.1\1f5abc26894844cef729e6c7530541b4\firebase-analytics-ktx-17.6.0\AndroidManifest.xml:12:17-126
 147                android:value="com.google.firebase.components.ComponentRegistrar" />
-147-->[com.google.firebase:firebase-analytics-ktx:17.6.0] C:\Users\pam_9\.gradle\caches\transforms-2\files-2.1\1f5abc26894844cef729e6c7530541b4\firebase-analytics-ktx-17.6.0\AndroidManifest.xml:13:17-82
+147-->[com.google.firebase:firebase-analytics-ktx:17.6.0] C:\Users\Alexander\.gradle\caches\transforms-2\files-2.1\1f5abc26894844cef729e6c7530541b4\firebase-analytics-ktx-17.6.0\AndroidManifest.xml:13:17-82
 148            <meta-data
-148-->[com.google.firebase:firebase-common-ktx:19.3.0] C:\Users\pam_9\.gradle\caches\transforms-2\files-2.1\3e62432fde5fcf90609bb7a2150176b9\firebase-common-ktx-19.3.0\AndroidManifest.xml:15:13-17:85
+148-->[com.google.firebase:firebase-common-ktx:19.3.0] C:\Users\Alexander\.gradle\caches\transforms-2\files-2.1\3e62432fde5fcf90609bb7a2150176b9\firebase-common-ktx-19.3.0\AndroidManifest.xml:15:13-17:85
 149                android:name="com.google.firebase.components:com.google.firebase.ktx.FirebaseCommonKtxRegistrar"
-149-->[com.google.firebase:firebase-common-ktx:19.3.0] C:\Users\pam_9\.gradle\caches\transforms-2\files-2.1\3e62432fde5fcf90609bb7a2150176b9\firebase-common-ktx-19.3.0\AndroidManifest.xml:16:17-113
+149-->[com.google.firebase:firebase-common-ktx:19.3.0] C:\Users\Alexander\.gradle\caches\transforms-2\files-2.1\3e62432fde5fcf90609bb7a2150176b9\firebase-common-ktx-19.3.0\AndroidManifest.xml:16:17-113
 150                android:value="com.google.firebase.components.ComponentRegistrar" />
-150-->[com.google.firebase:firebase-common-ktx:19.3.0] C:\Users\pam_9\.gradle\caches\transforms-2\files-2.1\3e62432fde5fcf90609bb7a2150176b9\firebase-common-ktx-19.3.0\AndroidManifest.xml:17:17-82
+150-->[com.google.firebase:firebase-common-ktx:19.3.0] C:\Users\Alexander\.gradle\caches\transforms-2\files-2.1\3e62432fde5fcf90609bb7a2150176b9\firebase-common-ktx-19.3.0\AndroidManifest.xml:17:17-82
 151            <meta-data
-151-->[com.google.firebase:firebase-messaging:20.3.0] C:\Users\pam_9\.gradle\caches\transforms-2\files-2.1\ff2c2011d9200aec4e16cbd4d826f6ce\jetified-firebase-messaging-20.3.0\AndroidManifest.xml:39:13-41:85
+151-->[com.google.firebase:firebase-messaging:20.3.0] C:\Users\Alexander\.gradle\caches\transforms-2\files-2.1\60a210d775174b265f278416ecfdc257\jetified-firebase-messaging-20.3.0\AndroidManifest.xml:39:13-41:85
 152                android:name="com.google.firebase.components:com.google.firebase.messaging.FirebaseMessagingRegistrar"
-152-->[com.google.firebase:firebase-messaging:20.3.0] C:\Users\pam_9\.gradle\caches\transforms-2\files-2.1\ff2c2011d9200aec4e16cbd4d826f6ce\jetified-firebase-messaging-20.3.0\AndroidManifest.xml:40:17-119
+152-->[com.google.firebase:firebase-messaging:20.3.0] C:\Users\Alexander\.gradle\caches\transforms-2\files-2.1\60a210d775174b265f278416ecfdc257\jetified-firebase-messaging-20.3.0\AndroidManifest.xml:40:17-119
 153                android:value="com.google.firebase.components.ComponentRegistrar" />
-153-->[com.google.firebase:firebase-messaging:20.3.0] C:\Users\pam_9\.gradle\caches\transforms-2\files-2.1\ff2c2011d9200aec4e16cbd4d826f6ce\jetified-firebase-messaging-20.3.0\AndroidManifest.xml:41:17-82
+153-->[com.google.firebase:firebase-messaging:20.3.0] C:\Users\Alexander\.gradle\caches\transforms-2\files-2.1\60a210d775174b265f278416ecfdc257\jetified-firebase-messaging-20.3.0\AndroidManifest.xml:41:17-82
 154            <meta-data
-154-->[com.google.firebase:firebase-auth:19.4.0] C:\Users\pam_9\.gradle\caches\transforms-2\files-2.1\e17e1c98c294b0fa27444c2b8b656166\firebase-auth-19.4.0\AndroidManifest.xml:36:13-38:85
+154-->[com.google.firebase:firebase-auth:19.4.0] C:\Users\Alexander\.gradle\caches\transforms-2\files-2.1\e17e1c98c294b0fa27444c2b8b656166\firebase-auth-19.4.0\AndroidManifest.xml:36:13-38:85
 155                android:name="com.google.firebase.components:com.google.firebase.auth.FirebaseAuthRegistrar"
-155-->[com.google.firebase:firebase-auth:19.4.0] C:\Users\pam_9\.gradle\caches\transforms-2\files-2.1\e17e1c98c294b0fa27444c2b8b656166\firebase-auth-19.4.0\AndroidManifest.xml:37:17-109
+155-->[com.google.firebase:firebase-auth:19.4.0] C:\Users\Alexander\.gradle\caches\transforms-2\files-2.1\e17e1c98c294b0fa27444c2b8b656166\firebase-auth-19.4.0\AndroidManifest.xml:37:17-109
 156                android:value="com.google.firebase.components.ComponentRegistrar" />
-156-->[com.google.firebase:firebase-auth:19.4.0] C:\Users\pam_9\.gradle\caches\transforms-2\files-2.1\e17e1c98c294b0fa27444c2b8b656166\firebase-auth-19.4.0\AndroidManifest.xml:38:17-82
+156-->[com.google.firebase:firebase-auth:19.4.0] C:\Users\Alexander\.gradle\caches\transforms-2\files-2.1\e17e1c98c294b0fa27444c2b8b656166\firebase-auth-19.4.0\AndroidManifest.xml:38:17-82
 157            <meta-data
-157-->[com.google.firebase:firebase-firestore:21.7.1] C:\Users\pam_9\.gradle\caches\transforms-2\files-2.1\f5246d88c03044541ad0522916da2661\jetified-firebase-firestore-21.7.1\AndroidManifest.xml:20:13-22:85
+157-->[com.google.firebase:firebase-firestore:21.7.1] C:\Users\Alexander\.gradle\caches\transforms-2\files-2.1\780cc1d1c31b3d670be2b8d21af6306b\jetified-firebase-firestore-21.7.1\AndroidManifest.xml:20:13-22:85
 158                android:name="com.google.firebase.components:com.google.firebase.firestore.FirestoreRegistrar"
-158-->[com.google.firebase:firebase-firestore:21.7.1] C:\Users\pam_9\.gradle\caches\transforms-2\files-2.1\f5246d88c03044541ad0522916da2661\jetified-firebase-firestore-21.7.1\AndroidManifest.xml:21:17-111
+158-->[com.google.firebase:firebase-firestore:21.7.1] C:\Users\Alexander\.gradle\caches\transforms-2\files-2.1\780cc1d1c31b3d670be2b8d21af6306b\jetified-firebase-firestore-21.7.1\AndroidManifest.xml:21:17-111
 159                android:value="com.google.firebase.components.ComponentRegistrar" />
-159-->[com.google.firebase:firebase-firestore:21.7.1] C:\Users\pam_9\.gradle\caches\transforms-2\files-2.1\f5246d88c03044541ad0522916da2661\jetified-firebase-firestore-21.7.1\AndroidManifest.xml:22:17-82
+159-->[com.google.firebase:firebase-firestore:21.7.1] C:\Users\Alexander\.gradle\caches\transforms-2\files-2.1\780cc1d1c31b3d670be2b8d21af6306b\jetified-firebase-firestore-21.7.1\AndroidManifest.xml:22:17-82
 160            <meta-data
-160-->[com.google.firebase:firebase-datatransport:17.0.3] C:\Users\pam_9\.gradle\caches\transforms-2\files-2.1\caebf1427fe4a80f81548ae507338a98\firebase-datatransport-17.0.3\AndroidManifest.xml:28:13-30:85
+160-->[com.google.firebase:firebase-datatransport:17.0.3] C:\Users\Alexander\.gradle\caches\transforms-2\files-2.1\caebf1427fe4a80f81548ae507338a98\firebase-datatransport-17.0.3\AndroidManifest.xml:28:13-30:85
 161                android:name="com.google.firebase.components:com.google.firebase.datatransport.TransportRegistrar"
-161-->[com.google.firebase:firebase-datatransport:17.0.3] C:\Users\pam_9\.gradle\caches\transforms-2\files-2.1\caebf1427fe4a80f81548ae507338a98\firebase-datatransport-17.0.3\AndroidManifest.xml:29:17-115
+161-->[com.google.firebase:firebase-datatransport:17.0.3] C:\Users\Alexander\.gradle\caches\transforms-2\files-2.1\caebf1427fe4a80f81548ae507338a98\firebase-datatransport-17.0.3\AndroidManifest.xml:29:17-115
 162                android:value="com.google.firebase.components.ComponentRegistrar" />
-162-->[com.google.firebase:firebase-datatransport:17.0.3] C:\Users\pam_9\.gradle\caches\transforms-2\files-2.1\caebf1427fe4a80f81548ae507338a98\firebase-datatransport-17.0.3\AndroidManifest.xml:30:17-82
+162-->[com.google.firebase:firebase-datatransport:17.0.3] C:\Users\Alexander\.gradle\caches\transforms-2\files-2.1\caebf1427fe4a80f81548ae507338a98\firebase-datatransport-17.0.3\AndroidManifest.xml:30:17-82
 163            <meta-data
-163-->[com.google.firebase:firebase-iid:20.3.0] C:\Users\pam_9\.gradle\caches\transforms-2\files-2.1\ee142d8f3633d4d5661ad93456ca7b03\firebase-iid-20.3.0\AndroidManifest.xml:32:13-34:85
+163-->[com.google.firebase:firebase-iid:20.3.0] C:\Users\Alexander\.gradle\caches\transforms-2\files-2.1\ee142d8f3633d4d5661ad93456ca7b03\firebase-iid-20.3.0\AndroidManifest.xml:32:13-34:85
 164                android:name="com.google.firebase.components:com.google.firebase.iid.Registrar"
-164-->[com.google.firebase:firebase-iid:20.3.0] C:\Users\pam_9\.gradle\caches\transforms-2\files-2.1\ee142d8f3633d4d5661ad93456ca7b03\firebase-iid-20.3.0\AndroidManifest.xml:33:17-96
+164-->[com.google.firebase:firebase-iid:20.3.0] C:\Users\Alexander\.gradle\caches\transforms-2\files-2.1\ee142d8f3633d4d5661ad93456ca7b03\firebase-iid-20.3.0\AndroidManifest.xml:33:17-96
 165                android:value="com.google.firebase.components.ComponentRegistrar" />
-165-->[com.google.firebase:firebase-iid:20.3.0] C:\Users\pam_9\.gradle\caches\transforms-2\files-2.1\ee142d8f3633d4d5661ad93456ca7b03\firebase-iid-20.3.0\AndroidManifest.xml:34:17-82
+165-->[com.google.firebase:firebase-iid:20.3.0] C:\Users\Alexander\.gradle\caches\transforms-2\files-2.1\ee142d8f3633d4d5661ad93456ca7b03\firebase-iid-20.3.0\AndroidManifest.xml:34:17-82
 166            <meta-data
-166-->[com.google.android.gms:play-services-measurement-api:17.6.0] C:\Users\pam_9\.gradle\caches\transforms-2\files-2.1\f03075187a3db9a239413647c5afb670\play-services-measurement-api-17.6.0\AndroidManifest.xml:30:13-32:85
+166-->[com.google.android.gms:play-services-measurement-api:17.6.0] C:\Users\Alexander\.gradle\caches\transforms-2\files-2.1\f03075187a3db9a239413647c5afb670\play-services-measurement-api-17.6.0\AndroidManifest.xml:30:13-32:85
 167                android:name="com.google.firebase.components:com.google.firebase.analytics.connector.internal.AnalyticsConnectorRegistrar"
-167-->[com.google.android.gms:play-services-measurement-api:17.6.0] C:\Users\pam_9\.gradle\caches\transforms-2\files-2.1\f03075187a3db9a239413647c5afb670\play-services-measurement-api-17.6.0\AndroidManifest.xml:31:17-139
+167-->[com.google.android.gms:play-services-measurement-api:17.6.0] C:\Users\Alexander\.gradle\caches\transforms-2\files-2.1\f03075187a3db9a239413647c5afb670\play-services-measurement-api-17.6.0\AndroidManifest.xml:31:17-139
 168                android:value="com.google.firebase.components.ComponentRegistrar" />
-168-->[com.google.android.gms:play-services-measurement-api:17.6.0] C:\Users\pam_9\.gradle\caches\transforms-2\files-2.1\f03075187a3db9a239413647c5afb670\play-services-measurement-api-17.6.0\AndroidManifest.xml:32:17-82
+168-->[com.google.android.gms:play-services-measurement-api:17.6.0] C:\Users\Alexander\.gradle\caches\transforms-2\files-2.1\f03075187a3db9a239413647c5afb670\play-services-measurement-api-17.6.0\AndroidManifest.xml:32:17-82
 169            <meta-data
-169-->[com.google.firebase:firebase-installations:16.3.3] C:\Users\pam_9\.gradle\caches\transforms-2\files-2.1\7d91b3a02ff199a11c3208b3994a973a\firebase-installations-16.3.3\AndroidManifest.xml:17:13-19:85
+169-->[com.google.firebase:firebase-installations:16.3.3] C:\Users\Alexander\.gradle\caches\transforms-2\files-2.1\7d91b3a02ff199a11c3208b3994a973a\firebase-installations-16.3.3\AndroidManifest.xml:17:13-19:85
 170                android:name="com.google.firebase.components:com.google.firebase.installations.FirebaseInstallationsRegistrar"
-170-->[com.google.firebase:firebase-installations:16.3.3] C:\Users\pam_9\.gradle\caches\transforms-2\files-2.1\7d91b3a02ff199a11c3208b3994a973a\firebase-installations-16.3.3\AndroidManifest.xml:18:17-127
+170-->[com.google.firebase:firebase-installations:16.3.3] C:\Users\Alexander\.gradle\caches\transforms-2\files-2.1\7d91b3a02ff199a11c3208b3994a973a\firebase-installations-16.3.3\AndroidManifest.xml:18:17-127
 171                android:value="com.google.firebase.components.ComponentRegistrar" />
-171-->[com.google.firebase:firebase-installations:16.3.3] C:\Users\pam_9\.gradle\caches\transforms-2\files-2.1\7d91b3a02ff199a11c3208b3994a973a\firebase-installations-16.3.3\AndroidManifest.xml:19:17-82
+171-->[com.google.firebase:firebase-installations:16.3.3] C:\Users\Alexander\.gradle\caches\transforms-2\files-2.1\7d91b3a02ff199a11c3208b3994a973a\firebase-installations-16.3.3\AndroidManifest.xml:19:17-82
 172        </service>
 173        <service android:name="io.flutter.plugins.firebasemessaging.FlutterFirebaseMessagingService" >
-173-->[:firebase_messaging] C:\Users\pam_9\OneDrive\Documentos\Trabajo\clientphysiho\build\firebase_messaging\intermediates\library_manifest\debug\AndroidManifest.xml:8:9-12:19
-173-->[:firebase_messaging] C:\Users\pam_9\OneDrive\Documentos\Trabajo\clientphysiho\build\firebase_messaging\intermediates\library_manifest\debug\AndroidManifest.xml:8:18-101
+173-->[:firebase_messaging] D:\Documentos\Core_Business\Proyectos Moviles\Fisioterapia\clientPhysiho\build\firebase_messaging\intermediates\library_manifest\debug\AndroidManifest.xml:8:9-12:19
+173-->[:firebase_messaging] D:\Documentos\Core_Business\Proyectos Moviles\Fisioterapia\clientPhysiho\build\firebase_messaging\intermediates\library_manifest\debug\AndroidManifest.xml:8:18-101
 174            <intent-filter>
-174-->[:firebase_messaging] C:\Users\pam_9\OneDrive\Documentos\Trabajo\clientphysiho\build\firebase_messaging\intermediates\library_manifest\debug\AndroidManifest.xml:9:13-11:29
+174-->[:firebase_messaging] D:\Documentos\Core_Business\Proyectos Moviles\Fisioterapia\clientPhysiho\build\firebase_messaging\intermediates\library_manifest\debug\AndroidManifest.xml:9:13-11:29
 175                <action android:name="com.google.firebase.MESSAGING_EVENT" />
-175-->[:firebase_messaging] C:\Users\pam_9\OneDrive\Documentos\Trabajo\clientphysiho\build\firebase_messaging\intermediates\library_manifest\debug\AndroidManifest.xml:10:17-78
-175-->[:firebase_messaging] C:\Users\pam_9\OneDrive\Documentos\Trabajo\clientphysiho\build\firebase_messaging\intermediates\library_manifest\debug\AndroidManifest.xml:10:25-75
+175-->[:firebase_messaging] D:\Documentos\Core_Business\Proyectos Moviles\Fisioterapia\clientPhysiho\build\firebase_messaging\intermediates\library_manifest\debug\AndroidManifest.xml:10:17-78
+175-->[:firebase_messaging] D:\Documentos\Core_Business\Proyectos Moviles\Fisioterapia\clientPhysiho\build\firebase_messaging\intermediates\library_manifest\debug\AndroidManifest.xml:10:25-75
 176            </intent-filter>
 177        </service>
 178
 179        <activity
-179-->[:url_launcher] C:\Users\pam_9\OneDrive\Documentos\Trabajo\clientphysiho\build\url_launcher\intermediates\library_manifest\debug\AndroidManifest.xml:8:9-11:74
+179-->[:url_launcher] D:\Documentos\Core_Business\Proyectos Moviles\Fisioterapia\clientPhysiho\build\url_launcher\intermediates\library_manifest\debug\AndroidManifest.xml:8:9-11:74
 180            android:name="io.flutter.plugins.urllauncher.WebViewActivity"
-180-->[:url_launcher] C:\Users\pam_9\OneDrive\Documentos\Trabajo\clientphysiho\build\url_launcher\intermediates\library_manifest\debug\AndroidManifest.xml:9:13-74
+180-->[:url_launcher] D:\Documentos\Core_Business\Proyectos Moviles\Fisioterapia\clientPhysiho\build\url_launcher\intermediates\library_manifest\debug\AndroidManifest.xml:9:13-74
 181            android:exported="false"
-181-->[:url_launcher] C:\Users\pam_9\OneDrive\Documentos\Trabajo\clientphysiho\build\url_launcher\intermediates\library_manifest\debug\AndroidManifest.xml:10:13-37
+181-->[:url_launcher] D:\Documentos\Core_Business\Proyectos Moviles\Fisioterapia\clientPhysiho\build\url_launcher\intermediates\library_manifest\debug\AndroidManifest.xml:10:13-37
 182            android:theme="@android:style/Theme.NoTitleBar.Fullscreen" />
-182-->[:url_launcher] C:\Users\pam_9\OneDrive\Documentos\Trabajo\clientphysiho\build\url_launcher\intermediates\library_manifest\debug\AndroidManifest.xml:11:13-71
+182-->[:url_launcher] D:\Documentos\Core_Business\Proyectos Moviles\Fisioterapia\clientPhysiho\build\url_launcher\intermediates\library_manifest\debug\AndroidManifest.xml:11:13-71
 183        <!--
 184             FirebaseMessagingService performs security checks at runtime,
 185             but set to not exported to explicitly avoid allowing another app to call it.
 186        -->
 187        <service
-187-->[com.google.firebase:firebase-messaging:20.3.0] C:\Users\pam_9\.gradle\caches\transforms-2\files-2.1\ff2c2011d9200aec4e16cbd4d826f6ce\jetified-firebase-messaging-20.3.0\AndroidManifest.xml:28:9-35:19
+187-->[com.google.firebase:firebase-messaging:20.3.0] C:\Users\Alexander\.gradle\caches\transforms-2\files-2.1\60a210d775174b265f278416ecfdc257\jetified-firebase-messaging-20.3.0\AndroidManifest.xml:28:9-35:19
 188            android:name="com.google.firebase.messaging.FirebaseMessagingService"
-188-->[com.google.firebase:firebase-messaging:20.3.0] C:\Users\pam_9\.gradle\caches\transforms-2\files-2.1\ff2c2011d9200aec4e16cbd4d826f6ce\jetified-firebase-messaging-20.3.0\AndroidManifest.xml:29:13-82
+188-->[com.google.firebase:firebase-messaging:20.3.0] C:\Users\Alexander\.gradle\caches\transforms-2\files-2.1\60a210d775174b265f278416ecfdc257\jetified-firebase-messaging-20.3.0\AndroidManifest.xml:29:13-82
 189            android:directBootAware="true"
-189-->[com.google.firebase:firebase-messaging:20.3.0] C:\Users\pam_9\.gradle\caches\transforms-2\files-2.1\ff2c2011d9200aec4e16cbd4d826f6ce\jetified-firebase-messaging-20.3.0\AndroidManifest.xml:30:13-43
+189-->[com.google.firebase:firebase-messaging:20.3.0] C:\Users\Alexander\.gradle\caches\transforms-2\files-2.1\60a210d775174b265f278416ecfdc257\jetified-firebase-messaging-20.3.0\AndroidManifest.xml:30:13-43
 190            android:exported="false" >
-190-->[com.google.firebase:firebase-messaging:20.3.0] C:\Users\pam_9\.gradle\caches\transforms-2\files-2.1\ff2c2011d9200aec4e16cbd4d826f6ce\jetified-firebase-messaging-20.3.0\AndroidManifest.xml:31:13-37
+190-->[com.google.firebase:firebase-messaging:20.3.0] C:\Users\Alexander\.gradle\caches\transforms-2\files-2.1\60a210d775174b265f278416ecfdc257\jetified-firebase-messaging-20.3.0\AndroidManifest.xml:31:13-37
 191            <intent-filter android:priority="-500" >
-191-->[:firebase_messaging] C:\Users\pam_9\OneDrive\Documentos\Trabajo\clientphysiho\build\firebase_messaging\intermediates\library_manifest\debug\AndroidManifest.xml:9:13-11:29
+191-->[:firebase_messaging] D:\Documentos\Core_Business\Proyectos Moviles\Fisioterapia\clientPhysiho\build\firebase_messaging\intermediates\library_manifest\debug\AndroidManifest.xml:9:13-11:29
 192                <action android:name="com.google.firebase.MESSAGING_EVENT" />
-192-->[:firebase_messaging] C:\Users\pam_9\OneDrive\Documentos\Trabajo\clientphysiho\build\firebase_messaging\intermediates\library_manifest\debug\AndroidManifest.xml:10:17-78
-192-->[:firebase_messaging] C:\Users\pam_9\OneDrive\Documentos\Trabajo\clientphysiho\build\firebase_messaging\intermediates\library_manifest\debug\AndroidManifest.xml:10:25-75
+192-->[:firebase_messaging] D:\Documentos\Core_Business\Proyectos Moviles\Fisioterapia\clientPhysiho\build\firebase_messaging\intermediates\library_manifest\debug\AndroidManifest.xml:10:17-78
+192-->[:firebase_messaging] D:\Documentos\Core_Business\Proyectos Moviles\Fisioterapia\clientPhysiho\build\firebase_messaging\intermediates\library_manifest\debug\AndroidManifest.xml:10:25-75
 193            </intent-filter>
 194        </service>
 195
 196        <activity
-196-->[com.google.firebase:firebase-auth:19.4.0] C:\Users\pam_9\.gradle\caches\transforms-2\files-2.1\e17e1c98c294b0fa27444c2b8b656166\firebase-auth-19.4.0\AndroidManifest.xml:24:9-31:50
+196-->[com.google.firebase:firebase-auth:19.4.0] C:\Users\Alexander\.gradle\caches\transforms-2\files-2.1\e17e1c98c294b0fa27444c2b8b656166\firebase-auth-19.4.0\AndroidManifest.xml:24:9-31:50
 197            android:name="com.google.firebase.auth.internal.FederatedSignInActivity"
-197-->[com.google.firebase:firebase-auth:19.4.0] C:\Users\pam_9\.gradle\caches\transforms-2\files-2.1\e17e1c98c294b0fa27444c2b8b656166\firebase-auth-19.4.0\AndroidManifest.xml:25:13-85
+197-->[com.google.firebase:firebase-auth:19.4.0] C:\Users\Alexander\.gradle\caches\transforms-2\files-2.1\e17e1c98c294b0fa27444c2b8b656166\firebase-auth-19.4.0\AndroidManifest.xml:25:13-85
 198            android:excludeFromRecents="true"
-198-->[com.google.firebase:firebase-auth:19.4.0] C:\Users\pam_9\.gradle\caches\transforms-2\files-2.1\e17e1c98c294b0fa27444c2b8b656166\firebase-auth-19.4.0\AndroidManifest.xml:26:13-46
+198-->[com.google.firebase:firebase-auth:19.4.0] C:\Users\Alexander\.gradle\caches\transforms-2\files-2.1\e17e1c98c294b0fa27444c2b8b656166\firebase-auth-19.4.0\AndroidManifest.xml:26:13-46
 199            android:exported="true"
-199-->[com.google.firebase:firebase-auth:19.4.0] C:\Users\pam_9\.gradle\caches\transforms-2\files-2.1\e17e1c98c294b0fa27444c2b8b656166\firebase-auth-19.4.0\AndroidManifest.xml:27:13-36
+199-->[com.google.firebase:firebase-auth:19.4.0] C:\Users\Alexander\.gradle\caches\transforms-2\files-2.1\e17e1c98c294b0fa27444c2b8b656166\firebase-auth-19.4.0\AndroidManifest.xml:27:13-36
 200            android:launchMode="singleTask"
-200-->[com.google.firebase:firebase-auth:19.4.0] C:\Users\pam_9\.gradle\caches\transforms-2\files-2.1\e17e1c98c294b0fa27444c2b8b656166\firebase-auth-19.4.0\AndroidManifest.xml:28:13-44
+200-->[com.google.firebase:firebase-auth:19.4.0] C:\Users\Alexander\.gradle\caches\transforms-2\files-2.1\e17e1c98c294b0fa27444c2b8b656166\firebase-auth-19.4.0\AndroidManifest.xml:28:13-44
 201            android:permission="com.google.firebase.auth.api.gms.permission.LAUNCH_FEDERATED_SIGN_IN"
-201-->[com.google.firebase:firebase-auth:19.4.0] C:\Users\pam_9\.gradle\caches\transforms-2\files-2.1\e17e1c98c294b0fa27444c2b8b656166\firebase-auth-19.4.0\AndroidManifest.xml:29:13-102
+201-->[com.google.firebase:firebase-auth:19.4.0] C:\Users\Alexander\.gradle\caches\transforms-2\files-2.1\e17e1c98c294b0fa27444c2b8b656166\firebase-auth-19.4.0\AndroidManifest.xml:29:13-102
 202            android:theme="@android:style/Theme.Translucent.NoTitleBar" /> <!-- Needs to be explicitly declared on P+ -->
-202-->[com.google.firebase:firebase-auth:19.4.0] C:\Users\pam_9\.gradle\caches\transforms-2\files-2.1\e17e1c98c294b0fa27444c2b8b656166\firebase-auth-19.4.0\AndroidManifest.xml:30:13-72
+202-->[com.google.firebase:firebase-auth:19.4.0] C:\Users\Alexander\.gradle\caches\transforms-2\files-2.1\e17e1c98c294b0fa27444c2b8b656166\firebase-auth-19.4.0\AndroidManifest.xml:30:13-72
 203        <uses-library
-203-->[com.google.android.gms:play-services-maps:17.0.0] C:\Users\pam_9\.gradle\caches\transforms-2\files-2.1\af25e9045506d4953d742dddeecabb8e\play-services-maps-17.0.0\AndroidManifest.xml:33:9-35:40
+203-->[com.google.android.gms:play-services-maps:17.0.0] C:\Users\Alexander\.gradle\caches\transforms-2\files-2.1\af25e9045506d4953d742dddeecabb8e\play-services-maps-17.0.0\AndroidManifest.xml:33:9-35:40
 204            android:name="org.apache.http.legacy"
-204-->[com.google.android.gms:play-services-maps:17.0.0] C:\Users\pam_9\.gradle\caches\transforms-2\files-2.1\af25e9045506d4953d742dddeecabb8e\play-services-maps-17.0.0\AndroidManifest.xml:34:13-50
+204-->[com.google.android.gms:play-services-maps:17.0.0] C:\Users\Alexander\.gradle\caches\transforms-2\files-2.1\af25e9045506d4953d742dddeecabb8e\play-services-maps-17.0.0\AndroidManifest.xml:34:13-50
 205            android:required="false" />
-205-->[com.google.android.gms:play-services-maps:17.0.0] C:\Users\pam_9\.gradle\caches\transforms-2\files-2.1\af25e9045506d4953d742dddeecabb8e\play-services-maps-17.0.0\AndroidManifest.xml:35:13-37
+205-->[com.google.android.gms:play-services-maps:17.0.0] C:\Users\Alexander\.gradle\caches\transforms-2\files-2.1\af25e9045506d4953d742dddeecabb8e\play-services-maps-17.0.0\AndroidManifest.xml:35:13-37
 206
 207        <activity
-207-->[com.google.android.gms:play-services-auth:16.0.1] C:\Users\pam_9\.gradle\caches\transforms-2\files-2.1\05b5cd499c6843f808b813b70eaee7b9\jetified-play-services-auth-16.0.1\AndroidManifest.xml:23:9-27:75
+207-->[com.google.android.gms:play-services-auth:16.0.1] C:\Users\Alexander\.gradle\caches\transforms-2\files-2.1\e36c03ceff2b07a9e03b21d7edca5590\jetified-play-services-auth-16.0.1\AndroidManifest.xml:23:9-27:75
 208            android:name="com.google.android.gms.auth.api.signin.internal.SignInHubActivity"
-208-->[com.google.android.gms:play-services-auth:16.0.1] C:\Users\pam_9\.gradle\caches\transforms-2\files-2.1\05b5cd499c6843f808b813b70eaee7b9\jetified-play-services-auth-16.0.1\AndroidManifest.xml:24:13-93
+208-->[com.google.android.gms:play-services-auth:16.0.1] C:\Users\Alexander\.gradle\caches\transforms-2\files-2.1\e36c03ceff2b07a9e03b21d7edca5590\jetified-play-services-auth-16.0.1\AndroidManifest.xml:24:13-93
 209            android:excludeFromRecents="true"
-209-->[com.google.android.gms:play-services-auth:16.0.1] C:\Users\pam_9\.gradle\caches\transforms-2\files-2.1\05b5cd499c6843f808b813b70eaee7b9\jetified-play-services-auth-16.0.1\AndroidManifest.xml:25:13-46
+209-->[com.google.android.gms:play-services-auth:16.0.1] C:\Users\Alexander\.gradle\caches\transforms-2\files-2.1\e36c03ceff2b07a9e03b21d7edca5590\jetified-play-services-auth-16.0.1\AndroidManifest.xml:25:13-46
 210            android:exported="false"
-210-->[com.google.android.gms:play-services-auth:16.0.1] C:\Users\pam_9\.gradle\caches\transforms-2\files-2.1\05b5cd499c6843f808b813b70eaee7b9\jetified-play-services-auth-16.0.1\AndroidManifest.xml:26:13-37
+210-->[com.google.android.gms:play-services-auth:16.0.1] C:\Users\Alexander\.gradle\caches\transforms-2\files-2.1\e36c03ceff2b07a9e03b21d7edca5590\jetified-play-services-auth-16.0.1\AndroidManifest.xml:26:13-37
 211            android:theme="@android:style/Theme.Translucent.NoTitleBar" />
-211-->[com.google.android.gms:play-services-auth:16.0.1] C:\Users\pam_9\.gradle\caches\transforms-2\files-2.1\05b5cd499c6843f808b813b70eaee7b9\jetified-play-services-auth-16.0.1\AndroidManifest.xml:27:13-72
+211-->[com.google.android.gms:play-services-auth:16.0.1] C:\Users\Alexander\.gradle\caches\transforms-2\files-2.1\e36c03ceff2b07a9e03b21d7edca5590\jetified-play-services-auth-16.0.1\AndroidManifest.xml:27:13-72
 212        <!--
 213            Service handling Google Sign-In user revocation. For apps that do not integrate with
 214            Google Sign-In, this service will never be started.
 215        -->
 216        <service
-216-->[com.google.android.gms:play-services-auth:16.0.1] C:\Users\pam_9\.gradle\caches\transforms-2\files-2.1\05b5cd499c6843f808b813b70eaee7b9\jetified-play-services-auth-16.0.1\AndroidManifest.xml:33:9-36:110
+216-->[com.google.android.gms:play-services-auth:16.0.1] C:\Users\Alexander\.gradle\caches\transforms-2\files-2.1\e36c03ceff2b07a9e03b21d7edca5590\jetified-play-services-auth-16.0.1\AndroidManifest.xml:33:9-36:110
 217            android:name="com.google.android.gms.auth.api.signin.RevocationBoundService"
-217-->[com.google.android.gms:play-services-auth:16.0.1] C:\Users\pam_9\.gradle\caches\transforms-2\files-2.1\05b5cd499c6843f808b813b70eaee7b9\jetified-play-services-auth-16.0.1\AndroidManifest.xml:34:13-89
+217-->[com.google.android.gms:play-services-auth:16.0.1] C:\Users\Alexander\.gradle\caches\transforms-2\files-2.1\e36c03ceff2b07a9e03b21d7edca5590\jetified-play-services-auth-16.0.1\AndroidManifest.xml:34:13-89
 218            android:exported="true"
-218-->[com.google.android.gms:play-services-auth:16.0.1] C:\Users\pam_9\.gradle\caches\transforms-2\files-2.1\05b5cd499c6843f808b813b70eaee7b9\jetified-play-services-auth-16.0.1\AndroidManifest.xml:35:13-36
+218-->[com.google.android.gms:play-services-auth:16.0.1] C:\Users\Alexander\.gradle\caches\transforms-2\files-2.1\e36c03ceff2b07a9e03b21d7edca5590\jetified-play-services-auth-16.0.1\AndroidManifest.xml:35:13-36
 219            android:permission="com.google.android.gms.auth.api.signin.permission.REVOCATION_NOTIFICATION" />
-219-->[com.google.android.gms:play-services-auth:16.0.1] C:\Users\pam_9\.gradle\caches\transforms-2\files-2.1\05b5cd499c6843f808b813b70eaee7b9\jetified-play-services-auth-16.0.1\AndroidManifest.xml:36:13-107
+219-->[com.google.android.gms:play-services-auth:16.0.1] C:\Users\Alexander\.gradle\caches\transforms-2\files-2.1\e36c03ceff2b07a9e03b21d7edca5590\jetified-play-services-auth-16.0.1\AndroidManifest.xml:36:13-107
 220
 221        <receiver
-221-->[com.google.firebase:firebase-iid:20.3.0] C:\Users\pam_9\.gradle\caches\transforms-2\files-2.1\ee142d8f3633d4d5661ad93456ca7b03\firebase-iid-20.3.0\AndroidManifest.xml:37:9-44:20
+221-->[com.google.firebase:firebase-iid:20.3.0] C:\Users\Alexander\.gradle\caches\transforms-2\files-2.1\ee142d8f3633d4d5661ad93456ca7b03\firebase-iid-20.3.0\AndroidManifest.xml:37:9-44:20
 222            android:name="com.google.firebase.iid.FirebaseInstanceIdReceiver"
-222-->[com.google.firebase:firebase-iid:20.3.0] C:\Users\pam_9\.gradle\caches\transforms-2\files-2.1\ee142d8f3633d4d5661ad93456ca7b03\firebase-iid-20.3.0\AndroidManifest.xml:38:13-78
+222-->[com.google.firebase:firebase-iid:20.3.0] C:\Users\Alexander\.gradle\caches\transforms-2\files-2.1\ee142d8f3633d4d5661ad93456ca7b03\firebase-iid-20.3.0\AndroidManifest.xml:38:13-78
 223            android:exported="true"
-223-->[com.google.firebase:firebase-iid:20.3.0] C:\Users\pam_9\.gradle\caches\transforms-2\files-2.1\ee142d8f3633d4d5661ad93456ca7b03\firebase-iid-20.3.0\AndroidManifest.xml:39:13-36
+223-->[com.google.firebase:firebase-iid:20.3.0] C:\Users\Alexander\.gradle\caches\transforms-2\files-2.1\ee142d8f3633d4d5661ad93456ca7b03\firebase-iid-20.3.0\AndroidManifest.xml:39:13-36
 224            android:permission="com.google.android.c2dm.permission.SEND" >
-224-->[com.google.firebase:firebase-iid:20.3.0] C:\Users\pam_9\.gradle\caches\transforms-2\files-2.1\ee142d8f3633d4d5661ad93456ca7b03\firebase-iid-20.3.0\AndroidManifest.xml:40:13-73
+224-->[com.google.firebase:firebase-iid:20.3.0] C:\Users\Alexander\.gradle\caches\transforms-2\files-2.1\ee142d8f3633d4d5661ad93456ca7b03\firebase-iid-20.3.0\AndroidManifest.xml:40:13-73
 225            <intent-filter>
-225-->[com.google.firebase:firebase-iid:20.3.0] C:\Users\pam_9\.gradle\caches\transforms-2\files-2.1\ee142d8f3633d4d5661ad93456ca7b03\firebase-iid-20.3.0\AndroidManifest.xml:41:13-43:29
+225-->[com.google.firebase:firebase-iid:20.3.0] C:\Users\Alexander\.gradle\caches\transforms-2\files-2.1\ee142d8f3633d4d5661ad93456ca7b03\firebase-iid-20.3.0\AndroidManifest.xml:41:13-43:29
 226                <action android:name="com.google.android.c2dm.intent.RECEIVE" />
-226-->[com.google.firebase:firebase-iid:20.3.0] C:\Users\pam_9\.gradle\caches\transforms-2\files-2.1\ee142d8f3633d4d5661ad93456ca7b03\firebase-iid-20.3.0\AndroidManifest.xml:42:17-81
-226-->[com.google.firebase:firebase-iid:20.3.0] C:\Users\pam_9\.gradle\caches\transforms-2\files-2.1\ee142d8f3633d4d5661ad93456ca7b03\firebase-iid-20.3.0\AndroidManifest.xml:42:25-78
+226-->[com.google.firebase:firebase-iid:20.3.0] C:\Users\Alexander\.gradle\caches\transforms-2\files-2.1\ee142d8f3633d4d5661ad93456ca7b03\firebase-iid-20.3.0\AndroidManifest.xml:42:17-81
+226-->[com.google.firebase:firebase-iid:20.3.0] C:\Users\Alexander\.gradle\caches\transforms-2\files-2.1\ee142d8f3633d4d5661ad93456ca7b03\firebase-iid-20.3.0\AndroidManifest.xml:42:25-78
 227            </intent-filter>
 228        </receiver>
 229
 230        <provider
-230-->[com.google.firebase:firebase-common:19.3.1] C:\Users\pam_9\.gradle\caches\transforms-2\files-2.1\3ffc1c6112822db537f3130e7e622028\jetified-firebase-common-19.3.1\AndroidManifest.xml:26:9-31:39
+230-->[com.google.firebase:firebase-common:19.3.1] C:\Users\Alexander\.gradle\caches\transforms-2\files-2.1\2c4a8b751c2b0f13425573d091e33ed3\jetified-firebase-common-19.3.1\AndroidManifest.xml:26:9-31:39
 231            android:name="com.google.firebase.provider.FirebaseInitProvider"
-231-->[com.google.firebase:firebase-common:19.3.1] C:\Users\pam_9\.gradle\caches\transforms-2\files-2.1\3ffc1c6112822db537f3130e7e622028\jetified-firebase-common-19.3.1\AndroidManifest.xml:27:13-77
+231-->[com.google.firebase:firebase-common:19.3.1] C:\Users\Alexander\.gradle\caches\transforms-2\files-2.1\2c4a8b751c2b0f13425573d091e33ed3\jetified-firebase-common-19.3.1\AndroidManifest.xml:27:13-77
 232            android:authorities="core.business.client.clientPhysiho.firebaseinitprovider"
-232-->[com.google.firebase:firebase-common:19.3.1] C:\Users\pam_9\.gradle\caches\transforms-2\files-2.1\3ffc1c6112822db537f3130e7e622028\jetified-firebase-common-19.3.1\AndroidManifest.xml:28:13-72
+232-->[com.google.firebase:firebase-common:19.3.1] C:\Users\Alexander\.gradle\caches\transforms-2\files-2.1\2c4a8b751c2b0f13425573d091e33ed3\jetified-firebase-common-19.3.1\AndroidManifest.xml:28:13-72
 233            android:directBootAware="true"
-233-->[com.google.firebase:firebase-common:19.3.1] C:\Users\pam_9\.gradle\caches\transforms-2\files-2.1\3ffc1c6112822db537f3130e7e622028\jetified-firebase-common-19.3.1\AndroidManifest.xml:29:13-43
+233-->[com.google.firebase:firebase-common:19.3.1] C:\Users\Alexander\.gradle\caches\transforms-2\files-2.1\2c4a8b751c2b0f13425573d091e33ed3\jetified-firebase-common-19.3.1\AndroidManifest.xml:29:13-43
 234            android:exported="false"
-234-->[com.google.firebase:firebase-common:19.3.1] C:\Users\pam_9\.gradle\caches\transforms-2\files-2.1\3ffc1c6112822db537f3130e7e622028\jetified-firebase-common-19.3.1\AndroidManifest.xml:30:13-37
+234-->[com.google.firebase:firebase-common:19.3.1] C:\Users\Alexander\.gradle\caches\transforms-2\files-2.1\2c4a8b751c2b0f13425573d091e33ed3\jetified-firebase-common-19.3.1\AndroidManifest.xml:30:13-37
 235            android:initOrder="100" />
-235-->[com.google.firebase:firebase-common:19.3.1] C:\Users\pam_9\.gradle\caches\transforms-2\files-2.1\3ffc1c6112822db537f3130e7e622028\jetified-firebase-common-19.3.1\AndroidManifest.xml:31:13-36
+235-->[com.google.firebase:firebase-common:19.3.1] C:\Users\Alexander\.gradle\caches\transforms-2\files-2.1\2c4a8b751c2b0f13425573d091e33ed3\jetified-firebase-common-19.3.1\AndroidManifest.xml:31:13-36
 236
 237        <activity
-237-->[com.google.android.gms:play-services-base:17.1.0] C:\Users\pam_9\.gradle\caches\transforms-2\files-2.1\3a04cbfa3b635ae4131224a81a3c4510\play-services-base-17.1.0\AndroidManifest.xml:23:9-26:75
+237-->[com.google.android.gms:play-services-base:17.1.0] C:\Users\Alexander\.gradle\caches\transforms-2\files-2.1\3a04cbfa3b635ae4131224a81a3c4510\play-services-base-17.1.0\AndroidManifest.xml:23:9-26:75
 238            android:name="com.google.android.gms.common.api.GoogleApiActivity"
-238-->[com.google.android.gms:play-services-base:17.1.0] C:\Users\pam_9\.gradle\caches\transforms-2\files-2.1\3a04cbfa3b635ae4131224a81a3c4510\play-services-base-17.1.0\AndroidManifest.xml:24:13-79
+238-->[com.google.android.gms:play-services-base:17.1.0] C:\Users\Alexander\.gradle\caches\transforms-2\files-2.1\3a04cbfa3b635ae4131224a81a3c4510\play-services-base-17.1.0\AndroidManifest.xml:24:13-79
 239            android:exported="false"
-239-->[com.google.android.gms:play-services-base:17.1.0] C:\Users\pam_9\.gradle\caches\transforms-2\files-2.1\3a04cbfa3b635ae4131224a81a3c4510\play-services-base-17.1.0\AndroidManifest.xml:25:13-37
+239-->[com.google.android.gms:play-services-base:17.1.0] C:\Users\Alexander\.gradle\caches\transforms-2\files-2.1\3a04cbfa3b635ae4131224a81a3c4510\play-services-base-17.1.0\AndroidManifest.xml:25:13-37
 240            android:theme="@android:style/Theme.Translucent.NoTitleBar" />
-240-->[com.google.android.gms:play-services-base:17.1.0] C:\Users\pam_9\.gradle\caches\transforms-2\files-2.1\3a04cbfa3b635ae4131224a81a3c4510\play-services-base-17.1.0\AndroidManifest.xml:26:13-72
+240-->[com.google.android.gms:play-services-base:17.1.0] C:\Users\Alexander\.gradle\caches\transforms-2\files-2.1\3a04cbfa3b635ae4131224a81a3c4510\play-services-base-17.1.0\AndroidManifest.xml:26:13-72
 241
 242        <receiver
-242-->[com.google.android.gms:play-services-measurement:17.6.0] C:\Users\pam_9\.gradle\caches\transforms-2\files-2.1\4f5ff8f75122c45887f276d4a13908eb\play-services-measurement-17.6.0\AndroidManifest.xml:29:9-33:20
+242-->[com.google.android.gms:play-services-measurement:17.6.0] C:\Users\Alexander\.gradle\caches\transforms-2\files-2.1\4f5ff8f75122c45887f276d4a13908eb\play-services-measurement-17.6.0\AndroidManifest.xml:29:9-33:20
 243            android:name="com.google.android.gms.measurement.AppMeasurementReceiver"
-243-->[com.google.android.gms:play-services-measurement:17.6.0] C:\Users\pam_9\.gradle\caches\transforms-2\files-2.1\4f5ff8f75122c45887f276d4a13908eb\play-services-measurement-17.6.0\AndroidManifest.xml:30:13-85
+243-->[com.google.android.gms:play-services-measurement:17.6.0] C:\Users\Alexander\.gradle\caches\transforms-2\files-2.1\4f5ff8f75122c45887f276d4a13908eb\play-services-measurement-17.6.0\AndroidManifest.xml:30:13-85
 244            android:enabled="true"
-244-->[com.google.android.gms:play-services-measurement:17.6.0] C:\Users\pam_9\.gradle\caches\transforms-2\files-2.1\4f5ff8f75122c45887f276d4a13908eb\play-services-measurement-17.6.0\AndroidManifest.xml:31:13-35
+244-->[com.google.android.gms:play-services-measurement:17.6.0] C:\Users\Alexander\.gradle\caches\transforms-2\files-2.1\4f5ff8f75122c45887f276d4a13908eb\play-services-measurement-17.6.0\AndroidManifest.xml:31:13-35
 245            android:exported="false" >
-245-->[com.google.android.gms:play-services-measurement:17.6.0] C:\Users\pam_9\.gradle\caches\transforms-2\files-2.1\4f5ff8f75122c45887f276d4a13908eb\play-services-measurement-17.6.0\AndroidManifest.xml:32:13-37
+245-->[com.google.android.gms:play-services-measurement:17.6.0] C:\Users\Alexander\.gradle\caches\transforms-2\files-2.1\4f5ff8f75122c45887f276d4a13908eb\play-services-measurement-17.6.0\AndroidManifest.xml:32:13-37
 246        </receiver>
 247
 248        <service
-248-->[com.google.android.gms:play-services-measurement:17.6.0] C:\Users\pam_9\.gradle\caches\transforms-2\files-2.1\4f5ff8f75122c45887f276d4a13908eb\play-services-measurement-17.6.0\AndroidManifest.xml:35:9-38:40
+248-->[com.google.android.gms:play-services-measurement:17.6.0] C:\Users\Alexander\.gradle\caches\transforms-2\files-2.1\4f5ff8f75122c45887f276d4a13908eb\play-services-measurement-17.6.0\AndroidManifest.xml:35:9-38:40
 249            android:name="com.google.android.gms.measurement.AppMeasurementService"
-249-->[com.google.android.gms:play-services-measurement:17.6.0] C:\Users\pam_9\.gradle\caches\transforms-2\files-2.1\4f5ff8f75122c45887f276d4a13908eb\play-services-measurement-17.6.0\AndroidManifest.xml:36:13-84
+249-->[com.google.android.gms:play-services-measurement:17.6.0] C:\Users\Alexander\.gradle\caches\transforms-2\files-2.1\4f5ff8f75122c45887f276d4a13908eb\play-services-measurement-17.6.0\AndroidManifest.xml:36:13-84
 250            android:enabled="true"
-250-->[com.google.android.gms:play-services-measurement:17.6.0] C:\Users\pam_9\.gradle\caches\transforms-2\files-2.1\4f5ff8f75122c45887f276d4a13908eb\play-services-measurement-17.6.0\AndroidManifest.xml:37:13-35
+250-->[com.google.android.gms:play-services-measurement:17.6.0] C:\Users\Alexander\.gradle\caches\transforms-2\files-2.1\4f5ff8f75122c45887f276d4a13908eb\play-services-measurement-17.6.0\AndroidManifest.xml:37:13-35
 251            android:exported="false" />
-251-->[com.google.android.gms:play-services-measurement:17.6.0] C:\Users\pam_9\.gradle\caches\transforms-2\files-2.1\4f5ff8f75122c45887f276d4a13908eb\play-services-measurement-17.6.0\AndroidManifest.xml:38:13-37
+251-->[com.google.android.gms:play-services-measurement:17.6.0] C:\Users\Alexander\.gradle\caches\transforms-2\files-2.1\4f5ff8f75122c45887f276d4a13908eb\play-services-measurement-17.6.0\AndroidManifest.xml:38:13-37
 252        <service
-252-->[com.google.android.gms:play-services-measurement:17.6.0] C:\Users\pam_9\.gradle\caches\transforms-2\files-2.1\4f5ff8f75122c45887f276d4a13908eb\play-services-measurement-17.6.0\AndroidManifest.xml:39:9-43:72
+252-->[com.google.android.gms:play-services-measurement:17.6.0] C:\Users\Alexander\.gradle\caches\transforms-2\files-2.1\4f5ff8f75122c45887f276d4a13908eb\play-services-measurement-17.6.0\AndroidManifest.xml:39:9-43:72
 253            android:name="com.google.android.gms.measurement.AppMeasurementJobService"
-253-->[com.google.android.gms:play-services-measurement:17.6.0] C:\Users\pam_9\.gradle\caches\transforms-2\files-2.1\4f5ff8f75122c45887f276d4a13908eb\play-services-measurement-17.6.0\AndroidManifest.xml:40:13-87
+253-->[com.google.android.gms:play-services-measurement:17.6.0] C:\Users\Alexander\.gradle\caches\transforms-2\files-2.1\4f5ff8f75122c45887f276d4a13908eb\play-services-measurement-17.6.0\AndroidManifest.xml:40:13-87
 254            android:enabled="true"
-254-->[com.google.android.gms:play-services-measurement:17.6.0] C:\Users\pam_9\.gradle\caches\transforms-2\files-2.1\4f5ff8f75122c45887f276d4a13908eb\play-services-measurement-17.6.0\AndroidManifest.xml:41:13-35
+254-->[com.google.android.gms:play-services-measurement:17.6.0] C:\Users\Alexander\.gradle\caches\transforms-2\files-2.1\4f5ff8f75122c45887f276d4a13908eb\play-services-measurement-17.6.0\AndroidManifest.xml:41:13-35
 255            android:exported="false"
-255-->[com.google.android.gms:play-services-measurement:17.6.0] C:\Users\pam_9\.gradle\caches\transforms-2\files-2.1\4f5ff8f75122c45887f276d4a13908eb\play-services-measurement-17.6.0\AndroidManifest.xml:42:13-37
+255-->[com.google.android.gms:play-services-measurement:17.6.0] C:\Users\Alexander\.gradle\caches\transforms-2\files-2.1\4f5ff8f75122c45887f276d4a13908eb\play-services-measurement-17.6.0\AndroidManifest.xml:42:13-37
 256            android:permission="android.permission.BIND_JOB_SERVICE" />
-256-->[com.google.android.gms:play-services-measurement:17.6.0] C:\Users\pam_9\.gradle\caches\transforms-2\files-2.1\4f5ff8f75122c45887f276d4a13908eb\play-services-measurement-17.6.0\AndroidManifest.xml:43:13-69
+256-->[com.google.android.gms:play-services-measurement:17.6.0] C:\Users\Alexander\.gradle\caches\transforms-2\files-2.1\4f5ff8f75122c45887f276d4a13908eb\play-services-measurement-17.6.0\AndroidManifest.xml:43:13-69
 257
 258        <meta-data
-258-->[com.google.android.gms:play-services-basement:17.0.0] C:\Users\pam_9\.gradle\caches\transforms-2\files-2.1\882af80fb66dbc9b992956540ccd5553\jetified-play-services-basement-17.0.0\AndroidManifest.xml:23:9-25:69
+258-->[com.google.android.gms:play-services-basement:17.0.0] C:\Users\Alexander\.gradle\caches\transforms-2\files-2.1\b9c7ec49b3e2ba6f082552b50e579024\jetified-play-services-basement-17.0.0\AndroidManifest.xml:23:9-25:69
 259            android:name="com.google.android.gms.version"
-259-->[com.google.android.gms:play-services-basement:17.0.0] C:\Users\pam_9\.gradle\caches\transforms-2\files-2.1\882af80fb66dbc9b992956540ccd5553\jetified-play-services-basement-17.0.0\AndroidManifest.xml:24:13-58
+259-->[com.google.android.gms:play-services-basement:17.0.0] C:\Users\Alexander\.gradle\caches\transforms-2\files-2.1\b9c7ec49b3e2ba6f082552b50e579024\jetified-play-services-basement-17.0.0\AndroidManifest.xml:24:13-58
 260            android:value="@integer/google_play_services_version" />
-260-->[com.google.android.gms:play-services-basement:17.0.0] C:\Users\pam_9\.gradle\caches\transforms-2\files-2.1\882af80fb66dbc9b992956540ccd5553\jetified-play-services-basement-17.0.0\AndroidManifest.xml:25:13-66
+260-->[com.google.android.gms:play-services-basement:17.0.0] C:\Users\Alexander\.gradle\caches\transforms-2\files-2.1\b9c7ec49b3e2ba6f082552b50e579024\jetified-play-services-basement-17.0.0\AndroidManifest.xml:25:13-66
 261
 262        <activity android:name="com.facebook.CustomTabMainActivity" />
-262-->[com.facebook.android:facebook-common:8.1.0] C:\Users\pam_9\.gradle\caches\transforms-2\files-2.1\ddd1924ff4d77c086f19b0242908a223\facebook-common-8.1.0\AndroidManifest.xml:34:9-71
-262-->[com.facebook.android:facebook-common:8.1.0] C:\Users\pam_9\.gradle\caches\transforms-2\files-2.1\ddd1924ff4d77c086f19b0242908a223\facebook-common-8.1.0\AndroidManifest.xml:34:19-68
+262-->[com.facebook.android:facebook-common:8.1.0] C:\Users\Alexander\.gradle\caches\transforms-2\files-2.1\ddd1924ff4d77c086f19b0242908a223\facebook-common-8.1.0\AndroidManifest.xml:34:9-71
+262-->[com.facebook.android:facebook-common:8.1.0] C:\Users\Alexander\.gradle\caches\transforms-2\files-2.1\ddd1924ff4d77c086f19b0242908a223\facebook-common-8.1.0\AndroidManifest.xml:34:19-68
 263        <!--
 264         The initialization ContentProvider will call FacebookSdk.sdkInitialize automatically
 265         with the application context. This config is merged in with the host app's manifest,
@@ -468,57 +468,57 @@
 270         a completely different provider.
 271        -->
 272        <provider
-272-->[com.facebook.android:facebook-core:8.1.0] C:\Users\pam_9\.gradle\caches\transforms-2\files-2.1\637c4cebc3c5c435b2623979b9a4432c\jetified-facebook-core-8.1.0\AndroidManifest.xml:39:9-42:40
+272-->[com.facebook.android:facebook-core:8.1.0] C:\Users\Alexander\.gradle\caches\transforms-2\files-2.1\a85cb3cf74bf15e86ffa7be143507f0f\jetified-facebook-core-8.1.0\AndroidManifest.xml:39:9-42:40
 273            android:name="com.facebook.internal.FacebookInitProvider"
-273-->[com.facebook.android:facebook-core:8.1.0] C:\Users\pam_9\.gradle\caches\transforms-2\files-2.1\637c4cebc3c5c435b2623979b9a4432c\jetified-facebook-core-8.1.0\AndroidManifest.xml:40:13-70
+273-->[com.facebook.android:facebook-core:8.1.0] C:\Users\Alexander\.gradle\caches\transforms-2\files-2.1\a85cb3cf74bf15e86ffa7be143507f0f\jetified-facebook-core-8.1.0\AndroidManifest.xml:40:13-70
 274            android:authorities="core.business.client.clientPhysiho.FacebookInitProvider"
-274-->[com.facebook.android:facebook-core:8.1.0] C:\Users\pam_9\.gradle\caches\transforms-2\files-2.1\637c4cebc3c5c435b2623979b9a4432c\jetified-facebook-core-8.1.0\AndroidManifest.xml:41:13-72
+274-->[com.facebook.android:facebook-core:8.1.0] C:\Users\Alexander\.gradle\caches\transforms-2\files-2.1\a85cb3cf74bf15e86ffa7be143507f0f\jetified-facebook-core-8.1.0\AndroidManifest.xml:41:13-72
 275            android:exported="false" />
-275-->[com.facebook.android:facebook-core:8.1.0] C:\Users\pam_9\.gradle\caches\transforms-2\files-2.1\637c4cebc3c5c435b2623979b9a4432c\jetified-facebook-core-8.1.0\AndroidManifest.xml:42:13-37
+275-->[com.facebook.android:facebook-core:8.1.0] C:\Users\Alexander\.gradle\caches\transforms-2\files-2.1\a85cb3cf74bf15e86ffa7be143507f0f\jetified-facebook-core-8.1.0\AndroidManifest.xml:42:13-37
 276
 277        <receiver
-277-->[com.facebook.android:facebook-core:8.1.0] C:\Users\pam_9\.gradle\caches\transforms-2\files-2.1\637c4cebc3c5c435b2623979b9a4432c\jetified-facebook-core-8.1.0\AndroidManifest.xml:44:9-50:20
+277-->[com.facebook.android:facebook-core:8.1.0] C:\Users\Alexander\.gradle\caches\transforms-2\files-2.1\a85cb3cf74bf15e86ffa7be143507f0f\jetified-facebook-core-8.1.0\AndroidManifest.xml:44:9-50:20
 278            android:name="com.facebook.CurrentAccessTokenExpirationBroadcastReceiver"
-278-->[com.facebook.android:facebook-core:8.1.0] C:\Users\pam_9\.gradle\caches\transforms-2\files-2.1\637c4cebc3c5c435b2623979b9a4432c\jetified-facebook-core-8.1.0\AndroidManifest.xml:45:13-86
+278-->[com.facebook.android:facebook-core:8.1.0] C:\Users\Alexander\.gradle\caches\transforms-2\files-2.1\a85cb3cf74bf15e86ffa7be143507f0f\jetified-facebook-core-8.1.0\AndroidManifest.xml:45:13-86
 279            android:exported="false" >
-279-->[com.facebook.android:facebook-core:8.1.0] C:\Users\pam_9\.gradle\caches\transforms-2\files-2.1\637c4cebc3c5c435b2623979b9a4432c\jetified-facebook-core-8.1.0\AndroidManifest.xml:46:13-37
+279-->[com.facebook.android:facebook-core:8.1.0] C:\Users\Alexander\.gradle\caches\transforms-2\files-2.1\a85cb3cf74bf15e86ffa7be143507f0f\jetified-facebook-core-8.1.0\AndroidManifest.xml:46:13-37
 280            <intent-filter>
-280-->[com.facebook.android:facebook-core:8.1.0] C:\Users\pam_9\.gradle\caches\transforms-2\files-2.1\637c4cebc3c5c435b2623979b9a4432c\jetified-facebook-core-8.1.0\AndroidManifest.xml:47:13-49:29
+280-->[com.facebook.android:facebook-core:8.1.0] C:\Users\Alexander\.gradle\caches\transforms-2\files-2.1\a85cb3cf74bf15e86ffa7be143507f0f\jetified-facebook-core-8.1.0\AndroidManifest.xml:47:13-49:29
 281                <action android:name="com.facebook.sdk.ACTION_CURRENT_ACCESS_TOKEN_CHANGED" />
-281-->[com.facebook.android:facebook-core:8.1.0] C:\Users\pam_9\.gradle\caches\transforms-2\files-2.1\637c4cebc3c5c435b2623979b9a4432c\jetified-facebook-core-8.1.0\AndroidManifest.xml:48:17-95
-281-->[com.facebook.android:facebook-core:8.1.0] C:\Users\pam_9\.gradle\caches\transforms-2\files-2.1\637c4cebc3c5c435b2623979b9a4432c\jetified-facebook-core-8.1.0\AndroidManifest.xml:48:25-92
+281-->[com.facebook.android:facebook-core:8.1.0] C:\Users\Alexander\.gradle\caches\transforms-2\files-2.1\a85cb3cf74bf15e86ffa7be143507f0f\jetified-facebook-core-8.1.0\AndroidManifest.xml:48:17-95
+281-->[com.facebook.android:facebook-core:8.1.0] C:\Users\Alexander\.gradle\caches\transforms-2\files-2.1\a85cb3cf74bf15e86ffa7be143507f0f\jetified-facebook-core-8.1.0\AndroidManifest.xml:48:25-92
 282            </intent-filter>
 283        </receiver>
 284
 285        <service
-285-->[com.google.android.datatransport:transport-backend-cct:2.2.0] C:\Users\pam_9\.gradle\caches\transforms-2\files-2.1\e67255568fb3a808f0edeab906fe9891\transport-backend-cct-2.2.0\AndroidManifest.xml:29:9-35:19
+285-->[com.google.android.datatransport:transport-backend-cct:2.2.0] C:\Users\Alexander\.gradle\caches\transforms-2\files-2.1\e67255568fb3a808f0edeab906fe9891\transport-backend-cct-2.2.0\AndroidManifest.xml:29:9-35:19
 286            android:name="com.google.android.datatransport.runtime.backends.TransportBackendDiscovery"
-286-->[com.google.android.datatransport:transport-backend-cct:2.2.0] C:\Users\pam_9\.gradle\caches\transforms-2\files-2.1\e67255568fb3a808f0edeab906fe9891\transport-backend-cct-2.2.0\AndroidManifest.xml:30:13-103
+286-->[com.google.android.datatransport:transport-backend-cct:2.2.0] C:\Users\Alexander\.gradle\caches\transforms-2\files-2.1\e67255568fb3a808f0edeab906fe9891\transport-backend-cct-2.2.0\AndroidManifest.xml:30:13-103
 287            android:exported="false" >
-287-->[com.google.android.datatransport:transport-backend-cct:2.2.0] C:\Users\pam_9\.gradle\caches\transforms-2\files-2.1\e67255568fb3a808f0edeab906fe9891\transport-backend-cct-2.2.0\AndroidManifest.xml:31:13-37
+287-->[com.google.android.datatransport:transport-backend-cct:2.2.0] C:\Users\Alexander\.gradle\caches\transforms-2\files-2.1\e67255568fb3a808f0edeab906fe9891\transport-backend-cct-2.2.0\AndroidManifest.xml:31:13-37
 288            <meta-data
-288-->[com.google.android.datatransport:transport-backend-cct:2.2.0] C:\Users\pam_9\.gradle\caches\transforms-2\files-2.1\e67255568fb3a808f0edeab906fe9891\transport-backend-cct-2.2.0\AndroidManifest.xml:32:13-34:39
+288-->[com.google.android.datatransport:transport-backend-cct:2.2.0] C:\Users\Alexander\.gradle\caches\transforms-2\files-2.1\e67255568fb3a808f0edeab906fe9891\transport-backend-cct-2.2.0\AndroidManifest.xml:32:13-34:39
 289                android:name="backend:com.google.android.datatransport.cct.CctBackendFactory"
-289-->[com.google.android.datatransport:transport-backend-cct:2.2.0] C:\Users\pam_9\.gradle\caches\transforms-2\files-2.1\e67255568fb3a808f0edeab906fe9891\transport-backend-cct-2.2.0\AndroidManifest.xml:33:17-94
+289-->[com.google.android.datatransport:transport-backend-cct:2.2.0] C:\Users\Alexander\.gradle\caches\transforms-2\files-2.1\e67255568fb3a808f0edeab906fe9891\transport-backend-cct-2.2.0\AndroidManifest.xml:33:17-94
 290                android:value="cct" />
-290-->[com.google.android.datatransport:transport-backend-cct:2.2.0] C:\Users\pam_9\.gradle\caches\transforms-2\files-2.1\e67255568fb3a808f0edeab906fe9891\transport-backend-cct-2.2.0\AndroidManifest.xml:34:17-36
+290-->[com.google.android.datatransport:transport-backend-cct:2.2.0] C:\Users\Alexander\.gradle\caches\transforms-2\files-2.1\e67255568fb3a808f0edeab906fe9891\transport-backend-cct-2.2.0\AndroidManifest.xml:34:17-36
 291        </service>
 292        <service
-292-->[com.google.android.datatransport:transport-runtime:2.2.0] C:\Users\pam_9\.gradle\caches\transforms-2\files-2.1\fb13625c4fea721a21dc56ef4bb5a3ad\transport-runtime-2.2.0\AndroidManifest.xml:26:9-30:19
+292-->[com.google.android.datatransport:transport-runtime:2.2.0] C:\Users\Alexander\.gradle\caches\transforms-2\files-2.1\fb13625c4fea721a21dc56ef4bb5a3ad\transport-runtime-2.2.0\AndroidManifest.xml:26:9-30:19
 293            android:name="com.google.android.datatransport.runtime.scheduling.jobscheduling.JobInfoSchedulerService"
-293-->[com.google.android.datatransport:transport-runtime:2.2.0] C:\Users\pam_9\.gradle\caches\transforms-2\files-2.1\fb13625c4fea721a21dc56ef4bb5a3ad\transport-runtime-2.2.0\AndroidManifest.xml:27:13-117
+293-->[com.google.android.datatransport:transport-runtime:2.2.0] C:\Users\Alexander\.gradle\caches\transforms-2\files-2.1\fb13625c4fea721a21dc56ef4bb5a3ad\transport-runtime-2.2.0\AndroidManifest.xml:27:13-117
 294            android:exported="false"
-294-->[com.google.android.datatransport:transport-runtime:2.2.0] C:\Users\pam_9\.gradle\caches\transforms-2\files-2.1\fb13625c4fea721a21dc56ef4bb5a3ad\transport-runtime-2.2.0\AndroidManifest.xml:28:13-37
+294-->[com.google.android.datatransport:transport-runtime:2.2.0] C:\Users\Alexander\.gradle\caches\transforms-2\files-2.1\fb13625c4fea721a21dc56ef4bb5a3ad\transport-runtime-2.2.0\AndroidManifest.xml:28:13-37
 295            android:permission="android.permission.BIND_JOB_SERVICE" >
-295-->[com.google.android.datatransport:transport-runtime:2.2.0] C:\Users\pam_9\.gradle\caches\transforms-2\files-2.1\fb13625c4fea721a21dc56ef4bb5a3ad\transport-runtime-2.2.0\AndroidManifest.xml:29:13-69
+295-->[com.google.android.datatransport:transport-runtime:2.2.0] C:\Users\Alexander\.gradle\caches\transforms-2\files-2.1\fb13625c4fea721a21dc56ef4bb5a3ad\transport-runtime-2.2.0\AndroidManifest.xml:29:13-69
 296        </service>
 297
 298        <receiver
-298-->[com.google.android.datatransport:transport-runtime:2.2.0] C:\Users\pam_9\.gradle\caches\transforms-2\files-2.1\fb13625c4fea721a21dc56ef4bb5a3ad\transport-runtime-2.2.0\AndroidManifest.xml:32:9-34:40
+298-->[com.google.android.datatransport:transport-runtime:2.2.0] C:\Users\Alexander\.gradle\caches\transforms-2\files-2.1\fb13625c4fea721a21dc56ef4bb5a3ad\transport-runtime-2.2.0\AndroidManifest.xml:32:9-34:40
 299            android:name="com.google.android.datatransport.runtime.scheduling.jobscheduling.AlarmManagerSchedulerBroadcastReceiver"
-299-->[com.google.android.datatransport:transport-runtime:2.2.0] C:\Users\pam_9\.gradle\caches\transforms-2\files-2.1\fb13625c4fea721a21dc56ef4bb5a3ad\transport-runtime-2.2.0\AndroidManifest.xml:33:13-132
+299-->[com.google.android.datatransport:transport-runtime:2.2.0] C:\Users\Alexander\.gradle\caches\transforms-2\files-2.1\fb13625c4fea721a21dc56ef4bb5a3ad\transport-runtime-2.2.0\AndroidManifest.xml:33:13-132
 300            android:exported="false" />
-300-->[com.google.android.datatransport:transport-runtime:2.2.0] C:\Users\pam_9\.gradle\caches\transforms-2\files-2.1\fb13625c4fea721a21dc56ef4bb5a3ad\transport-runtime-2.2.0\AndroidManifest.xml:34:13-37
+300-->[com.google.android.datatransport:transport-runtime:2.2.0] C:\Users\Alexander\.gradle\caches\transforms-2\files-2.1\fb13625c4fea721a21dc56ef4bb5a3ad\transport-runtime-2.2.0\AndroidManifest.xml:34:13-37
 301    </application>
 302
 303</manifest>

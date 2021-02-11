@@ -1,15 +1,7 @@
+import 'package:clientPhysiho/src/config/colors.dart';
 import 'package:flutter/material.dart';
 import 'package:intl/date_symbol_data_local.dart';
 import 'package:table_calendar/table_calendar.dart';
-
-// Example holidays
-final Map<DateTime, List> _holidays = {
-  DateTime(2020, 1, 1): ['New Year\'s Day'],
-  DateTime(2020, 1, 6): ['Epiphany'],
-  DateTime(2020, 2, 14): ['Valentine\'s Day'],
-  DateTime(2020, 4, 21): ['Easter Sunday'],
-  DateTime(2020, 4, 22): ['Easter Monday'],
-};
 
 class AgendView extends StatefulWidget {
   // Route name for this view
@@ -24,7 +16,11 @@ class _AgendViewState extends State<AgendView> {
   @override
   Widget build(BuildContext context) {
     return Container(
-      child: MyHomePage(title: 'Table Calendar Demo'),
+      decoration: BoxDecoration(
+          image: DecorationImage(
+              image: AssetImage("assets/images/fondoph.png"),
+              fit: BoxFit.cover)),
+      child: MyHomePage(title: 'Agenda'),
     );
   }
 }
@@ -141,23 +137,29 @@ class _MyHomePageState extends State<MyHomePage> with TickerProviderStateMixin {
   @override
   Widget build(BuildContext context) {
     return Scaffold(
-      appBar: AppBar(
-        title: Text(widget.title),
-      ),
-      body: Column(
-        mainAxisSize: MainAxisSize.max,
-        children: <Widget>[
-          // Switch out 2 lines below to play with TableCalendar's settings
-          //-----------------------
-          _buildTableCalendar(),
-          // _buildTableCalendarWithBuilders(),
-          const SizedBox(height: 8.0),
-          _buildButtons(),
-          const SizedBox(height: 8.0),
-          Expanded(child: _buildEventList()),
-        ],
-      ),
-    );
+        appBar: AppBar(
+          backgroundColor: pantoneFour,
+          title: Center(child: Text(widget.title)),
+        ),
+        body: Container(
+          decoration: BoxDecoration(
+              image: DecorationImage(
+                  image: AssetImage("assets/images/fondoph.png"),
+                  fit: BoxFit.cover)),
+          child: Column(
+            mainAxisSize: MainAxisSize.max,
+            children: <Widget>[
+              // Switch out 2 lines below to play with TableCalendar's settings
+              //-----------------------
+              _buildTableCalendar(),
+              // _buildTableCalendarWithBuilders(),
+              const SizedBox(height: 8.0),
+              _buildButtons(),
+              const SizedBox(height: 8.0),
+              Expanded(child: _buildEventList()),
+            ],
+          ),
+        ));
   }
 
   // Simple TableCalendar configuration (using Styles)
@@ -166,19 +168,18 @@ class _MyHomePageState extends State<MyHomePage> with TickerProviderStateMixin {
       locale: 'es',
       calendarController: _calendarController,
       events: _events,
-      holidays: _holidays,
       startingDayOfWeek: StartingDayOfWeek.monday,
       calendarStyle: CalendarStyle(
-        selectedColor: Colors.green[400],
-        todayColor: Colors.deepOrange[200],
-        markersColor: Colors.brown[700],
+        selectedColor: pantoneEleven,
+        todayColor: pantoneOne,
+        markersColor: Colors.red[700],
         outsideDaysVisible: false,
       ),
       headerStyle: HeaderStyle(
         formatButtonTextStyle:
             TextStyle().copyWith(color: Colors.white, fontSize: 15.0),
         formatButtonDecoration: BoxDecoration(
-          color: Colors.green[400],
+          color: pantoneEleven,
           borderRadius: BorderRadius.circular(16.0),
         ),
       ),
@@ -194,7 +195,6 @@ class _MyHomePageState extends State<MyHomePage> with TickerProviderStateMixin {
       locale: 'es',
       calendarController: _calendarController,
       events: _events,
-      holidays: _holidays,
       initialCalendarFormat: CalendarFormat.month,
       formatAnimation: FormatAnimation.slide,
       startingDayOfWeek: StartingDayOfWeek.sunday,
@@ -348,17 +348,6 @@ class _MyHomePageState extends State<MyHomePage> with TickerProviderStateMixin {
               },
             ),
           ],
-        ),
-        const SizedBox(height: 8.0),
-        RaisedButton(
-          child: Text(
-              'Set day ${dateTime.day}-${dateTime.month}-${dateTime.year}'),
-          onPressed: () {
-            _calendarController.setSelectedDay(
-              DateTime(dateTime.year, dateTime.month, dateTime.day),
-              runCallback: true,
-            );
-          },
         ),
       ],
     );

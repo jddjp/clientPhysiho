@@ -12,6 +12,7 @@ class ServiceController extends ControllerMVC {
   }
 
   void asyncData(String serviceId) async {
+    print('asyncData');
     print(serviceId);
     DocumentReference serviceRef =
         FirebaseFirestore.instance.collection('services').doc(serviceId);

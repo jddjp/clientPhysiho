@@ -1,3 +1,4 @@
+import 'package:clientPhysiho/src/components/check_type_payment.dart';
 import 'package:clientPhysiho/src/views/service_view.dart';
 import 'package:firebase_messaging/firebase_messaging.dart';
 import 'package:flutter/material.dart';
@@ -23,7 +24,7 @@ import 'package:clientPhysiho/src/views/home_view.dart';
 import 'package:clientPhysiho/src/views/item_view.dart';
 import 'package:clientPhysiho/src/views/agend_view.dart';
 import 'package:clientPhysiho/src/views/loading_view.dart';
-import 'package:clientPhysiho/src/views/location_view.dart';
+import 'package:clientPhysiho/src/views/splash.dart';
 import 'package:clientPhysiho/src/views/login_view.dart';
 import 'package:clientPhysiho/src/views/opt_view.dart';
 import 'package:clientPhysiho/src/views/order_detail_view.dart';
@@ -171,11 +172,22 @@ class _PhysihoAppState extends State<PhysihoApp> {
           case AgendView.routeName:
             return MaterialPageRoute(builder: (_) => AgendView());
             break;
+          case CheckTypePayment.routeName:
+            return MaterialPageRoute(
+                builder: (_) => CheckTypePayment(
+                      item: args,
+                    ));
+            break;
           // item view
           case ItemView.routeName:
             return PageRouteBuilder(
-              pageBuilder: (context, animation, secondaryAnimation) =>
-                  ItemView(item: args),
+              pageBuilder: (context, animation, secondaryAnimation) => ItemView(
+                  item: args != null
+                      ? args
+                      : {
+                          'id': _prefs.getString('idpaqueteservicio'),
+                          'idservice': _prefs.getString('idservicio')
+                        }),
               transitionsBuilder:
                   (context, animation, secondaryAnimation, child) {
                 var begin = Offset(0.0, 1.0);
@@ -272,7 +284,7 @@ class _PhysihoAppState extends State<PhysihoApp> {
               // Go to Home
               print(_prefs.getBool('locationPermission'));
               print("==============HOME_VIEW=====================");
-              return HomeView();
+              return SplashView();
               //}
 
               // User logged in
