@@ -54,6 +54,7 @@ class _CompleteProfileViewState extends State<CompleteProfileView> {
   String _valueChanged2 = '';
   String _valueToValidate2 = '';
   String _valueSaved2 = '';
+  int flat = 0;
 /**/
 
   final elements4 = ["selecciona"];
@@ -115,9 +116,12 @@ class _CompleteProfileViewState extends State<CompleteProfileView> {
     print(estadosUser.toString());
     _valueChanged = context.watch<LoginProvider>().isLoggedIn() &&
             context.watch<LoginProvider>().currentUser['estado'] != null
-        ? context.watch<LoginProvider>().currentUser['estado']
+        ? flat == 0
+            ? context.watch<LoginProvider>().currentUser['estado']
+            : _valueChanged
         : '';
-
+    municipalities.municipio(_valueChanged);
+    print("camino");
     return Scaffold(
       body: (context.watch<LoginProvider>().isLoggedIn() &&
               context.watch<LoginProvider>().currentUser['nombre'] != null
@@ -216,6 +220,7 @@ class _CompleteProfileViewState extends State<CompleteProfileView> {
                                                       onSelectedItemChanged:
                                                           (index) {
                                                         setState(() {
+                                                          flat = 1;
                                                           selectedIndex2 = 0;
                                                           estados = '';
                                                           selectedIndex1 =
