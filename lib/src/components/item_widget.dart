@@ -50,7 +50,7 @@ class _ItemWidgetState extends State<ItemWidget> {
         children: [
           Container(
               decoration: BoxDecoration(
-                  color: transparentColor,
+                  color: whiteColor,
                   border: Border.all(color: pantoneFive),
                   borderRadius: BorderRadius.circular(20)),
               margin: EdgeInsets.only(
@@ -64,7 +64,7 @@ class _ItemWidgetState extends State<ItemWidget> {
                   widget.item['image'] != null
                       ? ClipRRect(
                           borderRadius:
-                              BorderRadius.all(Radius.circular(spacing_middle)),
+                              BorderRadius.all(Radius.circular(spacing_large)),
                           child: CachedNetworkImage(
                               imageUrl: widget.item['image']['url'],
                               width: width * 0.23,

@@ -500,6 +500,12 @@
       "languageVersion": "2.6"
     },
     {
+      "name": "select_form_field",
+      "rootUri": "file:///C:/src/flutter/.pub-cache/hosted/pub.dartlang.org/select_form_field-1.1.0",
+      "packageUri": "lib/",
+      "languageVersion": "2.7"
+    },
+    {
       "name": "shared_preferences",
       "rootUri": "file:///C:/src/flutter/.pub-cache/hosted/pub.dartlang.org/shared_preferences-0.5.12+2",
       "packageUri": "lib/",
@@ -704,7 +710,7 @@
       "languageVersion": "2.7"
     }
   ],
-  "generated": "2021-02-12T05:33:12.299584Z",
+  "generated": "2021-02-23T02:25:13.533275Z",
   "generator": "pub",
-  "generatorVersion": "2.10.4"
+  "generatorVersion": "2.10.5"
 }

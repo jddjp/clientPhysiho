@@ -1,5 +1,6 @@
 import 'package:clientPhysiho/src/components/check_type_payment.dart';
 import 'package:clientPhysiho/src/controllers/cart_controller.dart';
+import 'package:clientPhysiho/src/providers/sessions_provider.dart';
 import 'package:date_field/date_field.dart';
 import 'package:flutter/material.dart';
 import 'package:cached_network_image/cached_network_image.dart';
@@ -16,6 +17,7 @@ import 'package:mvc_pattern/mvc_pattern.dart';
 import 'package:clientPhysiho/src/providers/login_provider.dart';
 import 'package:provider/provider.dart';
 import 'package:clientPhysiho/src/views/login_view.dart';
+import 'package:select_form_field/select_form_field.dart';
 import 'package:shared_preferences/shared_preferences.dart';
 import 'package:cloud_firestore/cloud_firestore.dart';
 import 'dart:async';
@@ -40,18 +42,64 @@ class _ItemViewState extends StateMVC<ItemView> {
   }
   SharedPreferences _idservices;
   bool loading = false;
-  final List<Map<String, dynamic>> sesionsList = new List();
+  static final DateTime now = DateTime.now();
+
+  GlobalKey<FormState> _oFormKey = GlobalKey<FormState>();
+  TextEditingController _controller;
+
+  //String _initialValue;
+  String _valueChanged = '';
+  String _valueToValidate = '';
+  String _valueSaved = '';
+
+  final List<Map<String, dynamic>> _items = [
+    {
+      'value': 'boxValue',
+      'label': 'Box Label',
+      'icon': Icon(Icons.stop),
+    },
+    {
+      'value': 'circleValue',
+      'label': 'Circle Label Loooooooooooooooooooong text',
+      'icon': Icon(Icons.fiber_manual_record),
+      'textStyle': TextStyle(color: Colors.red),
+    },
+    {
+      'value': 'starValue',
+      'label': 'Star Label',
+      'enable': false,
+      'icon': Icon(Icons.grade),
+    },
+  ];
+
+  /// This implementation is just to simulate a load data behavior
+  /// from a data base sqlite or from a API
+  Future<void> _getValue() async {
+    await Future.delayed(const Duration(seconds: 3), () {
+      setState(() {
+        //_initialValue = 'circleValue';
+        _controller.text = 'circleValue';
+      });
+    });
+  }
 
   @override
   void initState() {
     super.initState();
     initialize();
+    //_initialValue = 'starValue';
+    _controller = TextEditingController(text: 'starValue');
+
+    _getValue();
   }
 
   void initialize() async {
     _idservices = await SharedPreferences.getInstance();
     setState(() {});
   }
+
+  var sesionsList = new List(15);
+  final userPhysio = new SessionProvider();
 
   @override
   Widget build(BuildContext context) {
@@ -263,57 +311,97 @@ class _ItemViewState extends StateMVC<ItemView> {
       child: Padding(
         padding: const EdgeInsets.only(top: 5.0, bottom: 8),
         child: Container(
-          width: MediaQuery.of(context).size.width * 0.91,
-          padding: const EdgeInsets.symmetric(horizontal: 8, vertical: 15),
-          decoration: BoxDecoration(
-              color: Colors.white,
-              borderRadius: BorderRadius.circular(8),
-              boxShadow: [
-                BoxShadow(
-                    offset: Offset(1, 3),
-                    color: Colors.grey[300],
-                    blurRadius: 5),
-                BoxShadow(
-                    offset: Offset(-1, -3),
-                    color: Colors.grey[300],
-                    blurRadius: 5)
-              ]),
-          child: Row(
-            children: [
-              Icon(
-                Icons.image_rounded,
-                size: 22,
-              ),
-              SizedBox(
-                width: 10,
-              ),
-              Container(
-                width: 250,
-                child: DateTimeFormField(
-                  decoration: const InputDecoration(
-                    hintStyle: TextStyle(color: Colors.black45),
-                    errorStyle: TextStyle(color: Colors.redAccent),
-                    border: OutlineInputBorder(),
-                    suffixIcon: Icon(Icons.event_note),
-                    labelText: 'Only time',
-                  ),
-                  mode: DateTimeFieldPickerMode.dateAndTime,
-                  autovalidateMode: AutovalidateMode.always,
-                  validator: (e) =>
-                      (e?.day ?? 0) == 1 ? 'Please not the first day' : null,
-                  onDateSelected: (DateTime value) {
-                    selectedDate = value;
-                    print(value);
-                    setState(() {
-                      print('setState');
-                      sesionsList.add({index.toString(): selectedDate});
-                    });
-                  },
+            width: MediaQuery.of(context).size.width * 0.91,
+            padding: const EdgeInsets.symmetric(horizontal: 8, vertical: 15),
+            decoration: BoxDecoration(
+                color: Colors.white,
+                borderRadius: BorderRadius.circular(8),
+                boxShadow: [
+                  BoxShadow(
+                      offset: Offset(1, 3),
+                      color: Colors.grey[300],
+                      blurRadius: 5),
+                  BoxShadow(
+                      offset: Offset(-1, -3),
+                      color: Colors.grey[300],
+                      blurRadius: 5)
+                ]),
+            child: Column(
+              children: [
+                Row(
+                  children: [
+                    Icon(
+                      Icons.image_rounded,
+                      size: 22,
+                    ),
+                    SizedBox(
+                      width: 10,
+                    ),
+                    Container(
+                      width: 250,
+                      child: DateTimeFormField(
+                        decoration: const InputDecoration(
+                          hintStyle: TextStyle(color: Colors.black45),
+                          errorStyle: TextStyle(color: Colors.redAccent),
+                          border: OutlineInputBorder(),
+                          suffixIcon: Icon(Icons.event_note),
+                          labelText: 'Fecha de cita',
+                        ),
+                        mode: DateTimeFieldPickerMode.date,
+                        autovalidateMode: AutovalidateMode.always,
+                        validator: (e) =>
+                            (e?.day ?? 0) <= now.day ? 'Fecha no valida' : null,
+                        onDateSelected: (DateTime value) {
+                          selectedDate = value;
+                          print(value);
+                          setState(() {
+                            print('setState');
+                            print(index);
+                            sesionsList[index] = {index: value};
+                            if (index == 0) {
+                              print(userPhysio.getPhysio(value));
+                            }
+                          });
+                        },
+                      ),
+                    )
+                  ],
                 ),
-              )
-            ],
-          ),
-        ),
+                Row(
+                  children: [
+                    Icon(
+                      Icons.image_rounded,
+                      size: 22,
+                    ),
+                    SizedBox(
+                      width: 10,
+                    ),
+                    Container(
+                      width: 200,
+                      child: SelectFormField(
+                        type: SelectFormFieldType.dialog,
+                        controller: _controller,
+                        //initialValue: _initialValue,
+                        icon: Icon(Icons.format_shapes),
+                        labelText: 'Hora',
+                        changeIcon: true,
+                        dialogTitle: 'Pick a item',
+                        dialogCancelBtn: 'CANCEL',
+                        enableSearch: true,
+                        dialogSearchHint: 'Search item',
+                        items: _items,
+                        onChanged: (val) => setState(() => _valueChanged = val),
+                        validator: (val) {
+                          setState(() => _valueToValidate = val);
+                          return null;
+                        },
+                        onSaved: (val) => setState(() => _valueSaved = val),
+                      ),
+                    )
+                  ],
+                )
+              ],
+            )),
       ),
     );
   }

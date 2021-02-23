@@ -84,3 +84,5 @@ const WEEK_DAYS = {
   "6": "saturday",
   "7": "sunday"
 };
+
+const hours = {"1": "9:00", "2": "10:30", "3": "12:00", "4": "13:30"};
