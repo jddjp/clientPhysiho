@@ -69,25 +69,25 @@ class _MyHomePageState extends State<MyHomePage> with TickerProviderStateMixin {
         'Event C2',
         'Event D2'
       ],
-      _selectedDay.subtract(Duration(days: 16)): ['Event A3', 'Event B3'],
-      _selectedDay.subtract(Duration(days: 10)): [
-        'Event A4',
-        'Event B4',
-        'Event C4'
-      ],
-      _selectedDay.subtract(Duration(days: 4)): [
-        'Event A5',
-        'Event B5',
-        'Event C5'
-      ],
-      _selectedDay.subtract(Duration(days: 2)): ['Event A6', 'Event B6'],
-      _selectedDay: ['Event A7', 'Event B7', 'Event C7', 'Event D7'],
-      _selectedDay.add(Duration(days: 1)): [
-        'Event A8',
-        'Event B8',
-        'Event C8',
-        'Event D8'
-      ],
+      // _selectedDay.subtract(Duration(days: 16)): ['Event A3', 'Event B3'],
+      // _selectedDay.subtract(Duration(days: 10)): [
+      //   'Event A4',
+      //   'Event B4',
+      //   'Event C4'
+      // ],
+      // _selectedDay.subtract(Duration(days: 4)): [
+      //   'Event A5',
+      //   'Event B5',
+      //   'Event C5'
+      // ],
+      // _selectedDay.subtract(Duration(days: 2)): ['Event A6', 'Event B6'],
+      // // _selectedDay: ['Event A7', 'Event B7', 'Event C7', 'Event D7'],
+      // _selectedDay.add(Duration(days: 1)): [
+      //   'Event A8',
+      //   'Event B8',
+      //   'Event C8',
+      //   'Event D8'
+      // ],
     };
 
     _selectedEvents = _events[_selectedDay] ?? [];
@@ -126,28 +126,17 @@ class _MyHomePageState extends State<MyHomePage> with TickerProviderStateMixin {
   }
 
   Map<DateTime, List> _buildItems(List<dynamic> elements) {
-    /* print("entrando en la funcion d3 built para mapear");
-    print(elements);
-    print(elements[0]['date']); */
     elements.forEach((element) {
       print(element);
       print(element['date']);
       final date = DateFormat('yyyy-MM-dd').parse(element['date']);
       print(date);
       DateTime f2 = DateTime(2021, 01, 01);
-      //   _eventsFisiho.map((key, value) => {key.value:});
-      //_eventsFisiho[f2] = ['cita'];
-      // _eventsFisiho = {
-      //   date: ['cita']
-      // };
-      // _eventsFisiho.addAll({
-      //   date: ['cita']
-      // });
+
       String c = "Horario: " + element['hours'].toString();
       _eventsFisiho.addAll({
         date: ['cita ' + c]
       });
-      print(_eventsFisiho);
     });
     print(_eventsFisiho);
 
@@ -156,10 +145,6 @@ class _MyHomePageState extends State<MyHomePage> with TickerProviderStateMixin {
 
   @override
   Widget build(BuildContext context) {
-    // print(sessions.getSessionUser('8IoRt1ZbyPncV7i8AruK'));
-    // print(context.watch<LoginProvider>().currentUser['id']);
-    // print("prueba");
-
     return (context.watch<LoginProvider>().isLoggedIn() &&
             context.watch<LoginProvider>().currentUser['nombre'] != null
         ? Scaffold(
