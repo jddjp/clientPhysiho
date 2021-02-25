@@ -21,6 +21,7 @@ import 'package:select_form_field/select_form_field.dart';
 import 'package:shared_preferences/shared_preferences.dart';
 import 'package:cloud_firestore/cloud_firestore.dart';
 import 'dart:async';
+import 'package:intl/intl.dart';
 
 class ItemView extends StatefulWidget {
   // Route name for this view
@@ -54,8 +55,8 @@ class _ItemViewState extends StateMVC<ItemView> {
 
   final List<Map<String, dynamic>> _items = [
     {
-      'value': 'boxValue',
-      'label': 'Box Label',
+      'value': '9:00',
+      'label': '9:00',
       'icon': Icon(Icons.stop),
     },
     {
@@ -99,23 +100,27 @@ class _ItemViewState extends StateMVC<ItemView> {
   }
 
   var sesionsList = new List(15);
+  var hoursList = new List(15);
   final userPhysio = new SessionProvider();
+  String idPhysio = '';
 
   @override
   Widget build(BuildContext context) {
     //_initialValue = 'starValue';
 
-    print(loading);
+    //print(loading);
     //print(widget.item);
     var width = MediaQuery.of(context).size.width;
-    print('sesionList');
-    print(_idservices.getString('idservicio'));
-    print(_idservices.getString('idpaqueteservicio'));
-    print('ItemView');
-    print("pantalla de items compra?");
-    print(widget.item);
-    print(sesionsList);
+    //print('sesionList');
+    //print(_idservices.getString('idservicio'));
+    //print(_idservices.getString('idpaqueteservicio'));
+    //print('ItemView');
+    //print("pantalla de items compra?");
+    //print(widget.item);
+    //print(sesionsList);
+    //print(hoursList);
 // Change status bar color
+    // print(userPhysio.getPhysio());
     changeStatusColor(Colors.transparent);
     return (context.watch<LoginProvider>().isLoggedIn() &&
             context.watch<LoginProvider>().currentUser['nombre'] != null
@@ -167,6 +172,79 @@ class _ItemViewState extends StateMVC<ItemView> {
                               ],
                             ),
                           ),
+                          FutureBuilder(
+                              future: userPhysio.getPhysio(),
+                              builder: (BuildContext context,
+                                  AsyncSnapshot snapshot) {
+                                if (snapshot.hasData) {
+                                  idPhysio = snapshot.data['id'];
+                                  return Container(
+                                    padding: EdgeInsets.all(10),
+                                    child: Column(
+                                      children: [
+                                        Container(
+                                          child: Text('Fisioterapeuta'),
+                                        ),
+                                        Row(
+                                          mainAxisAlignment:
+                                              MainAxisAlignment.spaceAround,
+                                          children: [
+                                            Column(
+                                              crossAxisAlignment:
+                                                  CrossAxisAlignment.end,
+                                              children: [
+                                                Text('Nombre'),
+                                              ],
+                                            ),
+                                            Column(
+                                              children: [
+                                                Text(snapshot.data['name']),
+                                              ],
+                                            ),
+                                          ],
+                                        ),
+                                        CircleAvatar(
+                                          backgroundColor: whiteColor,
+                                          radius: width * 0.20,
+                                          child: CachedNetworkImage(
+                                            color: whiteColor,
+                                            imageUrl: snapshot.data['photo'],
+                                            imageBuilder:
+                                                (context, imageProvider) =>
+                                                    Container(
+                                              decoration: BoxDecoration(
+                                                color: whiteColor,
+                                                borderRadius:
+                                                    BorderRadius.circular(80),
+                                                image: DecorationImage(
+                                                  image: imageProvider,
+                                                  fit: BoxFit.cover,
+                                                  colorFilter: ColorFilter.mode(
+                                                    Colors.black38
+                                                        .withOpacity(0.9),
+                                                    BlendMode.dstATop,
+                                                  ),
+                                                ),
+                                              ),
+                                            ),
+                                            placeholder: (context, url) =>
+                                                CircularProgressIndicator(),
+                                            errorWidget:
+                                                (context, url, error) =>
+                                                    Icon(Icons.error),
+                                          ),
+                                        ),
+                                      ],
+                                    ),
+                                  );
+                                } else {
+                                  return Lottie.asset(
+                                    'assets/images/8682-loading.json',
+                                    width: 150,
+                                    height: 150,
+                                  );
+                                }
+                              }),
                           SingleChildScrollView(
                             child: Column(
                               children: [
@@ -206,7 +284,12 @@ class _ItemViewState extends StateMVC<ItemView> {
                                         arguments: {
                                           'service': _con.service,
                                           'item': _con.itemService,
-                                          'sesions': sesionsList
+                                          'sesions': sesionsList,
+                                          'hours': hoursList,
+                                          'customer': context
+                                              .read<LoginProvider>()
+                                              .currentUser['id'],
+                                          'idPhysio': idPhysio
                                         });
                                   },
                                   child: Text('Siguiente'),
@@ -304,8 +387,6 @@ class _ItemViewState extends StateMVC<ItemView> {
   }
 
   Widget cardWidget(int index) {
-    print('card');
-    print(index);
     DateTime selectedDate;
     return InkWell(
       child: Padding(
@@ -349,18 +430,15 @@ class _ItemViewState extends StateMVC<ItemView> {
                         ),
                         mode: DateTimeFieldPickerMode.date,
                         autovalidateMode: AutovalidateMode.always,
-                        validator: (e) =>
-                            (e?.day ?? 0) <= now.day ? 'Fecha no valida' : null,
+                        validator: (e) => null,
                         onDateSelected: (DateTime value) {
                           selectedDate = value;
                           print(value);
                           setState(() {
-                            print('setState');
-                            print(index);
-                            sesionsList[index] = {index: value};
-                            if (index == 0) {
-                              print(userPhysio.getPhysio(value));
-                            }
+                            // print('setState');
+                            // print(index);
+                            sesionsList[index] =
+                                DateFormat('yyyy-MM-dd').format(value);
                           });
                         },
                       ),
@@ -389,8 +467,12 @@ class _ItemViewState extends StateMVC<ItemView> {
                         dialogCancelBtn: 'CANCEL',
                         enableSearch: true,
                         dialogSearchHint: 'Search item',
-                        items: _items,
-                        onChanged: (val) => setState(() => _valueChanged = val),
+                        items: _itemsHours(),
+                        onChanged: (val) => setState(() {
+                          _valueChanged = val;
+
+                          hoursList[index] = _valueChanged;
+                        }),
                         validator: (val) {
                           setState(() => _valueToValidate = val);
                           return null;
@@ -404,5 +486,54 @@ class _ItemViewState extends StateMVC<ItemView> {
             )),
       ),
     );
+  }
+
+  List<Map<String, dynamic>> _itemsHours() {
+    List<Map<String, dynamic>> hoursList = new List();
+
+    hoursList.add(
+      {
+        'value': '9:00',
+        'label': '9:00 - 10:00',
+        'icon': Icon(Icons.stop),
+      },
+    );
+    hoursList.add(
+      {
+        'value': '10:30',
+        'label': '10:30 - 11:30',
+        'icon': Icon(Icons.stop),
+      },
+    );
+    hoursList.add(
+      {
+        'value': '12:00',
+        'label': '12:00 - 13:00',
+        'icon': Icon(Icons.stop),
+      },
+    );
+    hoursList.add(
+      {
+        'value': '13:30',
+        'label': '13:30 - 14:30',
+        'icon': Icon(Icons.stop),
+      },
+    );
+    hoursList.add(
+      {
+        'value': '16:00',
+        'label': '16:00 - 17:00',
+        'icon': Icon(Icons.stop),
+      },
+    );
+    hoursList.add(
+      {
+        'value': '17:30',
+        'label': '17:30 - 18:30',
+        'icon': Icon(Icons.stop),
+      },
+    );
+
+    return hoursList;
   }
 }
