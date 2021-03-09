@@ -19,7 +19,6 @@ class ServiceController extends ControllerMVC {
     QuerySnapshot itemsSnapshot = await FirebaseFirestore.instance
         .collection('items')
         .where('services', isEqualTo: serviceRef)
-        .orderBy('index')
         .get();
 
     // Load business data

@@ -146,6 +146,9 @@ class _PhysihoAppState extends State<PhysihoApp> {
         final args = settings.arguments;
 
         switch (settings.name) {
+          case AgendView.routeName:
+            return MaterialPageRoute(builder: (_) => AgendView());
+            break;
           // create account view
           case CreateAccountView.routeName:
             return MaterialPageRoute(builder: (_) => CreateAccountView());
@@ -246,7 +249,8 @@ class _PhysihoAppState extends State<PhysihoApp> {
             return MaterialPageRoute(builder: (_) => LoginView());
             break;
           case HomeView.routeName:
-            return MaterialPageRoute(builder: (_) => HomeView());
+            return MaterialPageRoute(
+                builder: (_) => HomeView(agendSetView: args));
             break;
           default:
             return MaterialPageRoute(builder: (context) {

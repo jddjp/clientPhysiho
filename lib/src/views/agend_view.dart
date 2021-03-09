@@ -1,4 +1,7 @@
 import 'package:clientPhysiho/src/config/colors.dart';
+import 'package:clientPhysiho/src/config/constants.dart';
+import 'package:clientPhysiho/src/helpers/extension_helper.dart';
+import 'package:clientPhysiho/src/views/login_view.dart';
 import 'package:flutter/material.dart';
 import 'package:intl/date_symbol_data_local.dart';
 import 'package:table_calendar/table_calendar.dart';
@@ -176,25 +179,66 @@ class _MyHomePageState extends State<MyHomePage> with TickerProviderStateMixin {
               backgroundColor: pantoneFour,
               title: Center(child: Text(widget.title)),
             ),
-            body: Container(
-              decoration: BoxDecoration(
-                  image: DecorationImage(
-                      image: AssetImage("assets/images/fondoph.png"),
-                      fit: BoxFit.cover)),
-              child: Column(
-                mainAxisSize: MainAxisSize.max,
-                children: <Widget>[
-                  // Switch out 2 lines below to play with TableCalendar's settings
-                  //-----------------------
-                  _buildTableCalendar(),
-                  // _buildTableCalendarWithBuilders(),
-                  const SizedBox(height: 8.0),
-                  _buildButtons(),
-                  const SizedBox(height: 8.0),
-                  Expanded(child: _buildEventList()),
-                ],
-              ),
-            )));
+            body: Stack(
+              alignment: Alignment.center,
+              children: [
+                Container(
+                  decoration: BoxDecoration(
+                    color: const Color(0xff7c94b6),
+                    backgroundBlendMode: BlendMode.color,
+                    image: DecorationImage(
+                        colorFilter: new ColorFilter.mode(
+                            Colors.black.withOpacity(0.8), BlendMode.dstATop),
+                        image: new AssetImage('assets/images/fondoph.png'),
+                        fit: BoxFit.fill),
+                  ),
+                ),
+                Container(
+                    margin: EdgeInsets.only(
+                        top: MediaQuery.of(context).size.height / 6),
+                    child: Column(
+                      mainAxisAlignment: MainAxisAlignment.center,
+                      children: [
+                        ListTile(
+                          title: Text(
+                            "Disfruta de nuestros servicios agenda y regístrate",
+                            style: TextStyle(
+                                color: Colors.black,
+                                fontSize: 20,
+                                fontFamily: 'Franklin Gothic',
+                                fontWeight: fontSemibold),
+                            textAlign: TextAlign.center,
+                          ),
+                          onTap: () {
+                            launchScreen(context, LoginView.routeName);
+                          },
+                        ),
+                        ListTile(
+                          title: Container(
+                            padding: EdgeInsets.all(10),
+                            decoration: BoxDecoration(
+                                color: pantoneFive,
+                                borderRadius:
+                                    BorderRadius.all(Radius.circular(20))),
+                            child: Text(
+                              "Click aqui para registrarte",
+                              style: TextStyle(
+                                  color: whiteColor,
+                                  fontSize: 20,
+                                  fontFamily: 'Franklin Gothic',
+                                  fontWeight: fontSemibold),
+                              textAlign: TextAlign.center,
+                            ),
+                          ),
+                          onTap: () {
+                            launchScreen(context, LoginView.routeName);
+                          },
+                        ),
+                      ],
+                    )),
+              ],
+            ),
+          ));
   }
 
   // Simple TableCalendar configuration (using Styles)
@@ -422,7 +466,7 @@ class _MyHomePageState extends State<MyHomePage> with TickerProviderStateMixin {
           mainAxisAlignment: MainAxisAlignment.spaceEvenly,
           children: <Widget>[
             RaisedButton(
-              child: Text('Month'),
+              child: Text('Mes'),
               onPressed: () {
                 setState(() {
                   _calendarController.setCalendarFormat(CalendarFormat.month);
@@ -430,7 +474,7 @@ class _MyHomePageState extends State<MyHomePage> with TickerProviderStateMixin {
               },
             ),
             RaisedButton(
-              child: Text('2 weeks'),
+              child: Text('2 semanas'),
               onPressed: () {
                 setState(() {
                   _calendarController
@@ -439,7 +483,7 @@ class _MyHomePageState extends State<MyHomePage> with TickerProviderStateMixin {
               },
             ),
             RaisedButton(
-              child: Text('Week'),
+              child: Text('Semana'),
               onPressed: () {
                 setState(() {
                   _calendarController.setCalendarFormat(CalendarFormat.week);

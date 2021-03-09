@@ -102,8 +102,7 @@ class LoginProvider with ChangeNotifier {
 
     // Present the dialog to the user
     final result = await FlutterWebAuth.authenticate(
-        url: "https://hermez-delivery--hermez-r7efb7dk.web.app",
-        callbackUrlScheme: "hermez");
+        url: "fisioterapia-cfb53.web.app", callbackUrlScheme: "physiho");
 
     // Extract status from resulting url
     final params = Uri.parse(result).queryParameters;

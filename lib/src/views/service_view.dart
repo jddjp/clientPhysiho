@@ -104,7 +104,7 @@ class _ServiceViewState extends StateMVC<ServiceView> {
                               background: CachedNetworkImage(
                                   imageUrl: _con.service['cover'] != ""
                                       ? _con.service['cover']['url']
-                                      : 'https://firebasestorage.googleapis.com/v0/b/hermez-delivery.appspot.com/o/businesses%2Flogo.png?alt=media&token=8f1908d5-0a1d-4cd7-9e68-086a4f63fbf0',
+                                      : 'https://firebasestorage.googleapis.com/v0/b/fisioterapia-cfb53.appspot.com/o/covers%2Flogophysihoservice.png?alt=media&token=98096b23-89a2-4c5d-81c8-fc6d56c152db',
                                   height: expandHeight,
                                   fit: BoxFit.cover),
                               collapseMode: CollapseMode.pin,

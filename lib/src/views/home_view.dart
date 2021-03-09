@@ -17,6 +17,9 @@ import 'package:clientPhysiho/src/config/images.dart';
 class HomeView extends StatefulWidget {
   // Route name for this view
   static const routeName = 'home';
+  String agendSetView;
+
+  HomeView({Key key, this.agendSetView}) : super(key: key);
 
   @override
   _HomeViewState createState() => _HomeViewState();
@@ -34,7 +37,6 @@ class _HomeViewState extends State<HomeView> {
     _servicesSnapshot = FirebaseFirestore.instance
         .collection('services')
         .where('active', isEqualTo: true)
-        .orderBy('index')
         .get();
     super.initState();
   }
@@ -56,6 +58,10 @@ class _HomeViewState extends State<HomeView> {
 
   @override
   Widget build(BuildContext context) {
+    print('home');
+    print(widget.agendSetView);
+    widget.agendSetView != null ? _selectedIndex = 1 : '';
+    widget.agendSetView = null;
     // Change status bar color
     changeStatusColor(pantoneThree);
 

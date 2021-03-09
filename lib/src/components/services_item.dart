@@ -42,7 +42,7 @@ class ServiceItem extends StatelessWidget {
               child: CachedNetworkImage(
                   imageUrl: services['logo'] != ""
                       ? services['logo']['url']
-                      : 'https://firebasestorage.googleapis.com/v0/b/fisioterapia-cfb53.appspot.com/o/profiles%2Fphysioh.png?alt=media&token=0c8c649f-4aac-4955-abaa-e5e93f5e9b2d',
+                      : 'https://firebasestorage.googleapis.com/v0/b/fisioterapia-cfb53.appspot.com/o/logos%2Flauncher_iconph.png?alt=media&token=78d21f49-9a79-43b6-bbad-2935869db94c',
                   width: width * 0.23,
                   height: width * 0.23,
                   fit: BoxFit.fill),

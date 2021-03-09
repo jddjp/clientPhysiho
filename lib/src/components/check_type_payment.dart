@@ -6,6 +6,7 @@ import 'package:clientPhysiho/src/providers/sessions_provider.dart';
 import 'package:flutter/material.dart';
 import 'package:loading_overlay/loading_overlay.dart';
 import 'package:provider/provider.dart';
+import 'package:clientPhysiho/src/views/home_view.dart';
 
 class CheckTypePayment extends StatefulWidget {
   // Route name for this view
@@ -139,6 +140,10 @@ class _CheckTypePaymentState extends State<CheckTypePayment> {
                             isLoading = false;
                           });
                         });
+                        // Redirect and remove all screens
+                        Navigator.pushNamedAndRemoveUntil(
+                            context, HomeView.routeName, (route) => false,
+                            arguments: "2");
                       },
                       child: Container(
                         padding: EdgeInsets.fromLTRB(spacing_large,
