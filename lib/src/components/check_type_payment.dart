@@ -107,7 +107,7 @@ class _CheckTypePaymentState extends State<CheckTypePayment> {
                         value: paymentMethod,
                         secondary: paymentTypes[paymentMethod]['secondary'],
                         /*const Icon(Icons.payment),*/
-                        activeColor: appColorAccent,
+                        activeColor: pantoneThirteen,
                         groupValue: _selectedPayment,
                         controlAffinity: ListTileControlAffinity.trailing,
                         onChanged: (String value) {
@@ -127,7 +127,7 @@ class _CheckTypePaymentState extends State<CheckTypePayment> {
                     showShadow: true, radius: 0, bgColor: food_white),
                 padding: EdgeInsets.all(spacing_standard_new),
                 child: Row(
-                  mainAxisAlignment: MainAxisAlignment.spaceBetween,
+                  mainAxisAlignment: MainAxisAlignment.center,
                   crossAxisAlignment: CrossAxisAlignment.center,
                   children: <Widget>[
                     GestureDetector(
@@ -136,9 +136,9 @@ class _CheckTypePaymentState extends State<CheckTypePayment> {
                           isLoading = true;
                         });
                         userPhysio.createRecord(widget.item).then((sesion) {
-                          setState(() {
-                            isLoading = false;
-                          });
+                          //  setState(() {
+                          //    isLoading = false;
+                          //  });
                         });
                         // Redirect and remove all screens
                         Navigator.pushNamedAndRemoveUntil(
@@ -150,7 +150,7 @@ class _CheckTypePaymentState extends State<CheckTypePayment> {
                             spacing_middle, spacing_large, spacing_middle),
                         decoration: BoxDecoration(
                           borderRadius: BorderRadius.all(Radius.circular(20)),
-                          color: appColorAccent,
+                          color: pantoneThirteen,
                         ),
                         child: RichText(
                           textAlign: TextAlign.center,

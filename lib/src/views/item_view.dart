@@ -278,6 +278,10 @@ class _ItemViewState extends StateMVC<ItemView> {
                               children: [
                                 Text('Seguimiento de compra'),
                                 RaisedButton(
+                                  shape: RoundedRectangleBorder(
+                                      borderRadius:
+                                          BorderRadius.circular(20.0)),
+                                  color: pantoneThirteen,
                                   onPressed: () {
                                     launchScreen(
                                         context, CheckTypePayment.routeName,
@@ -292,7 +296,12 @@ class _ItemViewState extends StateMVC<ItemView> {
                                           'idPhysio': idPhysio
                                         });
                                   },
-                                  child: Text('Siguiente'),
+                                  child: Text(
+                                    'Siguiente',
+                                    style: TextStyle(
+                                        color: pantoneEight,
+                                        fontWeight: fontBold),
+                                  ),
                                 )
                               ],
                             ),

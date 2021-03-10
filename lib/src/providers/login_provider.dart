@@ -143,6 +143,7 @@ class LoginProvider with ChangeNotifier {
         'estado': '',
         'municipio': '',
         'photo': {'path': null, 'url': _userData.photoURL},
+        'record': '',
         'active': true,
         'completed': false, // We required that user complete their profile
         'type': 'client',
