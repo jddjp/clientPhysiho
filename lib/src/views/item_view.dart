@@ -102,7 +102,6 @@ class _ItemViewState extends StateMVC<ItemView> {
   var sesionsList = new List(15);
   var hoursList = new List(15);
   final userPhysio = new SessionProvider();
-  String idPhysio = '';
 
   @override
   Widget build(BuildContext context) {
@@ -172,79 +171,72 @@ class _ItemViewState extends StateMVC<ItemView> {
                               ],
                             ),
                           ),
-                          FutureBuilder(
-                              future: userPhysio.getPhysio(),
-                              builder: (BuildContext context,
-                                  AsyncSnapshot snapshot) {
-                                if (snapshot.hasData) {
-                                  idPhysio = snapshot.data['id'];
-                                  return Container(
-                                    padding: EdgeInsets.all(10),
-                                    child: Column(
-                                      children: [
-                                        Container(
-                                          child: Text('Fisioterapeuta'),
-                                        ),
-                                        Row(
-                                          mainAxisAlignment:
-                                              MainAxisAlignment.spaceAround,
-                                          children: [
-                                            Column(
-                                              crossAxisAlignment:
-                                                  CrossAxisAlignment.end,
-                                              children: [
-                                                Text('Nombre'),
-                                              ],
-                                            ),
-                                            Column(
-                                              children: [
-                                                Text(snapshot.data['name']),
-                                              ],
-                                            ),
-                                          ],
-                                        ),
-                                        CircleAvatar(
-                                          backgroundColor: whiteColor,
-                                          radius: width * 0.20,
-                                          child: CachedNetworkImage(
-                                            color: whiteColor,
-                                            imageUrl: snapshot.data['photo'],
-                                            imageBuilder:
-                                                (context, imageProvider) =>
-                                                    Container(
-                                              decoration: BoxDecoration(
-                                                color: whiteColor,
-                                                borderRadius:
-                                                    BorderRadius.circular(80),
-                                                image: DecorationImage(
-                                                  image: imageProvider,
-                                                  fit: BoxFit.cover,
-                                                  colorFilter: ColorFilter.mode(
-                                                    Colors.black38
-                                                        .withOpacity(0.9),
-                                                    BlendMode.dstATop,
-                                                  ),
+                          _con.employee == null
+                              ? Container(
+                                  width: width,
+                                  child: Lottie.asset(
+                                      'assets/images/8682-loading.json'),
+                                )
+                              : Container(
+                                  padding: EdgeInsets.all(10),
+                                  child: Column(
+                                    children: [
+                                      Container(
+                                        child: Text('Fisioterapeuta'),
+                                      ),
+                                      Row(
+                                        mainAxisAlignment:
+                                            MainAxisAlignment.spaceAround,
+                                        children: [
+                                          Column(
+                                            crossAxisAlignment:
+                                                CrossAxisAlignment.end,
+                                            children: [
+                                              Text('Nombre'),
+                                            ],
+                                          ),
+                                          Column(
+                                            children: [
+                                              Text(_con.employee == null
+                                                  ? ''
+                                                  : _con.employee['name']),
+                                            ],
+                                          ),
+                                        ],
+                                      ),
+                                      CircleAvatar(
+                                        backgroundColor: whiteColor,
+                                        radius: width * 0.20,
+                                        child: CachedNetworkImage(
+                                          color: whiteColor,
+                                          imageUrl: _con.employee['photo'],
+                                          imageBuilder:
+                                              (context, imageProvider) =>
+                                                  Container(
+                                            decoration: BoxDecoration(
+                                              color: whiteColor,
+                                              borderRadius:
+                                                  BorderRadius.circular(80),
+                                              image: DecorationImage(
+                                                image: imageProvider,
+                                                fit: BoxFit.cover,
+                                                colorFilter: ColorFilter.mode(
+                                                  Colors.black38
+                                                      .withOpacity(0.9),
+                                                  BlendMode.dstATop,
                                                 ),
                                               ),
                                             ),
-                                            placeholder: (context, url) =>
-                                                CircularProgressIndicator(),
-                                            errorWidget:
-                                                (context, url, error) =>
-                                                    Icon(Icons.error),
                                           ),
+                                          placeholder: (context, url) =>
+                                              CircularProgressIndicator(),
+                                          errorWidget: (context, url, error) =>
+                                              Icon(Icons.error),
                                         ),
-                                      ],
-                                    ),
-                                  );
-                                } else {
-                                  return Lottie.asset(
-                                    'assets/images/8682-loading.json',
-                                    width: 150,
-                                    height: 150,
-                                  );
-                                }
-                              }),
+                                      ),
+                                    ],
+                                  ),
+                                ),
                           SingleChildScrollView(
                             child: Column(
                               children: [
@@ -293,7 +285,7 @@ class _ItemViewState extends StateMVC<ItemView> {
                                           'customer': context
                                               .read<LoginProvider>()
                                               .currentUser['id'],
-                                          'idPhysio': idPhysio
+                                          'idPhysio': _con.employee['id']
                                         });
                                   },
                                   child: Text(
@@ -472,10 +464,10 @@ class _ItemViewState extends StateMVC<ItemView> {
                         icon: Icon(Icons.format_shapes),
                         labelText: 'Hora',
                         changeIcon: true,
-                        dialogTitle: 'Pick a item',
-                        dialogCancelBtn: 'CANCEL',
+                        dialogTitle: 'Seleccionar horario',
+                        dialogCancelBtn: 'Cancelar',
                         enableSearch: true,
-                        dialogSearchHint: 'Search item',
+                        dialogSearchHint: 'Buscar horario',
                         items: _itemsHours(),
                         onChanged: (val) => setState(() {
                           _valueChanged = val;
