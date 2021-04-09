@@ -560,10 +560,6 @@
         "source": "C:\\Users\\pam_9\\.gradle\\caches\\transforms-2\\files-2.1\\e5977849638f4db14ee09096a5a3147e\\appcompat-1.1.0\\res\\drawable-xxhdpi-v4\\abc_ic_commit_search_api_mtrl_alpha.png"
     },
     {
-        "merged": "C:\\Users\\pam_9\\OneDrive\\Documentos\\Trabajo\\clientphysiho\\build\\app\\intermediates\\res\\merged\\debug\\drawable_launch_image.png.flat",
-        "source": "C:\\Users\\pam_9\\OneDrive\\Documentos\\Trabajo\\clientphysiho\\android\\app\\src\\main\\res\\drawable\\launch_image.png"
-    },
-    {
         "merged": "C:\\Users\\pam_9\\OneDrive\\Documentos\\Trabajo\\clientphysiho\\build\\app\\intermediates\\res\\merged\\debug\\drawable_com_facebook_auth_dialog_header_background.xml.flat",
         "source": "C:\\Users\\pam_9\\.gradle\\caches\\transforms-2\\files-2.1\\ddd1924ff4d77c086f19b0242908a223\\facebook-common-8.1.0\\res\\drawable\\com_facebook_auth_dialog_header_background.xml"
     },
@@ -1636,10 +1632,6 @@
         "source": "C:\\Users\\pam_9\\.gradle\\caches\\transforms-2\\files-2.1\\e5977849638f4db14ee09096a5a3147e\\appcompat-1.1.0\\res\\layout\\abc_cascading_menu_item_layout.xml"
     },
     {
-        "merged": "C:\\Users\\pam_9\\OneDrive\\Documentos\\Trabajo\\clientphysiho\\build\\app\\intermediates\\res\\merged\\debug\\mipmap-xhdpi_launcher_icon.png.flat",
-        "source": "C:\\Users\\pam_9\\OneDrive\\Documentos\\Trabajo\\clientphysiho\\android\\app\\src\\main\\res\\mipmap-xhdpi\\launcher_icon.png"
-    },
-    {
         "merged": "C:\\Users\\pam_9\\OneDrive\\Documentos\\Trabajo\\clientphysiho\\build\\app\\intermediates\\res\\merged\\debug\\drawable-mdpi-v4_abc_switch_track_mtrl_alpha.9.png.flat",
         "source": "C:\\Users\\pam_9\\.gradle\\caches\\transforms-2\\files-2.1\\e5977849638f4db14ee09096a5a3147e\\appcompat-1.1.0\\res\\drawable-mdpi-v4\\abc_switch_track_mtrl_alpha.9.png"
     },
@@ -1786,10 +1778,6 @@
     {
         "merged": "C:\\Users\\pam_9\\OneDrive\\Documentos\\Trabajo\\clientphysiho\\build\\app\\intermediates\\res\\merged\\debug\\drawable-hdpi-v4_notification_bg_normal_pressed.9.png.flat",
         "source": "C:\\Users\\pam_9\\.gradle\\caches\\transforms-2\\files-2.1\\60bcdf937a69ab7807eabfbf34627aee\\core-1.1.0\\res\\drawable-hdpi-v4\\notification_bg_normal_pressed.9.png"
-    },
-    {
-        "merged": "C:\\Users\\pam_9\\OneDrive\\Documentos\\Trabajo\\clientphysiho\\build\\app\\intermediates\\res\\merged\\debug\\mipmap-mdpi_launcher_icon.png.flat",
-        "source": "C:\\Users\\pam_9\\OneDrive\\Documentos\\Trabajo\\clientphysiho\\android\\app\\src\\main\\res\\mipmap-mdpi\\launcher_icon.png"
     },
     {
         "merged": "C:\\Users\\pam_9\\OneDrive\\Documentos\\Trabajo\\clientphysiho\\build\\app\\intermediates\\res\\merged\\debug\\drawable-xhdpi-v4_abc_ic_menu_cut_mtrl_alpha.png.flat",
@@ -1940,10 +1928,6 @@
         "source": "C:\\Users\\pam_9\\.gradle\\caches\\transforms-2\\files-2.1\\e5977849638f4db14ee09096a5a3147e\\appcompat-1.1.0\\res\\drawable-hdpi-v4\\abc_ic_menu_share_mtrl_alpha.png"
     },
     {
-        "merged": "C:\\Users\\pam_9\\OneDrive\\Documentos\\Trabajo\\clientphysiho\\build\\app\\intermediates\\res\\merged\\debug\\drawable_notification_icon.png.flat",
-        "source": "C:\\Users\\pam_9\\OneDrive\\Documentos\\Trabajo\\clientphysiho\\android\\app\\src\\main\\res\\drawable\\notification_icon.png"
-    },
-    {
         "merged": "C:\\Users\\pam_9\\OneDrive\\Documentos\\Trabajo\\clientphysiho\\build\\app\\intermediates\\res\\merged\\debug\\drawable-mdpi-v4_abc_ic_menu_cut_mtrl_alpha.png.flat",
         "source": "C:\\Users\\pam_9\\.gradle\\caches\\transforms-2\\files-2.1\\e5977849638f4db14ee09096a5a3147e\\appcompat-1.1.0\\res\\drawable-mdpi-v4\\abc_ic_menu_cut_mtrl_alpha.png"
     },
@@ -1970,14 +1954,6 @@
     {
         "merged": "C:\\Users\\pam_9\\OneDrive\\Documentos\\Trabajo\\clientphysiho\\build\\app\\intermediates\\res\\merged\\debug\\drawable-mdpi-v4_abc_ic_menu_share_mtrl_alpha.png.flat",
         "source": "C:\\Users\\pam_9\\.gradle\\caches\\transforms-2\\files-2.1\\e5977849638f4db14ee09096a5a3147e\\appcompat-1.1.0\\res\\drawable-mdpi-v4\\abc_ic_menu_share_mtrl_alpha.png"
-    },
-    {
-        "merged": "C:\\Users\\pam_9\\OneDrive\\Documentos\\Trabajo\\clientphysiho\\build\\app\\intermediates\\res\\merged\\debug\\mipmap-xxhdpi_launcher_icon.png.flat",
-        "source": "C:\\Users\\pam_9\\OneDrive\\Documentos\\Trabajo\\clientphysiho\\android\\app\\src\\main\\res\\mipmap-xxhdpi\\launcher_icon.png"
-    },
-    {
-        "merged": "C:\\Users\\pam_9\\OneDrive\\Documentos\\Trabajo\\clientphysiho\\build\\app\\intermediates\\res\\merged\\debug\\mipmap-hdpi_launcher_icon.png.flat",
-        "source": "C:\\Users\\pam_9\\OneDrive\\Documentos\\Trabajo\\clientphysiho\\android\\app\\src\\main\\res\\mipmap-hdpi\\launcher_icon.png"
     },
     {
         "merged": "C:\\Users\\pam_9\\OneDrive\\Documentos\\Trabajo\\clientphysiho\\build\\app\\intermediates\\res\\merged\\debug\\layout_select_dialog_item_material.xml.flat",
@@ -2134,10 +2110,6 @@
     {
         "merged": "C:\\Users\\pam_9\\OneDrive\\Documentos\\Trabajo\\clientphysiho\\build\\app\\intermediates\\res\\merged\\debug\\anim_btn_checkbox_to_unchecked_check_path_merged_animation.xml.flat",
         "source": "C:\\Users\\pam_9\\.gradle\\caches\\transforms-2\\files-2.1\\e5977849638f4db14ee09096a5a3147e\\appcompat-1.1.0\\res\\anim\\btn_checkbox_to_unchecked_check_path_merged_animation.xml"
-    },
-    {
-        "merged": "C:\\Users\\pam_9\\OneDrive\\Documentos\\Trabajo\\clientphysiho\\build\\app\\intermediates\\res\\merged\\debug\\mipmap-xxxhdpi_launcher_icon.png.flat",
-        "source": "C:\\Users\\pam_9\\OneDrive\\Documentos\\Trabajo\\clientphysiho\\android\\app\\src\\main\\res\\mipmap-xxxhdpi\\launcher_icon.png"
     },
     {
         "merged": "C:\\Users\\pam_9\\OneDrive\\Documentos\\Trabajo\\clientphysiho\\build\\app\\intermediates\\res\\merged\\debug\\drawable_abc_spinner_textfield_background_material.xml.flat",

@@ -766,7 +766,6 @@ drawable corner
 drawable googleg_disabled_color_18
 drawable googleg_standard_color_18
 drawable launch_background
-drawable launch_image
 drawable launcher_iconph
 drawable notification_action_background
 drawable notification_bg
@@ -775,7 +774,6 @@ drawable notification_bg_low_normal
 drawable notification_bg_low_pressed
 drawable notification_bg_normal
 drawable notification_bg_normal_pressed
-drawable notification_icon
 drawable notification_icon_background
 drawable notification_template_icon_bg
 drawable notification_template_icon_low_bg
@@ -1075,7 +1073,6 @@ layout select_dialog_singlechoice_material
 layout support_simple_spinner_dropdown_item
 layout toast_custom
 mipmap ic_launcher
-mipmap launcher_icon
 mipmap launcher_iconph
 string abc_action_bar_home_description
 string abc_action_bar_up_description

@@ -131,6 +131,7 @@ class _MyHomePageState extends State<MyHomePage> with TickerProviderStateMixin {
   Map<DateTime, List> _buildItems(List<dynamic> elements) {
     elements.forEach((element) {
       print(element);
+      print("imprimiendo elementos");
       print(element['date']);
       final date = DateFormat('yyyy-MM-dd').parse(element['date']);
       print(date);

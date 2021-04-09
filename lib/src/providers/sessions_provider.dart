@@ -58,22 +58,16 @@ class SessionProvider {
     QuerySnapshot sesionData = await FirebaseFirestore.instance
         .collection('sesionRecord')
         .where('customers', isEqualTo: customerRef)
-        // .orderBy('fecha')
         .get();
     List<dynamic> sesion = new List();
     print(sesionData);
     sesionData.docs.forEach((element) {
       sesion.add(element.data());
       print(element.data());
+      print("elementis obtencion de horas de sesions");
     });
-    print("hola prueba");
 
     print(sesion);
-
-    // sesionData.docs.forEach((element) {
-    //   print(element.data());
-    //   print("hola element . data");
-    // });
 
     return sesion;
   }

@@ -3484,24 +3484,22 @@ public final class R {
     public static final int googleg_disabled_color_18=0x7f060087;
     public static final int googleg_standard_color_18=0x7f060088;
     public static final int launch_background=0x7f060089;
-    public static final int launch_image=0x7f06008a;
-    public static final int launcher_iconph=0x7f06008b;
-    public static final int notification_action_background=0x7f06008c;
-    public static final int notification_bg=0x7f06008d;
-    public static final int notification_bg_low=0x7f06008e;
-    public static final int notification_bg_low_normal=0x7f06008f;
-    public static final int notification_bg_low_pressed=0x7f060090;
-    public static final int notification_bg_normal=0x7f060091;
-    public static final int notification_bg_normal_pressed=0x7f060092;
-    public static final int notification_icon=0x7f060093;
-    public static final int notification_icon_background=0x7f060094;
-    public static final int notification_template_icon_bg=0x7f060095;
-    public static final int notification_template_icon_low_bg=0x7f060096;
-    public static final int notification_tile_bg=0x7f060097;
-    public static final int notify_panel_notification_icon_bg=0x7f060098;
-    public static final int toast_bg=0x7f060099;
-    public static final int tooltip_frame_dark=0x7f06009a;
-    public static final int tooltip_frame_light=0x7f06009b;
+    public static final int launcher_iconph=0x7f06008a;
+    public static final int notification_action_background=0x7f06008b;
+    public static final int notification_bg=0x7f06008c;
+    public static final int notification_bg_low=0x7f06008d;
+    public static final int notification_bg_low_normal=0x7f06008e;
+    public static final int notification_bg_low_pressed=0x7f06008f;
+    public static final int notification_bg_normal=0x7f060090;
+    public static final int notification_bg_normal_pressed=0x7f060091;
+    public static final int notification_icon_background=0x7f060092;
+    public static final int notification_template_icon_bg=0x7f060093;
+    public static final int notification_template_icon_low_bg=0x7f060094;
+    public static final int notification_tile_bg=0x7f060095;
+    public static final int notify_panel_notification_icon_bg=0x7f060096;
+    public static final int toast_bg=0x7f060097;
+    public static final int tooltip_frame_dark=0x7f060098;
+    public static final int tooltip_frame_light=0x7f060099;
   }
   public static final class id {
     public static final int ALT=0x7f070000;
@@ -3803,8 +3801,7 @@ public final class R {
   }
   public static final class mipmap {
     public static final int ic_launcher=0x7f0b0000;
-    public static final int launcher_icon=0x7f0b0001;
-    public static final int launcher_iconph=0x7f0b0002;
+    public static final int launcher_iconph=0x7f0b0001;
   }
   public static final class string {
     public static final int abc_action_bar_home_description=0x7f0c0000;
