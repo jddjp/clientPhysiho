@@ -1,3 +1,5 @@
+import 'dart:io';
+
 import 'package:clientPhysiho/src/components/check_type_payment.dart';
 import 'package:clientPhysiho/src/views/service_view.dart';
 import 'package:firebase_messaging/firebase_messaging.dart';
@@ -88,6 +90,13 @@ class _PhysihoAppState extends State<PhysihoApp> {
       onMessage: (Map<String, dynamic> message) async {
         print("onMessage: $message");
         //_showItemDialog(message);
+        if (Platform.isAndroid) {
+          PushNotificationMessage(
+            title: message['notification']['title'],
+            body: message['notification']['body'],
+          );
+        }
+        // s
       },
       onLaunch: (Map<String, dynamic> message) async {
         print("onLaunch: $message");
@@ -314,4 +323,13 @@ class _PhysihoAppState extends State<PhysihoApp> {
       },
     );
   }
+}
+
+class PushNotificationMessage {
+  final String title;
+  final String body;
+  PushNotificationMessage({
+    @required this.title,
+    @required this.body,
+  });
 }

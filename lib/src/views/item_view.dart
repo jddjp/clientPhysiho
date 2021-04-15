@@ -410,6 +410,14 @@ class _ItemViewState extends StateMVC<ItemView> {
                 ]),
             child: Column(
               children: [
+                index == 0
+                    ? Container(
+                        padding:
+                            EdgeInsets.symmetric(horizontal: 8, vertical: 8),
+                        child: Text(
+                            'Esta es tu primera sesión,selecciona un día despues de la compra '),
+                      )
+                    : Container(),
                 Row(
                   children: [
                     Icon(
@@ -434,7 +442,7 @@ class _ItemViewState extends StateMVC<ItemView> {
                         validator: (e) => null,
                         onDateSelected: (DateTime value) {
                           selectedDate = value;
-                          print(value);
+                          //print(value);
                           setState(() {
                             // print('setState');
                             // print(index);
@@ -455,32 +463,46 @@ class _ItemViewState extends StateMVC<ItemView> {
                     SizedBox(
                       width: 10,
                     ),
-                    Container(
-                      width: 200,
-                      child: SelectFormField(
-                        type: SelectFormFieldType.dialog,
-                        controller: _controller,
-                        //initialValue: _initialValue,
-                        icon: Icon(Icons.format_shapes),
-                        labelText: 'Hora',
-                        changeIcon: true,
-                        dialogTitle: 'Seleccionar horario',
-                        dialogCancelBtn: 'Cancelar',
-                        enableSearch: true,
-                        dialogSearchHint: 'Buscar horario',
-                        items: _itemsHours(),
-                        onChanged: (val) => setState(() {
-                          _valueChanged = val;
+                    FutureBuilder(
+                      future: userPhysio.getHours(
+                          index, _con.employee['id'], sesionsList[index]),
+                      builder: (BuildContext context,
+                          AsyncSnapshot<List<dynamic>> snapshot) {
+                        print('list hours');
+                        print(snapshot.data);
+                        if (snapshot.hasData) {
+                          return Container(
+                            width: 200,
+                            child: SelectFormField(
+                              type: SelectFormFieldType.dialog,
+                              controller: _controller,
+                              //initialValue: _initialValue,
+                              icon: Icon(Icons.format_shapes),
+                              labelText: 'Hora',
+                              changeIcon: true,
+                              dialogTitle: 'Seleccionar horario',
+                              dialogCancelBtn: 'Cancelar',
+                              enableSearch: true,
+                              dialogSearchHint: 'Buscar horario',
+                              items: snapshot.data,
+                              onChanged: (val) => setState(() {
+                                _valueChanged = val;
 
-                          hoursList[index] = _valueChanged;
-                        }),
-                        validator: (val) {
-                          setState(() => _valueToValidate = val);
-                          return null;
-                        },
-                        onSaved: (val) => setState(() => _valueSaved = val),
-                      ),
-                    )
+                                hoursList[index] = _valueChanged;
+                              }),
+                              validator: (val) {
+                                setState(() => _valueToValidate = val);
+                                return null;
+                              },
+                              onSaved: (val) =>
+                                  setState(() => _valueSaved = val),
+                            ),
+                          );
+                        } else {
+                          Container();
+                        }
+                      },
+                    ),
                   ],
                 )
               ],

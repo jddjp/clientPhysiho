@@ -59,7 +59,7 @@ class _HomeViewState extends State<HomeView> {
   @override
   Widget build(BuildContext context) {
     print('home');
-    print(widget.agendSetView);
+    //print(widget.agendSetView);
     widget.agendSetView != null ? _selectedIndex = 1 : '';
     widget.agendSetView = null;
     // Change status bar color

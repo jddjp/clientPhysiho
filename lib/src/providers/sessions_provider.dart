@@ -20,6 +20,90 @@ class SessionProvider {
     return buffer.toString();
   }
 
+  Future<List<Map<String, dynamic>>> getHours(
+      int index, String idEmployee, String sesionsListIndex) async {
+    var hoursListIndex = new List(15);
+    List<Map<String, dynamic>> hoursList = new List();
+
+    hoursList.add(
+      {
+        'value': '9:00',
+        'label': '9:00 - 10:00',
+        'icon': Icon(Icons.stop),
+      },
+    );
+    hoursList.add(
+      {
+        'value': '10:30',
+        'label': '10:30 - 11:30',
+        'icon': Icon(Icons.stop),
+      },
+    );
+    hoursList.add(
+      {
+        'value': '12:00',
+        'label': '12:00 - 13:00',
+        'icon': Icon(Icons.stop),
+      },
+    );
+    hoursList.add(
+      {
+        'value': '13:30',
+        'label': '13:30 - 14:30',
+        'icon': Icon(Icons.stop),
+      },
+    );
+    hoursList.add(
+      {
+        'value': '16:00',
+        'label': '16:00 - 17:00',
+        'icon': Icon(Icons.stop),
+      },
+    );
+    hoursList.add(
+      {
+        'value': '17:30',
+        'label': '17:30 - 18:30',
+        'icon': Icon(Icons.stop),
+      },
+    );
+
+    DocumentReference physioRef =
+        FirebaseFirestore.instance.collection('users').doc(idEmployee);
+
+    print('physio : ${physioRef}');
+
+    if (sesionsListIndex != null) {
+      QuerySnapshot sesionData = await FirebaseFirestore.instance
+          .collection('sesionRecord')
+          .where('users', isEqualTo: physioRef)
+          .where('estatus', isEqualTo: 1)
+          .where('date', isEqualTo: sesionsListIndex)
+          // .orderBy('fecha')
+          .get();
+
+      print('reference physio');
+      print(physioRef);
+      print('reference sesions Record');
+      print(sesionData);
+      sesionData.docs.forEach((element) {
+        print(element.data());
+        hoursList.forEach((elementHours) {
+          print(elementHours);
+          if (elementHours['value'] == element.data()['hours']) {
+            print(
+                'si se encuentra ${elementHours['value']} && ${element.data()['hours']}');
+            elementHours['enable'] = false;
+          }
+        });
+      });
+      print(
+          'date list : ${sesionsListIndex} && idEmployee : ${idEmployee} & index : ${index}');
+    }
+
+    return hoursList;
+  }
+
   Future<Map<String, dynamic>> getPhysio() async {
     print('userPhysio');
     Map<String, dynamic> _currentUser;
@@ -49,22 +133,49 @@ class SessionProvider {
     return _currentUser;
   }
 
-  Future<Map<String, dynamic>> getHoursSession() async {}
   Future<List<dynamic>> getSessionUser(String id) async {
     print('userPhysio');
     DocumentReference customerRef =
         FirebaseFirestore.instance.collection('customers').doc(id);
+    print(customerRef);
 
     QuerySnapshot sesionData = await FirebaseFirestore.instance
         .collection('sesionRecord')
         .where('customers', isEqualTo: customerRef)
         .get();
     List<dynamic> sesion = new List();
-    print(sesionData);
-    sesionData.docs.forEach((element) {
-      sesion.add(element.data());
-      print(element.data());
-      print("elementis obtencion de horas de sesions");
+    //print(sesionData);
+    sesionData.docs.forEach((element) async {
+      //print('Record :');
+      DocumentSnapshot record = await FirebaseFirestore.instance
+          .collection('Record')
+          .doc(element.data()['record'].id)
+          .get();
+      // print(record.data());
+      // print(record.data()['service']);
+      DocumentSnapshot service = await FirebaseFirestore.instance
+          .collection('services')
+          .doc(record.data()['service'].id)
+          .get();
+      DocumentSnapshot package = await FirebaseFirestore.instance
+          .collection('items')
+          .doc(record.data()['package'].id)
+          .get();
+      // print(service.data());
+      // print(element.data()['record'].id);
+      // print('Physio :');
+      //   print(element.data());
+      //  print("elementis obtencion de horas de sesions");
+
+      sesion.add({
+        'hours': element.data()['hours'],
+        'date': element.data()['date'],
+        'serviceName': service.data()['name'],
+        'status': element.data()['estatus'],
+        'packageName': package.data()['name'],
+      }
+          //element.data()
+          );
     });
 
     print(sesion);

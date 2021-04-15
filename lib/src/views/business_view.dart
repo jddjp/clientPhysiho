@@ -39,7 +39,7 @@ class _BusinessViewState extends StateMVC<BusinessView> {
 
   void _onItemTapped(int index) {
     print('home');
-    print(index);
+    //print(index);
     setState(() {
       _selectedIndex = index;
     });
@@ -50,8 +50,8 @@ class _BusinessViewState extends StateMVC<BusinessView> {
     double expandHeight = MediaQuery.of(context).size.height * 0.3;
     var width = MediaQuery.of(context).size.width;
     print('Business');
-    print(_con.business['name']);
-    print(_con.business['logo']['url']);
+    //print(_con.business['name']);
+    //print(_con.business['logo']['url']);
 
     return Scaffold(
       bottomNavigationBar: Container(

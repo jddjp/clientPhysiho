@@ -39,8 +39,8 @@ class _ServiceViewState extends StateMVC<ServiceView> {
   }
 
   void _onItemTapped(int index) {
-    print('home');
-    print(index);
+    //print('home');
+    //print(index);
     setState(() {
       _selectedIndex = index;
     });
@@ -52,7 +52,7 @@ class _ServiceViewState extends StateMVC<ServiceView> {
     var width = MediaQuery.of(context).size.width;
     changeStatusColor(Colors.transparent);
     print('ServiceView');
-    print(_con.isLoading);
+    //print(_con.isLoading);
     return Scaffold(
       body: Stack(
         children: [

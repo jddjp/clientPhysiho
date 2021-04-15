@@ -11,7 +11,7 @@
     <application
         android:name="io.flutter.app.FlutterApplication"
         android:label="Physiho"
-        android:icon="@mipmap/launcher_iconph">
+        android:icon="@mipmap/launcher_icon">
         <meta-data android:name="com.google.android.geo.API_KEY"
                    android:value="AIzaSyBZnQaGJWwvHH_rna9Jz8pjo_z_tt4564k"/>
         <meta-data

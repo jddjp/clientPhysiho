@@ -51,6 +51,7 @@ class _MyHomePageState extends State<MyHomePage> with TickerProviderStateMixin {
   String _valueChanged = '';
   int flat = 0;
   Map<DateTime, List> _eventsFisiho = {};
+  List<dynamic> helper;
   final _selectedDay = DateTime.now();
 
   @override
@@ -58,7 +59,7 @@ class _MyHomePageState extends State<MyHomePage> with TickerProviderStateMixin {
     super.initState();
     final _selectedDay = DateTime.now();
     DateTime f = DateTime(2021, 01, 01);
-    print(f);
+    //print(f);
     _events = {
       _selectedDay.subtract(Duration(days: 30)): [
         'Event A0',
@@ -112,7 +113,7 @@ class _MyHomePageState extends State<MyHomePage> with TickerProviderStateMixin {
   }
 
   void _onDaySelected(DateTime day, List events, List holidays) {
-    print('CALLBACK: _onDaySelected');
+    //print('CALLBACK: _onDaySelected');
     setState(() {
       _selectedEvents = events;
     });
@@ -120,29 +121,35 @@ class _MyHomePageState extends State<MyHomePage> with TickerProviderStateMixin {
 
   void _onVisibleDaysChanged(
       DateTime first, DateTime last, CalendarFormat format) {
-    print('CALLBACK: _onVisibleDaysChanged');
+    //print('CALLBACK: _onVisibleDaysChanged');
   }
 
   void _onCalendarCreated(
       DateTime first, DateTime last, CalendarFormat format) {
-    print('CALLBACK: _onCalendarCreated');
+    //print('CALLBACK: _onCalendarCreated');
   }
 
   Map<DateTime, List> _buildItems(List<dynamic> elements) {
     elements.forEach((element) {
       print(element);
       print("imprimiendo elementos");
-      print(element['date']);
+      //print(element['date']);
       final date = DateFormat('yyyy-MM-dd').parse(element['date']);
-      print(date);
+      //print(date);
       DateTime f2 = DateTime(2021, 01, 01);
 
+      String s = 'Servicio: ' + element['serviceName'].toString();
+      String p = 'Paquete: ' + element['packageName'].toString();
       String c = "Horario: " + element['hours'].toString();
+      String dataInfo = 'Cita \n' + s + '\n' + p + '\n' + c;
+      //print('data List :');
+      // helper.add({element['date']});
       _eventsFisiho.addAll({
-        date: ['cita ' + c]
+        date: [dataInfo]
       });
     });
-    print(_eventsFisiho);
+    print('list helper : ${helper}');
+    print('list events ${_eventsFisiho}');
 
     return _eventsFisiho;
   }
@@ -254,15 +261,15 @@ class _MyHomePageState extends State<MyHomePage> with TickerProviderStateMixin {
     var t = sesionrecord
         .getSessionUser(context.watch<LoginProvider>().currentUser['id']);
 
-    print("buil calendar viendfo q imprime");
+    //print("buil calendar viendfo q imprime");
     return FutureBuilder(
       future: t,
       builder: (BuildContext context, AsyncSnapshot snapshot) {
-        print(snapshot.hasData);
-        print("imprimiendo snap shap XD");
+        //print(snapshot.hasData);
+        //print("imprimiendo snap shap XD");
         if (snapshot.hasData) {
           //imprimiendo la fila y el dato que se necesito
-          print(snapshot.data);
+          //print(snapshot.data);
           return TableCalendar(
             locale: 'es',
             calendarController: _calendarController,
@@ -319,9 +326,9 @@ class _MyHomePageState extends State<MyHomePage> with TickerProviderStateMixin {
   Widget _buildTableCalendarWithBuilders() {
     sesionrecord
         .getSessionUser(context.watch<LoginProvider>().currentUser['id']);
-    print(sesionrecord
-        .getSessionUser(context.watch<LoginProvider>().currentUser['id']));
-    print("buil calendar viendfo q impri,me");
+    //print(sesionrecord
+    // .getSessionUser(context.watch<LoginProvider>().currentUser['id']));
+    //print("buil calendar viendfo q impri,me");
     return FutureBuilder(
       future: sesionrecord
           .getSessionUser(context.watch<LoginProvider>().currentUser['id']),
