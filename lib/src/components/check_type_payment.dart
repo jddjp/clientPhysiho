@@ -28,7 +28,7 @@ class _CheckTypePaymentState extends State<CheckTypePayment> {
       'subtitle': 'Al recibir tu pedido',
       'secondary': Image.asset("assets/images/pago.png")
     },
-    'clip': {
+    /*'clip': {
       'title': 'Pago con tarjeta',
       'subtitle': 'Con Mercado Pago al recibir tu pedido',
       'secondary': Image.asset(
@@ -36,7 +36,7 @@ class _CheckTypePaymentState extends State<CheckTypePayment> {
         width: 55,
         height: 40,
       )
-    },
+    },*/
     /*'online': {
       'title': 'Pago con tarjeta',
       'subtitle': 'Paga en línea'

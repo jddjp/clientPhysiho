@@ -64,7 +64,7 @@ class _ServiceViewState extends StateMVC<ServiceView> {
                   colorFilter: new ColorFilter.mode(
                       Colors.black.withOpacity(0.8), BlendMode.dstATop),
                   image: new AssetImage('assets/images/fondoph.png'),
-                  fit: BoxFit.fitHeight),
+                  fit: BoxFit.cover),
             ),
           ),
           _con.isLoading

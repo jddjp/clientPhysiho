@@ -419,7 +419,7 @@ class _CompleteProfileViewState extends State<CompleteProfileView> {
                         colorFilter: new ColorFilter.mode(
                             Colors.black.withOpacity(0.8), BlendMode.dstATop),
                         image: new AssetImage('assets/images/fondoph.png'),
-                        fit: BoxFit.fill),
+                        fit: BoxFit.cover),
                   ),
                 ),
                 Container(

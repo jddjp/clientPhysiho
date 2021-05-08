@@ -26,6 +26,7 @@ class _LoginViewState extends State<LoginView> {
   Widget build(BuildContext context) {
     changeStatusColor(primaryColor);
     var width = MediaQuery.of(context).size.width;
+    var height = MediaQuery.of(context).size.height;
     Widget socialButton(var color, var icon, var value, var iconColor,
         var valueColor, VoidCallback onPressed) {
       return SizedBox(
@@ -71,7 +72,7 @@ class _LoginViewState extends State<LoginView> {
               ),
             ),
             Container(
-              margin: EdgeInsets.only(top: width * 0.9),
+              margin: EdgeInsets.only(top: height / 2),
               child: Stack(
                 children: <Widget>[
                   Arc(
@@ -119,7 +120,7 @@ class _LoginViewState extends State<LoginView> {
                                 context, CompleteProfileView.routeName);
                           });
                         }),
-                        SizedBox(height: width * 0.05),
+                        /*SizedBox(height: width * 0.05),
                         socialButton(
                             facebookColor,
                             food_ic_fb,
@@ -134,7 +135,7 @@ class _LoginViewState extends State<LoginView> {
                           });
                           /*Provider.of<LoginProvider>(context, listen: false)
                               .loginFacebook();*/
-                        }),
+                        }),*/
                         SizedBox(height: width * 0.05),
                         DefaultButton(
                           text: "Usar número de teléfono",

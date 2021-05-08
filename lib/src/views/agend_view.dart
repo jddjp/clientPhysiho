@@ -198,7 +198,7 @@ class _MyHomePageState extends State<MyHomePage> with TickerProviderStateMixin {
                         colorFilter: new ColorFilter.mode(
                             Colors.black.withOpacity(0.8), BlendMode.dstATop),
                         image: new AssetImage('assets/images/fondoph.png'),
-                        fit: BoxFit.fill),
+                        fit: BoxFit.cover),
                   ),
                 ),
                 Container(
