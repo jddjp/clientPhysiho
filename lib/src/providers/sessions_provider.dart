@@ -144,6 +144,8 @@ class SessionProvider {
         .where('customers', isEqualTo: customerRef)
         .get();
     List<dynamic> sesion = new List();
+    //List<dynamic> sesion2 = new List();
+
     //print(sesionData);
     sesionData.docs.forEach((element) async {
       //print('Record :');
@@ -178,6 +180,8 @@ class SessionProvider {
           );
     });
 
+    sesion.sort((a, b) => a['date'].compareTo(b['date']));
+    print("ordenamiento de comparar por fecha");
     print(sesion);
 
     return sesion;

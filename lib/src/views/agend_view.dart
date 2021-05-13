@@ -130,7 +130,31 @@ class _MyHomePageState extends State<MyHomePage> with TickerProviderStateMixin {
   }
 
   Map<DateTime, List> _buildItems(List<dynamic> elements) {
-    elements.forEach((element) {
+    //someObjects.sort((a, b) => a.someProperty.compareTo(b.someProperty));
+    print(elements);
+    print(elements.length);
+    int i = 0;
+    while (i < elements.length) {
+      final dateA = DateFormat('yyyy-MM-dd').parse(elements[i]['date']);
+      final dateS = DateFormat('yyyy-MM-dd').parse(elements[i]['date']);
+      print("Entrando en while");
+      if (dateA == dateS) {
+        print("Entrando en if de while");
+
+        String s = 'Servicio: ' + elements[i]['serviceName'].toString();
+        String p = 'Paquete: ' + elements[i]['packageName'].toString();
+        String c = "Horario: " + elements[i]['hours'].toString();
+        String dataInfo = 'Cita \n' + s + '\n' + p + '\n' + c;
+        //print('data List :');
+        // helper.add({element['date']});
+
+        _eventsFisiho.addAll({
+          dateA: [dataInfo, dataInfo]
+        });
+      }
+      i++;
+    }
+    /*  elements.forEach((element) {
       print(element);
       print("imprimiendo elementos");
       //print(element['date']);
@@ -144,10 +168,11 @@ class _MyHomePageState extends State<MyHomePage> with TickerProviderStateMixin {
       String dataInfo = 'Cita \n' + s + '\n' + p + '\n' + c;
       //print('data List :');
       // helper.add({element['date']});
+
       _eventsFisiho.addAll({
-        date: [dataInfo]
-      });
-    });
+        date: [dataInfo, dataInfo]
+      }); */
+    //});
     print('list helper : ${helper}');
     print('list events ${_eventsFisiho}');
 
