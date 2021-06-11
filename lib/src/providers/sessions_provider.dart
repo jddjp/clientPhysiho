@@ -181,8 +181,6 @@ class SessionProvider {
     });
 
     sesion.sort((a, b) => a['date'].compareTo(b['date']));
-    print("ordenamiento de comparar por fecha");
-    print(sesion);
 
     return sesion;
   }

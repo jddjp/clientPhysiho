@@ -84,7 +84,6 @@ class _CompleteProfileViewState extends State<CompleteProfileView> {
   // final estadosSelect = [];
   //estadosSelect
   List<Widget> _buildItemsestados(List<dynamic> elements) {
-    // print(elements);
     return elements
         .map((val) => MySelectionItem(
               title: val,
@@ -93,7 +92,6 @@ class _CompleteProfileViewState extends State<CompleteProfileView> {
   }
 
   List<Widget> _buildItemsmunicipios(List<dynamic> elements) {
-    // print(elements);
     List<Widget> listMunicipios = new List();
 
     elements.forEach((element) {

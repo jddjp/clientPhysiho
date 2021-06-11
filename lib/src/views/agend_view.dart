@@ -51,7 +51,7 @@ class _MyHomePageState extends State<MyHomePage> with TickerProviderStateMixin {
   String _valueChanged = '';
   int flat = 0;
   Map<DateTime, List> _eventsFisiho = {};
-  List<dynamic> helper;
+  var helper = [];
   final _selectedDay = DateTime.now();
 
   @override
@@ -131,15 +131,49 @@ class _MyHomePageState extends State<MyHomePage> with TickerProviderStateMixin {
 
   Map<DateTime, List> _buildItems(List<dynamic> elements) {
     //someObjects.sort((a, b) => a.someProperty.compareTo(b.someProperty));
-    print(elements);
+    //print(elements);
     print(elements.length);
-    int i = 0;
+    elements.forEach((element) {
+      if (!helper.contains(element['date'])) {
+        helper.add(element['date']);
+      }
+    });
+    print('list date´s');
+
+    helper.toList().asMap().forEach((key, value) {
+      print('helper');
+      print(elements);
+      final dateA = DateFormat('yyyy-MM-dd').parse(value);
+      final dateS = DateFormat('yyyy-MM-dd').parse(value);
+      var item = [];
+      elements.forEach((element) {
+        print('list element');
+        if (element['date'] == value) {
+          print('foreach element');
+          //print('coincide');
+          //print(key);
+          print(value);
+          //print(element);
+          String s = 'Servicio: ' + element['serviceName'].toString();
+          String p = 'Paquete: ' + element['packageName'].toString();
+          String c = "Horario: " + element['hours'].toString();
+          String dataInfo = 'Cita \n' + s + '\n' + p + '\n' + c;
+          //print(dataInfo);
+          item.add(dataInfo);
+          //_eventsFisiho.addAll({dateA: item});
+        }
+      });
+      _eventsFisiho.addAll({dateA: item});
+      print(dateA);
+      print(item);
+    });
+    /*int i = 0;
     while (i < elements.length) {
       final dateA = DateFormat('yyyy-MM-dd').parse(elements[i]['date']);
       final dateS = DateFormat('yyyy-MM-dd').parse(elements[i]['date']);
-      print("Entrando en while");
+      //print("Entrando en while");
       if (dateA == dateS) {
-        print("Entrando en if de while");
+        //print("Entrando en if de while");
 
         String s = 'Servicio: ' + elements[i]['serviceName'].toString();
         String p = 'Paquete: ' + elements[i]['packageName'].toString();
@@ -148,12 +182,12 @@ class _MyHomePageState extends State<MyHomePage> with TickerProviderStateMixin {
         //print('data List :');
         // helper.add({element['date']});
 
-        _eventsFisiho.addAll({
+        /*_eventsFisiho.addAll({
           dateA: [dataInfo, dataInfo]
-        });
+        });*/
       }
       i++;
-    }
+    }*/
     /*  elements.forEach((element) {
       print(element);
       print("imprimiendo elementos");
@@ -173,14 +207,18 @@ class _MyHomePageState extends State<MyHomePage> with TickerProviderStateMixin {
         date: [dataInfo, dataInfo]
       }); */
     //});
-    print('list helper : ${helper}');
-    print('list events ${_eventsFisiho}');
+    //print('list helper : ${helper}');
+    //print('list events ${_eventsFisiho}');
 
     return _eventsFisiho;
   }
 
   @override
   Widget build(BuildContext context) {
+    print('init');
+    print(context.watch<LoginProvider>().currentUser['id']);
+
+    final idUser = context.watch<LoginProvider>().currentUser['id'];
     return (context.watch<LoginProvider>().isLoggedIn() &&
             context.watch<LoginProvider>().currentUser['nombre'] != null
         ? Scaffold(
@@ -198,7 +236,7 @@ class _MyHomePageState extends State<MyHomePage> with TickerProviderStateMixin {
                 children: <Widget>[
                   // Switch out 2 lines below to play with TableCalendar's settings
                   //-----------------------
-                  _buildTableCalendar(),
+                  _buildTableCalendar(idUser),
                   // _buildTableCalendarWithBuilders(),
                   const SizedBox(height: 8.0),
                   _buildButtons(),
@@ -275,7 +313,9 @@ class _MyHomePageState extends State<MyHomePage> with TickerProviderStateMixin {
   }
 
   // Simple TableCalendar configuration (using Styles)
-  Widget _buildTableCalendar() {
+  Widget _buildTableCalendar(dynamic idUser) {
+    print('user build table');
+    print(idUser);
     _valueChanged = context.watch<LoginProvider>().isLoggedIn() &&
             context.watch<LoginProvider>().currentUser['id'] != null
         ? flat == ''
@@ -283,8 +323,7 @@ class _MyHomePageState extends State<MyHomePage> with TickerProviderStateMixin {
             : _valueChanged
         : '';
 
-    var t = sesionrecord
-        .getSessionUser(context.watch<LoginProvider>().currentUser['id']);
+    final t = sesionrecord.getSessionUser(idUser);
 
     //print("buil calendar viendfo q imprime");
     return FutureBuilder(
