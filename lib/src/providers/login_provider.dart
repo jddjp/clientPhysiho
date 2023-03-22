@@ -1,3 +1,4 @@
+// @dart=2.9
 import 'dart:convert';
 import 'dart:math';
 import 'package:flutter_web_auth/flutter_web_auth.dart';
@@ -7,7 +8,7 @@ import 'package:flutter/material.dart';
 import 'package:flutter/services.dart';
 import 'package:cloud_firestore/cloud_firestore.dart';
 import 'package:firebase_auth/firebase_auth.dart';
-import 'package:flutter_facebook_auth/flutter_facebook_auth.dart';
+//import 'package:flutter_facebook_auth/flutter_facebook_auth.dart';
 import 'package:google_sign_in/google_sign_in.dart';
 import 'package:shared_preferences/shared_preferences.dart';
 import 'package:clientPhysiho/src/helpers/extension_helper.dart';
@@ -58,7 +59,9 @@ class LoginProvider with ChangeNotifier {
   }
 
   bool isLoggedIn() => _loggedIn;
+
   bool isLoading() => _loading;
+
   bool isLoadingCurrentUser() => _loadingCurrentUser;
 
   bool isCompleted() =>
@@ -189,7 +192,8 @@ class LoginProvider with ChangeNotifier {
 
   // Facebook login
   Future<AuthResult> signInWithFacebook() async {
-    try {
+    //TODO Facebook login
+    /*try {
       // by default the login method has the next permissions ['email','public_profile']
       AccessToken accessToken = await FacebookAuth.instance.login();
       // get the user data
@@ -214,7 +218,7 @@ class LoginProvider with ChangeNotifier {
           break;
       }
     }
-
+*/
     return AuthResult(status: 500, credential: null);
   }
 
@@ -321,7 +325,7 @@ class LoginProvider with ChangeNotifier {
           .collection('customers')
           .doc(_prefs.getString('uid'))
           .get();
-      _currentUser = {...userDoc.data(), "id": userDoc.id};
+      _currentUser = {...userDoc.data() as Map<String, dynamic>, "id": userDoc.id};
       _loggedIn = true;
     }
 
@@ -345,7 +349,7 @@ class LoginProvider with ChangeNotifier {
           .collection('customers')
           .doc(_prefs.getString('uid'))
           .get();
-      _currentUser = {...userDoc.data(), "id": userDoc.id};
+      _currentUser = {...userDoc.data() as Map<String, dynamic>, "id": userDoc.id};
     }
 
     print(_currentUser);

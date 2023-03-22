@@ -1,3 +1,4 @@
+// @dart=2.9
 import 'package:cached_network_image/cached_network_image.dart';
 import 'package:flutter/material.dart';
 import 'package:clientPhysiho/src/config/colors.dart';
@@ -10,6 +11,7 @@ import 'package:shared_preferences/shared_preferences.dart';
 class ItemWidget extends StatefulWidget {
   final Map<String, dynamic> item;
   final String idservice;
+
   ItemWidget({Key key, this.item, this.idservice}) : super(key: key);
 
   @override
@@ -18,6 +20,7 @@ class ItemWidget extends StatefulWidget {
 
 class _ItemWidgetState extends State<ItemWidget> {
   SharedPreferences _idservices;
+
   @override
   void initState() {
     super.initState();

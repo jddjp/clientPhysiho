@@ -1,3 +1,4 @@
+// @dart=2.9
 import 'package:clientPhysiho/src/config/colors.dart';
 import 'package:clientPhysiho/src/config/constants.dart';
 import 'package:clientPhysiho/src/helpers/extension_helper.dart';
@@ -20,7 +21,10 @@ class OrderDetail extends StatefulWidget {
 class _OrderDetailState extends State<OrderDetail> {
   @override
   Widget build(BuildContext context) {
-    var width = MediaQuery.of(context).size.width;
+    var width = MediaQuery
+        .of(context)
+        .size
+        .width;
     return Scaffold(
       appBar: AppBar(
         title: text("Detalles del pedido #${widget.order['number']}"),
@@ -58,17 +62,17 @@ class _OrderDetailState extends State<OrderDetail> {
                                           Radius.circular(spacing_middle)),
                                       child: item['image'] != null
                                           ? Image(
-                                              width: 50,
-                                              height: 50,
-                                              image: CachedNetworkImageProvider(
-                                                  item['image']),
-                                              fit: BoxFit.cover,
-                                            )
+                                        width: 50,
+                                        height: 50,
+                                        image: CachedNetworkImageProvider(
+                                            item['image']),
+                                        fit: BoxFit.cover,
+                                      )
                                           : Image.asset(
-                                              "assets/images/fast-food.png",
-                                              width: 50,
-                                              height: 50,
-                                            ),
+                                        "assets/images/fast-food.png",
+                                        width: 50,
+                                        height: 50,
+                                      ),
                                     ),
                                     SizedBox(
                                       width: spacing_middle,
@@ -76,7 +80,7 @@ class _OrderDetailState extends State<OrderDetail> {
                                     Expanded(
                                       child: Column(
                                         crossAxisAlignment:
-                                            CrossAxisAlignment.start,
+                                        CrossAxisAlignment.start,
                                         children: <Widget>[
                                           text(item['name'],
                                               fontWeight: fontSemibold,
@@ -86,18 +90,20 @@ class _OrderDetailState extends State<OrderDetail> {
                                               textColor: Colors.grey[500],
                                               fontWeight: fontSemibold),
                                           item['options'] != null &&
-                                                  item['options'].length > 1
+                                              item['options'].length > 1
                                               ? text(
-                                                  "${item['options'].length} Adicionales",
-                                                  fontSize: textSizeSMedium,
-                                                  textColor: appColorAccent)
+                                              "${item['options']
+                                                  .length} Adicionales",
+                                              fontSize: textSizeSMedium,
+                                              textColor: appColorAccent)
                                               : Container(),
                                           //text("sd",textColor: food_textColorSecondary),
                                         ],
                                       ),
                                     ),
                                     text(
-                                        "\$ ${item['total'].toStringAsFixed(0)}"),
+                                        "\$ ${item['total'].toStringAsFixed(
+                                            0)}"),
                                   ],
                                 ),
                               ),
@@ -129,7 +135,8 @@ class _OrderDetailState extends State<OrderDetail> {
                   cListTile(
                     title: text("Costo de envío"),
                     trailing: text(
-                        "\$ ${widget.order['delivery_cost'].toStringAsFixed(0)}"),
+                        "\$ ${widget.order['delivery_cost'].toStringAsFixed(
+                            0)}"),
                   ),
                   SizedBox(
                     height: spacing_standard,

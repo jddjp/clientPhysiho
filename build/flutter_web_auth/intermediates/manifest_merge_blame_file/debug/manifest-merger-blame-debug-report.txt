@@ -3,6 +3,6 @@
 3    package="com.linusu.flutter_web_auth" >
 4
 5    <uses-sdk android:minSdkVersion="16" />
-5-->C:\src\flutter\.pub-cache\hosted\pub.dartlang.org\flutter_web_auth-0.2.4\android\src\main\AndroidManifest.xml
+5-->C:\Users\PonRon\AppData\Local\Pub\Cache\hosted\pub.dev\flutter_web_auth-0.5.0\android\src\main\AndroidManifest.xml
 6
 7</manifest>

@@ -1,3 +1,4 @@
+// @dart=2.9
 import 'package:cached_network_image/cached_network_image.dart';
 import 'package:clientPhysiho/src/config/colors.dart';
 import 'package:clientPhysiho/src/config/constants.dart';

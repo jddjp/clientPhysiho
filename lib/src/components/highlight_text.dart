@@ -9,10 +9,10 @@ class HighlightText extends StatelessWidget {
   final TextStyle textStyle = TextStyle(fontSize: 17.0);
 
   HighlightText(
-      {Key key,
-      @required this.text,
-      @required this.highlight,
-      @required this.isLast})
+      {Key? key,
+      required this.text,
+      required this.highlight,
+      required this.isLast})
       : super(key: key);
 
   @override

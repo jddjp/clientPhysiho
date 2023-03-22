@@ -43,10 +43,11 @@ class _LocationViewState extends State<LocationView> {
                 ),
                 Expanded(child: Container()),
                 Center(
-                  child: RaisedButton(
-                    shape: StadiumBorder(),
-                    color: appColorAccent,
-                    textColor: Colors.white,
+                  child: ElevatedButton(
+                    style: TextButton.styleFrom(
+                        primary: Colors.white,
+                        shape: StadiumBorder(),
+                        foregroundColor: appColorAccent),
                     child: Padding(
                       padding: EdgeInsets.symmetric(
                           horizontal: 30.0, vertical: 10.0),

@@ -1,3 +1,4 @@
+// @dart=2.9
 import 'package:cloud_firestore/cloud_firestore.dart';
 import 'package:flutter/cupertino.dart';
 import 'package:fluttertoast/fluttertoast.dart';
@@ -64,7 +65,7 @@ class OrderController extends ControllerMVC {
 
     querySnapshot.docs.forEach((doc) {
       ItemOptionModel option =
-          ItemOptionModel.fromJSON({...doc.data(), "id": doc.id});
+          ItemOptionModel.fromJSON({...doc.data() as Map<String, dynamic>, "id": doc.id});
 
       // Save all options
       option.options.forEach((element) {

@@ -1,4 +1,4 @@
-
+// @dart=2.9
 class ItemOptionModel {
   String id;
   String name;

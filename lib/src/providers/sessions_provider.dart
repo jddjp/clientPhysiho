@@ -1,3 +1,4 @@
+// @dart=2.9
 import 'dart:math';
 
 import 'package:flutter/material.dart';
@@ -8,6 +9,7 @@ class SessionProvider {
   static const AUTO_ID_ALPHABET =
       'ABCDEFGHIJKLMNOPQRSTUVWXYZabcdefghijklmnopqrstuvwxyz0123456789';
   static const AUTO_ID_LENGTH = 20;
+
   String _getAutoId() {
     final buffer = StringBuffer();
     final random = Random.secure();
@@ -88,17 +90,18 @@ class SessionProvider {
       print(sesionData);
       sesionData.docs.forEach((element) {
         print(element.data());
+        Map<String, dynamic> elemnt = element.data();
         hoursList.forEach((elementHours) {
           print(elementHours);
-          if (elementHours['value'] == element.data()['hours']) {
+          if (elementHours['value'] == elemnt['hours']) {
             print(
-                'si se encuentra ${elementHours['value']} && ${element.data()['hours']}');
+                'si se encuentra ${elementHours['value']} && ${elemnt['hours']}');
             elementHours['enable'] = false;
           }
         });
       });
       print(
-          'date list : ${sesionsListIndex} && idEmployee : ${idEmployee} & index : ${index}');
+          'date list : $sesionsListIndex && idEmployee : $idEmployee & index : $index');
     }
 
     return hoursList;
@@ -120,12 +123,12 @@ class SessionProvider {
         .get();
     user.docs.forEach((element) {
       print(element.data());
+      Map<String, dynamic> elemnt = element.data();
       _currentUser = {
         'id': element.reference.id,
-        "name": element.data()['name'],
-        "photo": element.data()['profile'] != null ||
-                element.data()['profile'] != ''
-            ? element.data()['profile']['url']
+        "name": elemnt['name'],
+        "photo": elemnt['profile'] != null || elemnt['profile'] != ''
+            ? elemnt['profile']['url']
             : 'https://firebasestorage.googleapis.com/v0/b/fisioterapia-cfb53.appspot.com/o/profiles%2FixkZaOLGO66wyZw6.jpeg?alt=media&token=4728c68a-d291-4910-af8a-5f5a628a47e6'
       };
     });
@@ -148,20 +151,21 @@ class SessionProvider {
 
     //print(sesionData);
     sesionData.docs.forEach((element) async {
+      Map<String, dynamic> elemnt = element.data();
       //print('Record :');
       DocumentSnapshot record = await FirebaseFirestore.instance
           .collection('Record')
-          .doc(element.data()['record'].id)
+          .doc(elemnt['record'].id)
           .get();
       // print(record.data());
       // print(record.data()['service']);
       DocumentSnapshot service = await FirebaseFirestore.instance
           .collection('services')
-          .doc(record.data()['service'].id)
+          .doc((record.data() as Map<String, dynamic>)['service'].id)
           .get();
       DocumentSnapshot package = await FirebaseFirestore.instance
           .collection('items')
-          .doc(record.data()['package'].id)
+          .doc((record.data() as Map<String, dynamic>)['package'].id)
           .get();
       // print(service.data());
       // print(element.data()['record'].id);
@@ -170,11 +174,11 @@ class SessionProvider {
       //  print("elementis obtencion de horas de sesions");
 
       sesion.add({
-        'hours': element.data()['hours'],
-        'date': element.data()['date'],
-        'serviceName': service.data()['name'],
-        'status': element.data()['estatus'],
-        'packageName': package.data()['name'],
+        'hours': elemnt['hours'],
+        'date': elemnt['date'],
+        'serviceName': (service.data() as Map<String, dynamic>)['name'],
+        'status': elemnt['estatus'],
+        'packageName': (package.data() as Map<String, dynamic>)['name'],
       }
           //element.data()
           );

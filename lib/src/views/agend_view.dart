@@ -1,3 +1,4 @@
+// @dart=2.9
 import 'package:clientPhysiho/src/config/colors.dart';
 import 'package:clientPhysiho/src/config/constants.dart';
 import 'package:clientPhysiho/src/helpers/extension_helper.dart';
@@ -537,7 +538,7 @@ class _MyHomePageState extends State<MyHomePage> with TickerProviderStateMixin {
           mainAxisSize: MainAxisSize.max,
           mainAxisAlignment: MainAxisAlignment.spaceEvenly,
           children: <Widget>[
-            RaisedButton(
+            ElevatedButton(
               child: Text('Mes'),
               onPressed: () {
                 setState(() {
@@ -545,7 +546,7 @@ class _MyHomePageState extends State<MyHomePage> with TickerProviderStateMixin {
                 });
               },
             ),
-            RaisedButton(
+            ElevatedButton(
               child: Text('2 semanas'),
               onPressed: () {
                 setState(() {
@@ -554,7 +555,7 @@ class _MyHomePageState extends State<MyHomePage> with TickerProviderStateMixin {
                 });
               },
             ),
-            RaisedButton(
+            ElevatedButton(
               child: Text('Semana'),
               onPressed: () {
                 setState(() {

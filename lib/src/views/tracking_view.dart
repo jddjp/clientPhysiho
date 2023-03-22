@@ -1,3 +1,4 @@
+// @dart=2.9
 import 'package:cloud_firestore/cloud_firestore.dart';
 import 'package:flutter/material.dart';
 import 'package:clientPhysiho/src/config/colors.dart';
@@ -62,9 +63,8 @@ class _TrackingViewState extends State<TrackingView> {
                     child: Container(
                   width: width,
                   child: Stepper(
-                    controlsBuilder: (BuildContext context,
-                        {VoidCallback onStepContinue,
-                        VoidCallback onStepCancel}) {
+                    controlsBuilder:
+                        (BuildContext context, ControlsDetails controls) {
                       return Container();
                     },
                     currentStep: order['status_step'] - 1,
@@ -184,13 +184,13 @@ class _TrackingViewState extends State<TrackingView> {
   }
 
   void showCancelDialog(BuildContext context) {
-    Widget cancelButton = FlatButton(
+    Widget cancelButton = TextButton(
         onPressed: () {
           Navigator.of(context).pop();
         },
         child: Text("No"));
 
-    Widget okButton = FlatButton(
+    Widget okButton = TextButton(
         onPressed: () {
           Navigator.of(context).pop();
           setState(() {

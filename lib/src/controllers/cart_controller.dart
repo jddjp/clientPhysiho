@@ -1,3 +1,4 @@
+// @dart=2.9
 import 'package:cloud_firestore/cloud_firestore.dart';
 import 'package:clientPhysiho/src/config/constants.dart';
 import 'package:mvc_pattern/mvc_pattern.dart';
@@ -13,6 +14,7 @@ class CartServiceController extends ControllerMVC {
   static const AUTO_ID_ALPHABET =
       'ABCDEFGHIJKLMNOPQRSTUVWXYZabcdefghijklmnopqrstuvwxyz0123456789';
   static const AUTO_ID_LENGTH = 20;
+
   String _getAutoId() {
     final buffer = StringBuffer();
     final random = Random.secure();
@@ -58,12 +60,13 @@ class CartServiceController extends ControllerMVC {
         .get();
     user.docs.forEach((element) {
       print(element.data());
+      Map<String, dynamic> el = element.data() as Map<String, dynamic>;
       employee = {
         'id': element.reference.id,
-        "name": element.data()['name'],
-        "photo": element.data()['profile'] != null ||
-                element.data()['profile'] != ''
-            ? element.data()['profile']['url']
+        "name": el['name'],
+        "photo": el['profile'] != null ||
+                el['profile'] != ''
+            ? el['profile']['url']
             : 'https://firebasestorage.googleapis.com/v0/b/fisioterapia-cfb53.appspot.com/o/profiles%2FixkZaOLGO66wyZw6.jpeg?alt=media&token=4728c68a-d291-4910-af8a-5f5a628a47e6'
       };
     });
@@ -74,9 +77,9 @@ class CartServiceController extends ControllerMVC {
     DocumentReference itemRef =
         FirebaseFirestore.instance.collection('items').doc(item['id']);
     DocumentSnapshot serviceDoc = await serviceRef.get();
-    service = {...serviceDoc.data(), 'id': serviceDoc.id};
+    service = {...serviceDoc.data()  as Map<String, dynamic>, 'id': serviceDoc.id};
     DocumentSnapshot itemDoc = await itemRef.get();
-    itemService = {...itemDoc.data(), 'id': itemDoc.id};
+    itemService = {...itemDoc.data()  as Map<String, dynamic>, 'id': itemDoc.id};
     print('itemService');
     print(itemService);
     setState(() {

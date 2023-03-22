@@ -1,10 +1,4 @@
-/// Flutter code sample for ListTile
-
-// Here is an example of a custom list item that resembles a Youtube related
-// video list item created with [Expanded] and [Container] widgets.
-//
-// ![Custom list item a](https://flutter.github.io/assets-for-api-docs/assets/widgets/custom_list_item_a.png)
-
+// @dart=2.9
 import 'package:flutter/material.dart';
 
 class CustomListItem extends StatelessWidget {

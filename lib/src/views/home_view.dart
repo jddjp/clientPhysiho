@@ -1,3 +1,4 @@
+// @dart=2.9
 import 'package:clientPhysiho/src/components/services_item.dart';
 import 'package:clientPhysiho/src/views/complete_profile_view.dart';
 import 'package:clientPhysiho/src/views/home_services_view.dart';
@@ -61,7 +62,7 @@ class _HomeViewState extends State<HomeView> {
     print('home');
     //print(widget.agendSetView);
     widget.agendSetView != null ? _selectedIndex = 1 : '';
-    widget.agendSetView = null;
+    widget.agendSetView = "";
     // Change status bar color
     changeStatusColor(pantoneThree);
 
@@ -75,7 +76,7 @@ class _HomeViewState extends State<HomeView> {
                 blurRadius: 5)
           ]),
           child: Db7BottomNavigationBar(
-            items: const <Db7BottomNavigationBarItem>[
+            items: <Db7BottomNavigationBarItem>[
               Db7BottomNavigationBarItem(
                   icon: db7_ic_home,
                   title: Text("Inicio", style: TextStyle(fontSize: 16))),

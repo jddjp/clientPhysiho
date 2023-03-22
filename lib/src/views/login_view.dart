@@ -32,11 +32,13 @@ class _LoginViewState extends State<LoginView> {
       return SizedBox(
         width: double.infinity,
         height: 50.0,
-        child: FlatButton.icon(
-          shape: RoundedRectangleBorder(
-            borderRadius: BorderRadius.circular(50),
+        child: TextButton.icon(
+          style: TextButton.styleFrom(
+            primary: color,
+            shape: const RoundedRectangleBorder(
+              borderRadius: BorderRadius.all(Radius.circular(50)),
+            ),
           ),
-          color: color,
           onPressed: onPressed,
           icon: SvgPicture.asset(icon, color: iconColor, width: 18, height: 18),
           label: Text(

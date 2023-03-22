@@ -7,7 +7,7 @@ class AlertWidget extends StatelessWidget {
   Color bgColor;
   String alertText;
 
-  AlertWidget({this.bgColor, this.alertText});
+  AlertWidget({required this.bgColor, required this.alertText});
 
   @override
   Widget build(BuildContext context) {

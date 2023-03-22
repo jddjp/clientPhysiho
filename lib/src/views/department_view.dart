@@ -1,3 +1,4 @@
+// @dart=2.9
 import 'package:flutter/material.dart';
 import 'package:cached_network_image/cached_network_image.dart';
 import 'package:cloud_firestore/cloud_firestore.dart';
@@ -156,9 +157,11 @@ class _DepartmentViewState extends StateMVC<DepartmentView> {
                                             height: 20,
                                           ),
                                           Center(
-                                            child: RaisedButton(
-                                              color: appColorPrimary,
-                                              textColor: Colors.white,
+                                            child: ElevatedButton(
+                                              style: TextButton.styleFrom(
+                                                  primary: Colors.white,
+                                                  foregroundColor:
+                                                      appColorPrimary),
                                               child: Padding(
                                                 padding: EdgeInsets.symmetric(
                                                     horizontal: 30.0,
@@ -306,7 +309,8 @@ class _DepartmentViewState extends StateMVC<DepartmentView> {
                                   itemBuilder:
                                       (BuildContext context, int index) {
                                     return BusinessItem(business: {
-                                      ..._con.businesses[index].data(),
+                                      ..._con.businesses[index].data()
+                                          as Map<String, dynamic>,
                                       "id": _con.businesses[index].id,
                                     });
                                   })

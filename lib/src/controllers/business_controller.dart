@@ -1,3 +1,4 @@
+// @dart=2.9
 import 'package:cloud_firestore/cloud_firestore.dart';
 import 'package:clientPhysiho/src/config/constants.dart';
 import 'package:mvc_pattern/mvc_pattern.dart';
@@ -22,7 +23,10 @@ class BusinessController extends ControllerMVC {
 
     // Load business data
     DocumentSnapshot businessDoc = await businessRef.get();
-    business = {...businessDoc.data(), "id": businessDoc.id};
+    business = {
+      ...businessDoc.data() as Map<String, dynamic>,
+      "id": businessDoc.id
+    };
 
     setState(() {
       items = itemsSnapshot.docs;

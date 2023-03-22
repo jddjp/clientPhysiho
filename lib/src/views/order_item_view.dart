@@ -1,3 +1,4 @@
+// @dart=2.9
 import 'package:clientPhysiho/src/config/colors.dart';
 import 'package:clientPhysiho/src/config/constants.dart';
 import 'package:clientPhysiho/src/helpers/widget_helper.dart';

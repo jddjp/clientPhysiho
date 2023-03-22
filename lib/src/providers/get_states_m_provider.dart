@@ -1,3 +1,4 @@
+// @dart=2.9
 import 'package:flutter/material.dart';
 import 'package:http/http.dart' as http;
 import 'dart:convert';
@@ -7,7 +8,7 @@ class StatesMProvider {
     print('provider');
 
     final result = await http.get(
-      'https://api-sepomex.hckdrk.mx/query/get_estados?token=a2f08702-dc7c-4a49-a792-f79664589890',
+      'https://api-sepomex.hckdrk.mx/query/get_estados?token=a2f08702-dc7c-4a49-a792-f79664589890' as Uri,
     );
     List<int> bytes = result.bodyBytes;
     if (result.statusCode == 200) {
@@ -31,9 +32,9 @@ class StatesMProvider {
     print('provider');
     print(states);
     final result = await http.get(
-      'https://api-sepomex.hckdrk.mx/query/get_municipio_por_estado/' +
+      ('https://api-sepomex.hckdrk.mx/query/get_municipio_por_estado/' +
           states +
-          '?token=a2f08702-dc7c-4a49-a792-f79664589890',
+          '?token=a2f08702-dc7c-4a49-a792-f79664589890') as Uri,
     );
     List<int> bytes = result.bodyBytes;
     if (result.statusCode == 200) {

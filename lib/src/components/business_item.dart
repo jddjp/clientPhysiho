@@ -10,7 +10,7 @@ import 'package:clientPhysiho/src/views/business_view.dart';
 class BusinessItem extends StatelessWidget {
   final Map<String, dynamic> business;
 
-  BusinessItem({Key key, this.business}) : super(key: key);
+  BusinessItem({Key? key, required this.business}) : super(key: key);
 
   @override
   Widget build(BuildContext context) {

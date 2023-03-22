@@ -1,5 +1,6 @@
+// @dart=2.9
 import 'package:flutter/material.dart';
-import 'package:flutter_statusbarcolor/flutter_statusbarcolor.dart';
+import 'package:flutter_statusbarcolor_ns/flutter_statusbarcolor_ns.dart';
 
 back(var context) {
   Navigator.pop(context);

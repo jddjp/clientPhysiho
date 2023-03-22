@@ -1,3 +1,5 @@
+// @dart=2.9
+import 'dart:async';
 import 'dart:io';
 
 import 'package:clientPhysiho/src/components/check_type_payment.dart';
@@ -65,7 +67,7 @@ class _PhysihoAppState extends State<PhysihoApp> {
   // Set default `_initialized` and `_error` state to false
   bool _initialized = false;
   bool _error = false;
-  final FirebaseMessaging _firebaseMessaging = FirebaseMessaging();
+  final FirebaseMessaging _firebaseMessaging = FirebaseMessaging.instance;
   SharedPreferences _prefs;
 
   // Define an async function to initialize FlutterFire
@@ -86,35 +88,27 @@ class _PhysihoAppState extends State<PhysihoApp> {
   }
 
   void initializeMessaging() async {
-    _firebaseMessaging.configure(
-      onMessage: (Map<String, dynamic> message) async {
-        print("onMessage: $message");
-        //_showItemDialog(message);
-        if (Platform.isAndroid) {
-          PushNotificationMessage(
-            title: message['notification']['title'],
-            body: message['notification']['body'],
-          );
-        }
-        // s
-      },
-      onLaunch: (Map<String, dynamic> message) async {
-        print("onLaunch: $message");
-        _navigateToDetail(message);
-      },
-      onResume: (Map<String, dynamic> message) async {
-        print("onResume: $message");
-        _navigateToDetail(message);
-      },
-    );
-    _firebaseMessaging.requestNotificationPermissions(
-        const IosNotificationSettings(
-            sound: true, badge: true, alert: true, provisional: true));
-    _firebaseMessaging.onIosSettingsRegistered
-        .listen((IosNotificationSettings settings) {
-      print("Settings registered: $settings");
+    FirebaseMessaging.onMessage.listen((RemoteMessage message) {
+      print("onMessage: $message");
+      if (Platform.isAndroid) {
+        PushNotificationMessage(
+          title: message.data['notification']['title'],
+          body: message.data['notification']['body'],
+        );
+      }
     });
-    _firebaseMessaging.getToken().then((String token) {
+    FirebaseMessaging.onMessageOpenedApp.listen((RemoteMessage message) {
+      print("onLaunch: $message");
+      _navigateToDetail(message.data);
+    });
+    _firebaseMessaging.requestPermission(
+      sound: true,
+      alert: true,
+      badge: true,
+    );
+    //TODO Ios register
+    FirebaseMessaging.instance.getToken().then((value) {
+      String token = value;
       context.read<LoginProvider>().saveTokenToDatabase(token);
     });
   }
@@ -164,7 +158,9 @@ class _PhysihoAppState extends State<PhysihoApp> {
             break;
           // opt view
           case OPTView.routeName:
-            return MaterialPageRoute(builder: (_) => OPTView(phoneData: args));
+            return MaterialPageRoute(
+                builder: (_) =>
+                    OPTView(phoneData: args as Map<String, dynamic>));
             break;
           // complete profile view
           case CompleteProfileView.routeName:
@@ -173,12 +169,12 @@ class _PhysihoAppState extends State<PhysihoApp> {
           // department view
           case DepartmentView.routeName:
             return MaterialPageRoute(
-                builder: (_) => DepartmentView(department: args));
+                builder: (_) => DepartmentView(department: args as String));
             break;
           // business view
           case ServiceView.routeName:
             return MaterialPageRoute(
-                builder: (_) => ServiceView(serviceId: args));
+                builder: (_) => ServiceView(serviceId: args as String));
             break;
           // agend view
           case AgendView.routeName:
@@ -187,7 +183,7 @@ class _PhysihoAppState extends State<PhysihoApp> {
           case CheckTypePayment.routeName:
             return MaterialPageRoute(
                 builder: (_) => CheckTypePayment(
-                      item: args,
+                      item: args as Map<String, dynamic>,
                     ));
             break;
           // item view
@@ -195,7 +191,7 @@ class _PhysihoAppState extends State<PhysihoApp> {
             return PageRouteBuilder(
               pageBuilder: (context, animation, secondaryAnimation) => ItemView(
                   item: args != null
-                      ? args
+                      ? args as Map<String, dynamic>
                       : {
                           'id': _prefs.getString('idpaqueteservicio'),
                           'idservice': _prefs.getString('idservicio')
@@ -226,7 +222,7 @@ class _PhysihoAppState extends State<PhysihoApp> {
           // category view
           case CategoryView.routeName:
             return MaterialPageRoute(
-                builder: (_) => CategoryView(categoryName: args));
+                builder: (_) => CategoryView(categoryName: args as String));
             break;
           // checkout view
           case CheckoutView.routeName:
@@ -243,13 +239,17 @@ class _PhysihoAppState extends State<PhysihoApp> {
           // tracking view
           case TrackingView.routeName:
             return MaterialPageRoute(
-                builder: (_) => TrackingView(orderId: args));
+                builder: (_) => TrackingView(orderId: args as String));
             break;
           case OrderDetail.routeName:
-            return MaterialPageRoute(builder: (_) => OrderDetail(order: args));
+            return MaterialPageRoute(
+                builder: (_) =>
+                    OrderDetail(order: args as Map<String, dynamic>));
             break;
           case OrderItemView.routeName:
-            return MaterialPageRoute(builder: (_) => OrderItemView(item: args));
+            return MaterialPageRoute(
+                builder: (_) =>
+                    OrderItemView(item: args as Map<String, dynamic>));
             break;
           case AboutPage.routeName:
             return MaterialPageRoute(builder: (_) => AboutPage());
@@ -259,7 +259,9 @@ class _PhysihoAppState extends State<PhysihoApp> {
             break;
           case HomeView.routeName:
             return MaterialPageRoute(
-                builder: (_) => HomeView(agendSetView: args));
+                builder: (_) => HomeView(
+                      agendSetView: args as String,
+                    ));
             break;
           default:
             return MaterialPageRoute(builder: (context) {
@@ -328,8 +330,9 @@ class _PhysihoAppState extends State<PhysihoApp> {
 class PushNotificationMessage {
   final String title;
   final String body;
+
   PushNotificationMessage({
-    @required this.title,
-    @required this.body,
+    this.title,
+    this.body,
   });
 }

@@ -1,3 +1,4 @@
+// @dart=2.9
 import 'package:clientPhysiho/src/utils/Db7BottomNavigationBar.dart';
 import 'package:cloud_firestore/cloud_firestore.dart';
 import 'package:flutter/material.dart';
@@ -32,6 +33,7 @@ class BusinessView extends StatefulWidget {
 class _BusinessViewState extends StateMVC<BusinessView> {
   BusinessController _con;
   var _selectedIndex = 0;
+
   _BusinessViewState(String businessId)
       : super(BusinessController(businessId)) {
     _con = controller;
@@ -173,7 +175,8 @@ class _BusinessViewState extends StateMVC<BusinessView> {
                                       itemBuilder:
                                           (BuildContext context, int index) {
                                         return ItemWidget(item: {
-                                          ..._con.items[index].data(),
+                                          ..._con.items[index].data()
+                                              as Map<String, dynamic>,
                                           "id": _con.items[index].id,
                                         });
                                       })

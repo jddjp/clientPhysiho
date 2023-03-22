@@ -1,3 +1,4 @@
+// @dart=2.9
 import 'package:flutter/material.dart';
 import 'package:cached_network_image/cached_network_image.dart';
 import 'package:flutter/cupertino.dart';
@@ -392,7 +393,7 @@ class _CartViewState extends State<CartView> {
               ),
             ),
             actions: [
-              FlatButton(
+              TextButton(
                 child: Text("Ingresar"),
                 onPressed: () {
                   Provider.of<CartProvider>(context, listen: false)
@@ -508,13 +509,13 @@ class CartItemWidget extends StatelessWidget {
   }
 
   void removeOrderItem(BuildContext context, String orderId) {
-    Widget cancelButton = FlatButton(
+    Widget cancelButton = TextButton(
         onPressed: () {
           Navigator.of(context).pop();
         },
         child: Text("No"));
 
-    Widget okButton = FlatButton(
+    Widget okButton = TextButton(
         onPressed: () {
           Provider.of<CartProvider>(context, listen: false)
               .removeItem(orderItem.id);
@@ -608,9 +609,7 @@ class CartItemWidget extends StatelessWidget {
   }
 }
 
-Widget mBottom(BuildContext context, var widget
-    /* var value, var tags*/
-    ) {
+Widget mBottom(BuildContext context, var widget /* var value, var tags*/) {
   var width = MediaQuery.of(context).size.width;
 
   return Container(

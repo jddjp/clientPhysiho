@@ -10,7 +10,7 @@ class SearchInputWidget extends StatefulWidget {
   final String hintText;
 
   SearchInputWidget(
-      {Key key,
+      {Key? key,
       this.hintText = "Buscar negocios",
       this.position = 0.0,
       this.bgColor = appLayout_background})

@@ -1,7 +1,4 @@
-// Copyright 2016 The Chromium Authors. All rights reserved.
-// Use of this source code is governed by a BSD-style license that can be
-// found in the LICENSE file.
-
+// @dart=2.9
 import 'dart:collection' show Queue;
 import 'dart:math' as math;
 
@@ -19,7 +16,7 @@ enum Db7BottomNavigationBarType {
 class Db7BottomNavigationBar extends StatefulWidget {
   Db7BottomNavigationBar({
     Key key,
-    @required this.items,
+    this.items,
     this.onTap,
     this.currentIndex = 0,
     this.elevation = 8.0,
@@ -200,10 +197,10 @@ class _BottomNavigationTile extends StatelessWidget {
     this.colorTween,
     this.flex,
     this.selected = false,
-    @required this.selectedLabelStyle,
-    @required this.unselectedLabelStyle,
-    @required this.selectedIconTheme,
-    @required this.unselectedIconTheme,
+    this.selectedLabelStyle,
+    this.unselectedLabelStyle,
+    this.selectedIconTheme,
+    this.unselectedIconTheme,
     this.showSelectedLabels,
     this.showUnselectedLabels,
     this.indexLabel,
@@ -362,13 +359,13 @@ class _BottomNavigationTile extends StatelessWidget {
 class _TileIcon extends StatelessWidget {
   const _TileIcon({
     Key key,
-    @required this.colorTween,
-    @required this.animation,
-    @required this.iconSize,
-    @required this.selected,
-    @required this.item,
-    @required this.selectedIconTheme,
-    @required this.unselectedIconTheme,
+    this.colorTween,
+    this.animation,
+    this.iconSize,
+    this.selected,
+    this.item,
+    this.selectedIconTheme,
+    this.unselectedIconTheme,
   })  : assert(selected != null),
         assert(item != null),
         super(key: key);
@@ -411,13 +408,13 @@ class _TileIcon extends StatelessWidget {
 class _Label extends StatelessWidget {
   const _Label({
     Key key,
-    @required this.colorTween,
-    @required this.animation,
-    @required this.item,
-    @required this.selectedLabelStyle,
-    @required this.unselectedLabelStyle,
-    @required this.showSelectedLabels,
-    @required this.showUnselectedLabels,
+    this.colorTween,
+    this.animation,
+    this.item,
+    this.selectedLabelStyle,
+    this.unselectedLabelStyle,
+    this.showSelectedLabels,
+    this.showUnselectedLabels,
   })  : assert(colorTween != null),
         assert(animation != null),
         assert(item != null),
@@ -759,10 +756,10 @@ const Duration kThemeAnimationDuration = Duration(milliseconds: 200);
 // Describes an animating color splash circle.
 class _Circle {
   _Circle({
-    @required this.state,
-    @required this.index,
-    @required this.color,
-    @required TickerProvider vsync,
+    this.state,
+    this.index,
+    this.color,
+    TickerProvider vsync,
   })  : assert(state != null),
         assert(index != null),
         assert(color != null) {
@@ -811,8 +808,8 @@ class _Circle {
 // Paints the animating color splash circles.
 class _RadialPainter extends CustomPainter {
   _RadialPainter({
-    @required this.circles,
-    @required this.textDirection,
+    this.circles,
+    this.textDirection,
   })  : assert(circles != null),
         assert(textDirection != null);
 
@@ -874,8 +871,8 @@ class Db7BottomNavigationBarItem {
   ///
   /// The argument [icon] should not be null and the argument [title] should not be null when used in a Material Design's [Db7BottomNavigationBar].
   const Db7BottomNavigationBarItem({
-    @required this.icon,
-    @required this.title,
+    this.icon,
+    this.title,
     Widget activeIcon,
     this.backgroundColor,
   })  : activeIcon = activeIcon ?? icon,

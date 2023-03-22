@@ -1,3 +1,4 @@
+// @dart=2.9
 import 'dart:async';
 
 import 'package:flutter/cupertino.dart';
@@ -155,7 +156,7 @@ class AddressConfirmationState extends State<AddressConfirmation> {
 class MapPage extends StatefulWidget {
   final void Function(LatLng) onChange;
 
-  MapPage({@required this.onChange});
+  MapPage({this.onChange});
 
   @override
   State<StatefulWidget> createState() => MapPageState();

@@ -1,3 +1,4 @@
+// @dart=2.9
 import 'package:clientPhysiho/src/components/check_type_payment.dart';
 import 'package:clientPhysiho/src/controllers/cart_controller.dart';
 import 'package:clientPhysiho/src/providers/sessions_provider.dart';
@@ -37,10 +38,12 @@ class ItemView extends StatefulWidget {
 
 class _ItemViewState extends StateMVC<ItemView> {
   CartServiceController _con;
+
   _ItemViewState(Map<String, dynamic> item)
       : super(CartServiceController(item)) {
-    _con = controller;
+    _con = controller as CartServiceController;
   }
+
   SharedPreferences _idservices;
   bool loading = false;
   static final DateTime now = DateTime.now();
@@ -269,11 +272,14 @@ class _ItemViewState extends StateMVC<ItemView> {
                               mainAxisAlignment: MainAxisAlignment.spaceAround,
                               children: [
                                 Text('Seguimiento de compra'),
-                                RaisedButton(
-                                  shape: RoundedRectangleBorder(
-                                      borderRadius:
-                                          BorderRadius.circular(20.0)),
-                                  color: pantoneThirteen,
+                                ElevatedButton(
+                                  style: TextButton.styleFrom(
+                                    primary: pantoneThirteen,
+                                    shape: const RoundedRectangleBorder(
+                                      borderRadius: BorderRadius.all(
+                                          Radius.circular(20.0)),
+                                    ),
+                                  ),
                                   onPressed: () {
                                     launchScreen(
                                         context, CheckTypePayment.routeName,

@@ -1,3 +1,4 @@
+// @dart=2.9
 import 'package:clientPhysiho/src/controllers/service_controller.dart';
 import 'package:clientPhysiho/src/utils/Db7BottomNavigationBar.dart';
 import 'package:cloud_firestore/cloud_firestore.dart';
@@ -34,6 +35,7 @@ class ServiceView extends StatefulWidget {
 class _ServiceViewState extends StateMVC<ServiceView> {
   ServiceController _con;
   var _selectedIndex = 0;
+
   _ServiceViewState(String serviceId) : super(ServiceController(serviceId)) {
     _con = controller;
   }
@@ -171,7 +173,8 @@ class _ServiceViewState extends StateMVC<ServiceView> {
                                         itemBuilder:
                                             (BuildContext context, int index) {
                                           return ItemWidget(item: {
-                                            ..._con.items[index].data(),
+                                            ..._con.items[index].data()
+                                                as Map<String, dynamic>,
                                             "id": _con.items[index].id,
                                             "idservice": _con.service["id"],
                                           });

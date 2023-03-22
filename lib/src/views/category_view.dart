@@ -1,3 +1,4 @@
+// @dart=2.9
 import 'package:cloud_firestore/cloud_firestore.dart';
 import 'package:flutter/material.dart';
 import 'package:clientPhysiho/src/components/business_item.dart';
@@ -74,7 +75,8 @@ class _CategoryViewState extends State<CategoryView> {
                     itemCount: snapshot.data.docs.length,
                     itemBuilder: (BuildContext context, int index) {
                       return BusinessItem(business: {
-                        ...snapshot.data.docs[index].data(),
+                        ...snapshot.data.docs[index].data()
+                            as Map<String, dynamic>,
                         "id": snapshot.data.docs[index].id,
                       });
                     });

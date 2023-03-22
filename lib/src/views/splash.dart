@@ -7,7 +7,7 @@ import 'package:clientPhysiho/src/helpers/extension_helper.dart';
 class SplashView extends StatefulWidget {
   // Route name for this view
   static const routeName = 'splash';
-  SplashView({Key key}) : super(key: key);
+  SplashView({Key? key}) : super(key: key);
 
   @override
   _SplashViewState createState() => _SplashViewState();

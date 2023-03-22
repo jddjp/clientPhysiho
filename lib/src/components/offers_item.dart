@@ -1,3 +1,4 @@
+// @dart=2.9
 import 'package:flutter/material.dart';
 import 'package:cached_network_image/cached_network_image.dart';
 import 'package:clientPhysiho/src/config/constants.dart';
@@ -8,6 +9,7 @@ import 'package:url_launcher/url_launcher.dart';
 
 class OffersItem extends StatelessWidget {
   final Map<String, dynamic> offers;
+
   const OffersItem({Key key, this.offers}) : super(key: key);
 
   @override

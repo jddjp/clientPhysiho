@@ -1,3 +1,4 @@
+// @dart=2.9
 import 'package:clientPhysiho/src/config/colors.dart';
 import 'package:clientPhysiho/src/config/constants.dart';
 import 'package:clientPhysiho/src/helpers/extension_helper.dart';
@@ -13,7 +14,8 @@ class CheckTypePayment extends StatefulWidget {
   static const routeName = 'paymentType';
 
   final Map<String, dynamic> item;
-  CheckTypePayment({Key key, this.item}) : super(key: key);
+
+  CheckTypePayment({Key key,  this.item}) : super(key: key);
 
   @override
   _CheckTypePaymentState createState() => _CheckTypePaymentState(item);
@@ -47,6 +49,7 @@ class _CheckTypePaymentState extends State<CheckTypePayment> {
   String _selectedPayment = 'cash';
 
   bool isLoading = false;
+
   @override
   Widget build(BuildContext context) {
     widget.item['MetodPago'] = _selectedPayment;
@@ -110,9 +113,9 @@ class _CheckTypePaymentState extends State<CheckTypePayment> {
                         activeColor: pantoneThirteen,
                         groupValue: _selectedPayment,
                         controlAffinity: ListTileControlAffinity.trailing,
-                        onChanged: (String value) {
+                        onChanged: (value) {
                           setState(() {
-                            _selectedPayment = value;
+                            _selectedPayment = value.toString();
                             widget.item['MetodPago'] = _selectedPayment;
                           });
                         },

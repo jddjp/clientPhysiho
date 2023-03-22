@@ -1,3 +1,4 @@
+// @dart=2.9
 import 'package:clientPhysiho/src/components/services_item.dart';
 import 'package:clientPhysiho/src/helpers/extension_helper.dart';
 import 'package:clientPhysiho/src/helpers/widget_helper.dart';
@@ -123,7 +124,8 @@ class _HomeServiceViewState extends State<HomeServiceView> {
                                   itemBuilder:
                                       (BuildContext context, int index) {
                                     return ServiceItem(services: {
-                                      ...snapshot.data.docs[index].data(),
+                                      ...snapshot.data.docs[index].data()
+                                          as Map<String, dynamic>,
                                       "id": snapshot.data.docs[index].id
                                     });
                                   });

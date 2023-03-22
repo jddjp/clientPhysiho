@@ -1,3 +1,4 @@
+// @dart=2.9
 import 'package:cloud_firestore/cloud_firestore.dart';
 import 'package:flutter/material.dart';
 import 'package:clientPhysiho/src/components/default_button.dart';
@@ -47,6 +48,7 @@ class _CompleteProfileViewState extends State<CompleteProfileView> {
   String municipio;
   GlobalKey<FormState> _oFormKey = GlobalKey<FormState>();
   TextEditingController _controller;
+
   //String _initialValue;
   String _valueChanged = '';
   String _valueToValidate = '';
@@ -55,6 +57,7 @@ class _CompleteProfileViewState extends State<CompleteProfileView> {
   String _valueToValidate2 = '';
   String _valueSaved2 = '';
   int flat = 0;
+
 /**/
 
   final elements4 = ["selecciona"];
@@ -66,6 +69,7 @@ class _CompleteProfileViewState extends State<CompleteProfileView> {
   var municipios = 'a';
 
   var estadosUser = new LoginProvider().checkInfo();
+
   //*
   @override
   void initState() {
