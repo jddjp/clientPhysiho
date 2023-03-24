@@ -217,12 +217,11 @@ class _MyHomePageState extends State<MyHomePage> with TickerProviderStateMixin {
   @override
   Widget build(BuildContext context) {
     print('init');
-     if (context.watch<LoginProvider>().currentUser != null) {
-      
+  
           print(context.watch<LoginProvider>().currentUser['id'] );
              final idUser = context.watch<LoginProvider>().currentUser['id'];
-    }
-   final idUser = "";
+
+ 
 
     return (context.watch<LoginProvider>().isLoggedIn() &&
             context.watch<LoginProvider>().currentUser['nombre'] != null

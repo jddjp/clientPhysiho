@@ -138,9 +138,7 @@ class SessionProvider {
 
   Future<List<dynamic>> getSessionUser(String id) async {
     print('userPhysio===============>'+id);
-if(!id.isEmpty){
-  
-}
+
     DocumentReference customerRef =
         FirebaseFirestore.instance.collection('customers').doc(id);
     print(customerRef);
