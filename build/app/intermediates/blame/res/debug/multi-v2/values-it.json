@@ -1,10 +1,10 @@
 {
     "logs": [
         {
-            "outputFile": "D:\\Repositorios\\clientphysiho\\build\\app\\intermediates\\incremental\\mergeDebugResources\\merged.dir\\values-it\\values-it.xml",
+            "outputFile": "C:\\Users\\rootp\\Music\\JDaniel\\Physiho\\clientphysiho\\build\\app\\intermediates\\incremental\\mergeDebugResources\\merged.dir\\values-it\\values-it.xml",
             "map": [
                 {
-                    "source": "C:\\Users\\PonRon\\.gradle\\caches\\transforms-2\\files-2.1\\9a07bb3b08eb8a0b71f98bf0cef1ac30\\play-services-base-18.1.0\\res\\values-it\\values.xml",
+                    "source": "C:\\Users\\rootp\\.gradle\\caches\\transforms-2\\files-2.1\\9a07bb3b08eb8a0b71f98bf0cef1ac30\\play-services-base-18.1.0\\res\\values-it\\values.xml",
                     "from": {
                         "startLines": "4,5,6,7,8,9,10,11,12,13,14,15,16,17,18,19,20",
                         "startColumns": "0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0",
@@ -21,7 +21,7 @@
                     }
                 },
                 {
-                    "source": "C:\\Users\\PonRon\\.gradle\\caches\\transforms-2\\files-2.1\\6367da44be62f10d34fb06c5ad251503\\play-services-basement-18.1.0\\res\\values-it\\values.xml",
+                    "source": "C:\\Users\\rootp\\.gradle\\caches\\transforms-2\\files-2.1\\6367da44be62f10d34fb06c5ad251503\\play-services-basement-18.1.0\\res\\values-it\\values.xml",
                     "from": {
                         "startLines": "4",
                         "startColumns": "0",
@@ -38,7 +38,7 @@
                     }
                 },
                 {
-                    "source": "C:\\Users\\PonRon\\.gradle\\caches\\transforms-2\\files-2.1\\0450ce172ae9b5e5b39677675501d906\\core-1.9.0\\res\\values-it\\values-it.xml",
+                    "source": "C:\\Users\\rootp\\.gradle\\caches\\transforms-2\\files-2.1\\0450ce172ae9b5e5b39677675501d906\\core-1.9.0\\res\\values-it\\values-it.xml",
                     "from": {
                         "startLines": "2",
                         "startColumns": "4",
@@ -55,7 +55,7 @@
                     }
                 },
                 {
-                    "source": "C:\\Users\\PonRon\\.gradle\\caches\\transforms-2\\files-2.1\\5298ceb152e33737c7da5b831703607d\\browser-1.4.0\\res\\values-it\\values-it.xml",
+                    "source": "C:\\Users\\rootp\\.gradle\\caches\\transforms-2\\files-2.1\\5298ceb152e33737c7da5b831703607d\\browser-1.4.0\\res\\values-it\\values-it.xml",
                     "from": {
                         "startLines": "2,3,4,5",
                         "startColumns": "4,4,4,4",

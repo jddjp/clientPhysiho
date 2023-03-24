@@ -1,10 +1,10 @@
 {
     "logs": [
         {
-            "outputFile": "D:\\Repositorios\\clientphysiho\\build\\app\\intermediates\\incremental\\mergeDebugResources\\merged.dir\\values-v16\\values-v16.xml",
+            "outputFile": "C:\\Users\\rootp\\Music\\JDaniel\\Physiho\\clientphysiho\\build\\app\\intermediates\\incremental\\mergeDebugResources\\merged.dir\\values-v16\\values-v16.xml",
             "map": [
                 {
-                    "source": "C:\\Users\\PonRon\\.gradle\\caches\\transforms-2\\files-2.1\\0450ce172ae9b5e5b39677675501d906\\core-1.9.0\\res\\values-v16\\values-v16.xml",
+                    "source": "C:\\Users\\rootp\\.gradle\\caches\\transforms-2\\files-2.1\\0450ce172ae9b5e5b39677675501d906\\core-1.9.0\\res\\values-v16\\values-v16.xml",
                     "from": {
                         "startLines": "2",
                         "startColumns": "4",
