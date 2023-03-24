@@ -64,10 +64,7 @@ class CartServiceController extends ControllerMVC {
       employee = {
         'id': element.reference.id,
         "name": el['name'],
-        "photo": el['profile'] != null ||
-                el['profile'] != ''
-            ? el['profile']['url']
-            : 'https://firebasestorage.googleapis.com/v0/b/fisioterapia-cfb53.appspot.com/o/profiles%2FixkZaOLGO66wyZw6.jpeg?alt=media&token=4728c68a-d291-4910-af8a-5f5a628a47e6'
+        "photo": el['profile'] != null ||el['profile'] != '' ? el['profile']['url']  : 'https://firebasestorage.googleapis.com/v0/b/fisioterapia-cfb53.appspot.com/o/profiles%2FBoEoSxoQyyLZdGbu.png?alt=media&token=39837240-bcca-4724-a843-d9fbf96b9456'
       };
     });
 
