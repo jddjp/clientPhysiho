@@ -19,7 +19,7 @@ class DefaultButton extends StatelessWidget {
       height: 50.0,
       child: TextButton(
         style: TextButton.styleFrom(
-          primary: food_color_green,
+          foregroundColor: food_color_green,
           shape: const RoundedRectangleBorder(
             borderRadius: BorderRadius.all(Radius.circular(50)),
           ),

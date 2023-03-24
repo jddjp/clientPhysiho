@@ -69,6 +69,7 @@ class LoginProvider with ChangeNotifier {
 
   // Main login function
   Future<dynamic> login(String type) async {
+    print("============LOGIN"+type);
     _loading = true;
     notifyListeners();
 
@@ -321,10 +322,12 @@ class LoginProvider with ChangeNotifier {
 
     // Get logged user data
     if (_prefs.getString('uid') != null) {
+      print(_prefs.getString('uid'));
       DocumentSnapshot userDoc = await FirebaseFirestore.instance
           .collection('customers')
           .doc(_prefs.getString('uid'))
           .get();
+
       _currentUser = {...userDoc.data() as Map<String, dynamic>, "id": userDoc.id};
       _loggedIn = true;
     }
