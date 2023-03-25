@@ -17,12 +17,16 @@ class DefaultButton extends StatelessWidget {
     return SizedBox(
       width: double.infinity,
       height: 50.0,
-      child: TextButton(
-        style: TextButton.styleFrom(
+      child: 
+       TextButton(
+        style: 
+        TextButton.styleFrom(
           foregroundColor: food_color_green,
           shape: const RoundedRectangleBorder(
             borderRadius: BorderRadius.all(Radius.circular(50)),
-          ),
+          ),backgroundColor:food_color_green
+
+          
         ),
         onPressed: press,
         child: Text(
@@ -33,6 +37,7 @@ class DefaultButton extends StatelessWidget {
           ),
         ),
       ),
+      
     );
   }
 }
