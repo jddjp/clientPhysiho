@@ -43,7 +43,7 @@ class _HomeViewState extends State<HomeView> {
   }
 
   void _onItemTapped(int index) {
-    print('home');
+    print('tapped');
     print(index);
     setState(() {
       _selectedIndex = index;
@@ -60,8 +60,8 @@ class _HomeViewState extends State<HomeView> {
   @override
   Widget build(BuildContext context) {
     print('home');
-    //print(widget.agendSetView);
-    widget.agendSetView != null ? _selectedIndex = 1 : '';
+    print(widget.agendSetView);
+    //widget.agendSetView != null ? _selectedIndex = 1 : '';
     widget.agendSetView = "";
     // Change status bar color
     changeStatusColor(pantoneThree);

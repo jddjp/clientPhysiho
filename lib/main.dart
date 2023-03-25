@@ -3,20 +3,14 @@ import 'dart:async';
 import 'dart:io';
 
 import 'package:clientPhysiho/src/components/check_type_payment.dart';
-import 'package:clientPhysiho/src/views/service_view.dart';
-import 'package:firebase_messaging/firebase_messaging.dart';
-import 'package:flutter/material.dart';
-
-import 'package:firebase_core/firebase_core.dart';
 import 'package:clientPhysiho/src/config/theme.dart';
 import 'package:clientPhysiho/src/helpers/extension_helper.dart';
-import 'package:clientPhysiho/src/helpers/size_helper.dart';
-import 'package:clientPhysiho/src/providers/login_provider.dart';
 import 'package:clientPhysiho/src/providers/cart_provider.dart';
 import 'package:clientPhysiho/src/providers/location_provider.dart';
-import 'package:clientPhysiho/src/providers/messaging_provider.dart';
+import 'package:clientPhysiho/src/providers/login_provider.dart';
 import 'package:clientPhysiho/src/views/about_view.dart';
 import 'package:clientPhysiho/src/views/address_confirmation_view.dart';
+import 'package:clientPhysiho/src/views/agend_view.dart';
 import 'package:clientPhysiho/src/views/business_view.dart';
 import 'package:clientPhysiho/src/views/cart_view.dart';
 import 'package:clientPhysiho/src/views/category_view.dart';
@@ -26,15 +20,18 @@ import 'package:clientPhysiho/src/views/create_account_view.dart';
 import 'package:clientPhysiho/src/views/department_view.dart';
 import 'package:clientPhysiho/src/views/home_view.dart';
 import 'package:clientPhysiho/src/views/item_view.dart';
-import 'package:clientPhysiho/src/views/agend_view.dart';
 import 'package:clientPhysiho/src/views/loading_view.dart';
-import 'package:clientPhysiho/src/views/splash.dart';
 import 'package:clientPhysiho/src/views/login_view.dart';
 import 'package:clientPhysiho/src/views/opt_view.dart';
 import 'package:clientPhysiho/src/views/order_detail_view.dart';
 import 'package:clientPhysiho/src/views/order_item_view.dart';
 import 'package:clientPhysiho/src/views/payment_view.dart';
+import 'package:clientPhysiho/src/views/service_view.dart';
+import 'package:clientPhysiho/src/views/splash.dart';
 import 'package:clientPhysiho/src/views/tracking_view.dart';
+import 'package:firebase_core/firebase_core.dart';
+import 'package:firebase_messaging/firebase_messaging.dart';
+import 'package:flutter/material.dart';
 import 'package:flutter/services.dart';
 import 'package:flutter_localizations/flutter_localizations.dart';
 import 'package:provider/provider.dart';
@@ -158,9 +155,7 @@ class _PhysihoAppState extends State<PhysihoApp> {
             break;
           // opt view
           case OPTView.routeName:
-            return MaterialPageRoute(
-                builder: (_) =>
-                    OPTView(phoneData: args as Map<String, dynamic>));
+            return MaterialPageRoute(builder: (_) => OPTView(phoneData: args));
             break;
           // complete profile view
           case CompleteProfileView.routeName:
@@ -169,12 +164,12 @@ class _PhysihoAppState extends State<PhysihoApp> {
           // department view
           case DepartmentView.routeName:
             return MaterialPageRoute(
-                builder: (_) => DepartmentView(department: args as String));
+                builder: (_) => DepartmentView(department: args));
             break;
           // business view
           case ServiceView.routeName:
             return MaterialPageRoute(
-                builder: (_) => ServiceView(serviceId: args as String));
+                builder: (_) => ServiceView(serviceId: args));
             break;
           // agend view
           case AgendView.routeName:
@@ -183,7 +178,7 @@ class _PhysihoAppState extends State<PhysihoApp> {
           case CheckTypePayment.routeName:
             return MaterialPageRoute(
                 builder: (_) => CheckTypePayment(
-                      item: args as Map<String, dynamic>,
+                      item: args,
                     ));
             break;
           // item view
@@ -191,7 +186,7 @@ class _PhysihoAppState extends State<PhysihoApp> {
             return PageRouteBuilder(
               pageBuilder: (context, animation, secondaryAnimation) => ItemView(
                   item: args != null
-                      ? args as Map<String, dynamic>
+                      ? args
                       : {
                           'id': _prefs.getString('idpaqueteservicio'),
                           'idservice': _prefs.getString('idservicio')
@@ -222,7 +217,7 @@ class _PhysihoAppState extends State<PhysihoApp> {
           // category view
           case CategoryView.routeName:
             return MaterialPageRoute(
-                builder: (_) => CategoryView(categoryName: args as String));
+                builder: (_) => CategoryView(categoryName: args));
             break;
           // checkout view
           case CheckoutView.routeName:
@@ -239,17 +234,13 @@ class _PhysihoAppState extends State<PhysihoApp> {
           // tracking view
           case TrackingView.routeName:
             return MaterialPageRoute(
-                builder: (_) => TrackingView(orderId: args as String));
+                builder: (_) => TrackingView(orderId: args));
             break;
           case OrderDetail.routeName:
-            return MaterialPageRoute(
-                builder: (_) =>
-                    OrderDetail(order: args as Map<String, dynamic>));
+            return MaterialPageRoute(builder: (_) => OrderDetail(order: args));
             break;
           case OrderItemView.routeName:
-            return MaterialPageRoute(
-                builder: (_) =>
-                    OrderItemView(item: args as Map<String, dynamic>));
+            return MaterialPageRoute(builder: (_) => OrderItemView(item: args));
             break;
           case AboutPage.routeName:
             return MaterialPageRoute(builder: (_) => AboutPage());
@@ -260,7 +251,7 @@ class _PhysihoAppState extends State<PhysihoApp> {
           case HomeView.routeName:
             return MaterialPageRoute(
                 builder: (_) => HomeView(
-                      agendSetView: args as String,
+                      agendSetView: args,
                     ));
             break;
           default:
