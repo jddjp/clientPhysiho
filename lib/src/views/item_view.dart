@@ -1,28 +1,23 @@
 // @dart=2.9
-import 'package:clientPhysiho/src/components/check_type_payment.dart';
-import 'package:clientPhysiho/src/controllers/cart_controller.dart';
-import 'package:clientPhysiho/src/providers/sessions_provider.dart';
-import 'package:date_field/date_field.dart';
-import 'package:flutter/material.dart';
+import 'dart:async';
+
 import 'package:cached_network_image/cached_network_image.dart';
-import 'package:clientPhysiho/src/components/item_option_widget.dart';
-import 'package:clientPhysiho/src/components/stepper_counter.dart';
+import 'package:clientPhysiho/src/components/check_type_payment.dart';
 import 'package:clientPhysiho/src/config/colors.dart';
 import 'package:clientPhysiho/src/config/constants.dart';
-import 'package:clientPhysiho/src/controllers/order_controller.dart';
+import 'package:clientPhysiho/src/controllers/cart_controller.dart';
 import 'package:clientPhysiho/src/helpers/extension_helper.dart';
-import 'package:clientPhysiho/src/helpers/widget_helper.dart';
-import 'package:loading_overlay/loading_overlay.dart';
+import 'package:clientPhysiho/src/providers/login_provider.dart';
+import 'package:clientPhysiho/src/providers/sessions_provider.dart';
+import 'package:clientPhysiho/src/views/login_view.dart';
+import 'package:date_field/date_field.dart';
+import 'package:flutter/material.dart';
+import 'package:intl/intl.dart';
 import 'package:lottie/lottie.dart';
 import 'package:mvc_pattern/mvc_pattern.dart';
-import 'package:clientPhysiho/src/providers/login_provider.dart';
 import 'package:provider/provider.dart';
-import 'package:clientPhysiho/src/views/login_view.dart';
 import 'package:select_form_field/select_form_field.dart';
 import 'package:shared_preferences/shared_preferences.dart';
-import 'package:cloud_firestore/cloud_firestore.dart';
-import 'dart:async';
-import 'package:intl/intl.dart';
 
 class ItemView extends StatefulWidget {
   // Route name for this view
@@ -105,6 +100,7 @@ class _ItemViewState extends StateMVC<ItemView> {
   var sesionsList = new List(15);
   var hoursList = new List(15);
   final userPhysio = new SessionProvider();
+  String location = "consultorio";
 
   @override
   Widget build(BuildContext context) {
@@ -145,7 +141,11 @@ class _ItemViewState extends StateMVC<ItemView> {
                           Container(
                             margin: EdgeInsets.only(top: 50),
                             padding: EdgeInsets.all(10),
-                            child: Text('Detalle de Compra'),
+                            child: Text(
+                              'Detalle de Compra',
+                              style:
+                                  TextStyle(color: Colors.black, fontSize: 18),
+                            ),
                           ),
                           Container(
                             padding: EdgeInsets.all(10),
@@ -185,7 +185,12 @@ class _ItemViewState extends StateMVC<ItemView> {
                                   child: Column(
                                     children: [
                                       Container(
-                                        child: Text('Fisioterapeuta'),
+                                        child: Text(
+                                          'Fisioterapeuta',
+                                          style: TextStyle(
+                                              color: Colors.black,
+                                              fontSize: 18),
+                                        ),
                                       ),
                                       Row(
                                         mainAxisAlignment:
@@ -206,6 +211,9 @@ class _ItemViewState extends StateMVC<ItemView> {
                                             ],
                                           ),
                                         ],
+                                      ),
+                                      Container(
+                                        height: 30,
                                       ),
                                       CircleAvatar(
                                         backgroundColor: whiteColor,
@@ -243,9 +251,53 @@ class _ItemViewState extends StateMVC<ItemView> {
                           SingleChildScrollView(
                             child: Column(
                               children: [
+                                Divider(),
+                                Align(
+                                  alignment: Alignment.center,
+                                  child: Padding(
+                                    padding: EdgeInsets.only(
+                                        left: 30.0,
+                                        top: 20.0,
+                                        right: 30.0,
+                                        bottom: 10.0),
+                                    //apply padding to some sides only
+                                    child: Text(
+                                      '¿Dónde quieres recibir tus sesiones?',
+                                      style: TextStyle(
+                                          color: Colors.black, fontSize: 16),
+                                    ),
+                                  ),
+                                ),
+                                RadioListTile(
+                                  title: Text("Consultorio"),
+                                  value: "consultorio",
+                                  groupValue: location,
+                                  onChanged: (value) {
+                                    setState(() {
+                                      location = value.toString();
+                                      print(location);
+                                    });
+                                  },
+                                ),
+                                RadioListTile(
+                                  title: Text("A domicilio"),
+                                  value: "domicilio",
+                                  groupValue: location,
+                                  onChanged: (value) {
+                                    setState(() {
+                                      location = value.toString();
+                                      print(location);
+                                    });
+                                  },
+                                ),
+                                Container(
+                                  height: 10,
+                                ),
+                                Divider(),
                                 Text(
                                   'Sesiones',
-                                  style: TextStyle(color: Colors.black),
+                                  style: TextStyle(
+                                      color: Colors.black, fontSize: 18),
                                 ),
                                 Container(
                                   decoration:
@@ -291,7 +343,8 @@ class _ItemViewState extends StateMVC<ItemView> {
                                           'customer': context
                                               .read<LoginProvider>()
                                               .currentUser['id'],
-                                          'idPhysio': _con.employee['id']
+                                          'idPhysio': _con.employee['id'],
+                                          'location': location
                                         });
                                   },
                                   child: Text(

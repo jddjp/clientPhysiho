@@ -2,18 +2,18 @@
 import 'package:clientPhysiho/src/config/colors.dart';
 import 'package:clientPhysiho/src/config/constants.dart';
 import 'package:clientPhysiho/src/helpers/extension_helper.dart';
+import 'package:clientPhysiho/src/providers/login_provider.dart';
+import 'package:clientPhysiho/src/providers/sessions_provider.dart';
 import 'package:clientPhysiho/src/views/login_view.dart';
 import 'package:flutter/material.dart';
-import 'package:intl/date_symbol_data_local.dart';
-import 'package:table_calendar/table_calendar.dart';
-import 'package:clientPhysiho/src/providers/sessions_provider.dart';
-import 'package:clientPhysiho/src/providers/login_provider.dart';
-import 'package:provider/provider.dart';
 import 'package:intl/intl.dart';
+import 'package:provider/provider.dart';
+import 'package:table_calendar/table_calendar.dart';
 
 class AgendView extends StatefulWidget {
   // Route name for this view
   static const routeName = 'agend';
+
   AgendView({Key key}) : super(key: key);
 
   @override
@@ -217,11 +217,9 @@ class _MyHomePageState extends State<MyHomePage> with TickerProviderStateMixin {
   @override
   Widget build(BuildContext context) {
     print('init');
-  
-          print(context.watch<LoginProvider>().currentUser['id'] );
-             final idUser = context.watch<LoginProvider>().currentUser['id'];
 
- 
+    //print(context.watch<LoginProvider>().currentUser['id']);
+    //final idUser = context.watch<LoginProvider>().currentUser['id'];
 
     return (context.watch<LoginProvider>().isLoggedIn() &&
             context.watch<LoginProvider>().currentUser['nombre'] != null
@@ -240,7 +238,7 @@ class _MyHomePageState extends State<MyHomePage> with TickerProviderStateMixin {
                 children: <Widget>[
                   // Switch out 2 lines below to play with TableCalendar's settings
                   //-----------------------
-                  _buildTableCalendar(idUser),
+                  _buildTableCalendar(context.watch<LoginProvider>().currentUser['id']),
                   // _buildTableCalendarWithBuilders(),
                   const SizedBox(height: 8.0),
                   _buildButtons(),
