@@ -55,7 +55,7 @@ class ServiceItem extends StatelessWidget {
                 mainAxisAlignment: MainAxisAlignment.start,
                 mainAxisSize: MainAxisSize.min,
                 children: <Widget>[
-                  text(services['name'], fontWeight: fontSemibold),
+                  text(services['name'], fontWeight: fontSemibold, isLongText: true, maxLine: 2),
                 ],
               ),
             ),
