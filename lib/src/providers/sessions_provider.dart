@@ -228,7 +228,8 @@ class SessionProvider {
       'fecha': DateTime.now(),
       'service': serviceRef,
       'package': itemRef,
-      'users': userRef
+      'users': userRef,
+      'location': item['location']
     });
 
     print(recordAdd.get());
