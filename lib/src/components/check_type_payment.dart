@@ -1,13 +1,13 @@
 // @dart=2.9
 import 'package:clientPhysiho/src/config/colors.dart';
 import 'package:clientPhysiho/src/config/constants.dart';
-import 'package:clientPhysiho/src/helpers/extension_helper.dart';
 import 'package:clientPhysiho/src/helpers/widget_helper.dart';
 import 'package:clientPhysiho/src/providers/sessions_provider.dart';
-import 'package:flutter/material.dart';
-import 'package:loading_overlay/loading_overlay.dart';
-import 'package:provider/provider.dart';
 import 'package:clientPhysiho/src/views/home_view.dart';
+import 'package:flutter/material.dart';
+import 'package:flutter/services.dart';
+import 'package:loading_overlay/loading_overlay.dart';
+import 'package:mercado_pago_mobile_checkout/mercado_pago_mobile_checkout.dart';
 
 class CheckTypePayment extends StatefulWidget {
   // Route name for this view
@@ -15,7 +15,7 @@ class CheckTypePayment extends StatefulWidget {
 
   final Map<String, dynamic> item;
 
-  CheckTypePayment({Key key,  this.item}) : super(key: key);
+  CheckTypePayment({Key key, this.item}) : super(key: key);
 
   @override
   _CheckTypePaymentState createState() => _CheckTypePaymentState(item);
@@ -30,15 +30,15 @@ class _CheckTypePaymentState extends State<CheckTypePayment> {
       'subtitle': 'Al recibir tu pedido',
       'secondary': Image.asset("assets/images/pago.png")
     },
-    /*'clip': {
+    'online': {
       'title': 'Pago con tarjeta',
-      'subtitle': 'Con Mercado Pago al recibir tu pedido',
+      'subtitle': 'Con Mercado Pago',
       'secondary': Image.asset(
         "assets/images/mercadopago.png",
         width: 55,
         height: 40,
       )
-    },*/
+    },
     /*'online': {
       'title': 'Pago con tarjeta',
       'subtitle': 'Paga en línea'
@@ -49,6 +49,38 @@ class _CheckTypePaymentState extends State<CheckTypePayment> {
   String _selectedPayment = 'cash';
 
   bool isLoading = false;
+
+  static const publicKey = "TEST-3e57ffeb-fa2f-4529-b7dc-b90b29cf54f2";
+  static const preferenceId = "456490293-ea66f5b6-38ca-4db1-a432-45a3edb5e642";
+
+  //TEST-6763876082927877-042719-1c46ed47fe677e536c7d0440f007b356-456490293
+  String _platformVersion = 'Unknown';
+
+  @override
+  void initState() {
+    super.initState();
+    initPlatformState();
+  }
+
+  // Platform messages are asynchronous, so we initialize in an async method.
+  Future<void> initPlatformState() async {
+    String platformVersion;
+    // Platform messages may fail, so we use a try/catch PlatformException.
+    try {
+      platformVersion = await MercadoPagoMobileCheckout.platformVersion;
+    } on PlatformException {
+      platformVersion = 'Failed to get platform version.';
+    }
+
+    // If the widget was removed from the tree while the asynchronous platform
+    // message was in flight, we want to discard the reply rather than calling
+    // setState to update our non-existent appearance.
+    if (!mounted) return;
+
+    setState(() {
+      _platformVersion = platformVersion;
+    });
+  }
 
   @override
   Widget build(BuildContext context) {
@@ -134,19 +166,35 @@ class _CheckTypePaymentState extends State<CheckTypePayment> {
                   crossAxisAlignment: CrossAxisAlignment.center,
                   children: <Widget>[
                     GestureDetector(
-                      onTap: () {
+                      onTap: () async {
                         setState(() {
                           isLoading = true;
                         });
-                        userPhysio.createRecord(widget.item).then((sesion) {
-                          //  setState(() {
-                          //    isLoading = false;
-                          //  });
-                        });
-                        // Redirect and remove all screens
-                        Navigator.pushNamedAndRemoveUntil(
-                            context, HomeView.routeName, (route) => false,
-                            arguments: "2");
+                        if (widget.item['MetodPago'] != "online") {
+                          userPhysio.createRecord(widget.item).then((sesion) {
+                            //  setState(() {
+                            //    isLoading = false;
+                            //  });
+                          });
+                          // Redirect and remove all screens
+                          Navigator.pushNamedAndRemoveUntil(
+                              context, HomeView.routeName, (route) => false,
+                              arguments: "2");
+                        } else {
+                          print("Online payment");
+                          PaymentResult result =
+                              await MercadoPagoMobileCheckout.startCheckout(
+                            publicKey,
+                            preferenceId,
+                          );
+                          setState(() {
+                            isLoading = false;
+                          });
+                          // Redirect and remove all screens
+                          Navigator.pushNamedAndRemoveUntil(
+                              context, HomeView.routeName, (route) => false,
+                              arguments: "2");
+                        }
                       },
                       child: Container(
                         padding: EdgeInsets.fromLTRB(spacing_large,

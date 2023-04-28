@@ -63,6 +63,7 @@ dependencies:
   mvc_pattern: ^8.12.0
   direct_select: ^2.0.0
   http: ^0.13.5
+  mercado_pago_mobile_checkout: ^0.2.0-dev.4
 
 dependency_overrides:
   intl: ^0.17.0-nullsafety.2
