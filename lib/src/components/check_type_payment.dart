@@ -200,15 +200,21 @@ class _CheckTypePaymentState extends State<CheckTypePayment> {
                           });
                           print(result);
                           if (result.result == "done") {
-                            widget.item['mp_id'] = result.id.toString();
-                            userPhysio.createRecord(widget.item).then((sesion) {
+                            if(result.status == "approved") {
+                              widget.item['mp_id'] = result.id.toString();
+                              userPhysio.createRecord(widget.item).then((
+                                  sesion) {
+                                Fluttertoast.showToast(
+                                    msg: "Pago aprobado y sesiones agendadas correctamente");
+                              });
+                              // Redirect and remove all screens
+                              Navigator.pushNamedAndRemoveUntil(
+                                  context, HomeView.routeName, (route) => false,
+                                  arguments: "2");
+                            }else{
                               Fluttertoast.showToast(
-                                  msg: "Pago aprobado y sesiones agendadas correctamente");
-                            });
-                            // Redirect and remove all screens
-                            Navigator.pushNamedAndRemoveUntil(
-                                context, HomeView.routeName, (route) => false,
-                                arguments: "2");
+                                  msg: "El pago no pudo ser procesado");
+                            }
                           }else{
                             Fluttertoast.showToast(
                                 msg: "Pago cancelado");

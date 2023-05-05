@@ -48,7 +48,6 @@ class _ItemViewState extends StateMVC<ItemView> {
   TextEditingController _controller;
 
   //String _initialValue;
-  String _valueChanged = '';
   String _valueToValidate = '';
   String _valueSaved = '';
 
@@ -361,7 +360,8 @@ class _ItemViewState extends StateMVC<ItemView> {
                                           });
                                     } else {
                                       Fluttertoast.showToast(
-                                          msg: "Selecciona la fecha y el horario de todas las sesiones");
+                                          msg:
+                                              "Selecciona la fecha y el horario de todas las sesiones");
                                     }
                                   },
                                   child: Text(
@@ -465,6 +465,7 @@ class _ItemViewState extends StateMVC<ItemView> {
 
   Widget cardWidget(int index) {
     DateTime selectedDate;
+    String selectedHour = '';
     return InkWell(
       child: Padding(
         padding: const EdgeInsets.only(top: 5.0, bottom: 8),
@@ -550,8 +551,9 @@ class _ItemViewState extends StateMVC<ItemView> {
                           return Container(
                             width: 200,
                             child: SelectFormField(
+                              key: Key(index.toString()),
                               type: SelectFormFieldType.dialog,
-                              controller: _controller,
+                              //controller: _controller,
                               //initialValue: _initialValue,
                               icon: Icon(Icons.format_shapes),
                               labelText: 'Hora',
@@ -561,21 +563,26 @@ class _ItemViewState extends StateMVC<ItemView> {
                               enableSearch: true,
                               dialogSearchHint: 'Buscar horario',
                               items: snapshot.data,
-                              onChanged: (val) => setState(() {
-                                _valueChanged = val;
-
-                                hoursList[index] = _valueChanged;
-                              }),
+                              onChanged: (val) {
+                                selectedHour = val;
+                                setState(() {
+                                  print("value changed: " + selectedHour);
+                                  hoursList[index] = selectedHour;
+                                  print(hoursList);
+                                });
+                              },
                               validator: (val) {
                                 setState(() => _valueToValidate = val);
                                 return null;
                               },
-                              onSaved: (val) =>
-                                  setState(() => _valueSaved = val),
+                              onSaved: (val) {
+                                _valueSaved = val;
+                                setState(() {});
+                              },
                             ),
                           );
                         } else {
-                          Container();
+                          return Container();
                         }
                       },
                     ),

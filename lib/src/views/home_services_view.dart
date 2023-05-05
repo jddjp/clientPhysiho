@@ -1,12 +1,11 @@
 // @dart=2.9
 import 'package:clientPhysiho/src/components/services_item.dart';
+import 'package:clientPhysiho/src/config/colors.dart';
+import 'package:clientPhysiho/src/config/constants.dart';
 import 'package:clientPhysiho/src/helpers/extension_helper.dart';
-import 'package:clientPhysiho/src/helpers/widget_helper.dart';
 import 'package:clippy_flutter/arc.dart';
 import 'package:cloud_firestore/cloud_firestore.dart';
 import 'package:flutter/material.dart';
-import 'package:clientPhysiho/src/config/colors.dart';
-import 'package:clientPhysiho/src/config/constants.dart';
 
 class HomeServiceView extends StatefulWidget {
   @override

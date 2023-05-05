@@ -1,28 +1,19 @@
 // @dart=2.9
-import 'package:cloud_firestore/cloud_firestore.dart';
-import 'package:flutter/material.dart';
 import 'package:clientPhysiho/src/components/default_button.dart';
+import 'package:clientPhysiho/src/config/colors.dart';
 import 'package:clientPhysiho/src/config/constants.dart';
+import 'package:clientPhysiho/src/helpers/extension_helper.dart';
+import 'package:clientPhysiho/src/helpers/widget_helper.dart';
+import 'package:clientPhysiho/src/providers/get_states_m_provider.dart';
 import 'package:clientPhysiho/src/providers/login_provider.dart';
 import 'package:clientPhysiho/src/views/home_view.dart';
+import 'package:clientPhysiho/src/views/login_view.dart';
+import 'package:cloud_firestore/cloud_firestore.dart';
+import 'package:direct_select/direct_select.dart';
+import 'package:flutter/material.dart';
 import 'package:loading_overlay/loading_overlay.dart';
 import 'package:provider/provider.dart';
-import 'package:clientPhysiho/src/helpers/widget_helper.dart';
-
-import 'package:clientPhysiho/src/config/colors.dart';
-import 'package:clientPhysiho/src/helpers/extension_helper.dart';
-import 'package:clientPhysiho/src/providers/login_provider.dart';
-import 'package:clientPhysiho/src/views/login_view.dart';
-import '../config/colors.dart';
-import '../providers/login_provider.dart';
-import 'package:clientPhysiho/src/providers/get_states_m_provider.dart';
-
-import 'dart:convert';
-import 'package:http/http.dart' as http;
-
-import 'package:direct_select/direct_select.dart';
 import 'package:shared_preferences/shared_preferences.dart';
-import 'package:clientPhysiho/src/views/item_view.dart';
 
 class CompleteProfileView extends StatefulWidget {
   static const routeName = 'complete_profile';
@@ -133,8 +124,7 @@ class _CompleteProfileViewState extends State<CompleteProfileView> {
                 child: SizedBox(
                   width: double.infinity,
                   child: Padding(
-                    padding:
-                        EdgeInsets.symmetric(horizontal: spacing_standard_new),
+                    padding: EdgeInsets.symmetric(horizontal: 32),
                     child: SingleChildScrollView(
                       child: Column(
                         children: [
@@ -249,7 +239,7 @@ class _CompleteProfileViewState extends State<CompleteProfileView> {
                                       );
                                     } else {
                                       return Container(
-                                        child: Text('no data'),
+                                        child: Text(''),
                                       );
                                     }
                                   },
@@ -334,12 +324,11 @@ class _CompleteProfileViewState extends State<CompleteProfileView> {
                                       );
                                     } else {
                                       return Container(
-                                        child: Text('no data'),
+                                        child: Text(''),
                                       );
                                     }
                                   },
                                 ),
-                                SizedBox(height: 30),
                                 DefaultButton(
                                   text: "Continuar",
                                   press: () async {
@@ -369,15 +358,17 @@ class _CompleteProfileViewState extends State<CompleteProfileView> {
                                           .then((value) {
                                         // Redirect and remove all screens
                                         Navigator.pushNamedAndRemoveUntil(
-                                            context, //idpaqueteservicio    idservicio
-                                            _idservices.getString(
+                                            context,
+                                            HomeView.routeName
+                                            /*_idservices.getString(
                                                             'idpaqueteservicio') !=
                                                         null &&
                                                     _idservices.getString(
                                                             'idservicio') !=
                                                         null
                                                 ? ItemView.routeName
-                                                : HomeView.routeName,
+                                                : HomeView.routeName,*/
+                                            ,
                                             (route) => false);
                                       });
                                     }
