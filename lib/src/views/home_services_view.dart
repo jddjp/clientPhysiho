@@ -76,7 +76,7 @@ class _HomeServiceViewState extends State<HomeServiceView> {
                                       "Servicios",
                                       overflow: TextOverflow.ellipsis,
                                       style: TextStyle(
-                                          color: Colors.white,
+                                          color: Colors.black,
                                           fontSize: 25,
                                           fontFamily: 'Franklin Gothic'),
                                       textAlign: TextAlign.center,

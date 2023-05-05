@@ -3,7 +3,7 @@ import 'dart:convert';
 
 import 'package:http/http.dart' as http;
 
-class RequestProvider {
+class MPPreferenceProvider {
   Future<String> getPreferenceId(
       String title, String description, String price) async {
     print('MP preference provider');
@@ -20,7 +20,10 @@ class RequestProvider {
         'price': price,
       }),
     );
-
+    print("Producto:");
+    print(title);
+    print(description);
+    print(price);
     List<int> bytes = result.bodyBytes;
     if (result.statusCode == 200) {
       var body = utf8.decode(bytes);
@@ -28,6 +31,7 @@ class RequestProvider {
 
       print("id: "+jsonResponse['id']);
       print("status: "+jsonResponse['status']);
+      return jsonResponse['id'];
     }
     return "OK";
   }

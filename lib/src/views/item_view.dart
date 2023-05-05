@@ -12,6 +12,7 @@ import 'package:clientPhysiho/src/providers/sessions_provider.dart';
 import 'package:clientPhysiho/src/views/login_view.dart';
 import 'package:date_field/date_field.dart';
 import 'package:flutter/material.dart';
+import 'package:fluttertoast/fluttertoast.dart';
 import 'package:intl/intl.dart';
 import 'package:lottie/lottie.dart';
 import 'package:mvc_pattern/mvc_pattern.dart';
@@ -333,19 +334,35 @@ class _ItemViewState extends StateMVC<ItemView> {
                                     ),
                                   ),
                                   onPressed: () {
-                                    launchScreen(
-                                        context, CheckTypePayment.routeName,
-                                        arguments: {
-                                          'service': _con.service,
-                                          'item': _con.itemService,
-                                          'sesions': sesionsList,
-                                          'hours': hoursList,
-                                          'customer': context
-                                              .read<LoginProvider>()
-                                              .currentUser['id'],
-                                          'idPhysio': _con.employee['id'],
-                                          'location': location
-                                        });
+                                    bool isFilled = true;
+                                    for (int i = 0;
+                                        i < _con.itemService['sesion'];
+                                        i++) {
+                                      if (sesionsList[i] == null) {
+                                        isFilled = false;
+                                      }
+                                      if (hoursList[i] == null) {
+                                        isFilled = false;
+                                      }
+                                    }
+                                    if (isFilled) {
+                                      launchScreen(
+                                          context, CheckTypePayment.routeName,
+                                          arguments: {
+                                            'service': _con.service,
+                                            'item': _con.itemService,
+                                            'sesions': sesionsList,
+                                            'hours': hoursList,
+                                            'customer': context
+                                                .read<LoginProvider>()
+                                                .currentUser['id'],
+                                            'idPhysio': _con.employee['id'],
+                                            'location': location
+                                          });
+                                    } else {
+                                      Fluttertoast.showToast(
+                                          msg: "Selecciona la fecha y el horario de todas las sesiones");
+                                    }
                                   },
                                   child: Text(
                                     'Siguiente',

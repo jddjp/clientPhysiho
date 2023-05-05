@@ -2,10 +2,12 @@
 import 'package:clientPhysiho/src/config/colors.dart';
 import 'package:clientPhysiho/src/config/constants.dart';
 import 'package:clientPhysiho/src/helpers/widget_helper.dart';
+import 'package:clientPhysiho/src/providers/request_repository.dart';
 import 'package:clientPhysiho/src/providers/sessions_provider.dart';
 import 'package:clientPhysiho/src/views/home_view.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter/services.dart';
+import 'package:fluttertoast/fluttertoast.dart';
 import 'package:loading_overlay/loading_overlay.dart';
 import 'package:mercado_pago_mobile_checkout/mercado_pago_mobile_checkout.dart';
 
@@ -51,8 +53,10 @@ class _CheckTypePaymentState extends State<CheckTypePayment> {
   bool isLoading = false;
 
   static const publicKey = "TEST-3e57ffeb-fa2f-4529-b7dc-b90b29cf54f2";
-  static const preferenceId = "456490293-ea66f5b6-38ca-4db1-a432-45a3edb5e642";
 
+  static const preferenceIdcons =
+      "456490293-ad1850e9-36dd-4353-9b38-b9417ff3bf9d";
+  //456490293-ea66f5b6-38ca-4db1-a432-45a3edb5e642
   //TEST-6763876082927877-042719-1c46ed47fe677e536c7d0440f007b356-456490293
   String _platformVersion = 'Unknown';
 
@@ -172,9 +176,8 @@ class _CheckTypePaymentState extends State<CheckTypePayment> {
                         });
                         if (widget.item['MetodPago'] != "online") {
                           userPhysio.createRecord(widget.item).then((sesion) {
-                            //  setState(() {
-                            //    isLoading = false;
-                            //  });
+                            Fluttertoast.showToast(
+                                msg: "Sesiones agendadas correctamente");
                           });
                           // Redirect and remove all screens
                           Navigator.pushNamedAndRemoveUntil(
@@ -182,6 +185,11 @@ class _CheckTypePaymentState extends State<CheckTypePayment> {
                               arguments: "2");
                         } else {
                           print("Online payment");
+                          final preferenceId = await new MPPreferenceProvider()
+                              .getPreferenceId(
+                                  widget.item['service']['name'].toString(),
+                                  widget.item['item']['name'].toString(),
+                                  widget.item['item']['price'].toString());
                           PaymentResult result =
                               await MercadoPagoMobileCheckout.startCheckout(
                             publicKey,
@@ -190,10 +198,21 @@ class _CheckTypePaymentState extends State<CheckTypePayment> {
                           setState(() {
                             isLoading = false;
                           });
-                          // Redirect and remove all screens
-                          Navigator.pushNamedAndRemoveUntil(
-                              context, HomeView.routeName, (route) => false,
-                              arguments: "2");
+                          print(result);
+                          if (result.result == "done") {
+                            widget.item['mp_id'] = result.id.toString();
+                            userPhysio.createRecord(widget.item).then((sesion) {
+                              Fluttertoast.showToast(
+                                  msg: "Pago aprobado y sesiones agendadas correctamente");
+                            });
+                            // Redirect and remove all screens
+                            Navigator.pushNamedAndRemoveUntil(
+                                context, HomeView.routeName, (route) => false,
+                                arguments: "2");
+                          }else{
+                            Fluttertoast.showToast(
+                                msg: "Pago cancelado");
+                          }
                         }
                       },
                       child: Container(

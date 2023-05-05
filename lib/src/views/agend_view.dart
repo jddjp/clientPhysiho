@@ -226,7 +226,10 @@ class _MyHomePageState extends State<MyHomePage> with TickerProviderStateMixin {
         ? Scaffold(
             appBar: AppBar(
               backgroundColor: pantoneFour,
-              title: Center(child: Text(widget.title)),
+              title: Center(child: Text(widget.title, style: TextStyle(
+                  color: Colors.black,
+                  fontSize: 25,
+                  fontFamily: 'Franklin Gothic'),)),
             ),
             body: Container(
               decoration: BoxDecoration(
