@@ -30,6 +30,8 @@ const spacing_large = 24.0;
 const spacing_xlarge = 32.0;
 const spacing_xxLarge = 40.0;
 
+const size_chargin = 10.0;
+const lineStroke = 2.0;
 final headingStyle = TextStyle(
   fontSize: getProportionateScreenWidth(textSizeLarge),
   fontWeight: FontWeight.bold,

@@ -363,29 +363,46 @@ class _MyHomePageState extends State<MyHomePage> with TickerProviderStateMixin {
             onCalendarCreated: _onCalendarCreated,
           );
         } else {
-          return TableCalendar(
-            locale: 'es',
-            calendarController: _calendarController,
-            events: _events,
-            startingDayOfWeek: StartingDayOfWeek.monday,
-            calendarStyle: CalendarStyle(
-              selectedColor: pantoneEleven,
-              todayColor: pantoneOne,
-              markersColor: Colors.red[700],
-              outsideDaysVisible: false,
-            ),
-            headerStyle: HeaderStyle(
-              formatButtonTextStyle:
-                  TextStyle().copyWith(color: Colors.white, fontSize: 15.0),
-              formatButtonDecoration: BoxDecoration(
-                color: pantoneEleven,
-                borderRadius: BorderRadius.circular(16.0),
+          return
+            Column(children: [ TableCalendar(
+              locale: 'es',
+              calendarController: _calendarController,
+              events: _events,
+              startingDayOfWeek: StartingDayOfWeek.monday,
+              calendarStyle: CalendarStyle(
+                selectedColor: pantoneEleven,
+                todayColor: pantoneOne,
+                markersColor: Colors.red[700],
+                outsideDaysVisible: false,
               ),
+              headerStyle: HeaderStyle(
+                formatButtonTextStyle:
+                TextStyle().copyWith(color: Colors.white, fontSize: 15.0),
+                formatButtonDecoration: BoxDecoration(
+                  color: pantoneEleven,
+                  borderRadius: BorderRadius.circular(16.0),
+                ),
+              ),
+              onDaySelected: _onDaySelected,
+              onVisibleDaysChanged: _onVisibleDaysChanged,
+              onCalendarCreated: _onCalendarCreated,
             ),
-            onDaySelected: _onDaySelected,
-            onVisibleDaysChanged: _onVisibleDaysChanged,
-            onCalendarCreated: _onCalendarCreated,
-          );
+            Row(
+              mainAxisAlignment: MainAxisAlignment.center,
+              children: [
+              //Expanded(
+              Text('Cargando eventos '),
+              //),
+            SizedBox(
+              height: size_chargin,
+              width: size_chargin,
+              child: CircularProgressIndicator(
+               backgroundColor: appColorAccent,
+                strokeWidth: lineStroke,
+                ))
+            ],)
+            ]);
+
         }
       },
     );
