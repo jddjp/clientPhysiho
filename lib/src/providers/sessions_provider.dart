@@ -137,10 +137,10 @@ class SessionProvider {
   }
 
   Future<List<dynamic>> getSessionUser(String id) async {
-    print('userPhysio===============>'+id);
+    print('userPhysio===============>' + id);
 
     DocumentReference customerRef =
-        FirebaseFirestore.instance.collection('customers').doc(id);
+    FirebaseFirestore.instance.collection('customers').doc(id);
     print(customerRef);
 
     QuerySnapshot sesionData = await FirebaseFirestore.instance
@@ -148,18 +148,17 @@ class SessionProvider {
         .where('customers', isEqualTo: customerRef)
         .get();
     List<dynamic> sesion = new List();
-    //List<dynamic> sesion2 = new List();
 
-    //print(sesionData);
-    sesionData.docs.forEach((element) async {
+    var sesiones = await sesionData.docs;
+
+    for (var element in sesiones) {
       Map<String, dynamic> elemnt = element.data();
-      //print('Record :');
+
       DocumentSnapshot record = await FirebaseFirestore.instance
           .collection('Record')
           .doc(elemnt['record'].id)
           .get();
-      // print(record.data());
-      // print(record.data()['service']);
+
       DocumentSnapshot service = await FirebaseFirestore.instance
           .collection('services')
           .doc((record.data() as Map<String, dynamic>)['service'].id)
@@ -168,11 +167,6 @@ class SessionProvider {
           .collection('items')
           .doc((record.data() as Map<String, dynamic>)['package'].id)
           .get();
-      // print(service.data());
-      // print(element.data()['record'].id);
-      // print('Physio :');
-      //   print(element.data());
-      //  print("elementis obtencion de horas de sesions");
 
       sesion.add({
         'hours': elemnt['hours'],
@@ -181,9 +175,10 @@ class SessionProvider {
         'status': elemnt['estatus'],
         'packageName': (package.data() as Map<String, dynamic>)['name'],
       }
-          //element.data()
-          );
-    });
+        //element.data()
+      );
+      print("yair:" + element.id);
+    }
 
     sesion.sort((a, b) => a['date'].compareTo(b['date']));
 
