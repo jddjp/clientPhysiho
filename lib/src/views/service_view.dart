@@ -1,25 +1,13 @@
 // @dart=2.9
-import 'package:clientPhysiho/src/controllers/service_controller.dart';
-import 'package:clientPhysiho/src/utils/Db7BottomNavigationBar.dart';
-import 'package:cloud_firestore/cloud_firestore.dart';
-import 'package:flutter/material.dart';
 import 'package:cached_network_image/cached_network_image.dart';
 import 'package:clientPhysiho/src/components/item_widget.dart';
 import 'package:clientPhysiho/src/config/colors.dart';
 import 'package:clientPhysiho/src/config/constants.dart';
-import 'package:clientPhysiho/src/config/images.dart';
-import 'package:clientPhysiho/src/controllers/business_controller.dart';
+import 'package:clientPhysiho/src/controllers/service_controller.dart';
 import 'package:clientPhysiho/src/helpers/extension_helper.dart';
-import 'package:clientPhysiho/src/helpers/widget_helper.dart';
-import 'package:clientPhysiho/src/providers/cart_provider.dart';
-import 'package:clientPhysiho/src/services/search_delegate.dart';
-import 'package:clientPhysiho/src/views/cart_view.dart';
-import 'package:loading_overlay/loading_overlay.dart';
+import 'package:flutter/material.dart';
 import 'package:lottie/lottie.dart';
 import 'package:mvc_pattern/mvc_pattern.dart';
-import 'package:provider/provider.dart';
-
-import 'drawer_view.dart';
 
 class ServiceView extends StatefulWidget {
   // Route name for this view
@@ -81,28 +69,21 @@ class _ServiceViewState extends StateMVC<ServiceView> {
                           (BuildContext context, bool innerBoxIsScrolled) {
                         return <Widget>[
                           SliverAppBar(
+                            backgroundColor: pantoneTwo,
                             expandedHeight: expandHeight,
-                            floating: false,
+                            floating: true,
                             pinned: true,
+                            snap: true,
                             titleSpacing: 0,
-                            title: Container(
-                              height: 60,
-                              child: Container(
-                                width: width,
-                                child: Row(
-                                  mainAxisAlignment:
-                                      MainAxisAlignment.spaceBetween,
-                                  children: [
-                                    innerBoxIsScrolled == true
-                                        ? text(_con.service['name'],
-                                            fontWeight: fontSemibold,
-                                            fontSize: textSizeNormal)
-                                        : Container()
-                                  ],
-                                ),
-                              ),
-                            ),
                             flexibleSpace: FlexibleSpaceBar(
+                              title: Text(
+                                _con.service['name'],
+                                style: TextStyle(
+                                    fontSize: textSizeLarge,
+                                    fontWeight: fontSemibold,
+                                    color:
+                                        titleoverimage),
+                              ),
                               background: CachedNetworkImage(
                                   imageUrl: _con.service['cover'] != ""
                                       ? _con.service['cover']['url']
@@ -121,7 +102,7 @@ class _ServiceViewState extends StateMVC<ServiceView> {
                               padding: EdgeInsets.all(16.0),
                               child: Column(
                                 children: [
-                                  Text(
+                                  /*Text(
                                     _con.service['name'],
                                     style: TextStyle(
                                         fontSize: textSizeLarge,
@@ -129,7 +110,7 @@ class _ServiceViewState extends StateMVC<ServiceView> {
                                   ),
                                   SizedBox(
                                     height: spacing_standard,
-                                  ),
+                                  ),*/
                                   Container(
                                     alignment: Alignment.center,
                                     decoration: BoxDecoration(

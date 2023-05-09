@@ -31,6 +31,13 @@ class _HomeServiceViewState extends State<HomeServiceView> {
     // Change status bar color
     changeStatusColor(pantoneTwo);
     return Scaffold(
+      appBar: AppBar(
+        backgroundColor: pantoneTwo,
+        title: Center(child: Text("Servicios", style: TextStyle(
+            color: Colors.black,
+            fontSize: 25,
+            fontFamily: 'Franklin Gothic'),)),
+      ),
       body: Stack(
         children: <Widget>[
           Container(
@@ -48,49 +55,8 @@ class _HomeServiceViewState extends State<HomeServiceView> {
             child: SingleChildScrollView(
               child: Column(
                 children: [
-                  Stack(
-                    children: [
-                      Arc(
-                        arcType: ArcType.CONVEY,
-                        edge: Edge.BOTTOM,
-                        height: (MediaQuery.of(context).size.width) / 25,
-                        child: new Container(
-                            height: (MediaQuery.of(context).size.height * 0.1),
-                            width: MediaQuery.of(context).size.width,
-                            color: pantoneTwo),
-                      ),
-                      Container(
-                        width: MediaQuery.of(context).size.width,
-                        child: Row(
-                          mainAxisAlignment: MainAxisAlignment.center,
-                          children: [
-                            SizedBox(),
-                            Expanded(
-                                child: Center(
-                              child: Container(
-                                margin: EdgeInsets.only(top: 10),
-                                child: Column(
-                                  children: [
-                                    Text(
-                                      "Servicios",
-                                      overflow: TextOverflow.ellipsis,
-                                      style: TextStyle(
-                                          color: Colors.black,
-                                          fontSize: 25,
-                                          fontFamily: 'Franklin Gothic'),
-                                      textAlign: TextAlign.center,
-                                    ),
-                                  ],
-                                ),
-                              ),
-                            )),
-                          ],
-                        ),
-                      )
-                    ],
-                  ),
                   SizedBox(
-                    height: spacing_large,
+                    height: 50,
                   ),
                   Container(
                     padding:
@@ -135,6 +101,21 @@ class _HomeServiceViewState extends State<HomeServiceView> {
                 ],
               ),
             ),
+          ),
+          SafeArea(child:
+          Stack(
+            children: [
+              Arc(
+                arcType: ArcType.CONVEY,
+                edge: Edge.BOTTOM,
+                height: (MediaQuery.of(context).size.width) / 15,
+                child: new Container(
+                    height: (MediaQuery.of(context).size.height * 0.05),
+                    width: MediaQuery.of(context).size.width,
+                    color: pantoneTwo),
+              ),
+            ],
+          ),
           ),
         ],
       ),
