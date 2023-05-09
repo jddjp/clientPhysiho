@@ -24,7 +24,7 @@ class LoginView extends StatefulWidget {
 class _LoginViewState extends State<LoginView> {
   @override
   Widget build(BuildContext context) {
-    changeStatusColor(primaryColor);
+    changeStatusColor(pantoneTwo);
     var width = MediaQuery.of(context).size.width;
     var height = MediaQuery.of(context).size.height;
     Widget socialButton(var color, var icon, var value, var iconColor,
@@ -62,7 +62,7 @@ class _LoginViewState extends State<LoginView> {
                     colorFilter: new ColorFilter.mode(
                         Colors.black.withOpacity(0.9), BlendMode.dstATop),
                     image: new AssetImage('assets/images/IMAPH.png'),
-                    fit: BoxFit.fitWidth),
+                    fit: BoxFit.fill),
               ),
             ),
             Container(

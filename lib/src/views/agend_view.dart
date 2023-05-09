@@ -391,7 +391,7 @@ class _MyHomePageState extends State<MyHomePage> with TickerProviderStateMixin {
               mainAxisAlignment: MainAxisAlignment.center,
               children: [
               //Expanded(
-              Text('Cargando eventos '),
+              Text('Cargando citas para sesiones '),
               //),
             SizedBox(
               height: size_chargin,

@@ -206,7 +206,7 @@ class _ItemViewState extends StateMVC<ItemView> {
                                                 .toString(),
                                         style: TextStyle(
                                           fontSize: textSizeNormal,
-                                          fontWeight: fontRegular,
+                                          fontWeight: fontSemibold,
                                         )),
                                     Text(_con.itemService['sesion'].toString(),
                                         style: TextStyle(
@@ -232,7 +232,7 @@ class _ItemViewState extends StateMVC<ItemView> {
                                         child: Text(
                                           'Fisioterapeuta',
                                           style: TextStyle(
-                                            fontSize: textSizeNormal,
+                                            fontSize: textSizeLarge,
                                             fontWeight: fontSemibold,
                                           ),
                                         ),
@@ -245,14 +245,23 @@ class _ItemViewState extends StateMVC<ItemView> {
                                             crossAxisAlignment:
                                                 CrossAxisAlignment.end,
                                             children: [
-                                              Text('Nombre'),
+                                              Text('Nombre:',
+                                                  style: TextStyle(
+                                                    fontSize: textSizeNormal,
+                                                    fontWeight: fontBold,
+                                                  )),
                                             ],
                                           ),
                                           Column(
                                             children: [
-                                              Text(_con.employee == null
-                                                  ? ''
-                                                  : _con.employee['name']),
+                                              Text(
+                                                  _con.employee == null
+                                                      ? ''
+                                                      : _con.employee['name'],
+                                                  style: TextStyle(
+                                                    fontSize: textSizeNormal,
+                                                    fontWeight: fontRegular,
+                                                  )),
                                             ],
                                           ),
                                         ],
@@ -309,12 +318,18 @@ class _ItemViewState extends StateMVC<ItemView> {
                                     child: Text(
                                       '¿Dónde quieres recibir tus sesiones?',
                                       style: TextStyle(
-                                          color: Colors.black, fontSize: 16),
+                                        fontSize: textSizeNormal,
+                                        fontWeight: fontBold,
+                                      ),
                                     ),
                                   ),
                                 ),
                                 RadioListTile(
-                                  title: Text("Consultorio"),
+                                  title: Text("Consultorio",
+                                      style: TextStyle(
+                                        fontSize: textSizeNormal,
+                                        fontWeight: fontRegular,
+                                      )),
                                   value: "consultorio",
                                   groupValue: location,
                                   onChanged: (value) {
@@ -325,7 +340,11 @@ class _ItemViewState extends StateMVC<ItemView> {
                                   },
                                 ),
                                 RadioListTile(
-                                  title: Text("A domicilio"),
+                                  title: Text("A domicilio",
+                                      style: TextStyle(
+                                        fontSize: textSizeNormal,
+                                        fontWeight: fontRegular,
+                                      )),
                                   value: "domicilio",
                                   groupValue: location,
                                   onChanged: (value) {
@@ -339,11 +358,11 @@ class _ItemViewState extends StateMVC<ItemView> {
                                   height: 10,
                                 ),
                                 Divider(),
-                                Text(
-                                  'Sesiones',
-                                  style: TextStyle(
-                                      color: Colors.black, fontSize: 18),
-                                ),
+                                Text('Sesiones',
+                                    style: TextStyle(
+                                      fontSize: textSizeNormal,
+                                      fontWeight: fontBold,
+                                    )),
                                 Container(
                                   decoration:
                                       BoxDecoration(color: Colors.transparent),
@@ -365,10 +384,19 @@ class _ItemViewState extends StateMVC<ItemView> {
                             ),
                           ),
                           Container(
+                            color: pantoneTwo,
+                            height: 10,
+                          ),
+                          Container(
+                            color: pantoneTwo,
                             child: Row(
                               mainAxisAlignment: MainAxisAlignment.spaceAround,
                               children: [
-                                Text('Seguimiento de compra'),
+                                Text('Continuar compra',
+                                    style: TextStyle(
+                                      fontSize: textSizeNormal,
+                                      fontWeight: fontRegular,
+                                    )),
                                 ElevatedButton(
                                   style: TextButton.styleFrom(
                                     primary: pantoneThirteen,
@@ -413,12 +441,17 @@ class _ItemViewState extends StateMVC<ItemView> {
                                     'Siguiente',
                                     style: TextStyle(
                                         color: pantoneEight,
+                                        fontSize: textSizeNormal,
                                         fontWeight: fontBold),
                                   ),
-                                )
+                                ),
                               ],
                             ),
-                          )
+                          ),
+                          Container(
+                            color: pantoneTwo,
+                            height: 10,
+                          ),
                         ],
                       ),
                     ),
@@ -500,7 +533,10 @@ class _ItemViewState extends StateMVC<ItemView> {
           ),
           title: Text(
             title,
-            style: TextStyle(fontSize: 17),
+            style: TextStyle(
+              fontSize: textSizeNormal,
+              fontWeight: fontRegular,
+            ),
           ),
           children: <Widget>[cardWidget(index)],
         ),
@@ -543,7 +579,7 @@ class _ItemViewState extends StateMVC<ItemView> {
                 Row(
                   children: [
                     Icon(
-                      Icons.image_rounded,
+                      Icons.calendar_month_rounded,
                       size: 22,
                     ),
                     SizedBox(
@@ -579,7 +615,7 @@ class _ItemViewState extends StateMVC<ItemView> {
                 Row(
                   children: [
                     Icon(
-                      Icons.image_rounded,
+                      Icons.access_time,
                       size: 22,
                     ),
                     SizedBox(
@@ -600,7 +636,7 @@ class _ItemViewState extends StateMVC<ItemView> {
                               type: SelectFormFieldType.dialog,
                               //controller: _controller,
                               //initialValue: _initialValue,
-                              icon: Icon(Icons.format_shapes),
+                              //icon: Icon(Icons.accessibility),
                               labelText: 'Hora',
                               changeIcon: true,
                               dialogTitle: 'Seleccionar horario',
