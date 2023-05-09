@@ -123,6 +123,15 @@ class _ItemViewState extends StateMVC<ItemView> {
     return (context.watch<LoginProvider>().isLoggedIn() &&
             context.watch<LoginProvider>().currentUser['nombre'] != null
         ? Scaffold(
+            appBar: AppBar(
+                backgroundColor: pantoneTwo,
+                title: Text(
+                  "Detalle de Compra",
+                  style: TextStyle(
+                      color: Colors.black,
+                      fontSize: 25,
+                      fontFamily: 'Franklin Gothic'),
+                )),
             body: _con.isLoading
                 ? Container(
                     width: width,
@@ -138,7 +147,7 @@ class _ItemViewState extends StateMVC<ItemView> {
                     child: SingleChildScrollView(
                       child: Column(
                         children: [
-                          Container(
+/*                          Container(
                             margin: EdgeInsets.only(top: 50),
                             padding: EdgeInsets.all(10),
                             child: Text(
@@ -146,29 +155,64 @@ class _ItemViewState extends StateMVC<ItemView> {
                               style:
                                   TextStyle(color: Colors.black, fontSize: 18),
                             ),
-                          ),
+                          ),*/
                           Container(
-                            padding: EdgeInsets.all(10),
+                            padding: EdgeInsets.only(
+                                left: 0.0, top: 30.0, bottom: 0, right: 0),
                             child: Row(
                               mainAxisAlignment: MainAxisAlignment.spaceAround,
                               children: [
                                 Column(
                                   crossAxisAlignment: CrossAxisAlignment.end,
                                   children: [
-                                    Text('Servicio:'),
-                                    Text('Paquete:'),
-                                    Text('Costo:'),
-                                    Text('Sesiones:')
+                                    Text('Servicio:',
+                                        style: TextStyle(
+                                          fontSize: textSizeNormal,
+                                          fontWeight: fontSemibold,
+                                        )),
+                                    Text('Paquete:',
+                                        style: TextStyle(
+                                          fontSize: textSizeNormal,
+                                          fontWeight: fontSemibold,
+                                        )),
+                                    Text('Costo:',
+                                        style: TextStyle(
+                                          fontSize: textSizeNormal,
+                                          fontWeight: fontSemibold,
+                                        )),
+                                    Text('Sesiones:',
+                                        style: TextStyle(
+                                          fontSize: textSizeNormal,
+                                          fontWeight: fontSemibold,
+                                        ))
                                   ],
                                 ),
                                 Column(
                                   crossAxisAlignment: CrossAxisAlignment.start,
                                   children: [
-                                    Text(_con.service['name']),
-                                    Text(_con.itemService['name']),
-                                    Text('\$' +
-                                        _con.itemService['price'].toString()),
-                                    Text(_con.itemService['sesion'].toString())
+                                    Text(_con.service['name'],
+                                        style: TextStyle(
+                                          fontSize: textSizeNormal,
+                                          fontWeight: fontRegular,
+                                        )),
+                                    Text(_con.itemService['name'],
+                                        style: TextStyle(
+                                          fontSize: textSizeNormal,
+                                          fontWeight: fontRegular,
+                                        )),
+                                    Text(
+                                        '\$' +
+                                            _con.itemService['price']
+                                                .toString(),
+                                        style: TextStyle(
+                                          fontSize: textSizeNormal,
+                                          fontWeight: fontRegular,
+                                        )),
+                                    Text(_con.itemService['sesion'].toString(),
+                                        style: TextStyle(
+                                          fontSize: textSizeNormal,
+                                          fontWeight: fontRegular,
+                                        ))
                                   ],
                                 ),
                               ],
@@ -188,8 +232,9 @@ class _ItemViewState extends StateMVC<ItemView> {
                                         child: Text(
                                           'Fisioterapeuta',
                                           style: TextStyle(
-                                              color: Colors.black,
-                                              fontSize: 18),
+                                            fontSize: textSizeNormal,
+                                            fontWeight: fontSemibold,
+                                          ),
                                         ),
                                       ),
                                       Row(

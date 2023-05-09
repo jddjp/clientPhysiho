@@ -37,6 +37,36 @@ class _ServiceViewState extends StateMVC<ServiceView> {
   }
 
   @override
+  void initState() {
+    _scrollController = ScrollController();
+    _scrollController.addListener(_scrollListener);
+    super.initState();
+  }
+
+  @override
+  void dispose() {
+    _scrollController.removeListener(_scrollListener);
+    super.dispose();
+  }
+
+  ScrollController _scrollController;
+
+  bool lastStatus = true;
+
+  _scrollListener() {
+    if (isShrink != lastStatus) {
+      setState(() {
+        lastStatus = isShrink;
+      });
+    }
+  }
+
+  bool get isShrink {
+    return _scrollController.hasClients &&
+        _scrollController.offset > (200 - kToolbarHeight);
+  }
+
+  @override
   Widget build(BuildContext context) {
     double expandHeight = MediaQuery.of(context).size.height * 0.3;
     var width = MediaQuery.of(context).size.width;
@@ -65,6 +95,7 @@ class _ServiceViewState extends StateMVC<ServiceView> {
               : (_con.service == null
                   ? Container()
                   : NestedScrollView(
+                      controller: _scrollController,
                       headerSliverBuilder:
                           (BuildContext context, bool innerBoxIsScrolled) {
                         return <Widget>[
@@ -81,8 +112,9 @@ class _ServiceViewState extends StateMVC<ServiceView> {
                                 style: TextStyle(
                                     fontSize: textSizeLarge,
                                     fontWeight: fontSemibold,
-                                    color:
-                                        titleoverimage),
+                                    color: !isShrink
+                                        ? titleoverimage
+                                        : Colors.black),
                               ),
                               background: CachedNetworkImage(
                                   imageUrl: _con.service['cover'] != ""
