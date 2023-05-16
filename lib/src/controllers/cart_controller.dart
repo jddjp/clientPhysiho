@@ -61,10 +61,11 @@ class CartServiceController extends ControllerMVC {
     user.docs.forEach((element) {
       print(element.data());
       Map<String, dynamic> el = element.data() as Map<String, dynamic>;
+      print("Yair: "+el['profile'].toString());
       employee = {
         'id': element.reference.id,
         "name": el['name'],
-        "photo": el['profile'] != null ||el['profile'] != '' ? el['profile']['url']  : 'https://firebasestorage.googleapis.com/v0/b/fisioterapia-cfb53.appspot.com/o/profiles%2FBoEoSxoQyyLZdGbu.png?alt=media&token=39837240-bcca-4724-a843-d9fbf96b9456'
+        "photo": el['profile'] != null && el['profile'] != '' ? el['profile']['url']  : 'https://firebasestorage.googleapis.com/v0/b/fisioterapia-cfb53.appspot.com/o/profiles%2FBoEoSxoQyyLZdGbu.png?alt=media&token=39837240-bcca-4724-a843-d9fbf96b9456'
       };
     });
 
