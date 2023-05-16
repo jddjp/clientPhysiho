@@ -127,7 +127,7 @@ class SessionProvider {
       _currentUser = {
         'id': element.reference.id,
         "name": elemnt['name'],
-        "photo": elemnt['profile'] != null || elemnt['profile'] != ''
+        "photo": elemnt['profile'] != null && elemnt['profile'] != ''
             ? elemnt['profile']['url']
             : 'https://firebasestorage.googleapis.com/v0/b/fisioterapia-cfb53.appspot.com/o/profiles%2FixkZaOLGO66wyZw6.jpeg?alt=media&token=4728c68a-d291-4910-af8a-5f5a628a47e6'
       };
