@@ -586,7 +586,7 @@ class _ItemViewState extends StateMVC<ItemView> {
                       width: 10,
                     ),
                     Container(
-                      width: 250,
+                      width: MediaQuery.of(context).size.width * 0.7,
                       child: DateTimeFormField(
                         decoration: const InputDecoration(
                           hintStyle: TextStyle(color: Colors.black45),
@@ -597,15 +597,40 @@ class _ItemViewState extends StateMVC<ItemView> {
                         ),
                         mode: DateTimeFieldPickerMode.date,
                         autovalidateMode: AutovalidateMode.always,
-                        validator: (e) => null,
+                        validator: (value) {
+                          if (value != null) {
+                            if (sesionsList[index] !=
+                                DateFormat('yyyy-MM-dd').format(value)) {
+                              if (sesionsList.contains(
+                                  DateFormat('yyyy-MM-dd').format(value))) {
+                                sesionsList[index] = null;
+                                return "Error: No puedes tener mas de una sesión al día.";
+                              } else if(value.isBefore(DateTime.now())){
+                                sesionsList[index] = null;
+                                return "Error: selecciona una fecha posterior a hoy.";
+                              }else {
+                                sesionsList[index] =
+                                    DateFormat('yyyy-MM-dd').format(value);
+                              }
+                            }
+                          }
+                          return null;
+                        },
                         onDateSelected: (DateTime value) {
                           selectedDate = value;
                           //print(value);
                           setState(() {
                             // print('setState');
                             // print(index);
-                            sesionsList[index] =
-                                DateFormat('yyyy-MM-dd').format(value);
+                            /*if (sesionsList.contains(
+                                DateFormat('yyyy-MM-dd').format(value))) {
+                              Fluttertoast.showToast(
+                                  msg:
+                                      "No puedes tener mas de una sesión al día, selecciona otra fecha");
+                            } else {
+                              sesionsList[index] =
+                                  DateFormat('yyyy-MM-dd').format(value);
+                            }*/
                           });
                         },
                       ),
