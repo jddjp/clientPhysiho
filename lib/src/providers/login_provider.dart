@@ -305,6 +305,7 @@ class LoginProvider with ChangeNotifier {
           return "error";
         },
         codeSent: (String verificationId, int resendToken) {
+          Navigator.pop(context);
           launchScreen(context, OPTView.routeName, arguments: {
             'phoneNumber': phoneNumber,
             'verificationId': verificationId

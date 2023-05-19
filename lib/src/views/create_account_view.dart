@@ -1,15 +1,14 @@
 // @dart=2.9
-import 'package:firebase_auth/firebase_auth.dart';
-import 'package:flutter/material.dart';
-import 'package:flutter/services.dart';
-import 'package:clientPhysiho/src/providers/login_provider.dart';
-import 'package:clientPhysiho/src/views/opt_view.dart';
-import 'package:provider/provider.dart';
 import 'package:clientPhysiho/src/components/default_button.dart';
 import 'package:clientPhysiho/src/config/colors.dart';
 import 'package:clientPhysiho/src/config/constants.dart';
 import 'package:clientPhysiho/src/helpers/extension_helper.dart';
 import 'package:clientPhysiho/src/helpers/widget_helper.dart';
+import 'package:clientPhysiho/src/providers/login_provider.dart';
+import 'package:clientPhysiho/src/views/opt_view.dart';
+import 'package:firebase_auth/firebase_auth.dart';
+import 'package:flutter/material.dart';
+import 'package:provider/provider.dart';
 
 class CreateAccountView extends StatefulWidget {
   static const routeName = 'create_acount';
@@ -115,6 +114,28 @@ class _CreateAccountViewState extends State<CreateAccountView> {
                 text: "Continuar",
                 press: () async {
                   if (_formKey.currentState.validate()) {
+                    showDialog(
+                      context: context,
+                      barrierDismissible: false,
+                      builder: (BuildContext context) {
+                        return Dialog(
+                          child: Padding(
+                            padding: const EdgeInsets.all(16),
+                            child: new Row(
+                              mainAxisSize: MainAxisSize.min,
+                              children: [
+                                new CircularProgressIndicator(),
+                                Container(
+                                  width: 16,
+                                  height: 16,
+                                ),
+                                new Text("Espera un momento..."),
+                              ],
+                            ),
+                          ),
+                        );
+                      },
+                    );
                     _formKey.currentState.save();
 
                     // Save phoneNumber on App Global State
