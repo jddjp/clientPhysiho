@@ -55,19 +55,24 @@ class CartServiceController extends ControllerMVC {
         .collection('users')
         .where('type', isEqualTo: 'employees')
         .where('estatus', isEqualTo: 'activo')
-        .where(FieldPath.documentId, isGreaterThanOrEqualTo: autoId)
-        .limit(1)
         .get();
-    user.docs.forEach((element) {
-      print(element.data());
-      Map<String, dynamic> el = element.data() as Map<String, dynamic>;
-      print("Yair: "+el['profile'].toString());
-      employee = {
-        'id': element.reference.id,
-        "name": el['name'],
-        "photo": el['profile'] != null && el['profile'] != '' ? el['profile']['url']  : 'https://firebasestorage.googleapis.com/v0/b/fisioterapia-cfb53.appspot.com/o/profiles%2FBoEoSxoQyyLZdGbu.png?alt=media&token=39837240-bcca-4724-a843-d9fbf96b9456'
-      };
-    });
+
+    final random = new Random();
+
+    var element = user.docs[random.nextInt(user.docs.length)];
+
+    print("Yair lenght: "+user.docs.length.toString());
+    print("Yair random: " + element.id);
+
+    Map<String, dynamic> el = element.data() as Map<String, dynamic>;
+    print("Yair: " + el['profile'].toString());
+    employee = {
+      'id': element.reference.id,
+      "name": el['name'],
+      "photo": el['profile'] != null && el['profile'] != ''
+          ? el['profile']['url']
+          : 'https://firebasestorage.googleapis.com/v0/b/fisioterapia-cfb53.appspot.com/o/profiles%2FBoEoSxoQyyLZdGbu.png?alt=media&token=39837240-bcca-4724-a843-d9fbf96b9456'
+    };
 
     DocumentReference serviceRef = FirebaseFirestore.instance
         .collection('services')
@@ -75,9 +80,12 @@ class CartServiceController extends ControllerMVC {
     DocumentReference itemRef =
         FirebaseFirestore.instance.collection('items').doc(item['id']);
     DocumentSnapshot serviceDoc = await serviceRef.get();
-    service = {...serviceDoc.data()  as Map<String, dynamic>, 'id': serviceDoc.id};
+    service = {
+      ...serviceDoc.data() as Map<String, dynamic>,
+      'id': serviceDoc.id
+    };
     DocumentSnapshot itemDoc = await itemRef.get();
-    itemService = {...itemDoc.data()  as Map<String, dynamic>, 'id': itemDoc.id};
+    itemService = {...itemDoc.data() as Map<String, dynamic>, 'id': itemDoc.id};
     print('itemService');
     print(itemService);
     setState(() {
