@@ -112,6 +112,16 @@ class _ServiceViewState extends StateMVC<ServiceView> {
                                 style: TextStyle(
                                     fontSize: textSizeLarge,
                                     fontWeight: fontSemibold,
+                                    shadows: !isShrink
+                                        ? [
+                                            Shadow(
+                                              blurRadius: 10.0, // shadow blur
+                                              color: appleColor, // shadow color
+                                              offset: Offset(2.0,
+                                                  2.0), // how much shadow will be shown
+                                            ),
+                                          ]
+                                        : null,
                                     color: !isShrink
                                         ? titleoverimage
                                         : Colors.black),
@@ -153,6 +163,7 @@ class _ServiceViewState extends StateMVC<ServiceView> {
                                     padding: EdgeInsets.all(16.0),
                                     child: Text(
                                       _con.service['description'],
+                                      textAlign: TextAlign.center,
                                       style: TextStyle(
                                           color: textSecondaryColor,
                                           fontSize: 15.0),
