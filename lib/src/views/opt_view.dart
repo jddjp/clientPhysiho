@@ -145,12 +145,12 @@ class _OPTViewState extends State<OPTView> {
     return Row(
       mainAxisAlignment: MainAxisAlignment.center,
       children: [
-        Text("Este código caducará en "),
+        Text("Este código caducará en 2 minutos "),
         TweenAnimationBuilder(
-          tween: Tween(begin: 59.0, end: 0.0),
-          duration: Duration(seconds: 59),
+          tween: Tween(begin: 120.0, end: 0.0),
+          duration: Duration(seconds: 120),
           builder: (_, value, child) => Text(
-            "00:${value.toInt()}",
+            "${value.toInt()}",
             style: TextStyle(color: appColorAccent),
           ),
         ),
