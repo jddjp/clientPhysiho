@@ -42,7 +42,7 @@ dependencies:
   sign_in_with_apple: ^4.3.0
   crypto: ^3.0.2
 
-  flutter_svg: ^2.0.4
+  flutter_svg: ^1.1.6
 
   shared_preferences: ^2.0.20
   cached_network_image: ^3.2.3

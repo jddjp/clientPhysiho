@@ -107,6 +107,42 @@ class SessionProvider {
     return hoursList;
   }
 
+  Future<List<Map<String, dynamic>>> getAllPhysih() async {
+    print('userPhysio');
+    Map<String, dynamic> _currentUser;
+    List<Map<String, dynamic>> _employess = new List();
+    /*final autoId = _getAutoId();
+
+    print(autoId);*/
+
+    QuerySnapshot user = await FirebaseFirestore.instance
+        .collection('users')
+        .where('type', isEqualTo: 'employees')
+        .where('estatus', isEqualTo: 'activo')
+        .get();
+
+    user.docs.forEach((element) {
+      print(element.data());
+      Map<String, dynamic> elemnt = element.data();
+      _employess.add({
+        'value': '10:30',
+        'label': elemnt["name"],
+        'icon': Icon(Icons.stop),
+      });
+      //_employess.add(elemnt);
+      //print(element);
+      /*_currentUser = {
+        'id': element.reference.id,
+        "name": elemnt['name'],
+        "photo": elemnt['profile'] != null && elemnt['profile'] != ''
+            ? elemnt['profile']['url']
+            : 'https://firebasestorage.googleapis.com/v0/b/fisioterapia-cfb53.appspot.com/o/profiles%2FixkZaOLGO66wyZw6.jpeg?alt=media&token=4728c68a-d291-4910-af8a-5f5a628a47e6'
+      };*/
+    });
+
+    return _employess;
+  }
+
   Future<Map<String, dynamic>> getPhysio() async {
     print('userPhysio');
     Map<String, dynamic> _currentUser;
@@ -140,7 +176,7 @@ class SessionProvider {
     print('userPhysio===============>' + id);
 
     DocumentReference customerRef =
-    FirebaseFirestore.instance.collection('customers').doc(id);
+        FirebaseFirestore.instance.collection('customers').doc(id);
     print(customerRef);
 
     QuerySnapshot sesionData = await FirebaseFirestore.instance
@@ -175,8 +211,8 @@ class SessionProvider {
         'status': elemnt['estatus'],
         'packageName': (package.data() as Map<String, dynamic>)['name'],
       }
-        //element.data()
-      );
+          //element.data()
+          );
       print("yair:" + element.id);
     }
 

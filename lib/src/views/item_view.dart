@@ -101,7 +101,7 @@ class _ItemViewState extends StateMVC<ItemView> {
   var hoursList = new List(15);
   final userPhysio = new SessionProvider();
   String location = "consultorio";
-
+  String selectedFisio = '';
   @override
   Widget build(BuildContext context) {
     //_initialValue = 'starValue';
@@ -228,7 +228,76 @@ class _ItemViewState extends StateMVC<ItemView> {
                                   padding: EdgeInsets.all(10),
                                   child: Column(
                                     children: [
-                                      Container(
+                                      Text('Selecciona un Fisioterapeuta',
+                                          style: TextStyle(
+                                            fontSize: textSizeNormal,
+                                            fontWeight: fontBold,
+                                          )),
+                                      Row(
+                                        children: [
+                                          Icon(
+                                            Icons.person,
+                                            size: 22,
+                                          ),
+                                          SizedBox(
+                                            width: 10,
+                                          ),
+                                          FutureBuilder(
+                                            future: userPhysio.getAllPhysih(),
+                                            builder: (BuildContext context,
+                                                AsyncSnapshot<List<dynamic>>
+                                                    snapshot) {
+                                              //print('list hours');
+                                              //print("edgardo");
+                                              //print(snapshot.data[0]);
+                                              if (snapshot.hasData) {
+                                                return Container(
+                                                  width: 200,
+                                                  child: SelectFormField(
+                                                    ///key: Key("address"),
+                                                    type: SelectFormFieldType
+                                                        .dialog,
+                                                    labelText: 'Fisioterapeuta',
+                                                    changeIcon: false,
+                                                    dialogTitle:
+                                                        'Seleccionar Fisioterapeuta',
+                                                    dialogCancelBtn: 'Cancelar',
+                                                    enableSearch: false,
+                                                    dialogSearchHint:
+                                                        'Buscar Fisioterapeuta',
+                                                    items: snapshot.data,
+                                                    onChanged: (val) {
+                                                      //selectedFisio = val;
+                                                      /*setState(() {
+                                                        /*print(
+                                                            "value changed: " +
+                                                                selectedFisio);
+                                                        hoursList[0] =
+                                                            selectedFisio;
+                                                        print(hoursList);*/
+                                                      });*/
+                                                    },
+                                                    /*validator: (val) {
+                                                      setState(() =>
+                                                          _valueToValidate =
+                                                              val);
+                                                      return null;
+                                                    },*/
+                                                    /*onSaved: (val) {
+                                                      //_valueSaved = val;
+                                                      setState(() {});
+                                                    },*/
+                                                  ),
+                                                );
+                                              } else {
+                                                return Container();
+                                              }
+                                            },
+                                          ),
+                                        ],
+                                      )
+
+                                      /* Container(
                                         child: Text(
                                           'Fisioterapeuta',
                                           style: TextStyle(
@@ -299,6 +368,8 @@ class _ItemViewState extends StateMVC<ItemView> {
                                               Icon(Icons.error),
                                         ),
                                       ),
+                                    
+                                    */
                                     ],
                                   ),
                                 ),
@@ -605,10 +676,10 @@ class _ItemViewState extends StateMVC<ItemView> {
                                   DateFormat('yyyy-MM-dd').format(value))) {
                                 sesionsList[index] = null;
                                 return "Error: No puedes tener mas de una sesión al día.";
-                              } else if(value.isBefore(DateTime.now())){
+                              } else if (value.isBefore(DateTime.now())) {
                                 sesionsList[index] = null;
                                 return "Error: selecciona una fecha posterior a hoy.";
-                              }else {
+                              } else {
                                 sesionsList[index] =
                                     DateFormat('yyyy-MM-dd').format(value);
                               }
