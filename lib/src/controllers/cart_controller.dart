@@ -11,6 +11,7 @@ class CartServiceController extends ControllerMVC {
   Map<String, dynamic> itemService;
   Map<String, dynamic> employee;
   SharedPreferences _idservices;
+  List<Map<String, dynamic>> employess = new List();
   static const AUTO_ID_ALPHABET =
       'ABCDEFGHIJKLMNOPQRSTUVWXYZabcdefghijklmnopqrstuvwxyz0123456789';
   static const AUTO_ID_LENGTH = 20;
@@ -56,6 +57,21 @@ class CartServiceController extends ControllerMVC {
         .where('type', isEqualTo: 'employees')
         .where('estatus', isEqualTo: 'activo')
         .get();
+
+    user.docs.forEach((element) {
+      Map<String, dynamic> newElement = element.data() as Map<String, dynamic>;
+      employess.add({'id': element.reference.id, 'name': newElement['name']});
+      print("YAIR");
+      print(element.data());
+    });
+    /*user.docs.forEach((element) {
+      print(element.data());
+      Map<String, dynamic> elemnt = element.data();
+      _employess.add({
+        'value': '10:30',
+        'label': elemnt["name"],
+        'icon': Icon(Icons.stop),
+      });*/
 
     final random = new Random();
 

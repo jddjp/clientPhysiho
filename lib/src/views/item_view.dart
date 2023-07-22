@@ -101,13 +101,14 @@ class _ItemViewState extends StateMVC<ItemView> {
   var hoursList = new List(15);
   final userPhysio = new SessionProvider();
   String location = "consultorio";
-  String selectedFisio = '';
+  Map<String, dynamic> phisioSelected = null;
   @override
   Widget build(BuildContext context) {
     //_initialValue = 'starValue';
 
     //print(loading);
     //print(widget.item);
+
     var width = MediaQuery.of(context).size.width;
     //print('sesionList');
     //print(_idservices.getString('idservicio'));
@@ -228,6 +229,9 @@ class _ItemViewState extends StateMVC<ItemView> {
                                   padding: EdgeInsets.all(10),
                                   child: Column(
                                     children: [
+                                      SizedBox(
+                                        height: 16,
+                                      ),
                                       Text('Selecciona un Fisioterapeuta',
                                           style: TextStyle(
                                             fontSize: textSizeNormal,
@@ -240,136 +244,40 @@ class _ItemViewState extends StateMVC<ItemView> {
                                             size: 22,
                                           ),
                                           SizedBox(
-                                            width: 10,
+                                            width: 15,
                                           ),
-                                          FutureBuilder(
-                                            future: userPhysio.getAllPhysih(),
-                                            builder: (BuildContext context,
-                                                AsyncSnapshot<List<dynamic>>
-                                                    snapshot) {
-                                              //print('list hours');
-                                              //print("edgardo");
-                                              //print(snapshot.data[0]);
-                                              if (snapshot.hasData) {
-                                                return Container(
-                                                  width: 200,
-                                                  child: SelectFormField(
-                                                    ///key: Key("address"),
-                                                    type: SelectFormFieldType
-                                                        .dialog,
-                                                    labelText: 'Fisioterapeuta',
-                                                    changeIcon: false,
-                                                    dialogTitle:
-                                                        'Seleccionar Fisioterapeuta',
-                                                    dialogCancelBtn: 'Cancelar',
-                                                    enableSearch: false,
-                                                    dialogSearchHint:
-                                                        'Buscar Fisioterapeuta',
-                                                    items: snapshot.data,
-                                                    onChanged: (val) {
-                                                      //selectedFisio = val;
-                                                      /*setState(() {
-                                                        /*print(
-                                                            "value changed: " +
-                                                                selectedFisio);
-                                                        hoursList[0] =
-                                                            selectedFisio;
-                                                        print(hoursList);*/
-                                                      });*/
-                                                    },
-                                                    /*validator: (val) {
-                                                      setState(() =>
-                                                          _valueToValidate =
-                                                              val);
-                                                      return null;
-                                                    },*/
-                                                    /*onSaved: (val) {
-                                                      //_valueSaved = val;
-                                                      setState(() {});
-                                                    },*/
-                                                  ),
-                                                );
-                                              } else {
-                                                return Container();
-                                              }
+                                          DropdownButton<Map<String, dynamic>>(
+                                            value: phisioSelected,
+                                            hint: Text("Selecciona..."),
+                                            elevation: 16,
+                                            style: const TextStyle(
+                                                color: Colors.black,
+                                                fontSize: 16),
+                                            underline: Container(
+                                              height: 2,
+                                              color: Colors.black,
+                                            ),
+                                            onChanged:
+                                                (Map<String, dynamic> value) {
+                                              // This is called when the user selects an item.
+                                              setState(() {
+                                                phisioSelected = value;
+                                                print(phisioSelected);
+                                              });
                                             },
-                                          ),
+                                            items: _con.employess.map<
+                                                    DropdownMenuItem<
+                                                        Map<String, dynamic>>>(
+                                                (Map<String, dynamic> value) {
+                                              return DropdownMenuItem<
+                                                  Map<String, dynamic>>(
+                                                value: value,
+                                                child: Text(value['name']),
+                                              );
+                                            }).toList(),
+                                          )
                                         ],
                                       )
-
-                                      /* Container(
-                                        child: Text(
-                                          'Fisioterapeuta',
-                                          style: TextStyle(
-                                            fontSize: textSizeLarge,
-                                            fontWeight: fontSemibold,
-                                          ),
-                                        ),
-                                      ),
-                                      Row(
-                                        mainAxisAlignment:
-                                            MainAxisAlignment.spaceAround,
-                                        children: [
-                                          Column(
-                                            crossAxisAlignment:
-                                                CrossAxisAlignment.end,
-                                            children: [
-                                              Text('Nombre:',
-                                                  style: TextStyle(
-                                                    fontSize: textSizeNormal,
-                                                    fontWeight: fontBold,
-                                                  )),
-                                            ],
-                                          ),
-                                          Column(
-                                            children: [
-                                              Text(
-                                                  _con.employee == null
-                                                      ? ''
-                                                      : _con.employee['name'],
-                                                  style: TextStyle(
-                                                    fontSize: textSizeNormal,
-                                                    fontWeight: fontRegular,
-                                                  )),
-                                            ],
-                                          ),
-                                        ],
-                                      ),
-                                      Container(
-                                        height: 30,
-                                      ),
-                                      CircleAvatar(
-                                        backgroundColor: whiteColor,
-                                        radius: width * 0.20,
-                                        child: CachedNetworkImage(
-                                          color: whiteColor,
-                                          imageUrl: _con.employee['photo'],
-                                          imageBuilder:
-                                              (context, imageProvider) =>
-                                                  Container(
-                                            decoration: BoxDecoration(
-                                              color: whiteColor,
-                                              borderRadius:
-                                                  BorderRadius.circular(80),
-                                              image: DecorationImage(
-                                                image: imageProvider,
-                                                fit: BoxFit.cover,
-                                                colorFilter: ColorFilter.mode(
-                                                  Colors.black38
-                                                      .withOpacity(0.9),
-                                                  BlendMode.dstATop,
-                                                ),
-                                              ),
-                                            ),
-                                          ),
-                                          placeholder: (context, url) =>
-                                              CircularProgressIndicator(),
-                                          errorWidget: (context, url, error) =>
-                                              Icon(Icons.error),
-                                        ),
-                                      ),
-                                    
-                                    */
                                     ],
                                   ),
                                 ),
@@ -382,9 +290,9 @@ class _ItemViewState extends StateMVC<ItemView> {
                                   child: Padding(
                                     padding: EdgeInsets.only(
                                         left: 30.0,
-                                        top: 20.0,
+                                        top: 0.0,
                                         right: 30.0,
-                                        bottom: 10.0),
+                                        bottom: 0.0),
                                     //apply padding to some sides only
                                     child: Text(
                                       '¿Dónde quieres recibir tus sesiones?',
@@ -489,19 +397,25 @@ class _ItemViewState extends StateMVC<ItemView> {
                                       }
                                     }
                                     if (isFilled) {
-                                      launchScreen(
-                                          context, CheckTypePayment.routeName,
-                                          arguments: {
-                                            'service': _con.service,
-                                            'item': _con.itemService,
-                                            'sesions': sesionsList,
-                                            'hours': hoursList,
-                                            'customer': context
-                                                .read<LoginProvider>()
-                                                .currentUser['id'],
-                                            'idPhysio': _con.employee['id'],
-                                            'location': location
-                                          });
+                                      if (phisioSelected != null) {
+                                        launchScreen(
+                                            context, CheckTypePayment.routeName,
+                                            arguments: {
+                                              'service': _con.service,
+                                              'item': _con.itemService,
+                                              'sesions': sesionsList,
+                                              'hours': hoursList,
+                                              'customer': context
+                                                  .read<LoginProvider>()
+                                                  .currentUser['id'],
+                                              'idPhysio': phisioSelected['id'],
+                                              'location': location
+                                            });
+                                      } else {
+                                        Fluttertoast.showToast(
+                                            msg:
+                                                "Selecciona un Fisioterapeuta");
+                                      }
                                     } else {
                                       Fluttertoast.showToast(
                                           msg:
