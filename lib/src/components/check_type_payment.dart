@@ -9,7 +9,7 @@ import 'package:flutter/material.dart';
 import 'package:flutter/services.dart';
 import 'package:fluttertoast/fluttertoast.dart';
 import 'package:loading_overlay/loading_overlay.dart';
-import 'package:mercado_pago_mobile_checkout/mercado_pago_mobile_checkout.dart';
+// import 'package:mercado_pago_mobile_checkout/mercado_pago_mobile_checkout.dart';
 
 class CheckTypePayment extends StatefulWidget {
   // Route name for this view
@@ -70,11 +70,11 @@ class _CheckTypePaymentState extends State<CheckTypePayment> {
   Future<void> initPlatformState() async {
     String platformVersion;
     // Platform messages may fail, so we use a try/catch PlatformException.
-    try {
-      platformVersion = await MercadoPagoMobileCheckout.platformVersion;
-    } on PlatformException {
-      platformVersion = 'Failed to get platform version.';
-    }
+    // try {
+    //   platformVersion = await MercadoPagoMobileCheckout.platformVersion;
+    // } on PlatformException {
+    //   platformVersion = 'Failed to get platform version.';
+    // }
 
     // If the widget was removed from the tree while the asynchronous platform
     // message was in flight, we want to discard the reply rather than calling
@@ -184,41 +184,41 @@ class _CheckTypePaymentState extends State<CheckTypePayment> {
                               context, HomeView.routeName, (route) => false,
                               arguments: "2");
                         } else {
-                          print("Online payment");
-                          final preferenceId = await new MPPreferenceProvider()
-                              .getPreferenceId(
-                                  widget.item['service']['name'].toString(),
-                                  widget.item['item']['name'].toString(),
-                                  widget.item['item']['price'].toString());
-                          PaymentResult result =
-                              await MercadoPagoMobileCheckout.startCheckout(
-                            publicKey,
-                            preferenceId,
-                          );
-                          setState(() {
-                            isLoading = false;
-                          });
-                          print(result);
-                          if (result.result == "done") {
-                            if(result.status == "approved") {
-                              widget.item['mp_id'] = result.id.toString();
-                              userPhysio.createRecord(widget.item).then((
-                                  sesion) {
-                                Fluttertoast.showToast(
-                                    msg: "Pago aprobado y sesiones agendadas correctamente");
-                              });
-                              // Redirect and remove all screens
-                              Navigator.pushNamedAndRemoveUntil(
-                                  context, HomeView.routeName, (route) => false,
-                                  arguments: "2");
-                            }else{
-                              Fluttertoast.showToast(
-                                  msg: "El pago no pudo ser procesado");
-                            }
-                          }else{
-                            Fluttertoast.showToast(
-                                msg: "Pago cancelado");
-                          }
+                          // print("Online payment");
+                          // final preferenceId = await new MPPreferenceProvider()
+                          //     .getPreferenceId(
+                          //         widget.item['service']['name'].toString(),
+                          //         widget.item['item']['name'].toString(),
+                          //         widget.item['item']['price'].toString());
+                          // PaymentResult result =
+                          //     await MercadoPagoMobileCheckout.startCheckout(
+                          //   publicKey,
+                          //   preferenceId,
+                          // );
+                          // setState(() {
+                          //   isLoading = false;
+                          // });
+                          // print(result);
+                          // if (result.result == "done") {
+                          //   if(result.status == "approved") {
+                          //     widget.item['mp_id'] = result.id.toString();
+                          //     userPhysio.createRecord(widget.item).then((
+                          //         sesion) {
+                          //       Fluttertoast.showToast(
+                          //           msg: "Pago aprobado y sesiones agendadas correctamente");
+                          //     });
+                          //     // Redirect and remove all screens
+                          //     Navigator.pushNamedAndRemoveUntil(
+                          //         context, HomeView.routeName, (route) => false,
+                          //         arguments: "2");
+                          //   }else{
+                          //     Fluttertoast.showToast(
+                          //         msg: "El pago no pudo ser procesado");
+                          //   }
+                          // }else{
+                          //   Fluttertoast.showToast(
+                          //       msg: "Pago cancelado");
+                          // }
                         }
                       },
                       child: Container(
