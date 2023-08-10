@@ -115,10 +115,15 @@ class _CompleteProfileViewState extends State<CompleteProfileView> {
         : '';
     municipalities.municipio(_valueChanged);
     print("camino");
+    print( context.watch<LoginProvider>().currentUser);
+    print(      context.watch<LoginProvider>().isLoggedIn());
     return Scaffold(
-      body: (context.watch<LoginProvider>().isLoggedIn() &&
-              context.watch<LoginProvider>().currentUser['nombre'] != null
+      body: (
+
+         // context.watch<LoginProvider>().isLoggedIn() &&
+              context.watch<LoginProvider>().currentUser!= null
           ? LoadingOverlay(
+
               isLoading: context.watch<LoginProvider>().currentUser == null,
               child: SafeArea(
                 child: SizedBox(

@@ -153,12 +153,14 @@ class _MyHomePageState extends State<MyHomePage> with TickerProviderStateMixin {
           print('foreach element');
           //print('coincide');
           //print(key);
+          print("CALENDARIO==========>");
           print(value);
-          //print(element);
+          print(element);
           String s = 'Servicio: ' + element['serviceName'].toString();
           String p = 'Paquete: ' + element['packageName'].toString();
           String c = "Horario: " + element['hours'].toString();
-          String dataInfo = 'Cita \n' + s + '\n' + p + '\n' + c;
+          String d = "Ubicacion: " + element['location'].toString();
+          String dataInfo = 'Cita \n' + s + '\n' + p + '\n' + c + '\n' +d;
           //print(dataInfo);
           item.add(dataInfo);
           //_eventsFisiho.addAll({dateA: item});
@@ -168,49 +170,6 @@ class _MyHomePageState extends State<MyHomePage> with TickerProviderStateMixin {
       print(dateA);
       print(item);
     });
-    /*int i = 0;
-    while (i < elements.length) {
-      final dateA = DateFormat('yyyy-MM-dd').parse(elements[i]['date']);
-      final dateS = DateFormat('yyyy-MM-dd').parse(elements[i]['date']);
-      //print("Entrando en while");
-      if (dateA == dateS) {
-        //print("Entrando en if de while");
-
-        String s = 'Servicio: ' + elements[i]['serviceName'].toString();
-        String p = 'Paquete: ' + elements[i]['packageName'].toString();
-        String c = "Horario: " + elements[i]['hours'].toString();
-        String dataInfo = 'Cita \n' + s + '\n' + p + '\n' + c;
-        //print('data List :');
-        // helper.add({element['date']});
-
-        /*_eventsFisiho.addAll({
-          dateA: [dataInfo, dataInfo]
-        });*/
-      }
-      i++;
-    }*/
-    /*  elements.forEach((element) {
-      print(element);
-      print("imprimiendo elementos");
-      //print(element['date']);
-      final date = DateFormat('yyyy-MM-dd').parse(element['date']);
-      //print(date);
-      DateTime f2 = DateTime(2021, 01, 01);
-
-      String s = 'Servicio: ' + element['serviceName'].toString();
-      String p = 'Paquete: ' + element['packageName'].toString();
-      String c = "Horario: " + element['hours'].toString();
-      String dataInfo = 'Cita \n' + s + '\n' + p + '\n' + c;
-      //print('data List :');
-      // helper.add({element['date']});
-
-      _eventsFisiho.addAll({
-        date: [dataInfo, dataInfo]
-      }); */
-    //});
-    //print('list helper : ${helper}');
-    //print('list events ${_eventsFisiho}');
-
     return _eventsFisiho;
   }
 

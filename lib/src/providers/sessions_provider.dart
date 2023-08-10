@@ -210,6 +210,7 @@ class SessionProvider {
         'serviceName': (service.data() as Map<String, dynamic>)['name'],
         'status': elemnt['estatus'],
         'packageName': (package.data() as Map<String, dynamic>)['name'],
+        'location':(record.data() as Map<String, dynamic>)['location']
       }
           //element.data()
           );
