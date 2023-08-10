@@ -1,0 +1,38 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE plist PUBLIC "-//Apple//DTD PLIST 1.0//EN" "http://www.apple.com/DTDs/PropertyList-1.0.dtd">
+<plist version="1.0">
+<dict>
+	<key>CLIENT_ID</key>
+	<string>330010738355-b3beibdg66r6i7alrnanehvnl3v6m22u.apps.googleusercontent.com</string>
+	<key>REVERSED_CLIENT_ID</key>
+	<string>com.googleusercontent.apps.330010738355-b3beibdg66r6i7alrnanehvnl3v6m22u</string>
+	<key>ANDROID_CLIENT_ID</key>
+	<string>330010738355-1l4c7jj864cukpqrefq8lem9ahtvhcur.apps.googleusercontent.com</string>
+	<key>API_KEY</key>
+	<string>AIzaSyB6YkkIJcjXRrGFVjD4ks-r5HL5ZYUc5R4</string>
+	<key>GCM_SENDER_ID</key>
+	<string>330010738355</string>
+	<key>PLIST_VERSION</key>
+	<string>1</string>
+	<key>BUNDLE_ID</key>
+	<string>core.business.client.clientPhysiho</string>
+	<key>PROJECT_ID</key>
+	<string>fisioterapia-cfb53</string>
+	<key>STORAGE_BUCKET</key>
+	<string>fisioterapia-cfb53.appspot.com</string>
+	<key>IS_ADS_ENABLED</key>
+	<false></false>
+	<key>IS_ANALYTICS_ENABLED</key>
+	<false></false>
+	<key>IS_APPINVITE_ENABLED</key>
+	<true></true>
+	<key>IS_GCM_ENABLED</key>
+	<true></true>
+	<key>IS_SIGNIN_ENABLED</key>
+	<true></true>
+	<key>GOOGLE_APP_ID</key>
+	<string>1:330010738355:ios:68b15b7bbef95abf88bac6</string>
+	<key>DATABASE_URL</key>
+	<string>https://fisioterapia-cfb53.firebaseio.com</string>
+</dict>
+</plist>
