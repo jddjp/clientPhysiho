@@ -41,7 +41,7 @@ dependencies:
   flutter_web_auth: ^0.5.0
   sign_in_with_apple: ^4.3.0
   crypto: ^3.0.2
-
+  flutter_stripe: ^9.3.0
   flutter_svg: ^1.1.6
 
   shared_preferences: ^2.0.20
@@ -63,6 +63,7 @@ dependencies:
   mvc_pattern: ^8.12.0
   direct_select: ^2.0.0
   http: ^0.13.5
+  stripe_payment: ^1.1.4
 
 
 dependency_overrides:

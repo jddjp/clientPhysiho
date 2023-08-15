@@ -9,7 +9,8 @@ import 'package:clientPhysiho/src/views/checkout_view.dart';
 import 'package:clientPhysiho/src/views/tracking_view.dart';
 import 'package:loading_overlay/loading_overlay.dart';
 import 'package:provider/provider.dart';
-
+//Stripe
+import 'package:flutter_stripe/flutter_stripe.dart';
 class PaymentView extends StatefulWidget {
   // Route name for this view
   static const routeName = 'payment';
@@ -17,6 +18,8 @@ class PaymentView extends StatefulWidget {
   @override
   _PaymentViewState createState() => _PaymentViewState();
 }
+
+
 
 class _PaymentViewState extends State<PaymentView> {
   Map<String, dynamic> paymentTypes = {
@@ -39,9 +42,44 @@ class _PaymentViewState extends State<PaymentView> {
       'subtitle': 'Paga en línea'
     },*/
   };
+  
 
   String _selectedPayment = 'cash';
   bool isLoading = false;
+
+  //Variables Stripe
+  // Token _paymentToken;
+  // PaymentMethod _paymentMethod;
+  // String _error;
+  // final String _currentSecret =
+  //     "pi_3Jf6kwLDicFAWylz0Lj5FSsi_secret_HUxGk1k1hxjgbpLj29qyZQ94r"; //set this yourself, e.g using curl
+  // PaymentIntentResult _paymentIntent;
+  // Source _source;
+
+  // ScrollController _controller = ScrollController();
+
+  // final CreditCard testCard = CreditCard(
+  //   number: '4111111111111111',
+  //   expMonth: 08,
+  //   expYear: 22,
+  // );
+
+  GlobalKey<ScaffoldState> _scaffoldKey = GlobalKey();
+  //stipe nuevo
+  int amount = 0;
+  //Variables Stripe
+
+
+  // @override
+  // initState() {
+  //   super.initState();
+  //   StripePayment.setOptions(StripeOptions(
+  //       publishableKey:
+  //           "pk_test_51JUGZCLDicFAWylzX7Nqm96mX3u2lstlgBy8gZMlXmICyGa0SB1pa8GqKg4wptBqWL7f5sJbJs6ltCN0G54fozBj0094BVldy3",
+  //       merchantId:
+  //           "sk_test_51JUGZCLDicFAWylzSTHQFtMPO6FJDXD8724AnLaDnkpsXMFEODhpVSVZLbPxHQL6Y0HMu98pTrm4PDDhvbLG8Qdt00B9234IhA",
+  //       androidPayMode: 'test'));
+  // }
 
   @override
   Widget build(BuildContext context) {
@@ -186,4 +224,7 @@ class _PaymentViewState extends State<PaymentView> {
           )),
     );
   }
+
+
+
 }
