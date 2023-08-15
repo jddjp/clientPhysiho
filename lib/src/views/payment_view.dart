@@ -25,7 +25,7 @@ class _PaymentViewState extends State<PaymentView> {
       'subtitle': 'Al recibir tu pedido',
       'secondary': Image.asset("assets/images/pago.png")
     },
-    'clip': {
+    /*'clip': {
       'title': 'Pago con tarjeta',
       'subtitle': 'Con Clip al recibir tu pedido',
       'secondary': Image.asset(
@@ -33,7 +33,7 @@ class _PaymentViewState extends State<PaymentView> {
         width: 55,
         height: 40,
       )
-    },
+    },*/
     /*'online': {
       'title': 'Pago con tarjeta',
       'subtitle': 'Paga en línea'

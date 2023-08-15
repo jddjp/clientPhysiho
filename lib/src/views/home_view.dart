@@ -3,15 +3,12 @@ import 'package:clientPhysiho/src/components/services_item.dart';
 import 'package:clientPhysiho/src/views/complete_profile_view.dart';
 import 'package:clientPhysiho/src/views/home_services_view.dart';
 import 'package:clientPhysiho/src/views/agend_view.dart';
-import 'package:clientPhysiho/src/views/login_view.dart';
+import 'package:clientPhysiho/src/views/location_map_view.dart';
 import 'package:cloud_firestore/cloud_firestore.dart';
 import 'package:flutter/material.dart';
 import 'package:geocoding/geocoding.dart';
-import 'package:clientPhysiho/src/components/business_item.dart';
 import 'package:clientPhysiho/src/config/colors.dart';
-import 'package:clientPhysiho/src/config/constants.dart';
 import 'package:clientPhysiho/src/helpers/extension_helper.dart';
-import 'package:clientPhysiho/src/views/drawer_view.dart';
 import 'package:clientPhysiho/src/utils/Db7BottomNavigationBar.dart';
 import 'package:clientPhysiho/src/config/images.dart';
 
@@ -53,7 +50,7 @@ class _HomeViewState extends State<HomeView> {
   final List<Widget> _children = [
     HomeServiceView(),
     AgendView(),
-    // LoginView(),
+    LocationMapView(),
     CompleteProfileView()
   ];
 
@@ -83,6 +80,9 @@ class _HomeViewState extends State<HomeView> {
               Db7BottomNavigationBarItem(
                   icon: db7_ic_calendar,
                   title: Text("Agenda", style: TextStyle(fontSize: 16))),
+                           Db7BottomNavigationBarItem(
+                  icon: db7_ic_leaf,
+                  title: Text("Ubicacion", style: TextStyle(fontSize: 16))),
               Db7BottomNavigationBarItem(
                   icon: db7_ic_user,
                   title: Text("Perfil", style: TextStyle(fontSize: 16))),
