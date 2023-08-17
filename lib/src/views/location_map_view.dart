@@ -59,7 +59,7 @@ class _MyHomePageState extends State<MyHomePage> with TickerProviderStateMixin {
   }
 
   void addCustomIcon() {
-    BitmapDescriptor.fromAssetImage(ImageConfiguration(), "assets/images/launcher_iconph.png")
+    BitmapDescriptor.fromAssetImage(ImageConfiguration(), "assets/images/pin-01.png")
         .then(
       (icon) {
         setState(() {
@@ -75,7 +75,7 @@ class _MyHomePageState extends State<MyHomePage> with TickerProviderStateMixin {
     final marker = Marker(
       markerId: MarkerId('Market'),
       position:  LatLng(24.821616866968533, -107.38899707242675),
-    //  icon: markerIcon,
+      icon: markerIcon,
       infoWindow: InfoWindow(
         title: 'Physiho Consultorio',
         snippet:
