@@ -1,16 +1,18 @@
 // @dart=2.9
+import 'dart:convert';
+
 import 'package:clientPhysiho/src/config/colors.dart';
 import 'package:clientPhysiho/src/config/constants.dart';
 import 'package:clientPhysiho/src/helpers/widget_helper.dart';
-import 'package:clientPhysiho/src/providers/request_repository.dart';
 import 'package:clientPhysiho/src/providers/sessions_provider.dart';
 import 'package:clientPhysiho/src/views/home_view.dart';
 import 'package:flutter/material.dart';
-import 'package:flutter/services.dart';
+import 'package:flutter_stripe/flutter_stripe.dart';
 import 'package:fluttertoast/fluttertoast.dart';
 import 'package:loading_overlay/loading_overlay.dart';
 // import 'package:mercado_pago_mobile_checkout/mercado_pago_mobile_checkout.dart';
-
+import 'package:http/http.dart' as http;
+import 'package:flutter_dotenv/flutter_dotenv.dart';
 class CheckTypePayment extends StatefulWidget {
   // Route name for this view
   static const routeName = 'paymentType';
@@ -32,15 +34,15 @@ class _CheckTypePaymentState extends State<CheckTypePayment> {
       'subtitle': 'Al recibir tu pedido',
       'secondary': Image.asset("assets/images/pago.png")
     },
-    // 'online': {
-    //   'title': 'Pago con tarjeta',
-    //   'subtitle': 'Con Mercado Pago',
-    //   'secondary': Image.asset(
-    //     "assets/images/mercadopago.png",
-    //     width: 55,
-    //     height: 40,
-    //   )
-    // },
+    'online': {
+      'title': 'Pago con tarjeta',
+      'subtitle': 'Con Mercado Pago',
+      'secondary': Image.asset(
+        "assets/images/mercadopago.png",
+        width: 55,
+        height: 40,
+      )
+    },
     /*'online': {
       'title': 'Pago con tarjeta',
       'subtitle': 'Paga en línea'
@@ -51,9 +53,6 @@ class _CheckTypePaymentState extends State<CheckTypePayment> {
   String _selectedPayment = 'cash';
 
   bool isLoading = false;
-
-  static const publicKey = "TEST-3e57ffeb-fa2f-4529-b7dc-b90b29cf54f2";
-
   static const preferenceIdcons =
       "456490293-ad1850e9-36dd-4353-9b38-b9417ff3bf9d";
   //456490293-ea66f5b6-38ca-4db1-a432-45a3edb5e642
@@ -68,6 +67,7 @@ class _CheckTypePaymentState extends State<CheckTypePayment> {
 
   // Platform messages are asynchronous, so we initialize in an async method.
   Future<void> initPlatformState() async {
+     WidgetsFlutterBinding.ensureInitialized();
     String platformVersion;
     // Platform messages may fail, so we use a try/catch PlatformException.
     // try {
@@ -114,7 +114,7 @@ class _CheckTypePaymentState extends State<CheckTypePayment> {
                   "assets/images/progress.gif",
                   width: 120,
                 ),
-                text("¡Estamos preparando tu paquete!",
+                text("¡Estamos Agendando tu cita!",
                     isCentered: true,
                     fontWeight: fontSemibold,
                     fontSize: textSizeLargeMedium),
@@ -181,44 +181,17 @@ class _CheckTypePaymentState extends State<CheckTypePayment> {
                           });
                           // Redirect and remove all screens
                           Navigator.pushNamedAndRemoveUntil(
-                              context, HomeView.routeName, (route) => false,
-                              arguments: "2");
+                              context, HomeView.routeName, (route) => false,  arguments: "2");
                         } else {
-                          // print("Online payment");
-                          // final preferenceId = await new MPPreferenceProvider()
-                          //     .getPreferenceId(
-                          //         widget.item['service']['name'].toString(),
-                          //         widget.item['item']['name'].toString(),
-                          //         widget.item['item']['price'].toString());
-                          // PaymentResult result =
-                          //     await MercadoPagoMobileCheckout.startCheckout(
-                          //   publicKey,
-                          //   preferenceId,
-                          // );
-                          // setState(() {
-                          //   isLoading = false;
-                          // });
-                          // print(result);
-                          // if (result.result == "done") {
-                          //   if(result.status == "approved") {
-                          //     widget.item['mp_id'] = result.id.toString();
-                          //     userPhysio.createRecord(widget.item).then((
-                          //         sesion) {
-                          //       Fluttertoast.showToast(
-                          //           msg: "Pago aprobado y sesiones agendadas correctamente");
-                          //     });
-                          //     // Redirect and remove all screens
-                          //     Navigator.pushNamedAndRemoveUntil(
-                          //         context, HomeView.routeName, (route) => false,
-                          //         arguments: "2");
-                          //   }else{
-                          //     Fluttertoast.showToast(
-                          //         msg: "El pago no pudo ser procesado");
-                          //   }
-                          // }else{
-                          //   Fluttertoast.showToast(
-                          //       msg: "Pago cancelado");
-                          // }
+                            WidgetsFlutterBinding.ensureInitialized();
+                            // create payment method
+                              //Assign publishable key to flutter_stripe
+                              Stripe.publishableKey =  "pk_test_51JUGZCLDicFAWylzX7Nqm96mX3u2lstlgBy8gZMlXmICyGa0SB1pa8GqKg4wptBqWL7f5sJbJs6ltCN0G54fozBj0094BVldy3";
+                              // Stripe.merchantIdentifier =
+                              //     "merchant.mx.com.ybooks.app";
+                              await dotenv.load(fileName: "assets/.env");
+                              makePayment(200);
+                         
                         }
                       },
                       child: Container(
@@ -257,4 +230,107 @@ class _CheckTypePaymentState extends State<CheckTypePayment> {
           )),
     );
   }
+
+   var paymentIntent;
+
+  Future<void> makePayment(int bookPrice) async {
+    try {
+      //STEP 1: Create Payment Intent
+           paymentIntent =
+          await createPaymentIntent((bookPrice * 100).toString(), 'MXN');
+
+      //STEP 2: Initialize Payment Sheet
+      await Stripe.instance
+          .initPaymentSheet(
+              paymentSheetParameters: SetupPaymentSheetParameters(
+            paymentIntentClientSecret:
+                paymentIntent['client_secret'], //Gotten from payment intent
+            style: ThemeMode.light,
+            merchantDisplayName: 'Book',
+          ))
+          .then((value) {});
+
+      //STEP 3: Display Payment sheet
+      displayPaymentSheet();
+    } catch (err) {
+        throw Exception(err);
+    }
+  }
+  createPaymentIntent(String amount, String currency) async {
+    try {
+      //Request body
+      Map<String, dynamic> body = {
+        'amount': amount,
+        'currency': currency,
+      };
+
+      //Make post request to Stripe
+      var response = await http.post(
+        Uri.parse('https://api.stripe.com/v1/payment_intents'),
+        headers: {
+           'Authorization': 'Bearer ${dotenv.env['STRIPE_SECRET']}',
+           'Content-Type': 'application/x-www-form-urlencoded'
+        },
+        body: body,
+      );
+      return json.decode(response.body);
+    } catch (err) {
+       throw Exception(err.toString());
+      
+    }
+  }
+
+  displayPaymentSheet() async {
+    try {
+      await Stripe.instance.presentPaymentSheet().then((value) {
+        showDialog(
+            context: context,
+            builder: (_) => AlertDialog(
+                  content: Column(
+                    mainAxisSize: MainAxisSize.min,
+                    children: const [
+                      Icon(
+                        Icons.check_circle,
+                        color: Colors.green,
+                        size: 100.0,
+                      ),
+                      SizedBox(height: 10.0),
+                      Text("Pago realizado correctamente!"),
+                    ],
+                  ),
+                ));
+     userPhysio.createRecord(widget.item).then((sesion) {
+                            Fluttertoast.showToast(
+                                msg: "Sesiones agendadas correctamente");
+                          });
+                          // Redirect and remove all screens
+                          Navigator.pushNamedAndRemoveUntil(
+                              context, HomeView.routeName, (route) => false,  arguments: "2");
+        paymentIntent = null;
+      }).onError((error, stackTrace) {
+        throw Exception(error);
+      });
+    } on StripeException catch (e) {
+      print('Error is:---> $e');
+      AlertDialog(
+        content: Column(
+          mainAxisSize: MainAxisSize.min,
+          children: [
+            Row(
+              children: const [
+                Icon(
+                  Icons.cancel,
+                  color: Colors.red,
+                ),
+                Text("Error procesando el pago"),
+              ],
+            ),
+          ],
+        ),
+      );
+    } catch (e) {
+      print('$e');
+    }
+  }
+
 }

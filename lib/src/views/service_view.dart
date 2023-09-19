@@ -110,7 +110,7 @@ class _ServiceViewState extends StateMVC<ServiceView> {
                               title: Text(
                                 _con.service['name'],
                                 style: TextStyle(
-                                    fontSize: textSizeLarge,
+                                    fontSize: textSizeNormal,
                                     fontWeight: fontSemibold,
                                     shadows: !isShrink
                                         ? [

@@ -168,22 +168,22 @@ class _ItemViewState extends StateMVC<ItemView> {
                                   children: [
                                     Text('Servicio:',
                                         style: TextStyle(
-                                          fontSize: textSizeNormal,
+                                          fontSize: textSizeMedium,
                                           fontWeight: fontSemibold,
                                         )),
                                     Text('Paquete:',
                                         style: TextStyle(
-                                          fontSize: textSizeNormal,
+                                          fontSize: textSizeMedium,
                                           fontWeight: fontSemibold,
                                         )),
                                     Text('Costo:',
                                         style: TextStyle(
-                                          fontSize: textSizeNormal,
+                                          fontSize: textSizeMedium,
                                           fontWeight: fontSemibold,
                                         )),
                                     Text('Sesiones:',
                                         style: TextStyle(
-                                          fontSize: textSizeNormal,
+                                          fontSize: textSizeMedium,
                                           fontWeight: fontSemibold,
                                         ))
                                   ],
@@ -193,12 +193,12 @@ class _ItemViewState extends StateMVC<ItemView> {
                                   children: [
                                     Text(_con.service['name'],
                                         style: TextStyle(
-                                          fontSize: textSizeNormal,
+                                          fontSize: textSizeMedium,
                                           fontWeight: fontRegular,
                                         )),
                                     Text(_con.itemService['name'],
                                         style: TextStyle(
-                                          fontSize: textSizeNormal,
+                                          fontSize: textSizeMedium,
                                           fontWeight: fontRegular,
                                         )),
                                     Text(
@@ -206,12 +206,12 @@ class _ItemViewState extends StateMVC<ItemView> {
                                             _con.itemService['price']
                                                 .toString(),
                                         style: TextStyle(
-                                          fontSize: textSizeNormal,
+                                          fontSize: textSizeMedium,
                                           fontWeight: fontSemibold,
                                         )),
                                     Text(_con.itemService['sesion'].toString(),
                                         style: TextStyle(
-                                          fontSize: textSizeNormal,
+                                          fontSize: textSizeMedium,
                                           fontWeight: fontRegular,
                                         ))
                                   ],
@@ -373,7 +373,7 @@ class _ItemViewState extends StateMVC<ItemView> {
                               children: [
                                 Text('Continuar compra',
                                     style: TextStyle(
-                                      fontSize: textSizeNormal,
+                                      fontSize: textSizeMedium,
                                       fontWeight: fontRegular,
                                     )),
                                 ElevatedButton(

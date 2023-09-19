@@ -31,7 +31,7 @@ class _CheckoutViewState extends State<CheckoutView> {
               "assets/images/progress.gif",
               width: 120,
             ),
-            text("¡Estamos creando tu pedido!",
+            text("¡Estamos Agendando tu cita!",
                 isCentered: true,
                 fontWeight: fontSemibold,
                 fontSize: textSizeLargeMedium),
