@@ -63,7 +63,7 @@ class _PaymentViewState extends State<PaymentView> {
       ),
       body: LoadingOverlay(
           isLoading: isLoading,
-          progress1Indicator: Container(
+          progressIndicator: Container(
             child: Column(
               mainAxisAlignment: MainAxisAlignment.center,
               children: [

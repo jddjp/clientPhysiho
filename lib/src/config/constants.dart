@@ -40,7 +40,7 @@ final headingStyle = TextStyle(
 );
 
 const ORDER_RECEIVED = 'received';
-const ORDER_IN_progress1 = 'progress1';
+const ORDER_IN_progress = 'progress';
 const ORDER_READY = 'ready';
 const ORDER_WAITING_DRIVER = 'waiting_driver';
 const ORDER_WAITING_ORDER = 'waiting_order';

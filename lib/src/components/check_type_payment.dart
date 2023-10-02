@@ -36,9 +36,9 @@ class _CheckTypePaymentState extends State<CheckTypePayment> {
     },
     'online': {
       'title': 'Pago con tarjeta',
-      'subtitle': 'Con Mercado Pago',
+      'subtitle': 'Con Tarjeta ',
       'secondary': Image.asset(
-        "assets/images/mercadopago.png",
+        "assets/images/pagotarjeta.png",
         width: 55,
         height: 40,
       )
@@ -106,7 +106,7 @@ class _CheckTypePaymentState extends State<CheckTypePayment> {
       ),
       body: LoadingOverlay(
           isLoading: isLoading,
-          progress1Indicator: Container(
+          progressIndicator: Container(
             child: Column(
               mainAxisAlignment: MainAxisAlignment.center,
               children: [
@@ -185,8 +185,10 @@ class _CheckTypePaymentState extends State<CheckTypePayment> {
                         } else {
                             WidgetsFlutterBinding.ensureInitialized();
                             // create payment method
+                            //pk_test_51Nq3fsDmZEM6EpGy6OrWjZhibMW390AyiyAe6IlIVPMN4LZs7R77WxQGyDKvukypSldXCtX8tYtzID7L6aOuHzPu00TH2t7YE4
                               //Assign publishable key to flutter_stripe
-                              Stripe.publishableKey =  "pk_test_51JUGZCLDicFAWylzX7Nqm96mX3u2lstlgBy8gZMlXmICyGa0SB1pa8GqKg4wptBqWL7f5sJbJs6ltCN0G54fozBj0094BVldy3";
+                              
+                              Stripe.publishableKey =  "pk_live_51Nq3fsDmZEM6EpGygH3bRZiBSDyQVU8MndbeiFZb0HDRwke24csGic52S9CjaVFeI99pWN2IwWtjkbAwtspeFF8h00FKcR2WEW";
                               // Stripe.merchantIdentifier =
                               //     "merchant.mx.com.ybooks.app";
                               await dotenv.load(fileName: "assets/.env");

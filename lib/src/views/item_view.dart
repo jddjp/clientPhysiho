@@ -426,7 +426,7 @@ class _ItemViewState extends StateMVC<ItemView> {
                                     'Siguiente',
                                     style: TextStyle(
                                         color: pantoneEight,
-                                        fontSize: textSizeNormal,
+                                        fontSize: textSizeMedium,
                                         fontWeight: fontBold),
                                   ),
                                 ),

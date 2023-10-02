@@ -51,7 +51,7 @@ class CustomSearchDelegate extends SearchDelegate {
   Widget buildLeading(BuildContext context) {
     return IconButton(
       icon: AnimatedIcon(
-          icon: AnimatedIcons.menu_arrow, progress1: transitionAnimation),
+          icon: AnimatedIcons.menu_arrow, progress: transitionAnimation),
       onPressed: () {
         close(context, null);
       },

@@ -56,7 +56,7 @@ class CartProvider with ChangeNotifier {
       if (currentOrder == null ||
           currentOrder['status'] == ORDER_FINISHED ||
           currentOrder['status'] == ORDER_CANCELED) {
-        clearOrderInprogress1();
+        clearOrderInprogress();
         notifyListeners();
       }
     }
@@ -104,8 +104,8 @@ class CartProvider with ChangeNotifier {
     return _order == null || _order.items.length == 0;
   }
 
-  void clearOrderInprogress1() {
-    _prefs.remove('orderInprogress1');
+  void clearOrderInprogress() {
+    _prefs.remove('orderInprogress');
     _orderInprogress1 = null;
     notifyListeners();
   }
