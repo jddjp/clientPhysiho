@@ -61,7 +61,7 @@ class _CategoryViewState extends State<CategoryView> {
                 }
 
                 if (snapshot.connectionState == ConnectionState.waiting) {
-                  return Center(child: CircularProgressIndicator());
+                  return Center(child: Circularprogress1Indicator());
                 }
                 if (snapshot.data.docs.length == 0) {
                   return Center(

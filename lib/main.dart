@@ -285,7 +285,7 @@ class _PhysihoAppState extends State<PhysihoApp> {
                   !context.watch<LocationProvider>().hasPermission()) {
                 print("==============LOCATION_VIEW=====================");
                 return LocationView();
-                // if orderInProgress == logged_out then redirect to cart_view
+                // if orderInprogress1 == logged_out then redirect to cart_view
               } else {*/
               // Go to Home
               print(_prefs.getBool('locationPermission'));

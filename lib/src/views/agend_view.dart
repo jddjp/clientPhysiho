@@ -355,7 +355,7 @@ class _MyHomePageState extends State<MyHomePage> with TickerProviderStateMixin {
             SizedBox(
               height: size_chargin,
               width: size_chargin,
-              child: CircularProgressIndicator(
+              child: Circularprogress1Indicator(
                backgroundColor: appColorAccent,
                 strokeWidth: lineStroke,
                 ))

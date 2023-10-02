@@ -20,7 +20,7 @@ class LoadingView extends StatelessWidget {
           crossAxisAlignment: CrossAxisAlignment.center,
           mainAxisAlignment: MainAxisAlignment.center,
           children: [
-            CircularProgressIndicator(),
+            Circularprogress1Indicator(),
             SizedBox(height: spacing_standard_new),
             text(sourceLoading)
           ],

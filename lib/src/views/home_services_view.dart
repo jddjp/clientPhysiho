@@ -76,7 +76,7 @@ class _HomeServiceViewState extends State<HomeServiceView> {
                               if (snapshot.connectionState ==
                                   ConnectionState.waiting) {
                                 return Center(
-                                    child: CircularProgressIndicator(
+                                    child: Circularprogress1Indicator(
                                   backgroundColor: appColorAccent,
                                 ));
                               }

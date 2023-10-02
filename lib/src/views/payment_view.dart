@@ -63,12 +63,12 @@ class _PaymentViewState extends State<PaymentView> {
       ),
       body: LoadingOverlay(
           isLoading: isLoading,
-          progressIndicator: Container(
+          progress1Indicator: Container(
             child: Column(
               mainAxisAlignment: MainAxisAlignment.center,
               children: [
                 Image.asset(
-                  "assets/images/progress.gif",
+                  "assets/images/progress1.gif",
                   width: 120,
                 ),
                 text("¡Estamos Agendando tu cita!",

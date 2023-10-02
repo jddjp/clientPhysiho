@@ -105,11 +105,11 @@ class _TrackingViewState extends State<TrackingView> {
                               textColor: textSecondaryColor),
                           content: Container(),
                           state: order['status_step'] >
-                                  ORDER_CLIENT_IN_PROGRESS_STEP
+                                  ORDER_CLIENT_IN_progress1_STEP
                               ? StepState.complete
                               : StepState.indexed,
                           isActive: order['status_step'] ==
-                              ORDER_CLIENT_IN_PROGRESS_STEP),
+                              ORDER_CLIENT_IN_progress1_STEP),
                       Step(
                           title: text("Tu pedido está en camino",
                               textColor: textSecondaryColor),

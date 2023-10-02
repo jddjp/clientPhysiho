@@ -21,14 +21,14 @@ import 'login_provider.dart';
 class CartProvider with ChangeNotifier {
   SharedPreferences _prefs;
   OrderModel _order;
-  String _orderInProgress;
+  String _orderInprogress1;
   bool hasService = true; // We have service on client address?
   Map<String, dynamic> _coupon;
 
   // Getter
   OrderModel get order => _order;
   List<OrderItemModel> get items => _order != null ? _order.items : [];
-  String get orderInProgress => _orderInProgress;
+  String get orderInprogress1 => _orderInprogress1;
   Map<String, dynamic> get coupon => _coupon;
   bool get hasCoupon => _coupon != null;
 
@@ -42,21 +42,21 @@ class CartProvider with ChangeNotifier {
     _prefs = await SharedPreferences.getInstance();
     _order = new OrderModel();
 
-    // Check for a order in progress
-    _orderInProgress = _prefs.getString('orderInProgress');
-    if (hasOrderInProgress()) {
+    // Check for a order in progress1
+    _orderInprogress1 = _prefs.getString('orderInprogress1');
+    if (hasOrderInprogress1()) {
       // Get order info
       DocumentSnapshot orderRef = await FirebaseFirestore.instance
           .collection('orders')
-          .doc(_orderInProgress)
+          .doc(_orderInprogress1)
           .get();
       Map<String, dynamic> currentOrder = orderRef.data();
 
-      // Delete order in progress
+      // Delete order in progress1
       if (currentOrder == null ||
           currentOrder['status'] == ORDER_FINISHED ||
           currentOrder['status'] == ORDER_CANCELED) {
-        clearOrderInProgress();
+        clearOrderInprogress1();
         notifyListeners();
       }
     }
@@ -68,8 +68,8 @@ class CartProvider with ChangeNotifier {
   }
 
   bool hasItems() => items.length > 0;
-  bool hasOrderInProgress() {
-    return _orderInProgress != null && _orderInProgress != '';
+  bool hasOrderInprogress1() {
+    return _orderInprogress1 != null && _orderInprogress1 != '';
   }
 
   void addItem(OrderItemModel orderItem) {
@@ -80,7 +80,7 @@ class CartProvider with ChangeNotifier {
       return;
     }
 
-    if (hasOrderInProgress()) {
+    if (hasOrderInprogress1()) {
       Fluttertoast.showToast(
           msg:
               "No puedes ordenar hasta que se complete tu pedido en progreso.");
@@ -104,9 +104,9 @@ class CartProvider with ChangeNotifier {
     return _order == null || _order.items.length == 0;
   }
 
-  void clearOrderInProgress() {
-    _prefs.remove('orderInProgress');
-    _orderInProgress = null;
+  void clearOrderInprogress1() {
+    _prefs.remove('orderInprogress1');
+    _orderInprogress1 = null;
     notifyListeners();
   }
 
@@ -362,7 +362,7 @@ class CartProvider with ChangeNotifier {
     });
 
     // Save current order
-    _prefs.setString('orderInProgress', order.id);
+    _prefs.setString('orderInprogress1', order.id);
 
     // Reset current
     _order = new OrderModel();

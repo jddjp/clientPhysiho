@@ -208,8 +208,8 @@ class LoginProvider with ChangeNotifier {
     } on FacebookAuthException catch (e) {
       print(e.message);
       switch (e.errorCode) {
-        case FacebookAuthErrorCode.OPERATION_IN_PROGRESS:
-          print("You have a previous login operation in progress");
+        case FacebookAuthErrorCode.OPERATION_IN_progress1:
+          print("You have a previous login operation in progress1");
           break;
         case FacebookAuthErrorCode.CANCELLED:
           print("login cancelled");

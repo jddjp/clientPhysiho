@@ -40,7 +40,7 @@ final headingStyle = TextStyle(
 );
 
 const ORDER_RECEIVED = 'received';
-const ORDER_IN_PROGRESS = 'progress';
+const ORDER_IN_progress1 = 'progress1';
 const ORDER_READY = 'ready';
 const ORDER_WAITING_DRIVER = 'waiting_driver';
 const ORDER_WAITING_ORDER = 'waiting_order';
@@ -56,7 +56,7 @@ const ORDER_CANCELED = 'canceled';
 const ORDER_DRIVER_FINISHED_STEP = 5;
 
 const ORDER_CLIENT_RECEIVED_STEP = 1;
-const ORDER_CLIENT_IN_PROGRESS_STEP = 2;
+const ORDER_CLIENT_IN_progress1_STEP = 2;
 const ORDER_CLIENT_DELIVERING_STEP = 3;
 const ORDER_CLIENT_WAITING_CLIENT_STEP = 4;
 const ORDER_CLIENT_FINISHED_STEP = 5;

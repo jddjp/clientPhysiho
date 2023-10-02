@@ -124,7 +124,7 @@ class _CreateAccountViewState extends State<CreateAccountView> {
                             child: new Row(
                               mainAxisSize: MainAxisSize.min,
                               children: [
-                                new CircularProgressIndicator(),
+                                new Circularprogress1Indicator(),
                                 Container(
                                   width: 16,
                                   height: 16,

@@ -28,7 +28,7 @@ class _CheckoutViewState extends State<CheckoutView> {
           mainAxisAlignment: MainAxisAlignment.center,
           children: [
             Image.asset(
-              "assets/images/progress.gif",
+              "assets/images/progress1.gif",
               width: 120,
             ),
             text("¡Estamos Agendando tu cita!",
