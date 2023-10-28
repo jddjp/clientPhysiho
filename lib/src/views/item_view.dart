@@ -98,6 +98,7 @@ class _ItemViewState extends StateMVC<ItemView> {
   }
 
   var sesionsList = new List(15);
+  String selectedDay ;
   var hoursList = new List(15);
   final userPhysio = new SessionProvider();
   String location = "consultorio";
@@ -118,7 +119,7 @@ class _ItemViewState extends StateMVC<ItemView> {
     //print(widget.item);
     //print(sesionsList);
     //print(hoursList);
-// Change status bar color
+    // Change status bar color
     // print(userPhysio.getPhysio());
     changeStatusColor(Colors.transparent);
     return (context.watch<LoginProvider>().isLoggedIn() &&
@@ -607,7 +608,7 @@ class _ItemViewState extends StateMVC<ItemView> {
                           setState(() {
                             // print('setState');
                             // print(index);
-                            /*if (sesionsList.contains(
+                            if (sesionsList.contains(
                                 DateFormat('yyyy-MM-dd').format(value))) {
                               Fluttertoast.showToast(
                                   msg:
@@ -615,7 +616,12 @@ class _ItemViewState extends StateMVC<ItemView> {
                             } else {
                               sesionsList[index] =
                                   DateFormat('yyyy-MM-dd').format(value);
-                            }*/
+
+                                   String selectedDayOfWeek = DateFormat('EEEE').format(value);
+
+                                   selectedDay=selectedDayOfWeek;
+                         
+                           }
                           });
                         },
                       ),
@@ -633,7 +639,7 @@ class _ItemViewState extends StateMVC<ItemView> {
                     ),
                     FutureBuilder(
                       future: userPhysio.getHours(
-                          index, _con.employee['id'], sesionsList[index]),
+                          index, _con.employee['id'], sesionsList[index],selectedDay),
                       builder: (BuildContext context,
                           AsyncSnapshot<List<dynamic>> snapshot) {
                         print('list hours');

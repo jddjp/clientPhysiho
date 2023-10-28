@@ -22,11 +22,11 @@ class SessionProvider {
     return buffer.toString();
   }
 
-  Future<List<Map<String, dynamic>>> getHours(
-      int index, String idEmployee, String sesionsListIndex) async {
+  Future<List<Map<String, dynamic>>> getHours(int index, String idEmployee,
+      String sesionsListIndex, String selectedDay) async {
     var hoursListIndex = new List(15);
     List<Map<String, dynamic>> hoursList = new List();
-
+   
     hoursList.add(
       {
         'value': '9:00',
@@ -57,28 +57,95 @@ class SessionProvider {
     );
     hoursList.add(
       {
-        'value': '16:00',
-        'label': '16:00 - 17:00',
+        'value': '15:00',
+        'label': '15:00 - 16:00',
+        'icon': Icon(Icons.stop),
+      },
+    );
+
+    hoursList.add(
+      {
+        'value': '16:30',
+        'label': '16:30 - 17:30',
+        'icon': Icon(Icons.stop),
+      },
+    );
+
+    hoursList.add(
+      {
+        'value': '18:00',
+        'label': '18:00 - 19:00',
         'icon': Icon(Icons.stop),
       },
     );
     hoursList.add(
       {
-        'value': '17:30',
-        'label': '17:30 - 18:30',
+        'value': '19:30',
+        'label': '19:30 - 20:30',
         'icon': Icon(Icons.stop),
       },
     );
 
-    DocumentReference physioRef =
-        FirebaseFirestore.instance.collection('users').doc(idEmployee);
+    hoursList.add(
+      {
+        'value': '21:00',
+        'label': '21:00 - 22:00',
+        'icon': Icon(Icons.stop),
+      },
+    );
+
+   
+
+    DocumentReference physioRef = FirebaseFirestore.instance
+        .collection('users')
+        .doc('26aK8lgQ70c7rkoNmKECZepFQIW2');
+
+    DocumentSnapshot physioSnapshot = await physioRef.get();
+    bool isDayAvailable = false;
+    Map<String, dynamic> physioData =
+        physioSnapshot.data() as Map<String, dynamic>;
+    if (physioData.containsKey('schedules')) {
+      Map<String, dynamic> schedulesMap = physioData['schedules'];
+
+// Itera sobre las claves (días de la semana) en el mapa schedulesMap
+      schedulesMap.forEach((key, value) {
+        if (selectedDay != null) {
+          if (key.toLowerCase() == selectedDay.toLowerCase()) {
+            // El día de la semana seleccionado está presente en el mapa
+            isDayAvailable = true;
+
+            // Obtén las horas de cierre y apertura del mapa
+            String closingTime = value['closing_time'];
+            String openingTime = value['opening_time'];
+
+            DateTime openingHour = DateFormat('HH:mm').parse(openingTime);
+DateTime closingHour = DateFormat('HH:mm').parse(closingTime);
+// Eliminar las horas que no están dentro del rango de cierre y apertura
+hoursList.removeWhere((hour) {
+  DateTime currentHour = DateFormat('HH:mm').parse(hour['value']);
+  return currentHour.isBefore(openingHour) || currentHour.isAfter(closingHour);
+});
+
+       
+          }
+        }
+      });
+    }
+
+    if (!isDayAvailable) {
+      // El día de la semana seleccionado no está disponible en el mapa
+      // Puedes manejar esta situación como desees, por ejemplo, mostrando un mensaje de error.
+      print('El día seleccionado no está disponible.');
+    }
+
+
 
     print('physio : ${physioRef}');
 
     if (sesionsListIndex != null) {
       QuerySnapshot sesionData = await FirebaseFirestore.instance
           .collection('sesionRecord')
-          .where('users', isEqualTo: physioRef)
+          // .where('users', isEqualTo: physioRef)
           .where('estatus', isEqualTo: 1)
           .where('date', isEqualTo: sesionsListIndex)
           // .orderBy('fecha')
@@ -89,6 +156,7 @@ class SessionProvider {
       print('reference sesions Record');
       print(sesionData);
       sesionData.docs.forEach((element) {
+        print('for hours');
         print(element.data());
         Map<String, dynamic> elemnt = element.data();
         hoursList.forEach((elementHours) {
@@ -210,7 +278,7 @@ class SessionProvider {
         'serviceName': (service.data() as Map<String, dynamic>)['name'],
         'status': elemnt['estatus'],
         'packageName': (package.data() as Map<String, dynamic>)['name'],
-        'location':(record.data() as Map<String, dynamic>)['location']
+        'location': (record.data() as Map<String, dynamic>)['location']
       }
           //element.data()
           );
