@@ -1,7 +1,6 @@
 // @dart=2.9
 import 'dart:async';
 
-import 'package:cached_network_image/cached_network_image.dart';
 import 'package:clientPhysiho/src/components/check_type_payment.dart';
 import 'package:clientPhysiho/src/config/colors.dart';
 import 'package:clientPhysiho/src/config/constants.dart';
@@ -51,32 +50,11 @@ class _ItemViewState extends StateMVC<ItemView> {
   String _valueToValidate = '';
   String _valueSaved = '';
 
-  final List<Map<String, dynamic>> _items = [
-    {
-      'value': '9:00',
-      'label': '9:00',
-      'icon': Icon(Icons.stop),
-    },
-    {
-      'value': 'circleValue',
-      'label': 'Circle Label Loooooooooooooooooooong text',
-      'icon': Icon(Icons.fiber_manual_record),
-      'textStyle': TextStyle(color: Colors.red),
-    },
-    {
-      'value': 'starValue',
-      'label': 'Star Label',
-      'enable': false,
-      'icon': Icon(Icons.grade),
-    },
-  ];
-
   /// This implementation is just to simulate a load data behavior
   /// from a data base sqlite or from a API
   Future<void> _getValue() async {
     await Future.delayed(const Duration(seconds: 3), () {
       setState(() {
-        //_initialValue = 'circleValue';
         _controller.text = 'circleValue';
       });
     });
@@ -98,7 +76,7 @@ class _ItemViewState extends StateMVC<ItemView> {
   }
 
   var sesionsList = new List(15);
-  String selectedDay ;
+  String selectedDay;
   var hoursList = new List(15);
   final userPhysio = new SessionProvider();
   String location = "consultorio";
@@ -149,15 +127,6 @@ class _ItemViewState extends StateMVC<ItemView> {
                     child: SingleChildScrollView(
                       child: Column(
                         children: [
-/*                          Container(
-                            margin: EdgeInsets.only(top: 50),
-                            padding: EdgeInsets.all(10),
-                            child: Text(
-                              'Detalle de Compra',
-                              style:
-                                  TextStyle(color: Colors.black, fontSize: 18),
-                            ),
-                          ),*/
                           Container(
                             padding: EdgeInsets.only(
                                 left: 0.0, top: 30.0, bottom: 0, right: 0),
@@ -562,72 +531,78 @@ class _ItemViewState extends StateMVC<ItemView> {
                             'Esta es tu primera sesión,selecciona un día despues de la compra '),
                       )
                     : Container(),
-                Row(
-                  children: [
-                    Icon(
-                      Icons.calendar_month_rounded,
-                      size: 22,
-                    ),
-                    SizedBox(
-                      width: 10,
-                    ),
-                    Container(
-                      width: MediaQuery.of(context).size.width * 0.7,
-                      child: DateTimeFormField(
-                        decoration: const InputDecoration(
-                          hintStyle: TextStyle(color: Colors.black45),
-                          errorStyle: TextStyle(color: Colors.redAccent),
-                          border: OutlineInputBorder(),
-                          suffixIcon: Icon(Icons.event_note),
-                          labelText: 'Fecha de cita',
-                        ),
-                        mode: DateTimeFieldPickerMode.date,
-                        autovalidateMode: AutovalidateMode.always,
-                        validator: (value) {
-                          if (value != null) {
-                            if (sesionsList[index] !=
-                                DateFormat('yyyy-MM-dd').format(value)) {
-                              if (sesionsList.contains(
-                                  DateFormat('yyyy-MM-dd').format(value))) {
-                                sesionsList[index] = null;
-                                return "Error: No puedes tener mas de una sesión al día.";
-                              } else if (value.isBefore(DateTime.now())) {
-                                sesionsList[index] = null;
-                                return "Error: selecciona una fecha posterior a hoy.";
-                              } else {
-                                sesionsList[index] =
-                                    DateFormat('yyyy-MM-dd').format(value);
-                              }
-                            }
-                          }
-                          return null;
-                        },
-                        onDateSelected: (DateTime value) {
-                          selectedDate = value;
-                          //print(value);
-                          setState(() {
-                            // print('setState');
-                            // print(index);
-                            if (sesionsList.contains(
-                                DateFormat('yyyy-MM-dd').format(value))) {
-                              Fluttertoast.showToast(
-                                  msg:
-                                      "No puedes tener mas de una sesión al día, selecciona otra fecha");
-                            } else {
-                              sesionsList[index] =
-                                  DateFormat('yyyy-MM-dd').format(value);
+                // phisioSelected == ""
+                //     ? Fluttertoast.showToast(
+                //         msg: "Selecciona un Fisioterapeuta")
+                    Row(
+                        children: [
+                          Icon(
+                            Icons.calendar_month_rounded,
+                            size: 22,
+                          ),
+                          SizedBox(
+                            width: 10,
+                          ),
+                          Container(
+                            width: MediaQuery.of(context).size.width * 0.7,
+                            child: DateTimeFormField(
+                              decoration: const InputDecoration(
+                                hintStyle: TextStyle(color: Colors.black45),
+                                errorStyle: TextStyle(color: Colors.redAccent),
+                                border: OutlineInputBorder(),
+                                suffixIcon: Icon(Icons.event_note),
+                                labelText: 'Fecha de cita',
+                              ),
+                              mode: DateTimeFieldPickerMode.date,
+                              autovalidateMode: AutovalidateMode.always,
+                              validator: (value) {
+                                if (value != null) {
+                                  if (sesionsList[index] !=
+                                      DateFormat('yyyy-MM-dd').format(value)) {
+                                    if (sesionsList.contains(
+                                        DateFormat('yyyy-MM-dd')
+                                            .format(value))) {
+                                      sesionsList[index] = null;
+                                      return "Error: No puedes tener mas de una sesión al día.";
+                                    }
+                                    if (value.isBefore(DateTime.now())) {
+                                      sesionsList[index] = null;
+                                      return "Error: selecciona una fecha posterior a hoy.";
+                                    } else {
+                                      sesionsList[index] =
+                                          DateFormat('yyyy-MM-dd')
+                                              .format(value);
+                                    }
+                                  }
+                                }
+                                return null;
+                              },
+                              onDateSelected: (DateTime value) {
+                                selectedDate = value;
+                                //print(value);
+                                setState(() {
+                                  // print('setState');
+                                  // print(index);
+                                  if (sesionsList.contains(
+                                      DateFormat('yyyy-MM-dd').format(value))) {
+                                    Fluttertoast.showToast(
+                                        msg:
+                                            "No puedes tener mas de una sesión al día, selecciona otra fecha");
+                                  } else {
+                                    sesionsList[index] =
+                                        DateFormat('yyyy-MM-dd').format(value);
 
-                                   String selectedDayOfWeek = DateFormat('EEEE').format(value);
+                                    String selectedDayOfWeek =
+                                        DateFormat('EEEE').format(value);
 
-                                   selectedDay=selectedDayOfWeek;
-                         
-                           }
-                          });
-                        },
+                                    selectedDay = selectedDayOfWeek;
+                                  }
+                                });
+                              },
+                            ),
+                          )
+                        ],
                       ),
-                    )
-                  ],
-                ),
                 Row(
                   children: [
                     Icon(
@@ -638,8 +613,8 @@ class _ItemViewState extends StateMVC<ItemView> {
                       width: 10,
                     ),
                     FutureBuilder(
-                      future: userPhysio.getHours(
-                          index, _con.employee['id'], sesionsList[index],selectedDay),
+                      future: userPhysio.getHours(index, _con.employee['id'],
+                          sesionsList[index], selectedDay),
                       builder: (BuildContext context,
                           AsyncSnapshot<List<dynamic>> snapshot) {
                         print('list hours');
@@ -679,7 +654,14 @@ class _ItemViewState extends StateMVC<ItemView> {
                             ),
                           );
                         } else {
-                          return Container();
+                          return Container(
+                            width: 200,
+                            child: Text(
+                              'No se encuentra Disponible el horario',
+                              style:
+                                  TextStyle(color: Colors.black, fontSize: 15),
+                            ),
+                          );
                         }
                       },
                     ),
@@ -689,54 +671,5 @@ class _ItemViewState extends StateMVC<ItemView> {
             )),
       ),
     );
-  }
-
-  List<Map<String, dynamic>> _itemsHours() {
-    List<Map<String, dynamic>> hoursList = new List();
-
-    hoursList.add(
-      {
-        'value': '9:00',
-        'label': '9:00 - 10:00',
-        'icon': Icon(Icons.stop),
-      },
-    );
-    hoursList.add(
-      {
-        'value': '10:30',
-        'label': '10:30 - 11:30',
-        'icon': Icon(Icons.stop),
-      },
-    );
-    hoursList.add(
-      {
-        'value': '12:00',
-        'label': '12:00 - 13:00',
-        'icon': Icon(Icons.stop),
-      },
-    );
-    hoursList.add(
-      {
-        'value': '13:30',
-        'label': '13:30 - 14:30',
-        'icon': Icon(Icons.stop),
-      },
-    );
-    hoursList.add(
-      {
-        'value': '16:00',
-        'label': '16:00 - 17:00',
-        'icon': Icon(Icons.stop),
-      },
-    );
-    hoursList.add(
-      {
-        'value': '17:30',
-        'label': '17:30 - 18:30',
-        'icon': Icon(Icons.stop),
-      },
-    );
-
-    return hoursList;
   }
 }

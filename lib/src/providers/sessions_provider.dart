@@ -26,7 +26,7 @@ class SessionProvider {
       String sesionsListIndex, String selectedDay) async {
     var hoursListIndex = new List(15);
     List<Map<String, dynamic>> hoursList = new List();
-   
+
     hoursList.add(
       {
         'value': '9:00',
@@ -94,11 +94,9 @@ class SessionProvider {
       },
     );
 
-   
-
     DocumentReference physioRef = FirebaseFirestore.instance
         .collection('users')
-        .doc('26aK8lgQ70c7rkoNmKECZepFQIW2');
+        .doc(idEmployee);
 
     DocumentSnapshot physioSnapshot = await physioRef.get();
     bool isDayAvailable = false;
@@ -119,14 +117,13 @@ class SessionProvider {
             String openingTime = value['opening_time'];
 
             DateTime openingHour = DateFormat('HH:mm').parse(openingTime);
-DateTime closingHour = DateFormat('HH:mm').parse(closingTime);
+            DateTime closingHour = DateFormat('HH:mm').parse(closingTime);
 // Eliminar las horas que no están dentro del rango de cierre y apertura
-hoursList.removeWhere((hour) {
-  DateTime currentHour = DateFormat('HH:mm').parse(hour['value']);
-  return currentHour.isBefore(openingHour) || currentHour.isAfter(closingHour);
-});
-
-       
+            hoursList.removeWhere((hour) {
+              DateTime currentHour = DateFormat('HH:mm').parse(hour['value']);
+              return currentHour.isBefore(openingHour) ||
+                  currentHour.isAfter(closingHour);
+            });
           }
         }
       });
@@ -137,8 +134,6 @@ hoursList.removeWhere((hour) {
       // Puedes manejar esta situación como desees, por ejemplo, mostrando un mensaje de error.
       print('El día seleccionado no está disponible.');
     }
-
-
 
     print('physio : ${physioRef}');
 
