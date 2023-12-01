@@ -14,6 +14,7 @@ import 'package:flutter/material.dart';
 import 'package:loading_overlay/loading_overlay.dart';
 import 'package:provider/provider.dart';
 import 'package:shared_preferences/shared_preferences.dart';
+import 'package:url_launcher/url_launcher.dart';
 
 class CompleteProfileView extends StatefulWidget {
   static const routeName = 'complete_profile';
@@ -115,257 +116,258 @@ class _CompleteProfileViewState extends State<CompleteProfileView> {
         : '';
     municipalities.municipio(_valueChanged);
     print("camino");
-    print( context.watch<LoginProvider>().currentUser);
-    print(      context.watch<LoginProvider>().isLoggedIn());
+    print(context.watch<LoginProvider>().currentUser);
+    print(context.watch<LoginProvider>().isLoggedIn());
     return Scaffold(
       body: (
 
-         // context.watch<LoginProvider>().isLoggedIn() &&
-              context.watch<LoginProvider>().currentUser!= null
-          ? LoadingOverlay(
+          // context.watch<LoginProvider>().isLoggedIn() &&
+          context.watch<LoginProvider>().currentUser != null
+              ? LoadingOverlay(
+                  isLoading: context.watch<LoginProvider>().currentUser == null,
+                  child: SafeArea(
+                    child: SizedBox(
+                      width: double.infinity,
+                      child: Padding(
+                        padding: EdgeInsets.symmetric(horizontal: 32),
+                        child: SingleChildScrollView(
+                          child: Column(
+                            children: [
+                              SizedBox(height: 40.0),
+                              text("Completar perfil",
+                                  fontSize: textSizeNormal),
+                              Text(
+                                "Completa tus datos para poder continuar",
+                                textAlign: TextAlign.center,
+                              ),
+                              SizedBox(height: 45.0),
+                              Form(
+                                key: _formKey,
+                                child: Column(
+                                  children: [
+                                    buildNameFormField(context
+                                        .watch<LoginProvider>()
+                                        .currentUser['nombre']),
+                                    SizedBox(height: spacing_large),
+                                    buildPhoneNumberFormField(context
+                                        .watch<LoginProvider>()
+                                        .currentUser['telefono']),
+                                    SizedBox(height: spacing_large),
+                                    buildEmailFormField(context
+                                        .watch<LoginProvider>()
+                                        .currentUser['correo']),
+                                    SizedBox(height: spacing_large),
+                                    buildDireccionFormField(context
+                                        .watch<LoginProvider>()
+                                        .currentUser['direccion']),
+                                    SizedBox(height: 40.0),
+                                    // FutureBuilder(
+                                    //   future: states,
+                                    //   builder: (BuildContext context,
+                                    //       AsyncSnapshot snapshot) {
 
-              isLoading: context.watch<LoginProvider>().currentUser == null,
-              child: SafeArea(
-                child: SizedBox(
-                  width: double.infinity,
-                  child: Padding(
-                    padding: EdgeInsets.symmetric(horizontal: 32),
-                    child: SingleChildScrollView(
-                      child: Column(
-                        children: [
-                          SizedBox(height: 40.0),
-                          text("Completar perfil", fontSize: textSizeNormal),
-                          Text(
-                            "Completa tus datos para poder continuar",
-                            textAlign: TextAlign.center,
-                          ),
-                          SizedBox(height: 45.0),
-                          Form(
-                            key: _formKey,
-                            child: Column(
-                              children: [
-                                buildNameFormField(context
-                                    .watch<LoginProvider>()
-                                    .currentUser['nombre']),
-                                SizedBox(height: spacing_large),
-                                buildPhoneNumberFormField(context
-                                    .watch<LoginProvider>()
-                                    .currentUser['telefono']),
-                                SizedBox(height: spacing_large),
-                                buildEmailFormField(context
-                                    .watch<LoginProvider>()
-                                    .currentUser['correo']),
-                                SizedBox(height: spacing_large),
-                                buildDireccionFormField(context
-                                    .watch<LoginProvider>()
-                                    .currentUser['direccion']),
-                                SizedBox(height: 40.0),
-                                FutureBuilder(
-                                  future: states,
-                                  builder: (BuildContext context,
-                                      AsyncSnapshot snapshot) {
-                                    //print(snapshot);
-                                    if (snapshot.hasData) {
-                                      return Column(
-                                        children: [
-                                          Padding(
-                                            padding: const EdgeInsets.all(15.0),
-                                            child: Center(
-                                              child: Column(
-                                                  mainAxisAlignment:
-                                                      MainAxisAlignment.start,
-                                                  crossAxisAlignment:
-                                                      CrossAxisAlignment
-                                                          .stretch,
-                                                  children: <Widget>[
-                                                    Padding(
-                                                      padding:
-                                                          const EdgeInsets.only(
-                                                              left: 10.0),
-                                                      child: Text(
-                                                        "Selecciona  Estado",
-                                                        style: TextStyle(
-                                                            color: Colors.grey,
-                                                            fontWeight:
-                                                                FontWeight
-                                                                    .w500),
-                                                      ),
-                                                    ),
-                                                    DirectSelect(
-                                                      itemExtent: 35.0,
-                                                      selectedIndex:
-                                                          selectedIndex1,
-                                                      child: MySelectionItem(
-                                                        isForList: false,
-                                                        title: context.watch<LoginProvider>().currentUser[
-                                                                        'estado'] !=
-                                                                    null &&
-                                                                context.watch<LoginProvider>().currentUser[
-                                                                        'estado'] !=
-                                                                    ''
-                                                            ? estados != 'a'
-                                                                ? snapshot.data[
-                                                                    selectedIndex1]
-                                                                : context
-                                                                        .watch<
-                                                                            LoginProvider>()
-                                                                        .currentUser[
-                                                                    'estado']
-                                                            : snapshot.data[
-                                                                selectedIndex1],
-                                                      ),
-                                                      onSelectedItemChanged:
-                                                          (index) {
-                                                        setState(() {
-                                                          flat = 1;
-                                                          selectedIndex2 = 0;
-                                                          estados = '';
-                                                          selectedIndex1 =
-                                                              index;
-                                                          _valueChanged =
-                                                              snapshot.data[
-                                                                  selectedIndex1];
+                                    //     if (snapshot.hasData) {
+                                    //       return Column(
+                                    //         children: [
+                                    //           Padding(
+                                    //             padding: const EdgeInsets.all(15.0),
+                                    //             child: Center(
+                                    //               child: Column(
+                                    //                   mainAxisAlignment:
+                                    //                       MainAxisAlignment.start,
+                                    //                   crossAxisAlignment:
+                                    //                       CrossAxisAlignment
+                                    //                           .stretch,
+                                    //                   children: <Widget>[
+                                    //                     Padding(
+                                    //                       padding:
+                                    //                           const EdgeInsets.only(
+                                    //                               left: 10.0),
+                                    //                       child: Text(
+                                    //                         "Selecciona  Estado",
+                                    //                         style: TextStyle(
+                                    //                             color: Colors.grey,
+                                    //                             fontWeight:
+                                    //                                 FontWeight
+                                    //                                     .w500),
+                                    //                       ),
+                                    //                     ),
+                                    //                     DirectSelect(
+                                    //                       itemExtent: 35.0,
+                                    //                       selectedIndex:
+                                    //                           selectedIndex1,
+                                    //                       child: MySelectionItem(
+                                    //                         isForList: false,
+                                    //                         title: context.watch<LoginProvider>().currentUser[
+                                    //                                         'estado'] !=
+                                    //                                     null &&
+                                    //                                 context.watch<LoginProvider>().currentUser[
+                                    //                                         'estado'] !=
+                                    //                                     ''
+                                    //                             ? estados != 'a'
+                                    //                                 ? snapshot.data[
+                                    //                                     selectedIndex1]
+                                    //                                 : context
+                                    //                                         .watch<
+                                    //                                             LoginProvider>()
+                                    //                                         .currentUser[
+                                    //                                     'estado']
+                                    //                             : snapshot.data[
+                                    //                                 selectedIndex1],
+                                    //                       ),
+                                    //                       onSelectedItemChanged:
+                                    //                           (index) {
+                                    //                         setState(() {
+                                    //                           flat = 1;
+                                    //                           selectedIndex2 = 0;
+                                    //                           estados = '';
+                                    //                           selectedIndex1 =
+                                    //                               index;
+                                    //                           _valueChanged =
+                                    //                               snapshot.data[
+                                    //                                   selectedIndex1];
 
-                                                          municipalities
-                                                              .municipio(snapshot
-                                                                      .data[
-                                                                  selectedIndex1]);
-                                                        });
-                                                      },
-                                                      mode:
-                                                          DirectSelectMode.tap,
-                                                      items: _buildItemsestados(
-                                                          snapshot.data),
-                                                    ),
-                                                  ]),
-                                            ),
-                                          ),
-                                        ],
-                                      );
-                                    } else {
-                                      return Container(
-                                        child: Text(''),
-                                      );
-                                    }
-                                  },
-                                ),
-                                FutureBuilder(
-                                  future:
-                                      municipalities.municipio(_valueChanged),
-                                  builder: (BuildContext context,
-                                      AsyncSnapshot snapshot) {
-                                    print(_valueChanged);
-                                    print(snapshot.hasData);
-                                    if (snapshot.hasData) {
-                                      return Column(
-                                        children: [
-                                          Padding(
-                                            padding: const EdgeInsets.all(15.0),
-                                            child: Center(
-                                              child: Column(
-                                                  mainAxisAlignment:
-                                                      MainAxisAlignment.start,
-                                                  crossAxisAlignment:
-                                                      CrossAxisAlignment
-                                                          .stretch,
-                                                  children: <Widget>[
-                                                    Padding(
-                                                      padding:
-                                                          const EdgeInsets.only(
-                                                              left: 10.0),
-                                                      child: Text(
-                                                        "Selecciona  Municipio",
-                                                        style: TextStyle(
-                                                            color: Colors.grey,
-                                                            fontWeight:
-                                                                FontWeight
-                                                                    .w500),
-                                                      ),
-                                                    ),
-                                                    DirectSelect(
-                                                      itemExtent: 35.0,
-                                                      selectedIndex:
-                                                          selectedIndex2,
-                                                      child: MySelectionItem(
-                                                        isForList: false,
-                                                        title: context.watch<LoginProvider>().currentUser[
-                                                                        'municipio'] !=
-                                                                    null &&
-                                                                context.watch<LoginProvider>().currentUser[
-                                                                        'municipio'] !=
-                                                                    ''
-                                                            ? municipios != 'a'
-                                                                ? snapshot.data[
-                                                                    selectedIndex2]
-                                                                : context
-                                                                        .watch<
-                                                                            LoginProvider>()
-                                                                        .currentUser[
-                                                                    'municipio']
-                                                            : snapshot.data[
-                                                                selectedIndex2],
-                                                      ),
-                                                      onSelectedItemChanged:
-                                                          (index) {
-                                                        setState(() {
-                                                          municipios = '';
-                                                          selectedIndex2 =
-                                                              index;
-                                                          municipio = snapshot
-                                                                  .data[
-                                                              selectedIndex2];
-                                                        });
-                                                      },
-                                                      mode:
-                                                          DirectSelectMode.tap,
-                                                      items:
-                                                          _buildItemsmunicipios(
-                                                              snapshot.data),
-                                                    ),
-                                                  ]),
-                                            ),
-                                          ),
-                                        ],
-                                      );
-                                    } else {
-                                      return Container(
-                                        child: Text(''),
-                                      );
-                                    }
-                                  },
-                                ),
-                                DefaultButton(
-                                  text: "Continuar",
-                                  press: () async {
-                                    if (_formKey.currentState.validate()) {
-                                      _formKey.currentState.save();
+                                    //                           municipalities
+                                    //                               .municipio(snapshot
+                                    //                                       .data[
+                                    //                                   selectedIndex1]);
+                                    //                         });
+                                    //                       },
+                                    //                       mode:
+                                    //                           DirectSelectMode.tap,
+                                    //                       items: _buildItemsestados(
+                                    //                           snapshot.data),
+                                    //                     ),
+                                    //                   ]),
+                                    //             ),
+                                    //           ),
+                                    //         ],
+                                    //       );
+                                    //     } else {
+                                    //       return Container(
+                                    //         child: Text(''),
+                                    //       );
+                                    //     }
+                                    //   },
+                                    // ),
+                                    // FutureBuilder(
+                                    //   future:
+                                    //       municipalities.municipio(_valueChanged),
+                                    //   builder: (BuildContext context,
+                                    //       AsyncSnapshot snapshot) {
+                                    //     print(_valueChanged);
+                                    //     print(snapshot.hasData);
+                                    //     if (snapshot.hasData) {
+                                    //       return Column(
+                                    //         children: [
+                                    //           Padding(
+                                    //             padding: const EdgeInsets.all(15.0),
+                                    //             child: Center(
+                                    //               child: Column(
+                                    //                   mainAxisAlignment:
+                                    //                       MainAxisAlignment.start,
+                                    //                   crossAxisAlignment:
+                                    //                       CrossAxisAlignment
+                                    //                           .stretch,
+                                    //                   children: <Widget>[
+                                    //                     Padding(
+                                    //                       padding:
+                                    //                           const EdgeInsets.only(
+                                    //                               left: 10.0),
+                                    //                       child: Text(
+                                    //                         "Selecciona  Municipio",
+                                    //                         style: TextStyle(
+                                    //                             color: Colors.grey,
+                                    //                             fontWeight:
+                                    //                                 FontWeight
+                                    //                                     .w500),
+                                    //                       ),
+                                    //                     ),
+                                    //                     DirectSelect(
+                                    //                       itemExtent: 35.0,
+                                    //                       selectedIndex:
+                                    //                           selectedIndex2,
+                                    //                       child: MySelectionItem(
+                                    //                         isForList: false,
+                                    //                         title: context.watch<LoginProvider>().currentUser[
+                                    //                                         'municipio'] !=
+                                    //                                     null &&
+                                    //                                 context.watch<LoginProvider>().currentUser[
+                                    //                                         'municipio'] !=
+                                    //                                     ''
+                                    //                             ? municipios != 'a'
+                                    //                                 ? snapshot.data[
+                                    //                                     selectedIndex2]
+                                    //                                 : context
+                                    //                                         .watch<
+                                    //                                             LoginProvider>()
+                                    //                                         .currentUser[
+                                    //                                     'municipio']
+                                    //                             : snapshot.data[
+                                    //                                 selectedIndex2],
+                                    //                       ),
+                                    //                       onSelectedItemChanged:
+                                    //                           (index) {
+                                    //                         setState(() {
+                                    //                           municipios = '';
+                                    //                           selectedIndex2 =
+                                    //                               index;
+                                    //                           municipio = snapshot
+                                    //                                   .data[
+                                    //                               selectedIndex2];
+                                    //                         });
+                                    //                       },
+                                    //                       mode:
+                                    //                           DirectSelectMode.tap,
+                                    //                       items:
+                                    //                           _buildItemsmunicipios(
+                                    //                               snapshot.data),
+                                    //                     ),
+                                    //                   ]),
+                                    //             ),
+                                    //           ),
+                                    //         ],
+                                    //       );
+                                    //     } else {
+                                    //       return Container(
+                                    //         child: Text(''),
+                                    //       );
+                                    //     }
+                                    //   },
+                                    // ),
 
-                                      await FirebaseFirestore.instance
-                                          .collection('customers')
-                                          .doc(context
-                                              .read<LoginProvider>()
-                                              .currentUser['id'])
-                                          .update({
-                                        'nombre': name,
-                                        'telefono': phoneNumber,
-                                        'correo': email,
-                                        'direccion': direccion,
-                                        'estado': _valueChanged,
-                                        'municipio': municipio,
-                                        'completed': true,
-                                        'updated_at':
-                                            FieldValue.serverTimestamp()
-                                      });
+                                    DefaultButton(
+                                      text: "Continuar",
+                                      press: () async {
+                                        if (_formKey.currentState.validate()) {
+                                          _formKey.currentState.save();
 
-                                      Provider.of<LoginProvider>(context,
-                                              listen: false)
-                                          .checkLoginState()
-                                          .then((value) {
-                                        // Redirect and remove all screens
-                                        Navigator.pushNamedAndRemoveUntil(
-                                            context,
-                                            HomeView.routeName
-                                            /*_idservices.getString(
+                                          await FirebaseFirestore.instance
+                                              .collection('customers')
+                                              .doc(context
+                                                  .read<LoginProvider>()
+                                                  .currentUser['id'])
+                                              .update({
+                                            'nombre': name,
+                                            'telefono': phoneNumber,
+                                            'correo': email,
+                                            'direccion': direccion,
+                                            'estado': _valueChanged,
+                                            'municipio': municipio,
+                                            'completed': true,
+                                            'updated_at':
+                                                FieldValue.serverTimestamp()
+                                          });
+
+                                          Provider.of<LoginProvider>(context,
+                                                  listen: false)
+                                              .checkLoginState()
+                                              .then((value) {
+                                            // Redirect and remove all screens
+                                            Navigator.pushNamedAndRemoveUntil(
+                                                context,
+                                                HomeView.routeName
+                                                /*_idservices.getString(
                                                             'idpaqueteservicio') !=
                                                         null &&
                                                     _idservices.getString(
@@ -373,98 +375,115 @@ class _CompleteProfileViewState extends State<CompleteProfileView> {
                                                         null
                                                 ? ItemView.routeName
                                                 : HomeView.routeName,*/
-                                            ,
-                                            (route) => false);
-                                      });
-                                    }
-                                  },
+                                                ,
+                                                (route) => false);
+                                          });
+                                        }
+                                      },
+                                    ),
+                                  ],
                                 ),
-                              ],
-                            ),
+                              ),
+                              SizedBox(height: 20.0),
+                              GestureDetector(
+                                onTap: () {
+                                  context.read<LoginProvider>().logout();
+                                },
+                                child: Text(
+                                  "Cerrar sesión",
+                                  style: TextStyle(
+                                      decoration: TextDecoration.underline),
+                                ),
+                              ),
+                              SizedBox(height: spacing_large),
+                              Text(
+                                "Al continuar, confirmas que está de acuerdo \ncon nuestros Términos y condiciones",
+                                textAlign: TextAlign.center,
+                                style: Theme.of(context).textTheme.caption,
+                              ),
+                              SizedBox(height: spacing_large),
+                              ElevatedButton(
+                                style: ElevatedButton.styleFrom(
+                                  primary: Colors.red, // Color rojo
+                                ),
+                                onPressed: () async {
+                                  const url =
+                                      'https://www.physiho.com/formulario-ios';
+                                  if (await canLaunch(url)) {
+                                    await launch(url);
+                                  } else {
+                                    throw 'No se pudo abrir el enlace: $url';
+                                  }
+                                },
+                                child: Text("Borrar Cuenta/Eliminar datos"),
+                              ),
+                            ],
                           ),
-                          SizedBox(height: spacing_large),
-                          Text(
-                            "Al continuar, confirmas que está de acuerdo \ncon nuestros Términos y condiciones",
-                            textAlign: TextAlign.center,
-                            style: Theme.of(context).textTheme.caption,
-                          ),
-                          SizedBox(height: 80.0),
-                          GestureDetector(
-                            onTap: () {
-                              context.read<LoginProvider>().logout();
-                            },
-                            child: Text(
-                              "Cerrar sesión",
-                              style: TextStyle(
-                                  decoration: TextDecoration.underline),
-                            ),
-                          )
-                        ],
+                        ),
                       ),
                     ),
                   ),
-                ),
-              ),
-            )
-          : Stack(
-              alignment: Alignment.center,
-              children: [
-                Container(
-                  decoration: BoxDecoration(
-                    color: const Color(0xff7c94b6),
-                    backgroundBlendMode: BlendMode.color,
-                    image: DecorationImage(
-                        colorFilter: new ColorFilter.mode(
-                            Colors.black.withOpacity(0.8), BlendMode.dstATop),
-                        image: new AssetImage('assets/images/fondoph.png'),
-                        fit: BoxFit.cover),
-                  ),
-                ),
-                Container(
-                    margin: EdgeInsets.only(
-                        top: MediaQuery.of(context).size.height / 6),
-                    child: Column(
-                      mainAxisAlignment: MainAxisAlignment.center,
-                      children: [
-                        ListTile(
-                          title: Text(
-                            "Disfruta de nuestros servicios agenda y regístrate",
-                            style: TextStyle(
-                                color: Colors.black,
-                                fontSize: 20,
-                                fontFamily: 'Franklin Gothic',
-                                fontWeight: fontSemibold),
-                            textAlign: TextAlign.center,
-                          ),
-                          onTap: () {
-                            launchScreen(context, LoginView.routeName);
-                          },
-                        ),
-                        ListTile(
-                          title: Container(
-                            padding: EdgeInsets.all(10),
-                            decoration: BoxDecoration(
-                                color: pantoneFive,
-                                borderRadius:
-                                    BorderRadius.all(Radius.circular(20))),
-                            child: Text(
-                              "Click aqui para registrarte",
-                              style: TextStyle(
-                                  color: whiteColor,
-                                  fontSize: 20,
-                                  fontFamily: 'Franklin Gothic',
-                                  fontWeight: fontSemibold),
-                              textAlign: TextAlign.center,
+                )
+              : Stack(
+                  alignment: Alignment.center,
+                  children: [
+                    Container(
+                      decoration: BoxDecoration(
+                        color: const Color(0xff7c94b6),
+                        backgroundBlendMode: BlendMode.color,
+                        image: DecorationImage(
+                            colorFilter: new ColorFilter.mode(
+                                Colors.black.withOpacity(0.8),
+                                BlendMode.dstATop),
+                            image: new AssetImage('assets/images/fondoph.png'),
+                            fit: BoxFit.cover),
+                      ),
+                    ),
+                    Container(
+                        margin: EdgeInsets.only(
+                            top: MediaQuery.of(context).size.height / 6),
+                        child: Column(
+                          mainAxisAlignment: MainAxisAlignment.center,
+                          children: [
+                            ListTile(
+                              title: Text(
+                                "Disfruta de nuestros servicios agenda y regístrate",
+                                style: TextStyle(
+                                    color: Colors.black,
+                                    fontSize: 20,
+                                    fontFamily: 'Franklin Gothic',
+                                    fontWeight: fontSemibold),
+                                textAlign: TextAlign.center,
+                              ),
+                              onTap: () {
+                                launchScreen(context, LoginView.routeName);
+                              },
                             ),
-                          ),
-                          onTap: () {
-                            launchScreen(context, LoginView.routeName);
-                          },
-                        ),
-                      ],
-                    )),
-              ],
-            )),
+                            ListTile(
+                              title: Container(
+                                padding: EdgeInsets.all(10),
+                                decoration: BoxDecoration(
+                                    color: pantoneFive,
+                                    borderRadius:
+                                        BorderRadius.all(Radius.circular(20))),
+                                child: Text(
+                                  "Click aqui para registrarte",
+                                  style: TextStyle(
+                                      color: whiteColor,
+                                      fontSize: 20,
+                                      fontFamily: 'Franklin Gothic',
+                                      fontWeight: fontSemibold),
+                                  textAlign: TextAlign.center,
+                                ),
+                              ),
+                              onTap: () {
+                                launchScreen(context, LoginView.routeName);
+                              },
+                            ),
+                          ],
+                        )),
+                  ],
+                )),
     );
   }
 
