@@ -60,6 +60,12 @@
 	</array>
 	<key>UIViewControllerBasedStatusBarAppearance</key>
 	<false/>
+	<key>NSCameraUsageDescription</key>
+	<string>Camera is needed to some functionalities</string>
+	<key>NSLocationAlwaysAndWhenInUseUsageDescription</key>
+	<string>Location is needed to acurate provide information</string>
+	<key>NSLocationWhenInUseUsageDescription</key>
+	<string>Location is needed to acurate provide information about services</string>
 	<key>CADisableMinimumFrameDurationOnPhone</key>
 	<true/>
 </dict>
