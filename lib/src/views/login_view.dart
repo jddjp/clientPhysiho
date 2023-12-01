@@ -109,7 +109,7 @@ class _LoginViewState extends State<LoginView> {
                             textColor: whiteColor,
                             fontWeight: fontBold,
                             fontSize: textSizeXLarge),
-                        SizedBox(height: width * 0.12),
+                        SizedBox(height: width * 0.05),
                         socialButton(
                             whiteColor,
                             food_ic_google_fill,
@@ -153,11 +153,11 @@ class _LoginViewState extends State<LoginView> {
                             : Container(),
                         Platform.isIOS
                             ? socialButton(
-                                appleColor,
+                                whiteColor,
                                 food_ic_apple,
                                 "Iniciar sesión con Apple",
-                                whiteColor,
-                                whiteColor, () {
+                            appleColor,
+                                textPrimaryColor, () {
                                 Provider.of<LoginProvider>(context,
                                         listen: false)
                                     .login("apple")
