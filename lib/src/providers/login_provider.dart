@@ -13,8 +13,8 @@ import 'package:google_sign_in/google_sign_in.dart';
 import 'package:shared_preferences/shared_preferences.dart';
 import 'package:clientPhysiho/src/helpers/extension_helper.dart';
 import 'package:clientPhysiho/src/views/opt_view.dart';
-import 'package:sign_in_with_apple/sign_in_with_apple.dart';
 import 'package:crypto/crypto.dart';
+import 'package:the_apple_sign_in/the_apple_sign_in.dart';
 
 /// Generates a cryptographically secure random nonce, to be included in a
 /// credential request.
@@ -73,8 +73,7 @@ class LoginProvider with ChangeNotifier {
     _loading = true;
     notifyListeners();
 
-    final AuthResult result = type == 'google'
-        ? await signInWithGoogle()
+    final AuthResult result = type == 'google'? await signInWithGoogle()
         : (type == 'apple'
             ? await signInWithApple()
             : await signInWithFacebook());
@@ -85,6 +84,8 @@ class LoginProvider with ChangeNotifier {
             await _auth.signInWithCredential(result.credential);
         return afterSignIn(userCredential);
       } on FirebaseAuthException catch (e) {
+        Fluttertoast.showToast(
+            msg: "Error: "+e.message.toString());
         print(e);
       }
     } else if (result.status == AuthResult.cancelled) {
@@ -224,43 +225,23 @@ class LoginProvider with ChangeNotifier {
   }
 
   Future<AuthResult> signInWithApple() async {
-    // To prevent replay attacks with the credential returned from Apple, we
-    // include a nonce in the credential request. When signing in in with
-    // Firebase, the nonce in the id token returned by Apple, is expected to
-    // match the sha256 hash of `rawNonce`.
-    final rawNonce = generateNonce();
-    final nonce = sha256ofString(rawNonce);
-    var appleCredential;
-    var oauthCredential;
+ 
+String message = "";
+    final result = await TheAppleSignIn.performRequests(
+        [AppleIdRequest(requestedScopes: [Scope.email, Scope.fullName])]);
 
-    // Request credential for the currently signed in Apple account.
-    try {
-      appleCredential = await SignInWithApple.getAppleIDCredential(
-        scopes: [
-          AppleIDAuthorizationScopes.email,
-          AppleIDAuthorizationScopes.fullName,
-        ],
-        nonce: nonce,
+    if (result.status == AuthorizationStatus.authorized) {
+      final appleIdCredential = result.credential;
+      final oAuthProvider = OAuthProvider('apple.com');
+      final credential = oAuthProvider.credential(
+        idToken: String.fromCharCodes(appleIdCredential.identityToken),
+        accessToken: String.fromCharCodes(appleIdCredential.authorizationCode),
       );
-
-      // Create an `OAuthCredential` from the credential returned by Apple.
-      oauthCredential = OAuthProvider("apple.com").credential(
-        idToken: appleCredential.identityToken,
-        rawNonce: rawNonce,
-      );
-    } on PlatformException catch (e) {
-      print(e);
-    } catch (e) {
-      print(e);
+      return AuthResult(status: AuthResult.ok,
+          credential: credential);
     }
+    return AuthResult(status: AuthResult.error, credential: null);
 
-    // Canceled authentication
-    if (oauthCredential == null)
-      return AuthResult(status: AuthResult.cancelled);
-
-    // Sign in the user with Firebase. If the nonce we generated earlier does
-    // not match the nonce in `appleCredential.identityToken`, sign in will fail.
-    return AuthResult(status: AuthResult.ok, credential: oauthCredential);
   }
 
   // SignIn With phone

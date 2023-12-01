@@ -13,6 +13,7 @@ import 'package:clientPhysiho/src/views/complete_profile_view.dart';
 import 'package:clientPhysiho/src/views/create_account_view.dart';
 import 'package:loading_overlay/loading_overlay.dart';
 import 'package:provider/provider.dart';
+import 'dart:io';
 
 class LoginView extends StatefulWidget {
   static const routeName = 'login';
@@ -122,6 +123,7 @@ class _LoginViewState extends State<LoginView> {
                                 context, CompleteProfileView.routeName);
                           });
                         }),
+
                         /*SizedBox(height: width * 0.05),
                         socialButton(
                             facebookColor,
@@ -138,13 +140,34 @@ class _LoginViewState extends State<LoginView> {
                           /*Provider.of<LoginProvider>(context, listen: false)
                               .loginFacebook();*/
                         }),*/
+
                         SizedBox(height: width * 0.05),
                         DefaultButton(
                           text: "Usar número de teléfono",
                           press: () {
                             launchScreen(context, CreateAccountView.routeName);
                           },
-                        )
+                        ),
+                        Platform.isIOS
+                            ? SizedBox(height: width * 0.05)
+                            : Container(),
+                        Platform.isIOS
+                            ? socialButton(
+                                appleColor,
+                                food_ic_apple,
+                                "Iniciar sesión con Apple",
+                                whiteColor,
+                                whiteColor, () {
+                                Provider.of<LoginProvider>(context,
+                                        listen: false)
+                                    .login("apple")
+                                    .then((value) {
+                                  launchScreen(
+                                      context, CompleteProfileView.routeName);
+                                });
+                              })  
+                            : Container()
+                        
                       ],
                     ),
                   )
