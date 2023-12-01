@@ -417,6 +417,7 @@ class _CompleteProfileViewState extends State<CompleteProfileView> {
                                 },
                                 child: Text("Borrar Cuenta/Eliminar datos"),
                               ),
+                                SizedBox(height: 20.0),
                             ],
                           ),
                         ),
