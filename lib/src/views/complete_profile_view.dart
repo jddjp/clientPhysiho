@@ -1,4 +1,6 @@
 // @dart=2.9
+import 'dart:io';
+
 import 'package:clientPhysiho/src/components/default_button.dart';
 import 'package:clientPhysiho/src/config/colors.dart';
 import 'package:clientPhysiho/src/config/constants.dart';
@@ -134,10 +136,19 @@ class _CompleteProfileViewState extends State<CompleteProfileView> {
                           child: Column(
                             children: [
                               SizedBox(height: 40.0),
-                              text("Completar perfil",
-                                  fontSize: textSizeNormal),
                               Text(
-                                "Completa tus datos para poder continuar",
+                                Platform.isIOS
+                                    ? "Información de perfil"
+                                    : "Completar perfil",
+                                style: TextStyle(
+                                  fontSize: textSizeNormal,
+                                  fontWeight: FontWeight.bold,
+                                ),
+                              ),
+                              Text(
+                                Platform.isIOS
+                                    ? "Visualiza la información de tu perfil"
+                                    : "Completa tus datos para poder continuar",
                                 textAlign: TextAlign.center,
                               ),
                               SizedBox(height: 45.0),
@@ -161,181 +172,6 @@ class _CompleteProfileViewState extends State<CompleteProfileView> {
                                         .watch<LoginProvider>()
                                         .currentUser['direccion']),
                                     SizedBox(height: 40.0),
-                                    // FutureBuilder(
-                                    //   future: states,
-                                    //   builder: (BuildContext context,
-                                    //       AsyncSnapshot snapshot) {
-
-                                    //     if (snapshot.hasData) {
-                                    //       return Column(
-                                    //         children: [
-                                    //           Padding(
-                                    //             padding: const EdgeInsets.all(15.0),
-                                    //             child: Center(
-                                    //               child: Column(
-                                    //                   mainAxisAlignment:
-                                    //                       MainAxisAlignment.start,
-                                    //                   crossAxisAlignment:
-                                    //                       CrossAxisAlignment
-                                    //                           .stretch,
-                                    //                   children: <Widget>[
-                                    //                     Padding(
-                                    //                       padding:
-                                    //                           const EdgeInsets.only(
-                                    //                               left: 10.0),
-                                    //                       child: Text(
-                                    //                         "Selecciona  Estado",
-                                    //                         style: TextStyle(
-                                    //                             color: Colors.grey,
-                                    //                             fontWeight:
-                                    //                                 FontWeight
-                                    //                                     .w500),
-                                    //                       ),
-                                    //                     ),
-                                    //                     DirectSelect(
-                                    //                       itemExtent: 35.0,
-                                    //                       selectedIndex:
-                                    //                           selectedIndex1,
-                                    //                       child: MySelectionItem(
-                                    //                         isForList: false,
-                                    //                         title: context.watch<LoginProvider>().currentUser[
-                                    //                                         'estado'] !=
-                                    //                                     null &&
-                                    //                                 context.watch<LoginProvider>().currentUser[
-                                    //                                         'estado'] !=
-                                    //                                     ''
-                                    //                             ? estados != 'a'
-                                    //                                 ? snapshot.data[
-                                    //                                     selectedIndex1]
-                                    //                                 : context
-                                    //                                         .watch<
-                                    //                                             LoginProvider>()
-                                    //                                         .currentUser[
-                                    //                                     'estado']
-                                    //                             : snapshot.data[
-                                    //                                 selectedIndex1],
-                                    //                       ),
-                                    //                       onSelectedItemChanged:
-                                    //                           (index) {
-                                    //                         setState(() {
-                                    //                           flat = 1;
-                                    //                           selectedIndex2 = 0;
-                                    //                           estados = '';
-                                    //                           selectedIndex1 =
-                                    //                               index;
-                                    //                           _valueChanged =
-                                    //                               snapshot.data[
-                                    //                                   selectedIndex1];
-
-                                    //                           municipalities
-                                    //                               .municipio(snapshot
-                                    //                                       .data[
-                                    //                                   selectedIndex1]);
-                                    //                         });
-                                    //                       },
-                                    //                       mode:
-                                    //                           DirectSelectMode.tap,
-                                    //                       items: _buildItemsestados(
-                                    //                           snapshot.data),
-                                    //                     ),
-                                    //                   ]),
-                                    //             ),
-                                    //           ),
-                                    //         ],
-                                    //       );
-                                    //     } else {
-                                    //       return Container(
-                                    //         child: Text(''),
-                                    //       );
-                                    //     }
-                                    //   },
-                                    // ),
-                                    // FutureBuilder(
-                                    //   future:
-                                    //       municipalities.municipio(_valueChanged),
-                                    //   builder: (BuildContext context,
-                                    //       AsyncSnapshot snapshot) {
-                                    //     print(_valueChanged);
-                                    //     print(snapshot.hasData);
-                                    //     if (snapshot.hasData) {
-                                    //       return Column(
-                                    //         children: [
-                                    //           Padding(
-                                    //             padding: const EdgeInsets.all(15.0),
-                                    //             child: Center(
-                                    //               child: Column(
-                                    //                   mainAxisAlignment:
-                                    //                       MainAxisAlignment.start,
-                                    //                   crossAxisAlignment:
-                                    //                       CrossAxisAlignment
-                                    //                           .stretch,
-                                    //                   children: <Widget>[
-                                    //                     Padding(
-                                    //                       padding:
-                                    //                           const EdgeInsets.only(
-                                    //                               left: 10.0),
-                                    //                       child: Text(
-                                    //                         "Selecciona  Municipio",
-                                    //                         style: TextStyle(
-                                    //                             color: Colors.grey,
-                                    //                             fontWeight:
-                                    //                                 FontWeight
-                                    //                                     .w500),
-                                    //                       ),
-                                    //                     ),
-                                    //                     DirectSelect(
-                                    //                       itemExtent: 35.0,
-                                    //                       selectedIndex:
-                                    //                           selectedIndex2,
-                                    //                       child: MySelectionItem(
-                                    //                         isForList: false,
-                                    //                         title: context.watch<LoginProvider>().currentUser[
-                                    //                                         'municipio'] !=
-                                    //                                     null &&
-                                    //                                 context.watch<LoginProvider>().currentUser[
-                                    //                                         'municipio'] !=
-                                    //                                     ''
-                                    //                             ? municipios != 'a'
-                                    //                                 ? snapshot.data[
-                                    //                                     selectedIndex2]
-                                    //                                 : context
-                                    //                                         .watch<
-                                    //                                             LoginProvider>()
-                                    //                                         .currentUser[
-                                    //                                     'municipio']
-                                    //                             : snapshot.data[
-                                    //                                 selectedIndex2],
-                                    //                       ),
-                                    //                       onSelectedItemChanged:
-                                    //                           (index) {
-                                    //                         setState(() {
-                                    //                           municipios = '';
-                                    //                           selectedIndex2 =
-                                    //                               index;
-                                    //                           municipio = snapshot
-                                    //                                   .data[
-                                    //                               selectedIndex2];
-                                    //                         });
-                                    //                       },
-                                    //                       mode:
-                                    //                           DirectSelectMode.tap,
-                                    //                       items:
-                                    //                           _buildItemsmunicipios(
-                                    //                               snapshot.data),
-                                    //                     ),
-                                    //                   ]),
-                                    //             ),
-                                    //           ),
-                                    //         ],
-                                    //       );
-                                    //     } else {
-                                    //       return Container(
-                                    //         child: Text(''),
-                                    //       );
-                                    //     }
-                                    //   },
-                                    // ),
-
                                     DefaultButton(
                                       text: "Continuar",
                                       press: () async {
@@ -417,7 +253,7 @@ class _CompleteProfileViewState extends State<CompleteProfileView> {
                                 },
                                 child: Text("Borrar Cuenta/Eliminar datos"),
                               ),
-                                SizedBox(height: 20.0),
+                              SizedBox(height: 20.0),
                             ],
                           ),
                         ),
@@ -510,69 +346,90 @@ class _CompleteProfileViewState extends State<CompleteProfileView> {
     );
   }
 
-  TextFormField buildPhoneNumberFormField(String defaultValue) {
-    return TextFormField(
-      keyboardType: TextInputType.phone,
-      initialValue: defaultValue,
-      readOnly: defaultValue != null,
-      onSaved: (newValue) => phoneNumber = newValue,
-      validator: (value) {
-        Pattern pattern = r'^[0-9]{10}$';
-        RegExp regex = new RegExp(pattern);
-        if (value.isEmpty) {
-          return "Ingresa tu número de teléfono";
-        }
-        if (!regex.hasMatch(value)) {
-          return "Ingresa un número a 10 dígitos válido";
-        }
-        return null;
-      },
-      decoration: InputDecoration(
-        labelText: "Número de teléfono",
-        hintText: "Ingresa tu número de teléfono",
-        // If  you are using latest version of flutter then lable text and hint text shown like this
-        // if you r using flutter less then 1.20.* then maybe this is not working properly
-        floatingLabelBehavior: FloatingLabelBehavior.always,
-        //suffixIcon: CustomSurffixIcon(svgIcon: "assets/icons/Phone.svg"),
-      ),
-    );
+  Widget buildPhoneNumberFormField(String defaultValue,
+      {bool readOnly = false}) {
+    if (Platform.isIOS) {
+      return Text(
+        defaultValue,
+        style: TextStyle(
+          fontSize: 16.0,
+        ),
+      );
+    } else {
+      return TextFormField(
+        keyboardType: TextInputType.phone,
+        initialValue: defaultValue,
+        readOnly: readOnly,
+        onSaved: (newValue) => phoneNumber = newValue,
+        validator: (value) {
+          Pattern pattern = r'^[0-9]{10}$';
+          RegExp regex = new RegExp(pattern);
+          if (value.isEmpty) {
+            return "Ingresa tu número de teléfono";
+          }
+          if (!regex.hasMatch(value)) {
+            return "Ingresa un número a 10 dígitos válido";
+          }
+          return null;
+        },
+        decoration: InputDecoration(
+          labelText: "Número de teléfono",
+          hintText: "Ingresa tu número de teléfono",
+          floatingLabelBehavior: FloatingLabelBehavior.always,
+        ),
+      );
+    }
   }
 
-  TextFormField buildEmailFormField(String defaultValue) {
-    return TextFormField(
-      initialValue: defaultValue,
-      onSaved: (newValue) => email = newValue,
-      decoration: InputDecoration(
-        labelText: "Correo electrónico",
-        hintText: "Ingresa tu correo electrónico",
-        // If  you are using latest version of flutter then lable text and hint text shown like this
-        // if you r using flutter less then 1.20.* then maybe this is not working properly
-        floatingLabelBehavior: FloatingLabelBehavior.always,
-        //suffixIcon: CustomSurffixIcon(svgIcon: "assets/icons/Phone.svg"),
-      ),
-    );
+  Widget buildEmailFormField(String defaultValue, {bool readOnly = false}) {
+    if (Platform.isIOS) {
+      return Text(
+        defaultValue,
+        style: TextStyle(
+          fontSize: 16.0,
+        ),
+      );
+    } else {
+      return TextFormField(
+        initialValue: defaultValue,
+        onSaved: (newValue) => email = newValue,
+        readOnly: readOnly,
+        decoration: InputDecoration(
+          labelText: "Correo electrónico",
+          hintText: "Ingresa tu correo electrónico",
+          floatingLabelBehavior: FloatingLabelBehavior.always,
+        ),
+      );
+    }
   }
 
-  TextFormField buildDireccionFormField(defaultName) {
-    return TextFormField(
-      onSaved: (newValue) => direccion = newValue,
-      initialValue: defaultName,
-      autofocus: true,
-      validator: (value) {
-        if (value.isEmpty) {
-          return "Por favor ingresa tu dirección";
-        }
-        return null;
-      },
-      decoration: InputDecoration(
-        labelText: "Dirección",
-        hintText: "Ingresa tu dirección",
-        // If  you are using latest version of flutter then lable text and hint text shown like this
-        // if you r using flutter less then 1.20.* then maybe this is not working properly
-        floatingLabelBehavior: FloatingLabelBehavior.always,
-        //suffixIcon: CustomSurffixIcon(svgIcon: "assets/icons/User.svg"),
-      ),
-    );
+  Widget buildDireccionFormField(String defaultName, {bool readOnly = false}) {
+    if (Platform.isIOS) {
+      return Text(
+        defaultName,
+        style: TextStyle(
+          fontSize: 16.0,
+        ),
+      );
+    } else {
+      return TextFormField(
+        onSaved: (newValue) => direccion = newValue,
+        initialValue: defaultName,
+        autofocus: true,
+        readOnly: readOnly,
+        validator: (value) {
+          if (value.isEmpty) {
+            return "Por favor ingresa tu dirección";
+          }
+          return null;
+        },
+        decoration: InputDecoration(
+          labelText: "Dirección",
+          hintText: "Ingresa tu dirección",
+          floatingLabelBehavior: FloatingLabelBehavior.always,
+        ),
+      );
+    }
   }
 }
 

@@ -8,6 +8,8 @@ import 'package:cloud_firestore/cloud_firestore.dart';
 import 'package:flutter/material.dart';
 
 class HomeServiceView extends StatefulWidget {
+  static const routeName = 'HomeService';
+
   @override
   _HomeServiceViewState createState() => _HomeServiceViewState();
 }
