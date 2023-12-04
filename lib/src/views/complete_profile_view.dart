@@ -323,12 +323,32 @@ class _CompleteProfileViewState extends State<CompleteProfileView> {
                 )),
     );
   }
-
-  TextFormField buildNameFormField(defaultName) {
+Widget buildNameFormField(String defaultName, {bool readOnly = false}) {
+  if (Platform.isIOS) {
+    return Column(
+      crossAxisAlignment: CrossAxisAlignment.start,
+      children: [
+        Text(
+          "Nombre:",
+          style: TextStyle(
+            fontSize: 16.0,
+            fontWeight: FontWeight.bold,
+          ),
+        ),
+        Text(
+          defaultName,
+          style: TextStyle(
+            fontSize: 16.0,
+          ),
+        ),
+      ],
+    );
+  } else {
     return TextFormField(
       onSaved: (newValue) => name = newValue,
       initialValue: defaultName,
       autofocus: true,
+      readOnly: readOnly,
       validator: (value) {
         if (value.isEmpty) {
           return "Por favor ingresa tu nombre";
@@ -338,101 +358,134 @@ class _CompleteProfileViewState extends State<CompleteProfileView> {
       decoration: InputDecoration(
         labelText: "Nombre",
         hintText: "Ingresa tu nombre completo",
-        // If  you are using latest version of flutter then lable text and hint text shown like this
-        // if you r using flutter less then 1.20.* then maybe this is not working properly
         floatingLabelBehavior: FloatingLabelBehavior.always,
-        //suffixIcon: CustomSurffixIcon(svgIcon: "assets/icons/User.svg"),
       ),
     );
   }
-
-  Widget buildPhoneNumberFormField(String defaultValue,
-      {bool readOnly = false}) {
-    if (Platform.isIOS) {
-      return Text(
-        defaultValue,
-        style: TextStyle(
-          fontSize: 16.0,
+}
+ Widget buildPhoneNumberFormField(String defaultValue,
+    {bool readOnly = false}) {
+  if (Platform.isIOS) {
+    return Column(
+      crossAxisAlignment: CrossAxisAlignment.start,
+      children: [
+        Text(
+          "Número de teléfono:",
+          style: TextStyle(
+            fontSize: 16.0,
+            fontWeight: FontWeight.bold,
+          ),
         ),
-      );
-    } else {
-      return TextFormField(
-        keyboardType: TextInputType.phone,
-        initialValue: defaultValue,
-        readOnly: readOnly,
-        onSaved: (newValue) => phoneNumber = newValue,
-        validator: (value) {
-          Pattern pattern = r'^[0-9]{10}$';
-          RegExp regex = new RegExp(pattern);
-          if (value.isEmpty) {
-            return "Ingresa tu número de teléfono";
-          }
-          if (!regex.hasMatch(value)) {
-            return "Ingresa un número a 10 dígitos válido";
-          }
-          return null;
-        },
-        decoration: InputDecoration(
-          labelText: "Número de teléfono",
-          hintText: "Ingresa tu número de teléfono",
-          floatingLabelBehavior: FloatingLabelBehavior.always,
+        Text(
+          defaultValue,
+          style: TextStyle(
+            fontSize: 16.0,
+          ),
         ),
-      );
-    }
-  }
-
-  Widget buildEmailFormField(String defaultValue, {bool readOnly = false}) {
-    if (Platform.isIOS) {
-      return Text(
-        defaultValue,
-        style: TextStyle(
-          fontSize: 16.0,
-        ),
-      );
-    } else {
-      return TextFormField(
-        initialValue: defaultValue,
-        onSaved: (newValue) => email = newValue,
-        readOnly: readOnly,
-        decoration: InputDecoration(
-          labelText: "Correo electrónico",
-          hintText: "Ingresa tu correo electrónico",
-          floatingLabelBehavior: FloatingLabelBehavior.always,
-        ),
-      );
-    }
-  }
-
-  Widget buildDireccionFormField(String defaultName, {bool readOnly = false}) {
-    if (Platform.isIOS) {
-      return Text(
-        defaultName,
-        style: TextStyle(
-          fontSize: 16.0,
-        ),
-      );
-    } else {
-      return TextFormField(
-        onSaved: (newValue) => direccion = newValue,
-        initialValue: defaultName,
-        autofocus: true,
-        readOnly: readOnly,
-        validator: (value) {
-          if (value.isEmpty) {
-            return "Por favor ingresa tu dirección";
-          }
-          return null;
-        },
-        decoration: InputDecoration(
-          labelText: "Dirección",
-          hintText: "Ingresa tu dirección",
-          floatingLabelBehavior: FloatingLabelBehavior.always,
-        ),
-      );
-    }
+      ],
+    );
+  } else {
+    return TextFormField(
+      keyboardType: TextInputType.phone,
+      initialValue: defaultValue,
+      readOnly: readOnly,
+      onSaved: (newValue) => phoneNumber = newValue,
+      validator: (value) {
+        Pattern pattern = r'^[0-9]{10}$';
+        RegExp regex = new RegExp(pattern);
+        if (value.isEmpty) {
+          return "Ingresa tu número de teléfono";
+        }
+        if (!regex.hasMatch(value)) {
+          return "Ingresa un número a 10 dígitos válido";
+        }
+        return null;
+      },
+      decoration: InputDecoration(
+        labelText: "Número de teléfono",
+        hintText: "Ingresa tu número de teléfono",
+        floatingLabelBehavior: FloatingLabelBehavior.always,
+      ),
+    );
   }
 }
 
+Widget buildEmailFormField(String defaultValue, {bool readOnly = false}) {
+  if (Platform.isIOS) {
+    return Column(
+      crossAxisAlignment: CrossAxisAlignment.start,
+      children: [
+        Text(
+          "Correo electrónico:",
+          style: TextStyle(
+            fontSize: 16.0,
+            fontWeight: FontWeight.bold,
+          ),
+        ),
+        Text(
+          defaultValue,
+          style: TextStyle(
+            fontSize: 16.0,
+          ),
+        ),
+      ],
+    );
+  } else {
+    return TextFormField(
+      initialValue: defaultValue,
+      onSaved: (newValue) => email = newValue,
+      readOnly: readOnly,
+      decoration: InputDecoration(
+        labelText: "Correo electrónico",
+        hintText: "Ingresa tu correo electrónico",
+        floatingLabelBehavior: FloatingLabelBehavior.always,
+      ),
+    );
+  }
+}
+
+Widget buildDireccionFormField(String defaultName, {bool readOnly = false}) {
+  if (Platform.isIOS) {
+    return Column(
+      crossAxisAlignment: CrossAxisAlignment.start,
+      children: [
+        Text(
+          "Dirección:",
+          style: TextStyle(
+            fontSize: 16.0,
+            fontWeight: FontWeight.bold,
+          ),
+        ),
+        Text(
+          defaultName,
+          style: TextStyle(
+            fontSize: 16.0,
+          ),
+        ),
+      ],
+    );
+  } else {
+    return TextFormField(
+      onSaved: (newValue) => direccion = newValue,
+      initialValue: defaultName,
+      autofocus: true,
+      readOnly: readOnly,
+      validator: (value) {
+        if (value.isEmpty) {
+          return "Por favor ingresa tu dirección";
+        }
+        return null;
+      },
+      decoration: InputDecoration(
+        labelText: "Dirección",
+        hintText: "Ingresa tu dirección",
+        floatingLabelBehavior: FloatingLabelBehavior.always,
+      ),
+    );
+  }
+}
+
+}
 /** */
 //You can use any Widget
 class MySelectionItem extends StatelessWidget {
