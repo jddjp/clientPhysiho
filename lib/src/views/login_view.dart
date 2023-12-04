@@ -168,7 +168,7 @@ class _LoginViewState extends State<LoginView> {
                                                  Fluttertoast.showToast(
                                 msg: "Accedio correctamente");
                                   launchScreen(
-                                      context, HomeServiceView.routeName);
+                                      context, CompleteProfileView.routeName);
                                 });
                               })  
                             : Container()
