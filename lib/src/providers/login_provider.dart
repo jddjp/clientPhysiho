@@ -242,6 +242,10 @@ String message = "";
         idToken: String.fromCharCodes(appleIdCredential.identityToken),
         accessToken: String.fromCharCodes(appleIdCredential.authorizationCode),
       );
+      print(appleIdCredential);
+      print("valida nombre");
+      print('${appleIdCredential.fullName.givenName} ${appleIdCredential
+              .fullName.familyName}');
          return AuthResult(status: AuthResult.ok,
           credential: credential,
           fullName: '${appleIdCredential.fullName.givenName} ${appleIdCredential
