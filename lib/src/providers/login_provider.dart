@@ -127,6 +127,9 @@ class LoginProvider with ChangeNotifier {
 
   Future<void> afterSignIn(UserCredential userCredential,
       {String name, String phone}) async {
+        print("Validamos nombre"+name);
+         print("Validamos phone"+phone);
+          print(userCredential);
     _loadingCurrentUser = true;
     notifyListeners();
     // Register in firestore if is a new user
