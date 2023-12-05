@@ -82,6 +82,9 @@ class LoginProvider with ChangeNotifier {
       try {
         UserCredential userCredential =
             await _auth.signInWithCredential(result.credential);
+
+              print("Validamos nombre"+result.fullName);
+       
          return afterSignIn(userCredential, name: result.fullName);
       } on FirebaseAuthException catch (e) {
         Fluttertoast.showToast(
@@ -125,10 +128,8 @@ class LoginProvider with ChangeNotifier {
     notifyListeners();
   }
 
-  Future<void> afterSignIn(UserCredential userCredential,
-      {String name, String phone}) async {
-        print("Validamos nombre"+name);
-         print("Validamos phone"+phone);
+  Future<void> afterSignIn(UserCredential userCredential, {String name, String phone}) async {
+      
           print(userCredential);
     _loadingCurrentUser = true;
     notifyListeners();
