@@ -147,15 +147,17 @@ class _CompleteProfileViewState extends State<CompleteProfileView> {
                                 key: _formKey,
                                 child: Column(
                                   children: [
-                                buildNameFormField(context
-    .watch<LoginProvider>()
-    .currentUser['nombre'], readOnly: Platform.isIOS),
-SizedBox(height: spacing_large),
-buildEmailFormField(context
-    .watch<LoginProvider>()
-    .currentUser['correo'], readOnly: Platform.isIOS),
-
-
+                                    buildNameFormField(
+                                        context
+                                            .watch<LoginProvider>()
+                                            .currentUser['nombre'],
+                                        readOnly: Platform.isIOS),
+                                    SizedBox(height: spacing_large),
+                                    buildEmailFormField(
+                                        context
+                                            .watch<LoginProvider>()
+                                            .currentUser['correo'],
+                                        readOnly: Platform.isIOS),
                                     SizedBox(height: spacing_large),
                                     buildPhoneNumberFormField(context
                                         .watch<LoginProvider>()
@@ -170,7 +172,17 @@ buildEmailFormField(context
                                       press: () async {
                                         if (_formKey.currentState.validate()) {
                                           _formKey.currentState.save();
-
+                                          print({
+                                            'nombre': name,
+                                            'telefono': phoneNumber,
+                                            'correo': email,
+                                            'direccion': direccion,
+                                            'estado': _valueChanged,
+                                            'municipio': municipio,
+                                            'completed': true,
+                                            'updated_at':
+                                                FieldValue.serverTimestamp()
+                                          });
                                           await FirebaseFirestore.instance
                                               .collection('customers')
                                               .doc(context
@@ -219,14 +231,14 @@ buildEmailFormField(context
                                   context.read<LoginProvider>().logout();
                                 },
                                 child: Text(
-                                  "Cerrar sesiÃ³n",
+                                  "Cerrar sesion",
                                   style: TextStyle(
                                       decoration: TextDecoration.underline),
                                 ),
                               ),
                               SizedBox(height: spacing_large),
                               Text(
-                                "Al continuar, confirmas que estÃ¡ de acuerdo \ncon nuestros TÃ©rminos y condiciones",
+                                "Al continuar, confirmas que estas¡ de acuerdo \ncon nuestros Terminos y condiciones",
                                 textAlign: TextAlign.center,
                                 style: Theme.of(context).textTheme.caption,
                               ),
@@ -277,7 +289,7 @@ buildEmailFormField(context
                           children: [
                             ListTile(
                               title: Text(
-                                "Disfruta de nuestros servicios agenda y regÃ­strate",
+                                "Disfruta de nuestros servicios agenda y regi­strate",
                                 style: TextStyle(
                                     color: Colors.black,
                                     fontSize: 20,
@@ -318,80 +330,79 @@ buildEmailFormField(context
   }
 
   Widget buildNameFormField(String defaultName, {bool readOnly = false}) {
-  if (Platform.isIOS) {
-    return Column(
-      crossAxisAlignment: CrossAxisAlignment.start,
-      children: [
-        Text(
-          "Nombre:",
-          style: TextStyle(
-            fontSize: 16.0,
-            fontWeight: FontWeight.bold,
+    if (Platform.isIOS) {
+      return Column(
+        crossAxisAlignment: CrossAxisAlignment.start,
+        children: [
+          Text(
+            "Nombre:",
+            style: TextStyle(
+              fontSize: 16.0,
+              fontWeight: FontWeight.bold,
+            ),
           ),
-        ),
-        Text(
-          defaultName,
-          style: TextStyle(
-            fontSize: 16.0,
+          Text(
+            defaultName,
+            style: TextStyle(
+              fontSize: 16.0,
+            ),
           ),
+        ],
+      );
+    } else {
+      return TextFormField(
+        onSaved: (newValue) => name = newValue,
+        initialValue: defaultName,
+        autofocus: true,
+        readOnly: readOnly,
+        validator: (value) {
+          if (value.isEmpty) {
+            return "Por favor ingresa tu nombre";
+          }
+          return null;
+        },
+        decoration: InputDecoration(
+          labelText: "Nombre",
+          hintText: "Ingresa tu nombre completo",
+          floatingLabelBehavior: FloatingLabelBehavior.always,
         ),
-      ],
-    );
-  } else {
-    return TextFormField(
-      onSaved: (newValue) => name = newValue,
-      initialValue: defaultName,
-      autofocus: true,
-      readOnly: readOnly,
-      validator: (value) {
-        if (value.isEmpty) {
-          return "Por favor ingresa tu nombre";
-        }
-        return null;
-      },
-      decoration: InputDecoration(
-        labelText: "Nombre",
-        hintText: "Ingresa tu nombre completo",
-        floatingLabelBehavior: FloatingLabelBehavior.always,
-      ),
-    );
+      );
+    }
   }
-}
 
-Widget buildEmailFormField(String defaultValue, {bool readOnly = false}) {
-  if (Platform.isIOS) {
-    return Column(
-      crossAxisAlignment: CrossAxisAlignment.start,
-      children: [
-        Text(
-          "Correo electrónico:",
-          style: TextStyle(
-            fontSize: 16.0,
-            fontWeight: FontWeight.bold,
+  Widget buildEmailFormField(String defaultValue, {bool readOnly = false}) {
+    if (Platform.isIOS) {
+      return Column(
+        crossAxisAlignment: CrossAxisAlignment.start,
+        children: [
+          Text(
+            "Correo electrónico:",
+            style: TextStyle(
+              fontSize: 16.0,
+              fontWeight: FontWeight.bold,
+            ),
           ),
-        ),
-        Text(
-          defaultValue,
-          style: TextStyle(
-            fontSize: 16.0,
+          Text(
+            defaultValue,
+            style: TextStyle(
+              fontSize: 16.0,
+            ),
           ),
+        ],
+      );
+    } else {
+      return TextFormField(
+        initialValue: defaultValue,
+        onSaved: (newValue) => email = newValue,
+        readOnly: readOnly,
+        decoration: InputDecoration(
+          labelText: "Correo electrónico",
+          hintText: "Ingresa tu correo electrónico",
+          floatingLabelBehavior: FloatingLabelBehavior.always,
         ),
-      ],
-    );
-  } else {
-    return TextFormField(
-      initialValue: defaultValue,
-      onSaved: (newValue) => email = newValue,
-      readOnly: readOnly,
-      decoration: InputDecoration(
-        labelText: "Correo electrónico",
-        hintText: "Ingresa tu correo electrónico",
-        floatingLabelBehavior: FloatingLabelBehavior.always,
-      ),
-    );
+      );
+    }
   }
-}
-
 
   TextFormField buildPhoneNumberFormField(String defaultValue) {
     return TextFormField(
@@ -403,16 +414,16 @@ Widget buildEmailFormField(String defaultValue, {bool readOnly = false}) {
         Pattern pattern = r'^[0-9]{10}$';
         RegExp regex = new RegExp(pattern);
         if (value.isEmpty) {
-          return "Ingresa tu nÃºmero de telÃ©fono";
+          return "Ingresa tu numero de telefono";
         }
         if (!regex.hasMatch(value)) {
-          return "Ingresa un nÃºmero a 10 dÃ­gitos vÃ¡lido";
+          return "Ingresa un numero a 10 digitos valido";
         }
         return null;
       },
       decoration: InputDecoration(
-        labelText: "NÃºmero de telÃ©fono",
-        hintText: "Ingresa tu nÃºmero de telÃ©fono",
+        labelText: "Numero de telefono",
+        hintText: "Ingresa tu numero de telefono",
         // If  you are using latest version of flutter then lable text and hint text shown like this
         // if you r using flutter less then 1.20.* then maybe this is not working properly
         floatingLabelBehavior: FloatingLabelBehavior.always,
@@ -421,8 +432,6 @@ Widget buildEmailFormField(String defaultValue, {bool readOnly = false}) {
     );
   }
 
-
-
   TextFormField buildDireccionFormField(defaultName) {
     return TextFormField(
       onSaved: (newValue) => direccion = newValue,
@@ -430,13 +439,13 @@ Widget buildEmailFormField(String defaultValue, {bool readOnly = false}) {
       autofocus: true,
       validator: (value) {
         if (value.isEmpty) {
-          return "Por favor ingresa tu direcciÃ³n";
+          return "Por favor ingresa tu direccion";
         }
         return null;
       },
       decoration: InputDecoration(
-        labelText: "DirecciÃ³n",
-        hintText: "Ingresa tu direcciÃ³n",
+        labelText: "Direccion",
+        hintText: "Ingresa tu direccion",
         // If  you are using latest version of flutter then lable text and hint text shown like this
         // if you r using flutter less then 1.20.* then maybe this is not working properly
         floatingLabelBehavior: FloatingLabelBehavior.always,
