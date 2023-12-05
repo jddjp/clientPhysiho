@@ -172,6 +172,7 @@ class _CompleteProfileViewState extends State<CompleteProfileView> {
                                       press: () async {
                                         if (_formKey.currentState.validate()) {
                                           _formKey.currentState.save();
+                                          print("============Continuar");
                                           print({
                                             'nombre': name,
                                             'telefono': phoneNumber,
