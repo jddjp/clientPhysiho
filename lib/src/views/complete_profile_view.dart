@@ -365,26 +365,7 @@ Widget buildNameFormField(String defaultName, {bool readOnly = false}) {
 }
  Widget buildPhoneNumberFormField(String defaultValue,
     {bool readOnly = false}) {
-  if (Platform.isIOS) {
-    return Column(
-      crossAxisAlignment: CrossAxisAlignment.start,
-      children: [
-        Text(
-          "Número de teléfono:",
-          style: TextStyle(
-            fontSize: 16.0,
-            fontWeight: FontWeight.bold,
-          ),
-        ),
-        Text(
-          defaultValue,
-          style: TextStyle(
-            fontSize: 16.0,
-          ),
-        ),
-      ],
-    );
-  } else {
+
     return TextFormField(
       keyboardType: TextInputType.phone,
       initialValue: defaultValue,
@@ -407,7 +388,7 @@ Widget buildNameFormField(String defaultName, {bool readOnly = false}) {
         floatingLabelBehavior: FloatingLabelBehavior.always,
       ),
     );
-  }
+  
 }
 
 Widget buildEmailFormField(String defaultValue, {bool readOnly = false}) {
@@ -445,26 +426,7 @@ Widget buildEmailFormField(String defaultValue, {bool readOnly = false}) {
 }
 
 Widget buildDireccionFormField(String defaultName, {bool readOnly = false}) {
-  if (Platform.isIOS) {
-    return Column(
-      crossAxisAlignment: CrossAxisAlignment.start,
-      children: [
-        Text(
-          "Dirección:",
-          style: TextStyle(
-            fontSize: 16.0,
-            fontWeight: FontWeight.bold,
-          ),
-        ),
-        Text(
-          defaultName,
-          style: TextStyle(
-            fontSize: 16.0,
-          ),
-        ),
-      ],
-    );
-  } else {
+
     return TextFormField(
       onSaved: (newValue) => direccion = newValue,
       initialValue: defaultName,
@@ -482,7 +444,7 @@ Widget buildDireccionFormField(String defaultName, {bool readOnly = false}) {
         floatingLabelBehavior: FloatingLabelBehavior.always,
       ),
     );
-  }
+  
 }
 
 }

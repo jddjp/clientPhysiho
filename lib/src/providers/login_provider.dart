@@ -82,7 +82,7 @@ class LoginProvider with ChangeNotifier {
       try {
         UserCredential userCredential =
             await _auth.signInWithCredential(result.credential);
-        return afterSignIn(userCredential);
+         return afterSignIn(userCredential, name: result.fullName);
       } on FirebaseAuthException catch (e) {
         Fluttertoast.showToast(
             msg: "Error: "+e.message.toString());
@@ -125,7 +125,8 @@ class LoginProvider with ChangeNotifier {
     notifyListeners();
   }
 
-  Future<void> afterSignIn(UserCredential userCredential) async {
+  Future<void> afterSignIn(UserCredential userCredential,
+      {String name, String phone}) async {
     _loadingCurrentUser = true;
     notifyListeners();
     // Register in firestore if is a new user
@@ -141,9 +142,9 @@ class LoginProvider with ChangeNotifier {
           .collection('customers')
           .doc(_userData.uid)
           .set({
-        'nombre': _userData.displayName,
+        'nombre': name != null ? name : _userData.displayName,
         'correo': _userData.email,
-        'telefono': phoneNumber,
+        'telefono': phone != null ? phone : phoneNumber,
         'direccion': '',
         'estado': '',
         'municipio': '',
@@ -237,12 +238,14 @@ String message = "";
         idToken: String.fromCharCodes(appleIdCredential.identityToken),
         accessToken: String.fromCharCodes(appleIdCredential.authorizationCode),
       );
-      return AuthResult(status: AuthResult.ok,
-          credential: credential);
+         return AuthResult(status: AuthResult.ok,
+          credential: credential,
+          fullName: '${appleIdCredential.fullName.givenName} ${appleIdCredential
+              .fullName.familyName}');
     }
-    return AuthResult(status: AuthResult.error, credential: null);
-
+    return AuthResult(status: AuthResult.error, credential: null, message: message);
   }
+
 
   // SignIn With phone
   Future<void> signInWithPhone({String verificationId, String smsCode}) async {
@@ -393,8 +396,11 @@ class AuthResult {
 
   final int status;
   final AuthCredential credential;
+  final String message;
+  final String fullName;
 
-  AuthResult({this.status, this.credential});
+  AuthResult(
+      {this.status, this.credential, this.message = "success", this.fullName});
 
   AuthCredential getCredential() => this.credential;
 }
