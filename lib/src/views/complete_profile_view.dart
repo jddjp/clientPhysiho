@@ -136,19 +136,10 @@ class _CompleteProfileViewState extends State<CompleteProfileView> {
                           child: Column(
                             children: [
                               SizedBox(height: 40.0),
+                              text("Completar perfil",
+                                  fontSize: textSizeNormal),
                               Text(
-                                Platform.isIOS
-                                    ? "Información de perfil"
-                                    : "Completar perfil",
-                                style: TextStyle(
-                                  fontSize: textSizeNormal,
-                                  fontWeight: FontWeight.bold,
-                                ),
-                              ),
-                              Text(
-                                Platform.isIOS
-                                    ? "Visualiza la información de tu perfil"
-                                    : "Completa tus datos para poder continuar",
+                                "Completa tus datos para poder continuar",
                                 textAlign: TextAlign.center,
                               ),
                               SizedBox(height: 45.0),
@@ -156,17 +147,19 @@ class _CompleteProfileViewState extends State<CompleteProfileView> {
                                 key: _formKey,
                                 child: Column(
                                   children: [
-                                    buildNameFormField(context
-                                        .watch<LoginProvider>()
-                                        .currentUser['nombre']),
+                                buildNameFormField(context
+    .watch<LoginProvider>()
+    .currentUser['nombre'], readOnly: Platform.isIOS),
+SizedBox(height: spacing_large),
+buildEmailFormField(context
+    .watch<LoginProvider>()
+    .currentUser['correo'], readOnly: Platform.isIOS),
+
+
                                     SizedBox(height: spacing_large),
                                     buildPhoneNumberFormField(context
                                         .watch<LoginProvider>()
                                         .currentUser['telefono']),
-                                    SizedBox(height: spacing_large),
-                                    buildEmailFormField(context
-                                        .watch<LoginProvider>()
-                                        .currentUser['correo']),
                                     SizedBox(height: spacing_large),
                                     buildDireccionFormField(context
                                         .watch<LoginProvider>()
@@ -226,14 +219,14 @@ class _CompleteProfileViewState extends State<CompleteProfileView> {
                                   context.read<LoginProvider>().logout();
                                 },
                                 child: Text(
-                                  "Cerrar sesión",
+                                  "Cerrar sesiÃ³n",
                                   style: TextStyle(
                                       decoration: TextDecoration.underline),
                                 ),
                               ),
                               SizedBox(height: spacing_large),
                               Text(
-                                "Al continuar, confirmas que está de acuerdo \ncon nuestros Términos y condiciones",
+                                "Al continuar, confirmas que estÃ¡ de acuerdo \ncon nuestros TÃ©rminos y condiciones",
                                 textAlign: TextAlign.center,
                                 style: Theme.of(context).textTheme.caption,
                               ),
@@ -284,7 +277,7 @@ class _CompleteProfileViewState extends State<CompleteProfileView> {
                           children: [
                             ListTile(
                               title: Text(
-                                "Disfruta de nuestros servicios agenda y regístrate",
+                                "Disfruta de nuestros servicios agenda y regÃ­strate",
                                 style: TextStyle(
                                     color: Colors.black,
                                     fontSize: 20,
@@ -323,7 +316,8 @@ class _CompleteProfileViewState extends State<CompleteProfileView> {
                 )),
     );
   }
-Widget buildNameFormField(String defaultName, {bool readOnly = false}) {
+
+  Widget buildNameFormField(String defaultName, {bool readOnly = false}) {
   if (Platform.isIOS) {
     return Column(
       crossAxisAlignment: CrossAxisAlignment.start,
@@ -363,33 +357,6 @@ Widget buildNameFormField(String defaultName, {bool readOnly = false}) {
     );
   }
 }
- Widget buildPhoneNumberFormField(String defaultValue,
-    {bool readOnly = false}) {
-
-    return TextFormField(
-      keyboardType: TextInputType.phone,
-      initialValue: defaultValue,
-      readOnly: readOnly,
-      onSaved: (newValue) => phoneNumber = newValue,
-      validator: (value) {
-        Pattern pattern = r'^[0-9]{10}$';
-        RegExp regex = new RegExp(pattern);
-        if (value.isEmpty) {
-          return "Ingresa tu número de teléfono";
-        }
-        if (!regex.hasMatch(value)) {
-          return "Ingresa un número a 10 dígitos válido";
-        }
-        return null;
-      },
-      decoration: InputDecoration(
-        labelText: "Número de teléfono",
-        hintText: "Ingresa tu número de teléfono",
-        floatingLabelBehavior: FloatingLabelBehavior.always,
-      ),
-    );
-  
-}
 
 Widget buildEmailFormField(String defaultValue, {bool readOnly = false}) {
   if (Platform.isIOS) {
@@ -425,29 +392,60 @@ Widget buildEmailFormField(String defaultValue, {bool readOnly = false}) {
   }
 }
 
-Widget buildDireccionFormField(String defaultName, {bool readOnly = false}) {
 
+  TextFormField buildPhoneNumberFormField(String defaultValue) {
     return TextFormField(
-      onSaved: (newValue) => direccion = newValue,
-      initialValue: defaultName,
-      autofocus: true,
-      readOnly: readOnly,
+      keyboardType: TextInputType.phone,
+      initialValue: defaultValue,
+      readOnly: defaultValue != null,
+      onSaved: (newValue) => phoneNumber = newValue,
       validator: (value) {
+        Pattern pattern = r'^[0-9]{10}$';
+        RegExp regex = new RegExp(pattern);
         if (value.isEmpty) {
-          return "Por favor ingresa tu dirección";
+          return "Ingresa tu nÃºmero de telÃ©fono";
+        }
+        if (!regex.hasMatch(value)) {
+          return "Ingresa un nÃºmero a 10 dÃ­gitos vÃ¡lido";
         }
         return null;
       },
       decoration: InputDecoration(
-        labelText: "Dirección",
-        hintText: "Ingresa tu dirección",
+        labelText: "NÃºmero de telÃ©fono",
+        hintText: "Ingresa tu nÃºmero de telÃ©fono",
+        // If  you are using latest version of flutter then lable text and hint text shown like this
+        // if you r using flutter less then 1.20.* then maybe this is not working properly
         floatingLabelBehavior: FloatingLabelBehavior.always,
+        //suffixIcon: CustomSurffixIcon(svgIcon: "assets/icons/Phone.svg"),
       ),
     );
-  
+  }
+
+
+
+  TextFormField buildDireccionFormField(defaultName) {
+    return TextFormField(
+      onSaved: (newValue) => direccion = newValue,
+      initialValue: defaultName,
+      autofocus: true,
+      validator: (value) {
+        if (value.isEmpty) {
+          return "Por favor ingresa tu direcciÃ³n";
+        }
+        return null;
+      },
+      decoration: InputDecoration(
+        labelText: "DirecciÃ³n",
+        hintText: "Ingresa tu direcciÃ³n",
+        // If  you are using latest version of flutter then lable text and hint text shown like this
+        // if you r using flutter less then 1.20.* then maybe this is not working properly
+        floatingLabelBehavior: FloatingLabelBehavior.always,
+        //suffixIcon: CustomSurffixIcon(svgIcon: "assets/icons/User.svg"),
+      ),
+    );
+  }
 }
 
-}
 /** */
 //You can use any Widget
 class MySelectionItem extends StatelessWidget {
