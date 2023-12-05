@@ -147,17 +147,13 @@ class _CompleteProfileViewState extends State<CompleteProfileView> {
                                 key: _formKey,
                                 child: Column(
                                   children: [
-                                    buildNameFormField(
-                                        context
-                                            .watch<LoginProvider>()
-                                            .currentUser['nombre'],
-                                        readOnly: Platform.isIOS),
+                                    buildNameFormField(context
+                                        .watch<LoginProvider>()
+                                        .currentUser['nombre']),
                                     SizedBox(height: spacing_large),
-                                    buildEmailFormField(
-                                        context
-                                            .watch<LoginProvider>()
-                                            .currentUser['correo'],
-                                        readOnly: Platform.isIOS),
+                                    buildEmailFormField(context
+                                        .watch<LoginProvider>()
+                                        .currentUser['correo']),
                                     SizedBox(height: spacing_large),
                                     buildPhoneNumberFormField(context
                                         .watch<LoginProvider>()
@@ -172,18 +168,6 @@ class _CompleteProfileViewState extends State<CompleteProfileView> {
                                       press: () async {
                                         if (_formKey.currentState.validate()) {
                                           _formKey.currentState.save();
-                                          print("============Continuar");
-                                          print({
-                                            'nombre': name,
-                                            'telefono': phoneNumber,
-                                            'correo': email,
-                                            'direccion': direccion,
-                                            'estado': _valueChanged,
-                                            'municipio': municipio,
-                                            'completed': true,
-                                            'updated_at':
-                                                FieldValue.serverTimestamp()
-                                          });
                                           await FirebaseFirestore.instance
                                               .collection('customers')
                                               .doc(context
@@ -330,32 +314,23 @@ class _CompleteProfileViewState extends State<CompleteProfileView> {
     );
   }
 
-  Widget buildNameFormField(String defaultName, {bool readOnly = false}) {
+  Widget buildNameFormField(String defaultName) {
     if (Platform.isIOS) {
-      return Column(
-        crossAxisAlignment: CrossAxisAlignment.start,
-        children: [
-          Text(
-            "Nombre:",
-            style: TextStyle(
-              fontSize: 16.0,
-              fontWeight: FontWeight.bold,
-            ),
-          ),
-          Text(
-            defaultName,
-            style: TextStyle(
-              fontSize: 16.0,
-            ),
-          ),
-        ],
+      return TextFormField(
+        onSaved: (newValue) => name = newValue,
+        initialValue: defaultName,
+        enabled: false, // Esto hace que el campo no sea editable
+        decoration: InputDecoration(
+          labelText: "Nombre",
+          hintText: "Ingresa tu nombre completo",
+          floatingLabelBehavior: FloatingLabelBehavior.always,
+        ),
       );
     } else {
       return TextFormField(
         onSaved: (newValue) => name = newValue,
         initialValue: defaultName,
         autofocus: true,
-        readOnly: readOnly,
         validator: (value) {
           if (value.isEmpty) {
             return "Por favor ingresa tu nombre";
@@ -371,31 +346,29 @@ class _CompleteProfileViewState extends State<CompleteProfileView> {
     }
   }
 
-  Widget buildEmailFormField(String defaultValue, {bool readOnly = false}) {
+  Widget buildEmailFormField(String defaultValue) {
     if (Platform.isIOS) {
-      return Column(
-        crossAxisAlignment: CrossAxisAlignment.start,
-        children: [
-          Text(
-            "Correo electrónico:",
-            style: TextStyle(
-              fontSize: 16.0,
-              fontWeight: FontWeight.bold,
-            ),
-          ),
-          Text(
-            defaultValue,
-            style: TextStyle(
-              fontSize: 16.0,
-            ),
-          ),
-        ],
+      return TextFormField(
+        onSaved: (newValue) => email = newValue,
+        initialValue: defaultValue,
+        enabled: false, // Esto hace que el campo no sea editable
+        decoration: InputDecoration(
+          labelText: "Correo electrónico",
+          hintText: "Ingresa tu correo electrónico",
+          floatingLabelBehavior: FloatingLabelBehavior.always,
+        ),
       );
     } else {
       return TextFormField(
-        initialValue: defaultValue,
         onSaved: (newValue) => email = newValue,
-        readOnly: readOnly,
+        initialValue: defaultValue,
+        autofocus: true,
+        validator: (value) {
+          if (value.isEmpty) {
+            return "Por favor ingresa tu direccion";
+          }
+          return null;
+        },
         decoration: InputDecoration(
           labelText: "Correo electrónico",
           hintText: "Ingresa tu correo electrónico",
@@ -425,10 +398,7 @@ class _CompleteProfileViewState extends State<CompleteProfileView> {
       decoration: InputDecoration(
         labelText: "Numero de telefono",
         hintText: "Ingresa tu numero de telefono",
-        // If  you are using latest version of flutter then lable text and hint text shown like this
-        // if you r using flutter less then 1.20.* then maybe this is not working properly
         floatingLabelBehavior: FloatingLabelBehavior.always,
-        //suffixIcon: CustomSurffixIcon(svgIcon: "assets/icons/Phone.svg"),
       ),
     );
   }
@@ -447,10 +417,7 @@ class _CompleteProfileViewState extends State<CompleteProfileView> {
       decoration: InputDecoration(
         labelText: "Direccion",
         hintText: "Ingresa tu direccion",
-        // If  you are using latest version of flutter then lable text and hint text shown like this
-        // if you r using flutter less then 1.20.* then maybe this is not working properly
         floatingLabelBehavior: FloatingLabelBehavior.always,
-        //suffixIcon: CustomSurffixIcon(svgIcon: "assets/icons/User.svg"),
       ),
     );
   }
