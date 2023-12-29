@@ -121,29 +121,12 @@ class _LoginViewState extends State<LoginView> {
                             textPrimaryColor, () {
                           Provider.of<LoginProvider>(context, listen: false)
                               .login("google")
-                              .then((value) {
+                              .then((value) 
+                              {
                             launchScreen(
                                 context, CompleteProfileView.routeName);
                           });
                         }),
-
-                        /*SizedBox(height: width * 0.05),
-                        socialButton(
-                            facebookColor,
-                            food_ic_fb,
-                            "Ingresar con Facebook",
-                            whiteColor,
-                            whiteColor, () {
-                          Provider.of<LoginProvider>(context, listen: false)
-                              .login("facebook")
-                              .then((value) {
-                            launchScreen(
-                                context, CompleteProfileView.routeName);
-                          });
-                          /*Provider.of<LoginProvider>(context, listen: false)
-                              .loginFacebook();*/
-                        }),*/
-
                         SizedBox(height: width * 0.05),
                         DefaultButton(
                           text: "Usar número de teléfono",

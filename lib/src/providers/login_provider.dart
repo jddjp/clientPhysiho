@@ -73,18 +73,12 @@ class LoginProvider with ChangeNotifier {
     _loading = true;
     notifyListeners();
 
-    final AuthResult result = type == 'google'? await signInWithGoogle()
-        : (type == 'apple'
-            ? await signInWithApple()
-            : await signInWithFacebook());
+    final AuthResult result = type == 'google'? await signInWithGoogle() : await signInWithApple();
 
     if (result.status == AuthResult.ok) {
       try {
-        UserCredential userCredential =
-            await _auth.signInWithCredential(result.credential);
-
+        UserCredential userCredential = await _auth.signInWithCredential(result.credential);
               print("Validamos nombre"+result.fullName);
-       
          return afterSignIn(userCredential, name: result.fullName);
       } on FirebaseAuthException catch (e) {
         Fluttertoast.showToast(
@@ -130,7 +124,7 @@ class LoginProvider with ChangeNotifier {
 
   Future<void> afterSignIn(UserCredential userCredential, {String name, String phone}) async {
       
-          print(userCredential);
+    print(userCredential);
     _loadingCurrentUser = true;
     notifyListeners();
     // Register in firestore if is a new user
@@ -197,37 +191,6 @@ class LoginProvider with ChangeNotifier {
     return AuthResult(status: AuthResult.ok, credential: credential);
   }
 
-  // Facebook login
-  Future<AuthResult> signInWithFacebook() async {
-    //TODO Facebook login
-    /*try {
-      // by default the login method has the next permissions ['email','public_profile']
-      AccessToken accessToken = await FacebookAuth.instance.login();
-      // get the user data
-      //final userData = await FacebookAuth.instance.getUserData();
-      //print(userData);
-      FacebookAuthCredential facebookAuthCredential =
-          FacebookAuthProvider.credential(accessToken.token);
-
-      return AuthResult(
-          status: AuthResult.ok, credential: facebookAuthCredential);
-    } on FacebookAuthException catch (e) {
-      print(e.message);
-      switch (e.errorCode) {
-        case FacebookAuthErrorCode.OPERATION_IN_progress1:
-          print("You have a previous login operation in progress1");
-          break;
-        case FacebookAuthErrorCode.CANCELLED:
-          print("login cancelled");
-          break;
-        case FacebookAuthErrorCode.FAILED:
-          print("login failed");
-          break;
-      }
-    }
-*/
-    return AuthResult(status: 500, credential: null);
-  }
 
   Future<AuthResult> signInWithApple() async {
  
