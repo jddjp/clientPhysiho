@@ -264,13 +264,6 @@ class _ItemViewState extends StateMVC<ItemView> {
                                         right: 30.0,
                                         bottom: 0.0),
                                     //apply padding to some sides only
-                                    child: Text(
-                                      '¿Dónde quieres recibir tus sesiones?',
-                                      style: TextStyle(
-                                        fontSize: textSizeNormal,
-                                        fontWeight: fontBold,
-                                      ),
-                                    ),
                                   ),
                                 ),
                                 RadioListTile(
