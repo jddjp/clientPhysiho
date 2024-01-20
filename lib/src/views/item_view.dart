@@ -83,22 +83,8 @@ class _ItemViewState extends StateMVC<ItemView> {
   Map<String, dynamic> phisioSelected = null;
   @override
   Widget build(BuildContext context) {
-    //_initialValue = 'starValue';
-
-    //print(loading);
-    //print(widget.item);
-
     var width = MediaQuery.of(context).size.width;
-    //print('sesionList');
-    //print(_idservices.getString('idservicio'));
-    //print(_idservices.getString('idpaqueteservicio'));
-    //print('ItemView');
-    //print("pantalla de items compra?");
-    //print(widget.item);
-    //print(sesionsList);
-    //print(hoursList);
-    // Change status bar color
-    // print(userPhysio.getPhysio());
+
     changeStatusColor(Colors.transparent);
     return (context.watch<LoginProvider>().isLoggedIn() &&
             context.watch<LoginProvider>().currentUser['nombre'] != null
@@ -266,36 +252,7 @@ class _ItemViewState extends StateMVC<ItemView> {
                                     //apply padding to some sides only
                                   ),
                                 ),
-                                RadioListTile(
-                                  title: Text("Consultorio",
-                                      style: TextStyle(
-                                        fontSize: textSizeNormal,
-                                        fontWeight: fontRegular,
-                                      )),
-                                  value: "consultorio",
-                                  groupValue: location,
-                                  onChanged: (value) {
-                                    setState(() {
-                                      location = value.toString();
-                                      print(location);
-                                    });
-                                  },
-                                ),
-                                RadioListTile(
-                                  title: Text("A domicilio",
-                                      style: TextStyle(
-                                        fontSize: textSizeNormal,
-                                        fontWeight: fontRegular,
-                                      )),
-                                  value: "domicilio",
-                                  groupValue: location,
-                                  onChanged: (value) {
-                                    setState(() {
-                                      location = value.toString();
-                                      print(location);
-                                    });
-                                  },
-                                ),
+                             
                                 Container(
                                   height: 10,
                                 ),
@@ -361,6 +318,11 @@ class _ItemViewState extends StateMVC<ItemView> {
                                     }
                                     if (isFilled) {
                                       if (phisioSelected != null) {
+                                        if (_con.itemService['name'].trim() ==
+                                            'Domicilio') {
+                                          location = 'Domicilio';
+                                        }
+
                                         launchScreen(
                                             context, CheckTypePayment.routeName,
                                             arguments: {
@@ -524,78 +486,70 @@ class _ItemViewState extends StateMVC<ItemView> {
                             'Esta es tu primera sesión,selecciona un día despues de la compra '),
                       )
                     : Container(),
-                // phisioSelected == ""
-                //     ? Fluttertoast.showToast(
-                //         msg: "Selecciona un Fisioterapeuta")
-                    Row(
-                        children: [
-                          Icon(
-                            Icons.calendar_month_rounded,
-                            size: 22,
-                          ),
-                          SizedBox(
-                            width: 10,
-                          ),
-                          Container(
-                            width: MediaQuery.of(context).size.width * 0.7,
-                            child: DateTimeFormField(
-                              decoration: const InputDecoration(
-                                hintStyle: TextStyle(color: Colors.black45),
-                                errorStyle: TextStyle(color: Colors.redAccent),
-                                border: OutlineInputBorder(),
-                                suffixIcon: Icon(Icons.event_note),
-                                labelText: 'Fecha de cita',
-                              ),
-                              mode: DateTimeFieldPickerMode.date,
-                              autovalidateMode: AutovalidateMode.always,
-                              validator: (value) {
-                                if (value != null) {
-                                  if (sesionsList[index] !=
-                                      DateFormat('yyyy-MM-dd').format(value)) {
-                                    if (sesionsList.contains(
-                                        DateFormat('yyyy-MM-dd')
-                                            .format(value))) {
-                                      sesionsList[index] = null;
-                                      return "Error: No puedes tener mas de una sesión al día.";
-                                    }
-                                    if (value.isBefore(DateTime.now())) {
-                                      sesionsList[index] = null;
-                                      return "Error: selecciona una fecha posterior a hoy.";
-                                    } else {
-                                      sesionsList[index] =
-                                          DateFormat('yyyy-MM-dd')
-                                              .format(value);
-                                    }
-                                  }
-                                }
-                                return null;
-                              },
-                              onDateSelected: (DateTime value) {
-                                selectedDate = value;
-                                //print(value);
-                                setState(() {
-                                  // print('setState');
-                                  // print(index);
-                                  if (sesionsList.contains(
-                                      DateFormat('yyyy-MM-dd').format(value))) {
-                                    Fluttertoast.showToast(
-                                        msg:
-                                            "No puedes tener mas de una sesión al día, selecciona otra fecha");
-                                  } else {
-                                    sesionsList[index] =
-                                        DateFormat('yyyy-MM-dd').format(value);
+                Row(
+                  children: [
+                    Icon(
+                      Icons.calendar_month_rounded,
+                      size: 22,
+                    ),
+                    SizedBox(
+                      width: 10,
+                    ),
+                    Container(
+                      width: MediaQuery.of(context).size.width * 0.7,
+                      child: DateTimeFormField(
+                        decoration: const InputDecoration(
+                          hintStyle: TextStyle(color: Colors.black45),
+                          errorStyle: TextStyle(color: Colors.redAccent),
+                          border: OutlineInputBorder(),
+                          suffixIcon: Icon(Icons.event_note),
+                          labelText: 'Fecha de cita',
+                        ),
+                        mode: DateTimeFieldPickerMode.date,
+                        autovalidateMode: AutovalidateMode.always,
+                        validator: (value) {
+                          if (value != null) {
+                            if (sesionsList[index] !=
+                                DateFormat('yyyy-MM-dd').format(value)) {
+                              if (sesionsList.contains(
+                                  DateFormat('yyyy-MM-dd').format(value))) {
+                                sesionsList[index] = null;
+                                return "Error: No puedes tener mas de una sesión al día.";
+                              }
+                              if (value.isBefore(DateTime.now())) {
+                                sesionsList[index] = null;
+                                return "Error: selecciona una fecha posterior a hoy.";
+                              } else {
+                                sesionsList[index] =
+                                    DateFormat('yyyy-MM-dd').format(value);
+                              }
+                            }
+                          }
+                          return null;
+                        },
+                        onDateSelected: (DateTime value) {
+                          selectedDate = value;
+                          setState(() {
+                            if (sesionsList.contains(
+                                DateFormat('yyyy-MM-dd').format(value))) {
+                              Fluttertoast.showToast(
+                                  msg:
+                                      "No puedes tener mas de una sesión al día, selecciona otra fecha");
+                            } else {
+                              sesionsList[index] =
+                                  DateFormat('yyyy-MM-dd').format(value);
 
-                                    String selectedDayOfWeek =
-                                        DateFormat('EEEE').format(value);
+                              String selectedDayOfWeek =
+                                  DateFormat('EEEE').format(value);
 
-                                    selectedDay = selectedDayOfWeek;
-                                  }
-                                });
-                              },
-                            ),
-                          )
-                        ],
+                              selectedDay = selectedDayOfWeek;
+                            }
+                          });
+                        },
                       ),
+                    )
+                  ],
+                ),
                 Row(
                   children: [
                     Icon(
@@ -618,9 +572,6 @@ class _ItemViewState extends StateMVC<ItemView> {
                             child: SelectFormField(
                               key: Key(index.toString()),
                               type: SelectFormFieldType.dialog,
-                              //controller: _controller,
-                              //initialValue: _initialValue,
-                              //icon: Icon(Icons.accessibility),
                               labelText: 'Hora',
                               changeIcon: true,
                               dialogTitle: 'Seleccionar horario',

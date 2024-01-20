@@ -36,8 +36,10 @@ import 'package:flutter/services.dart';
 import 'package:flutter_localizations/flutter_localizations.dart';
 import 'package:provider/provider.dart';
 import 'package:shared_preferences/shared_preferences.dart';
+import 'package:intl/intl.dart';
 
 Future<void> main() async {
+   Intl.defaultLocale = 'es'; // Configura el idioma a español
   WidgetsFlutterBinding.ensureInitialized();
   await Firebase.initializeApp();
   SystemChrome.setPreferredOrientations([DeviceOrientation.portraitUp])
@@ -45,7 +47,6 @@ Future<void> main() async {
             providers: [
               ChangeNotifierProvider<LoginProvider>(
                   create: (_) => LoginProvider()),
-              //ChangeNotifierProvider<MessagingProvider>(create: (_) => MessagingProvider()),
               ChangeNotifierProvider<CartProvider>(
                   create: (_) => CartProvider()),
               ChangeNotifierProvider<LocationProvider>(
@@ -256,61 +257,14 @@ class _PhysihoAppState extends State<PhysihoApp> {
             break;
           default:
             return MaterialPageRoute(builder: (context) {
-              /*if (_error) {
-                return Container(
-                  child: Text("Error en Firebase"),
-                );
-              }*/
-
-              /*if (!_initialized) {
-                return LoadingView(
-                    sourceLoading: "Cargando recursos generales...");
-              } else if (context
-                  .watch<LoginProvider>()
-                  .isLoadingCurrentUser()) {
-                return LoadingView(
-                    sourceLoading: "Cargando información del usuario...");
-              } else if (!context
-                  .watch<LocationProvider>()
-                  .isPermissionChecked()) {
-                return LoadingView(sourceLoading: "Cargando ubicación...");
-              }*/
-
               if (_prefs == null) {
                 return LoadingView(
                     sourceLoading: "Cargando recursos generales...");
               }
-
-              /*if (_prefs.getBool('locationPermission') != true &&
-                  !context.watch<LocationProvider>().hasPermission()) {
-                print("==============LOCATION_VIEW=====================");
-                return LocationView();
-                // if orderInprogress1 == logged_out then redirect to cart_view
-              } else {*/
               // Go to Home
               print(_prefs.getBool('locationPermission'));
               print("==============HOME_VIEW=====================");
               return SplashView();
-              //}
-
-              // User logged in
-              /*if (context.watch<LoginProvider>().isLoggedIn()) {
-                // User no completed
-                if (!context.watch<LoginProvider>().isCompleted()) {
-                  print("==============COMPLETE_VIEW=====================");
-                  return CompleteProfileView();
-                } else if (!context.watch<LocationProvider>().hasPermission()) {
-                  print("==============LOCATION_VIEW=====================");
-                  return LocationView();
-                } else {
-                  // Go to Home
-                  print("==============HOME_VIEW=====================");
-                  return HomeView();
-                }
-              } else {
-                print("==============LOGIN_VIEW=====================");
-                return LoginView();
-              }*/
             });
         }
       },
