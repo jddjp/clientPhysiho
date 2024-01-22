@@ -24,11 +24,10 @@ class SessionProvider {
 
   Future<List<Map<String, dynamic>>> getHours(int index, String idEmployee,
       String sesionsListIndex, String selectedDay) async {
-        
     var hoursListIndex = new List(15);
     List<Map<String, dynamic>> hoursList = new List();
 
-   hoursList.add(
+    hoursList.add(
       {
         'value': '8:00',
         'label': '8:00 - 9:00',
@@ -126,41 +125,40 @@ class SessionProvider {
         'icon': Icon(Icons.stop),
       },
     );
- hoursList.add(
+    hoursList.add(
       {
         'value': '22:00',
         'label': '22:00 - 23:00',
         'icon': Icon(Icons.stop),
       },
     );
-     hoursList.add(
+    hoursList.add(
       {
         'value': '23:00',
         'label': '23:00 - 00:00',
         'icon': Icon(Icons.stop),
       },
     );
-         hoursList.add(
+    hoursList.add(
       {
         'value': '00:00',
         'label': '00:00 - 00:00',
         'icon': Icon(Icons.stop),
       },
-      
     );
 
-      Map<String, String> traduccionDias = {
-    'Monday': 'Lunes',
-    'Tuesday': 'Martes',
-    'Wednesday': 'Miércoles',
-    'Thursday': 'Jueves',
-    'Friday': 'Viernes',
-    'Saturday': 'Sábado',
-    'Sunday': 'Domingo',
-  };
+    Map<String, String> traduccionDias = {
+      'monday': 'Lunes',
+      'tuesday': 'Martes',
+      'wednesday': 'Miércoles',
+      'thursday': 'Jueves',
+      'friday': 'Viernes',
+      'saturday': 'Sábado',
+      'sunday': 'Domingo',
+    };
 
-
-    DocumentReference physioRef =FirebaseFirestore.instance.collection('users').doc(idEmployee);
+    DocumentReference physioRef =
+        FirebaseFirestore.instance.collection('users').doc(idEmployee);
     DocumentSnapshot physioSnapshot = await physioRef.get();
 
     bool isDayAvailable = false;
@@ -174,28 +172,24 @@ class SessionProvider {
       schedulesMap.forEach((key, value) {
         if (selectedDay != null) {
           String diaEnEspanol = traduccionDias[key] ?? key;
-          if (key.toLowerCase() == diaEnEspanol.toLowerCase()) {
+          if (diaEnEspanol.toLowerCase() == selectedDay.toLowerCase()) {
             // El día de la semana seleccionado está presente en el mapa
             isDayAvailable = true;
-
             // Obtén las horas de cierre y apertura del mapa
             String closingTime = value['closing_time'];
             String openingTime = value['opening_time'];
 
             DateTime openingHour = DateFormat('HH:mm').parse(openingTime);
             DateTime closingHour = DateFormat('HH:mm').parse(closingTime);
-
-
-// Eliminar las horas que no están dentro del rango de cierre y apertura
-          DateTime closingHourAdjusted = closingHour.subtract(Duration(hours: 1));
-
-hoursList.removeWhere((hour) {
-  DateTime currentHour = DateFormat('HH:mm').parse(hour['value']);
-  return currentHour.isBefore(openingHour) || currentHour.isAfter(closingHourAdjusted);
-});
+            // Eliminar las horas que no están dentro del rango de cierre y apertura
+            DateTime closingHourAdjusted =
+                closingHour.subtract(Duration(hours: 1));
+            hoursList.removeWhere((hour) {
+              DateTime currentHour = DateFormat('HH:mm').parse(hour['value']);
+              return currentHour.isBefore(openingHour) ||
+                  currentHour.isAfter(closingHourAdjusted);
+            });
           }
-
-
         }
       });
     }
@@ -245,10 +239,6 @@ hoursList.removeWhere((hour) {
     print('userPhysio');
     Map<String, dynamic> _currentUser;
     List<Map<String, dynamic>> _employess = new List();
-    /*final autoId = _getAutoId();
-
-    print(autoId);*/
-
     QuerySnapshot user = await FirebaseFirestore.instance
         .collection('users')
         .where('type', isEqualTo: 'employees')
