@@ -68,20 +68,21 @@ class LoginProvider with ChangeNotifier {
 
   // Main login function
   Future<dynamic> login(String type) async {
-    print("============LOGIN"+type);
+    print("============LOGIN" + type);
     _loading = true;
     notifyListeners();
 
-    final AuthResult result = type == 'google'? await signInWithGoogle() : await signInWithApple();
+    final AuthResult result =
+        type == 'google' ? await signInWithGoogle() : await signInWithApple();
 
     if (result.status == AuthResult.ok) {
       try {
-        UserCredential userCredential = await _auth.signInWithCredential(result.credential);
-              print("Validamos nombre"+result.fullName);
-         return afterSignIn(userCredential, name: result.fullName);
+        UserCredential userCredential =
+            await _auth.signInWithCredential(result.credential);
+        //print("Validamos nombre"+result.fullName);
+        return afterSignIn(userCredential, name: result.fullName);
       } on FirebaseAuthException catch (e) {
-        Fluttertoast.showToast(
-            msg: "Error: "+e.message.toString());
+        Fluttertoast.showToast(msg: "Error: " + e.message.toString());
         print(e);
       }
     } else if (result.status == AuthResult.cancelled) {
@@ -121,8 +122,8 @@ class LoginProvider with ChangeNotifier {
     notifyListeners();
   }
 
-  Future<void> afterSignIn(UserCredential userCredential, {String name, String phone}) async {
-      
+  Future<void> afterSignIn(UserCredential userCredential,
+      {String name, String phone}) async {
     print(userCredential);
     _loadingCurrentUser = true;
     notifyListeners();
@@ -190,12 +191,11 @@ class LoginProvider with ChangeNotifier {
     return AuthResult(status: AuthResult.ok, credential: credential);
   }
 
-
   Future<AuthResult> signInWithApple() async {
- 
-String message = "";
-    final result = await TheAppleSignIn.performRequests(
-        [AppleIdRequest(requestedScopes: [Scope.email, Scope.fullName])]);
+    String message = "";
+    final result = await TheAppleSignIn.performRequests([
+      AppleIdRequest(requestedScopes: [Scope.email, Scope.fullName])
+    ]);
 
     if (result.status == AuthorizationStatus.authorized) {
       final appleIdCredential = result.credential;
@@ -206,16 +206,17 @@ String message = "";
       );
       print(appleIdCredential);
       print("valida nombre");
-      print('${appleIdCredential.fullName.givenName} ${appleIdCredential
-              .fullName.familyName}');
-         return AuthResult(status: AuthResult.ok,
+      print(
+          '${appleIdCredential.fullName.givenName} ${appleIdCredential.fullName.familyName}');
+      return AuthResult(
+          status: AuthResult.ok,
           credential: credential,
-          fullName: '${appleIdCredential.fullName.givenName} ${appleIdCredential
-              .fullName.familyName}');
+          fullName:
+              '${appleIdCredential.fullName.givenName} ${appleIdCredential.fullName.familyName}');
     }
-    return AuthResult(status: AuthResult.error, credential: null, message: message);
+    return AuthResult(
+        status: AuthResult.error, credential: null, message: message);
   }
-
 
   // SignIn With phone
   Future<void> signInWithPhone({String verificationId, String smsCode}) async {
@@ -234,9 +235,14 @@ String message = "";
 
       return Future.value();
     } on PlatformException catch (err) {
-      print(err);
+      Fluttertoast.showToast(msg: err.toString());
+      Fluttertoast.showToast(msg: err.details);
+      Fluttertoast.showToast(msg: err.code);
+      Fluttertoast.showToast(msg: err.message);
+        _loading = false;
     } catch (err) {
-      print(err);
+        _loading = false;
+      Fluttertoast.showToast(msg: 'Error:' + err.toString());
     }
 
     _loading = false;
@@ -283,7 +289,10 @@ String message = "";
           .doc(_prefs.getString('uid'))
           .get();
 
-      _currentUser = {...userDoc.data() as Map<String, dynamic>, "id": userDoc.id};
+      _currentUser = {
+        ...userDoc.data() as Map<String, dynamic>,
+        "id": userDoc.id
+      };
       _loggedIn = true;
     }
 
@@ -307,7 +316,10 @@ String message = "";
           .collection('customers')
           .doc(_prefs.getString('uid'))
           .get();
-      _currentUser = {...userDoc.data() as Map<String, dynamic>, "id": userDoc.id};
+      _currentUser = {
+        ...userDoc.data() as Map<String, dynamic>,
+        "id": userDoc.id
+      };
     }
 
     print(_currentUser);

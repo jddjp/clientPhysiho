@@ -13,6 +13,7 @@ import 'package:loading_overlay/loading_overlay.dart';
 // import 'package:mercado_pago_mobile_checkout/mercado_pago_mobile_checkout.dart';
 import 'package:http/http.dart' as http;
 import 'package:flutter_dotenv/flutter_dotenv.dart';
+
 class CheckTypePayment extends StatefulWidget {
   // Route name for this view
   static const routeName = 'paymentType';
@@ -43,10 +44,6 @@ class _CheckTypePaymentState extends State<CheckTypePayment> {
         height: 40,
       )
     },
-    /*'online': {
-      'title': 'Pago con tarjeta',
-      'subtitle': 'Paga en línea'
-    },*/
   };
   final userPhysio = new SessionProvider();
 
@@ -67,15 +64,8 @@ class _CheckTypePaymentState extends State<CheckTypePayment> {
 
   // Platform messages are asynchronous, so we initialize in an async method.
   Future<void> initPlatformState() async {
-     WidgetsFlutterBinding.ensureInitialized();
+    WidgetsFlutterBinding.ensureInitialized();
     String platformVersion;
-    // Platform messages may fail, so we use a try/catch PlatformException.
-    // try {
-    //   platformVersion = await MercadoPagoMobileCheckout.platformVersion;
-    // } on PlatformException {
-    //   platformVersion = 'Failed to get platform version.';
-    // }
-
     // If the widget was removed from the tree while the asynchronous platform
     // message was in flight, we want to discard the reply rather than calling
     // setState to update our non-existent appearance.
@@ -93,7 +83,7 @@ class _CheckTypePaymentState extends State<CheckTypePayment> {
     // print(widget.item['item']);
     print(widget.item['sesions']);
     print(widget.item['idPhysio']);
-    // print(widget.item['hours']);
+    print(widget.item['item']['price']);
     // print(widget.item['customer']);
     return Scaffold(
       appBar: PreferredSize(
@@ -181,19 +171,20 @@ class _CheckTypePaymentState extends State<CheckTypePayment> {
                           });
                           // Redirect and remove all screens
                           Navigator.pushNamedAndRemoveUntil(
-                              context, HomeView.routeName, (route) => false,  arguments: "2");
+                              context, HomeView.routeName, (route) => false,
+                              arguments: "2");
                         } else {
-                            WidgetsFlutterBinding.ensureInitialized();
-                            // create payment method
-                            //pk_test_51Nq3fsDmZEM6EpGy6OrWjZhibMW390AyiyAe6IlIVPMN4LZs7R77WxQGyDKvukypSldXCtX8tYtzID7L6aOuHzPu00TH2t7YE4
-                              //Assign publishable key to flutter_stripe
-                              
-                              Stripe.publishableKey =  "pk_live_51Nq3fsDmZEM6EpGygH3bRZiBSDyQVU8MndbeiFZb0HDRwke24csGic52S9CjaVFeI99pWN2IwWtjkbAwtspeFF8h00FKcR2WEW";
-                              // Stripe.merchantIdentifier =
-                              //     "merchant.mx.com.ybooks.app";
-                              await dotenv.load(fileName: "assets/.env");
-                              makePayment(200);
-                         
+                          WidgetsFlutterBinding.ensureInitialized();
+                          // create payment method
+                          //pk_test_51Nq3fsDmZEM6EpGy6OrWjZhibMW390AyiyAe6IlIVPMN4LZs7R77WxQGyDKvukypSldXCtX8tYtzID7L6aOuHzPu00TH2t7YE4
+                          //Assign publishable key to flutter_stripe
+
+                          Stripe.publishableKey =
+                              "pk_live_51Nq3fsDmZEM6EpGygH3bRZiBSDyQVU8MndbeiFZb0HDRwke24csGic52S9CjaVFeI99pWN2IwWtjkbAwtspeFF8h00FKcR2WEW";
+                          // Stripe.merchantIdentifier =
+                          //     "merchant.mx.com.ybooks.app";
+                          await dotenv.load(fileName: "assets/.env");
+                          makePayment(widget.item['item']['price']);
                         }
                       },
                       child: Container(
@@ -233,12 +224,12 @@ class _CheckTypePaymentState extends State<CheckTypePayment> {
     );
   }
 
-   var paymentIntent;
+  var paymentIntent;
 
   Future<void> makePayment(int bookPrice) async {
     try {
       //STEP 1: Create Payment Intent
-           paymentIntent =
+      paymentIntent =
           await createPaymentIntent((bookPrice * 100).toString(), 'MXN');
 
       //STEP 2: Initialize Payment Sheet
@@ -255,9 +246,10 @@ class _CheckTypePaymentState extends State<CheckTypePayment> {
       //STEP 3: Display Payment sheet
       displayPaymentSheet();
     } catch (err) {
-        throw Exception(err);
+      throw Exception(err);
     }
   }
+
   createPaymentIntent(String amount, String currency) async {
     try {
       //Request body
@@ -270,15 +262,14 @@ class _CheckTypePaymentState extends State<CheckTypePayment> {
       var response = await http.post(
         Uri.parse('https://api.stripe.com/v1/payment_intents'),
         headers: {
-           'Authorization': 'Bearer ${dotenv.env['STRIPE_SECRET']}',
-           'Content-Type': 'application/x-www-form-urlencoded'
+          'Authorization': 'Bearer ${dotenv.env['STRIPE_SECRET']}',
+          'Content-Type': 'application/x-www-form-urlencoded'
         },
         body: body,
       );
       return json.decode(response.body);
     } catch (err) {
-       throw Exception(err.toString());
-      
+      throw Exception(err.toString());
     }
   }
 
@@ -301,13 +292,13 @@ class _CheckTypePaymentState extends State<CheckTypePayment> {
                     ],
                   ),
                 ));
-     userPhysio.createRecord(widget.item).then((sesion) {
-                            Fluttertoast.showToast(
-                                msg: "Sesiones agendadas correctamente");
-                          });
-                          // Redirect and remove all screens
-                          Navigator.pushNamedAndRemoveUntil(
-                              context, HomeView.routeName, (route) => false,  arguments: "2");
+        userPhysio.createRecord(widget.item).then((sesion) {
+          Fluttertoast.showToast(msg: "Sesiones agendadas correctamente");
+        });
+        // Redirect and remove all screens
+        Navigator.pushNamedAndRemoveUntil(
+            context, HomeView.routeName, (route) => false,
+            arguments: "2");
         paymentIntent = null;
       }).onError((error, stackTrace) {
         throw Exception(error);
@@ -334,5 +325,4 @@ class _CheckTypePaymentState extends State<CheckTypePayment> {
       print('$e');
     }
   }
-
 }

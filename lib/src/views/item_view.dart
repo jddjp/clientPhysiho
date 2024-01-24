@@ -240,23 +240,7 @@ class _ItemViewState extends StateMVC<ItemView> {
                           SingleChildScrollView(
                             child: Column(
                               children: [
-                                Divider(),
-                                Align(
-                                  alignment: Alignment.center,
-                                  child: Padding(
-                                    padding: EdgeInsets.only(
-                                        left: 30.0,
-                                        top: 0.0,
-                                        right: 30.0,
-                                        bottom: 0.0),
-                                    //apply padding to some sides only
-                                  ),
-                                ),
-                             
-                                Container(
-                                  height: 10,
-                                ),
-                                Divider(),
+                                
                                 Text('Sesiones',
                                     style: TextStyle(
                                       fontSize: textSizeNormal,

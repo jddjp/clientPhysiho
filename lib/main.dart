@@ -45,6 +45,7 @@ Future<void> main() async {
   SystemChrome.setPreferredOrientations([DeviceOrientation.portraitUp])
       .then((value) => runApp(MultiProvider(
             providers: [
+              
               ChangeNotifierProvider<LoginProvider>(
                   create: (_) => LoginProvider()),
               ChangeNotifierProvider<CartProvider>(

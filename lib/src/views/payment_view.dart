@@ -115,6 +115,7 @@ class _PaymentViewState extends State<PaymentView> {
                                   "pk_live_51JXz00JYJAHy112kNKOw3UoEv27GWpVBWPbUmXdULWfzsb5ieyZt55RTQkAEh7I6lWDzm41KRWkCoYOIWjq5DAHd00fxs8h2cj";
                               Stripe.merchantIdentifier =
                                   "merchant.mx.com.ybooks.app";
+                                  print(context.watch<CartProvider>().orderTotal().toStringAsFixed(0));
                               makePayment(200);
                             }
 
