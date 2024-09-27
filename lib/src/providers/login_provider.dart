@@ -239,9 +239,9 @@ class LoginProvider with ChangeNotifier {
       Fluttertoast.showToast(msg: err.details);
       Fluttertoast.showToast(msg: err.code);
       Fluttertoast.showToast(msg: err.message);
-        _loading = false;
+      _loading = false;
     } catch (err) {
-        _loading = false;
+      _loading = false;
       Fluttertoast.showToast(msg: 'Error:' + err.toString());
     }
 
@@ -282,7 +282,7 @@ class LoginProvider with ChangeNotifier {
     if (_prefs == null) _prefs = await SharedPreferences.getInstance();
 
     // Get logged user data
-    if (_prefs.getString('uid') != null) {
+    /*if (_prefs.getString('uid') != null) {
       print(_prefs.getString('uid'));
       DocumentSnapshot userDoc = await FirebaseFirestore.instance
           .collection('customers')
@@ -294,8 +294,53 @@ class LoginProvider with ChangeNotifier {
         "id": userDoc.id
       };
       _loggedIn = true;
-    }
+    }*/
+    if (_prefs.getString('uid') != null) {
+      print(_prefs.getString('uid'));
 
+      // Obtener el documento del usuario usando el UID almacenado
+      DocumentSnapshot userDoc = await FirebaseFirestore.instance
+          .collection('customers')
+          .doc(_prefs.getString('uid'))
+          .get();
+
+      // Verificar si el documento existe
+      if (userDoc.exists) {
+        // Si el documento existe, cargar los datos del usuario
+        _currentUser = {
+          ...userDoc.data() as Map<String, dynamic>,
+          "id": userDoc.id
+        };
+        _loggedIn = true;
+      } else {
+        // Si no existe, crear uno nuevo con los datos necesarios
+        String newUid = _prefs.getString('uid');
+
+        // Crear el nuevo documento con los datos que quieras
+        await FirebaseFirestore.instance
+            .collection('customers')
+            .doc(newUid)
+            .set({
+          'name': '',
+          'email': '',
+          'createdAt': FieldValue.serverTimestamp(),
+          // Agrega otros campos que necesites
+        });
+
+        // Recuperar el nuevo documento para usar sus datos
+        DocumentSnapshot newUserDoc = await FirebaseFirestore.instance
+            .collection('customers')
+            .doc(newUid)
+            .get();
+
+        // Asignar los datos del nuevo documento a _currentUser
+        _currentUser = {
+          ...newUserDoc.data() as Map<String, dynamic>,
+          "id": newUserDoc.id
+        };
+        _loggedIn = true;
+      }
+    }
     // Loading and login
     _loading = false;
     _loadingCurrentUser = false;

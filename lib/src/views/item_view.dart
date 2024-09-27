@@ -50,6 +50,11 @@ class _ItemViewState extends StateMVC<ItemView> {
   String _valueToValidate = '';
   String _valueSaved = '';
 
+  // Lista de opciones para el Dropdown (Clínica y Domicilio)
+  final List<String> locationOptions = ["Clinica", "Domicilio"];
+  // Variable para almacenar la opción seleccionada
+  String selectedLocation;
+
   /// This implementation is just to simulate a load data behavior
   /// from a data base sqlite or from a API
   Future<void> _getValue() async {
@@ -79,7 +84,7 @@ class _ItemViewState extends StateMVC<ItemView> {
   String selectedDay;
   var hoursList = new List(15);
   final userPhysio = new SessionProvider();
-  String location = "consultorio";
+  // String location = "consultorio";
   Map<String, dynamic> phisioSelected = null;
   @override
   Widget build(BuildContext context) {
@@ -141,6 +146,11 @@ class _ItemViewState extends StateMVC<ItemView> {
                                         style: TextStyle(
                                           fontSize: textSizeMedium,
                                           fontWeight: fontSemibold,
+                                        )),
+                                    Text('Tipo servicio:',
+                                        style: TextStyle(
+                                          fontSize: textSizeMedium,
+                                          fontWeight: fontSemibold,
                                         ))
                                   ],
                                 ),
@@ -169,78 +179,163 @@ class _ItemViewState extends StateMVC<ItemView> {
                                         style: TextStyle(
                                           fontSize: textSizeMedium,
                                           fontWeight: fontRegular,
+                                        )),
+                                    Text(_con.service['ubicacion'].toString(),
+                                        style: TextStyle(
+                                          fontSize: textSizeMedium,
+                                          fontWeight: fontRegular,
                                         ))
                                   ],
                                 ),
                               ],
                             ),
                           ),
-                          _con.employee == null
+                          Container(
+                            padding: EdgeInsets.all(10),
+                            child: Column(
+                              children: [
+                                Text(
+                                  'Selecciona una Ubicación',
+                                  style: TextStyle(
+                                    fontSize: textSizeNormal,
+                                    fontWeight: fontBold,
+                                  ),
+                                ),
+                                SizedBox(height: 10),
+                                Row(
+                                  children: [
+                                    Icon(
+                                      Icons.location_on,
+                                      size: 22,
+                                    ),
+                                    SizedBox(width: 15),
+                                    DropdownButton<String>(
+                                      value: selectedLocation,
+                                      hint: Text("Selecciona..."),
+                                      elevation: 16,
+                                      style: const TextStyle(
+                                          color: Colors.black, fontSize: 16),
+                                      underline: Container(
+                                        height: 2,
+                                        color: Colors.black,
+                                      ),
+                                      onChanged: (String newValue) {
+                                        setState(() {
+                                          phisioSelected = null;
+                                          selectedLocation = newValue;
+                                          _con.selectedLocation = newValue;
+
+                                          _con.asyncDataEmployes(newValue);
+                                        });
+                                      },
+                                      items: locationOptions
+                                          .map<DropdownMenuItem<String>>(
+                                              (String value) {
+                                        return DropdownMenuItem<String>(
+                                          value: value,
+                                          child: Text(value),
+                                        );
+                                      }).toList(),
+                                    ),
+                                  ],
+                                ),
+                              ],
+                            ),
+                          ),
+                          _con.service['name'].toString() == 'Dermatofuncional'
                               ? Container(
-                                  width: width,
-                                  child: Lottie.asset(
-                                      'assets/images/8682-loading.json'),
-                                )
-                              : Container(
                                   padding: EdgeInsets.all(10),
                                   child: Column(
                                     children: [
-                                      SizedBox(
-                                        height: 16,
-                                      ),
-                                      Text('Selecciona un Fisioterapeuta',
+                                      SizedBox(height: 16),
+                                      Text('Fisioterapeuta Asignado:',
                                           style: TextStyle(
                                             fontSize: textSizeNormal,
                                             fontWeight: fontBold,
                                           )),
                                       Row(
                                         children: [
-                                          Icon(
-                                            Icons.person,
-                                            size: 22,
-                                          ),
-                                          SizedBox(
-                                            width: 15,
-                                          ),
-                                          DropdownButton<Map<String, dynamic>>(
-                                            value: phisioSelected,
-                                            hint: Text("Selecciona..."),
-                                            elevation: 16,
-                                            style: const TextStyle(
-                                                color: Colors.black,
-                                                fontSize: 16),
-                                            underline: Container(
-                                              height: 2,
+                                          Icon(Icons.person, size: 22),
+                                          SizedBox(width: 15),
+                                          // Display a label with the name of "María Fernanda Zamora López"
+                                          Text(
+                                            'María Fernanda Zamora López',
+                                            style: TextStyle(
+                                              fontSize: 16,
                                               color: Colors.black,
                                             ),
-                                            onChanged:
-                                                (Map<String, dynamic> value) {
-                                              // This is called when the user selects an item.
-                                              setState(() {
-                                                phisioSelected = value;
-                                                print(phisioSelected);
-                                              });
-                                            },
-                                            items: _con.employess.map<
-                                                    DropdownMenuItem<
-                                                        Map<String, dynamic>>>(
-                                                (Map<String, dynamic> value) {
-                                              return DropdownMenuItem<
-                                                  Map<String, dynamic>>(
-                                                value: value,
-                                                child: Text(value['name']),
-                                              );
-                                            }).toList(),
-                                          )
+                                          ),
                                         ],
-                                      )
+                                      ),
                                     ],
                                   ),
-                                ),
+                                )
+                              : _con.selectedLocation != null &&
+                                      _con.employess.isNotEmpty
+                                  ? Container(
+                                      padding: EdgeInsets.all(10),
+                                      child: Column(
+                                        children: [
+                                          SizedBox(
+                                            height: 16,
+                                          ),
+                                          Text('Selecciona un Fisioterapeuta',
+                                              style: TextStyle(
+                                                fontSize: textSizeNormal,
+                                                fontWeight: fontBold,
+                                              )),
+                                          Row(
+                                            children: [
+                                              Icon(
+                                                Icons.person,
+                                                size: 22,
+                                              ),
+                                              SizedBox(
+                                                width: 15,
+                                              ),
+                                              DropdownButton<
+                                                  Map<String, dynamic>>(
+                                                value: phisioSelected,
+                                                hint: Text("Selecciona..."),
+                                                elevation: 16,
+                                                style: const TextStyle(
+                                                    color: Colors.black,
+                                                    fontSize: 16),
+                                                underline: Container(
+                                                  height: 2,
+                                                  color: Colors.black,
+                                                ),
+                                                onChanged: (Map<String, dynamic>
+                                                    value) {
+                                                  setState(() {
+                                                    phisioSelected =
+                                                        value; // Actualiza el valor seleccionado
+                                                    print(
+                                                        phisioSelected); // Imprime el valor seleccionado
+                                                  });
+                                                },
+                                                items: _con.employess.map<
+                                                        DropdownMenuItem<
+                                                            Map<String,
+                                                                dynamic>>>(
+                                                    (Map<String, dynamic>
+                                                        value) {
+                                                  return DropdownMenuItem<
+                                                      Map<String, dynamic>>(
+                                                    value: value,
+                                                    child: Text(value['name']),
+                                                  );
+                                                }).toList(),
+                                              ),
+                                            ],
+                                          )
+                                        ],
+                                      ),
+                                    )
+                                  : SizedBox(height: 16),
                           SingleChildScrollView(
                             child: Column(
                               children: [
-                                
                                 Text('Sesiones',
                                     style: TextStyle(
                                       fontSize: textSizeNormal,
@@ -301,12 +396,18 @@ class _ItemViewState extends StateMVC<ItemView> {
                                       }
                                     }
                                     if (isFilled) {
-                                      if (phisioSelected != null) {
-                                        if (_con.itemService['name'].trim() ==
-                                            'Domicilio') {
-                                          location = 'Domicilio';
-                                        }
+                                      if (_con.service['name'].trim() ==
+                                          'Dermatofuncional') {
+                                        setState(() {
+                                          phisioSelected = {
+                                            'id': 'deqVTO331NaMwusHQnK6f2rL4D2',
+                                            'name':
+                                                'María Fernanda Zamora López'
+                                          };
+                                        });
+                                      }
 
+                                      if (phisioSelected != null) {
                                         launchScreen(
                                             context, CheckTypePayment.routeName,
                                             arguments: {
@@ -318,7 +419,7 @@ class _ItemViewState extends StateMVC<ItemView> {
                                                   .read<LoginProvider>()
                                                   .currentUser['id'],
                                               'idPhysio': phisioSelected['id'],
-                                              'location': location
+                                              'location': selectedLocation
                                             });
                                       } else {
                                         Fluttertoast.showToast(
@@ -543,56 +644,114 @@ class _ItemViewState extends StateMVC<ItemView> {
                     SizedBox(
                       width: 10,
                     ),
-                    FutureBuilder(
-                      future: userPhysio.getHours(index, _con.employee['id'],
-                          sesionsList[index], selectedDay),
-                      builder: (BuildContext context,
-                          AsyncSnapshot<List<dynamic>> snapshot) {
-                        print('list hours');
-                        print(snapshot.data);
-                        if (snapshot.hasData) {
-                          return Container(
-                            width: 200,
-                            child: SelectFormField(
-                              key: Key(index.toString()),
-                              type: SelectFormFieldType.dialog,
-                              labelText: 'Hora',
-                              changeIcon: true,
-                              dialogTitle: 'Seleccionar horario',
-                              dialogCancelBtn: 'Cancelar',
-                              enableSearch: true,
-                              dialogSearchHint: 'Buscar horario',
-                              items: snapshot.data,
-                              onChanged: (val) {
-                                selectedHour = val;
-                                setState(() {
-                                  print("value changed: " + selectedHour);
-                                  hoursList[index] = selectedHour;
-                                  print(hoursList);
-                                });
-                              },
-                              validator: (val) {
-                                setState(() => _valueToValidate = val);
-                                return null;
-                              },
-                              onSaved: (val) {
-                                _valueSaved = val;
-                                setState(() {});
-                              },
-                            ),
-                          );
-                        } else {
-                          return Container(
-                            width: 200,
-                            child: Text(
-                              'No se encuentra Disponible el horario',
-                              style:
-                                  TextStyle(color: Colors.black, fontSize: 15),
-                            ),
-                          );
-                        }
-                      },
-                    ),
+                    phisioSelected != null &&
+                            _con.service['name'].trim() != 'Dermatofuncional'
+                        ? FutureBuilder(
+                            future: userPhysio.getHours(
+                                index,
+                                phisioSelected['id'],
+                                sesionsList[index],
+                                selectedDay),
+                            builder: (BuildContext context,
+                                AsyncSnapshot<List<dynamic>> snapshot) {
+                              print('list hours');
+                              print(snapshot.data);
+                              if (snapshot.hasData) {
+                                return Container(
+                                  width: 200,
+                                  child: SelectFormField(
+                                    key: Key(index.toString()),
+                                    type: SelectFormFieldType.dialog,
+                                    labelText: 'Hora',
+                                    changeIcon: true,
+                                    dialogTitle: 'Seleccionar horario',
+                                    dialogCancelBtn: 'Cancelar',
+                                    enableSearch: true,
+                                    dialogSearchHint: 'Buscar horario',
+                                    items: snapshot.data,
+                                    onChanged: (val) {
+                                      selectedHour = val;
+                                      setState(() {
+                                        print("value changed: " + selectedHour);
+                                        hoursList[index] = selectedHour;
+                                        print(hoursList);
+                                      });
+                                    },
+                                    validator: (val) {
+                                      setState(() => _valueToValidate = val);
+                                      return null;
+                                    },
+                                    onSaved: (val) {
+                                      _valueSaved = val;
+                                      setState(() {});
+                                    },
+                                  ),
+                                );
+                              } else {
+                                return Container(
+                                  width: 200,
+                                  child: Text(
+                                    'No se encuentra Disponible el horario',
+                                    style: TextStyle(
+                                        color: Colors.black, fontSize: 15),
+                                  ),
+                                );
+                              }
+                            },
+                          )
+                        : FutureBuilder(
+                            future: userPhysio.getHours(
+                                index,
+                                'WdeqVTO331NaMwusHQnK6f2rL4D2',
+                                sesionsList[index],
+                                selectedDay),
+                            builder: (BuildContext context,
+                                AsyncSnapshot<List<dynamic>> snapshot) {
+                              print('list hours');
+                              print(snapshot.data);
+                              if (snapshot.hasData) {
+                                return Container(
+                                  width: 200,
+                                  child: SelectFormField(
+                                    key: Key(index.toString()),
+                                    type: SelectFormFieldType.dialog,
+                                    labelText: 'Hora',
+                                    changeIcon: true,
+                                    dialogTitle: 'Seleccionar horario',
+                                    dialogCancelBtn: 'Cancelar',
+                                    enableSearch: true,
+                                    dialogSearchHint: 'Buscar horario',
+                                    items: snapshot.data,
+                                    onChanged: (val) {
+                                      selectedHour = val;
+                                      setState(() {
+                                        print("value changed: " + selectedHour);
+                                        hoursList[index] = selectedHour;
+                                        print(hoursList);
+                                      });
+                                    },
+                                    validator: (val) {
+                                      setState(() => _valueToValidate = val);
+                                      return null;
+                                    },
+                                    onSaved: (val) {
+                                      _valueSaved = val;
+                                      setState(() {});
+                                    },
+                                  ),
+                                );
+                              } else {
+                                return Container(
+                                  width: 200,
+                                  child: Text(
+                                    'No se encuentra Disponible el horario',
+                                    style: TextStyle(
+                                        color: Colors.black, fontSize: 15),
+                                  ),
+                                );
+                              }
+                            },
+                          )
                   ],
                 )
               ],

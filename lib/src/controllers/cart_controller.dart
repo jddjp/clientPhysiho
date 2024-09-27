@@ -11,22 +11,8 @@ class CartServiceController extends ControllerMVC {
   Map<String, dynamic> itemService;
   Map<String, dynamic> employee;
   SharedPreferences _idservices;
-  List<Map<String, dynamic>> employess = new List();
-  static const AUTO_ID_ALPHABET =
-      'ABCDEFGHIJKLMNOPQRSTUVWXYZabcdefghijklmnopqrstuvwxyz0123456789';
-  static const AUTO_ID_LENGTH = 20;
-
-  String _getAutoId() {
-    final buffer = StringBuffer();
-    final random = Random.secure();
-
-    final maxRandom = AUTO_ID_ALPHABET.length;
-
-    for (int i = 0; i < AUTO_ID_LENGTH; i++) {
-      buffer.write(AUTO_ID_ALPHABET[random.nextInt(maxRandom)]);
-    }
-    return buffer.toString();
-  }
+  List<Map<String, dynamic>> employess = [];
+  String selectedLocation; // Propiedad para la ubicación seleccionada
 
   CartServiceController(Map<String, dynamic> data) {
     initialize();
@@ -35,9 +21,9 @@ class CartServiceController extends ControllerMVC {
 
   void initialize() async {
     _idservices = await SharedPreferences.getInstance();
-    print('inicializacion pref');
-    print(_idservices.getString('idservicio'));
-    print(_idservices.getString('idpaqueteservicio'));
+    // print('inicializacion pref');
+    // print(_idservices.getString('idservicio'));
+    // print(_idservices.getString('idpaqueteservicio'));
   }
 
   void asyncData(Map<String, dynamic> item) async {
@@ -47,48 +33,41 @@ class CartServiceController extends ControllerMVC {
       item['id'] = await _idservices.getString('idpaqueteservicio');
       item['idservice'] = await _idservices.getString('idservicio');
     }
-    print(item);
-    print(_getAutoId());
 
-    final autoId = _getAutoId();
+    print('selectedLocation');
+    print(selectedLocation);
 
-    QuerySnapshot user = await FirebaseFirestore.instance
-        .collection('users')
-        .where('type', isEqualTo: 'employees')
-        .where('estatus', isEqualTo: 'activo')
-        .get();
+    // QuerySnapshot user = await FirebaseFirestore.instance
+    //     .collection('users')
+    //     .where('type', isEqualTo: 'employees')
+    //     .where('estatus', isEqualTo: 'activo')
+    //     //     .where('consulta', whereIn: [
+    //     //   selectedLocation,
+    //     //   'ambos'
+    //     // ]) // Filtra por "Domicilio" y "ambos" // Filtro por ubicación
+    //     //  .where('consulta', isEqualTo: 'activo')
+    //     .get();
 
-    user.docs.forEach((element) {
-      Map<String, dynamic> newElement = element.data() as Map<String, dynamic>;
-      employess.add({'id': element.reference.id, 'name': newElement['name']});
-      print("YAIR");
-      print(element.data());
-    });
-    /*user.docs.forEach((element) {
-      print(element.data());
-      Map<String, dynamic> elemnt = element.data();
-      _employess.add({
-        'value': '10:30',
-        'label': elemnt["name"],
-        'icon': Icon(Icons.stop),
-      });*/
+    // user.docs.forEach((element) {
+    //   Map<String, dynamic> newElement = element.data() as Map<String, dynamic>;
+    //   employess.add({'id': element.reference.id, 'name': newElement['name']});
+    //   print("YAIR");
+    //   print(element.data());
+    // });
 
-    final random = new Random();
+    // final random = new Random();
 
-    var element = user.docs[random.nextInt(user.docs.length)];
+    // var element = user.docs[random.nextInt(user.docs.length)];
 
-    print("Yair lenght: " + user.docs.length.toString());
-    print("Yair random: " + element.id);
-
-    Map<String, dynamic> el = element.data() as Map<String, dynamic>;
-    print("Yair: " + el['profile'].toString());
-    employee = {
-      'id': element.reference.id,
-      "name": el['name'],
-      "photo": el['profile'] != null && el['profile'] != ''
-          ? el['profile']['url']
-          : 'https://firebasestorage.googleapis.com/v0/b/fisioterapia-cfb53.appspot.com/o/profiles%2FBoEoSxoQyyLZdGbu.png?alt=media&token=39837240-bcca-4724-a843-d9fbf96b9456'
-    };
+    // Map<String, dynamic> el = element.data() as Map<String, dynamic>;
+    // // print("Yair: " + el['profile'].toString());
+    // employee = {
+    //   'id': element.reference.id,
+    //   "name": el['name'],
+    //   "photo": el['profile'] != null && el['profile'] != ''
+    //       ? el['profile']['url']
+    //       : 'https://firebasestorage.googleapis.com/v0/b/fisioterapia-cfb53.appspot.com/o/profiles%2FBoEoSxoQyyLZdGbu.png?alt=media&token=39837240-bcca-4724-a843-d9fbf96b9456'
+    // };
 
     DocumentReference serviceRef = FirebaseFirestore.instance
         .collection('services')
@@ -107,5 +86,32 @@ class CartServiceController extends ControllerMVC {
     setState(() {
       isLoading = false;
     });
+  }
+
+  void asyncDataEmployes(String ubi) async {
+    print('asyncDataEmployes=>>>>>>>>>>>');
+    print(service['ubicacion']);
+    print(ubi);
+
+    //try {
+    // Limpiar la lista de empleados antes de llenarla
+    // employess.clear();
+    employess.clear();
+    QuerySnapshot user = await FirebaseFirestore.instance
+        .collection('users')
+        .where('type', isEqualTo: 'employees')
+        .where('estatus', isEqualTo: 'activo')
+        .where('consulta', isEqualTo: ubi)
+        .get();
+
+    user.docs.forEach((element) {
+      Map<String, dynamic> newElement = element.data() as Map<String, dynamic>;
+      employess.add({'id': element.reference.id, 'name': newElement['name']});
+      //print("YAIR");
+      //  print(employess);
+    });
+    setState(() {});
+    print("employess=============>");
+    print(employess);
   }
 }
