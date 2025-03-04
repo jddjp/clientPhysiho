@@ -1,12 +1,7 @@
 import 'package:flutter/material.dart';
-import 'package:clientPhysiho/src/components/default_button.dart';
 import 'package:clientPhysiho/src/config/colors.dart';
 import 'package:clientPhysiho/src/config/constants.dart';
-import 'package:clientPhysiho/src/helpers/extension_helper.dart';
 import 'package:clientPhysiho/src/helpers/widget_helper.dart';
-import 'package:clientPhysiho/src/providers/login_provider.dart';
-import 'package:clientPhysiho/src/providers/cart_provider.dart';
-import 'package:clientPhysiho/src/views/tracking_view.dart';
 import 'package:provider/provider.dart';
 
 class CheckoutView extends StatefulWidget {

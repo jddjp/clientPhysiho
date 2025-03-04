@@ -1,15 +1,7 @@
 // @dart=2.9
 import 'package:clientPhysiho/src/config/colors.dart';
-import 'package:clientPhysiho/src/config/constants.dart';
-import 'package:clientPhysiho/src/helpers/extension_helper.dart';
-import 'package:clientPhysiho/src/providers/login_provider.dart';
-import 'package:clientPhysiho/src/providers/sessions_provider.dart';
-import 'package:clientPhysiho/src/views/login_view.dart';
 import 'package:flutter/material.dart';
 import 'package:google_maps_flutter/google_maps_flutter.dart';
-import 'package:intl/intl.dart';
-import 'package:provider/provider.dart';
-import 'package:table_calendar/table_calendar.dart';
 
 class LocationMapView extends StatefulWidget {
   // Route name for this view

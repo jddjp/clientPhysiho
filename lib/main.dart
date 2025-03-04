@@ -8,27 +8,17 @@ import 'package:clientPhysiho/src/helpers/extension_helper.dart';
 import 'package:clientPhysiho/src/providers/cart_provider.dart';
 import 'package:clientPhysiho/src/providers/location_provider.dart';
 import 'package:clientPhysiho/src/providers/login_provider.dart';
-import 'package:clientPhysiho/src/views/about_view.dart';
-import 'package:clientPhysiho/src/views/address_confirmation_view.dart';
 import 'package:clientPhysiho/src/views/agend_view.dart';
-import 'package:clientPhysiho/src/views/business_view.dart';
-import 'package:clientPhysiho/src/views/cart_view.dart';
-import 'package:clientPhysiho/src/views/category_view.dart';
 import 'package:clientPhysiho/src/views/checkout_view.dart';
 import 'package:clientPhysiho/src/views/complete_profile_view.dart';
 import 'package:clientPhysiho/src/views/create_account_view.dart';
-import 'package:clientPhysiho/src/views/department_view.dart';
 import 'package:clientPhysiho/src/views/home_view.dart';
 import 'package:clientPhysiho/src/views/item_view.dart';
 import 'package:clientPhysiho/src/views/loading_view.dart';
 import 'package:clientPhysiho/src/views/login_view.dart';
 import 'package:clientPhysiho/src/views/opt_view.dart';
-import 'package:clientPhysiho/src/views/order_detail_view.dart';
-import 'package:clientPhysiho/src/views/order_item_view.dart';
-import 'package:clientPhysiho/src/views/payment_view.dart';
 import 'package:clientPhysiho/src/views/service_view.dart';
 import 'package:clientPhysiho/src/views/splash.dart';
-import 'package:clientPhysiho/src/views/tracking_view.dart';
 import 'package:firebase_core/firebase_core.dart';
 import 'package:firebase_messaging/firebase_messaging.dart';
 import 'package:flutter/material.dart';
@@ -98,7 +88,7 @@ class _PhysihoAppState extends State<PhysihoApp> {
     });
     FirebaseMessaging.onMessageOpenedApp.listen((RemoteMessage message) {
       print("onLaunch: $message");
-      _navigateToDetail(message.data);
+      //_navigateToDetail(message.data);
     });
     _firebaseMessaging.requestPermission(
       sound: true,
@@ -125,12 +115,7 @@ class _PhysihoAppState extends State<PhysihoApp> {
     setState(() {});
   }
 
-  _navigateToDetail(Map<String, dynamic> message) {
-    if (message['data']['type'] == 'business') {
-      launchScreen(context, BusinessView.routeName,
-          arguments: message['data']['id']);
-    }
-  }
+
 
   @override
   Widget build(BuildContext context) {
@@ -163,11 +148,7 @@ class _PhysihoAppState extends State<PhysihoApp> {
           case CompleteProfileView.routeName:
             return MaterialPageRoute(builder: (_) => CompleteProfileView());
             break;
-          // department view
-          case DepartmentView.routeName:
-            return MaterialPageRoute(
-                builder: (_) => DepartmentView(department: args));
-            break;
+
           // business view
           case ServiceView.routeName:
             return MaterialPageRoute(
@@ -212,41 +193,14 @@ class _PhysihoAppState extends State<PhysihoApp> {
               },
             );
             break;
-          // cart view
-          case CartView.routeName:
-            return MaterialPageRoute(builder: (_) => CartView());
-            break;
-          // category view
-          case CategoryView.routeName:
-            return MaterialPageRoute(
-                builder: (_) => CategoryView(categoryName: args));
-            break;
+
+
           // checkout view
           case CheckoutView.routeName:
             return MaterialPageRoute(builder: (_) => CheckoutView());
             break;
-          //address confirmation view
-          case AddressConfirmation.routeName:
-            return MaterialPageRoute(builder: (_) => AddressConfirmation());
-            break;
-          // payment view
-          case PaymentView.routeName:
-            return MaterialPageRoute(builder: (_) => PaymentView());
-            break;
-          // tracking view
-          case TrackingView.routeName:
-            return MaterialPageRoute(
-                builder: (_) => TrackingView(orderId: args));
-            break;
-          case OrderDetail.routeName:
-            return MaterialPageRoute(builder: (_) => OrderDetail(order: args));
-            break;
-          case OrderItemView.routeName:
-            return MaterialPageRoute(builder: (_) => OrderItemView(item: args));
-            break;
-          case AboutPage.routeName:
-            return MaterialPageRoute(builder: (_) => AboutPage());
-            break;
+
+
           case LoginView.routeName:
             return MaterialPageRoute(builder: (_) => LoginView());
             break;

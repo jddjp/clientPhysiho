@@ -85,4 +85,7 @@ dependencies {
     implementation "org.jetbrains.kotlin:kotlin-stdlib-jdk7:$kotlin_version"
      implementation platform('com.google.firebase:firebase-bom:32.0.0')
     implementation 'com.google.firebase:firebase-analytics-ktx'
+    // Agregar dependencias de AppCompat y Material Components
+    implementation 'androidx.appcompat:appcompat:1.4.0' // o la última versión disponible
+    implementation 'com.google.android.material:material:1.4.0' // o la última versión disponible
 }

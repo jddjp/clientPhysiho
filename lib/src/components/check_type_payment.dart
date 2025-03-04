@@ -1,26 +1,22 @@
-// @dart=2.9
 import 'dart:convert';
-
 import 'package:clientPhysiho/src/config/colors.dart';
 import 'package:clientPhysiho/src/config/constants.dart';
 import 'package:clientPhysiho/src/helpers/widget_helper.dart';
 import 'package:clientPhysiho/src/providers/sessions_provider.dart';
 import 'package:clientPhysiho/src/views/home_view.dart';
 import 'package:flutter/material.dart';
-import 'package:flutter_stripe/flutter_stripe.dart';
 import 'package:fluttertoast/fluttertoast.dart';
 import 'package:loading_overlay/loading_overlay.dart';
-// import 'package:mercado_pago_mobile_checkout/mercado_pago_mobile_checkout.dart';
 import 'package:http/http.dart' as http;
 import 'package:flutter_dotenv/flutter_dotenv.dart';
+import 'package:openpay_bbva/openpay_bbva.dart';  // Asegúrate de importar openpay_bbva
 
 class CheckTypePayment extends StatefulWidget {
-  // Route name for this view
   static const routeName = 'paymentType';
 
   final Map<String, dynamic> item;
 
-  CheckTypePayment({Key key, this.item}) : super(key: key);
+  CheckTypePayment({Key? key, required this.item}) : super(key: key);
 
   @override
   _CheckTypePaymentState createState() => _CheckTypePaymentState(item);
@@ -45,74 +41,61 @@ class _CheckTypePaymentState extends State<CheckTypePayment> {
       )
     },
   };
-  final userPhysio = new SessionProvider();
 
+  final userPhysio = SessionProvider();
   String _selectedPayment = 'cash';
-
   bool isLoading = false;
-  static const preferenceIdcons =
-      "456490293-ad1850e9-36dd-4353-9b38-b9417ff3bf9d";
-  //456490293-ea66f5b6-38ca-4db1-a432-45a3edb5e642
-  //TEST-6763876082927877-042719-1c46ed47fe677e536c7d0440f007b356-456490293
-  String _platformVersion = 'Unknown';
+
+  // Variables para la información de la tarjeta
+  final TextEditingController _holderNameController = TextEditingController();
+  final TextEditingController _cardNumberController = TextEditingController();
+  final TextEditingController _expirationYearController = TextEditingController();
+  final TextEditingController _expirationMonthController = TextEditingController();
+  final TextEditingController _cvvController = TextEditingController();
+
+  String _deviceID = '';
+  String _token = '';
+  final openpay = OpenpayBBVA(
+    merchantId: "mliwbrm4orj40lhks7kv",
+    publicApiKey: "pk_ae8ecf5728684d22b5975cb2a966fdfe",
+    productionMode: false,
+    country: Country.MX,
+  );
+
+  get apiKey => null;
 
   @override
   void initState() {
     super.initState();
-    initPlatformState();
-  }
-
-  // Platform messages are asynchronous, so we initialize in an async method.
-  Future<void> initPlatformState() async {
-    WidgetsFlutterBinding.ensureInitialized();
-    String platformVersion;
-    // If the widget was removed from the tree while the asynchronous platform
-    // message was in flight, we want to discard the reply rather than calling
-    // setState to update our non-existent appearance.
-    if (!mounted) return;
-
-    setState(() {
-      _platformVersion = platformVersion;
-    });
+    initDeviceSession();
   }
 
   @override
   Widget build(BuildContext context) {
     widget.item['MetodPago'] = _selectedPayment;
-    // print(widget.item['service']);
-    // print(widget.item['item']);
-    print(widget.item['sesions']);
-    print(widget.item['idPhysio']);
-    print(widget.item['item']['price']);
-    // print(widget.item['customer']);
     return Scaffold(
       appBar: PreferredSize(
         preferredSize: Size.fromHeight(75.0),
         child: AppBar(
           backgroundColor: whiteColor,
-          title: text("Método de pago",
-              fontSize: textSizeLarge, fontWeight: fontSemibold),
+          title: text("Método de pago", fontSize: textSizeLarge, fontWeight: fontSemibold),
         ),
       ),
       body: LoadingOverlay(
-          isLoading: isLoading,
-          progressIndicator: Container(
-            child: Column(
-              mainAxisAlignment: MainAxisAlignment.center,
-              children: [
-                Image.asset(
-                  "assets/images/progress1.gif",
-                  width: 120,
-                ),
-                text("¡Estamos Agendando tu cita!",
-                    isCentered: true,
-                    fontWeight: fontSemibold,
-                    fontSize: textSizeLargeMedium),
-              ],
-            ),
+        isLoading: isLoading,
+        progressIndicator: Container(
+          child: Column(
+            mainAxisAlignment: MainAxisAlignment.center,
+            children: [
+              Image.asset("assets/images/progress1.gif", width: 120),
+              text("¡Estamos Agendando tu cita!",
+                  isCentered: true, fontWeight: fontSemibold, fontSize: textSizeLargeMedium),
+            ],
           ),
-          child: Container(
-            child: Column(children: <Widget>[
+        ),
+        child: Container(
+          child: Column(
+            children: <Widget>[
               text("Selecciona uno:"),
               SizedBox(height: spacing_large),
               Expanded(
@@ -122,20 +105,14 @@ class _CheckTypePaymentState extends State<CheckTypePayment> {
                       margin: EdgeInsets.only(bottom: spacing_standard_new),
                       decoration: BoxDecoration(
                         color: viewLineColor,
-                        boxShadow: [
-                          BoxShadow(
-                              color: food_ShadowColor,
-                              blurRadius: 10,
-                              spreadRadius: 2)
-                        ],
+                        boxShadow: [BoxShadow(color: food_ShadowColor, blurRadius: 10, spreadRadius: 2)],
                         borderRadius: BorderRadius.all(Radius.circular(50)),
                       ),
-                      child: new RadioListTile(
+                      child: RadioListTile(
                         title: Text(paymentTypes[paymentMethod]['title']),
                         subtitle: Text(paymentTypes[paymentMethod]['subtitle']),
                         value: paymentMethod,
                         secondary: paymentTypes[paymentMethod]['secondary'],
-                        /*const Icon(Icons.payment),*/
                         activeColor: pantoneThirteen,
                         groupValue: _selectedPayment,
                         controlAffinity: ListTileControlAffinity.trailing,
@@ -150,10 +127,10 @@ class _CheckTypePaymentState extends State<CheckTypePayment> {
                   }).toList(),
                 ),
               ),
+              if (_selectedPayment == 'online') _buildCardForm(),
               Container(
                 height: 80,
-                decoration: boxDecoration(
-                    showShadow: true, radius: 0, bgColor: food_white),
+                decoration: boxDecoration(showShadow: true, radius: 0, bgColor: food_white),
                 padding: EdgeInsets.all(spacing_standard_new),
                 child: Row(
                   mainAxisAlignment: MainAxisAlignment.center,
@@ -166,30 +143,18 @@ class _CheckTypePaymentState extends State<CheckTypePayment> {
                         });
                         if (widget.item['MetodPago'] != "online") {
                           userPhysio.createRecord(widget.item).then((sesion) {
-                            Fluttertoast.showToast(
-                                msg: "Sesiones agendadas correctamente");
+                            Fluttertoast.showToast(msg: "Sesiones agendadas correctamente");
                           });
-                          // Redirect and remove all screens
                           Navigator.pushNamedAndRemoveUntil(
-                              context, HomeView.routeName, (route) => false,
-                              arguments: "2");
+                              context, HomeView.routeName, (route) => false, arguments: "2");
                         } else {
                           WidgetsFlutterBinding.ensureInitialized();
-                          // create payment method
-                          //pk_test_51Nq3fsDmZEM6EpGy6OrWjZhibMW390AyiyAe6IlIVPMN4LZs7R77WxQGyDKvukypSldXCtX8tYtzID7L6aOuHzPu00TH2t7YE4
-                          //Assign publishable key to flutter_stripe
-
-                          Stripe.publishableKey =
-                              "pk_live_51Nq3fsDmZEM6EpGygH3bRZiBSDyQVU8MndbeiFZb0HDRwke24csGic52S9CjaVFeI99pWN2IwWtjkbAwtspeFF8h00FKcR2WEW";
-                          // Stripe.merchantIdentifier =
-                          //     "merchant.mx.com.ybooks.app";
                           await dotenv.load(fileName: "assets/.env");
-                          makePayment(widget.item['item']['price']);
+                          makePayment(_token);
                         }
                       },
                       child: Container(
-                        padding: EdgeInsets.fromLTRB(spacing_large,
-                            spacing_middle, spacing_large, spacing_middle),
+                        padding: EdgeInsets.fromLTRB(spacing_large, spacing_middle, spacing_large, spacing_middle),
                         decoration: BoxDecoration(
                           borderRadius: BorderRadius.all(Radius.circular(20)),
                           color: pantoneThirteen,
@@ -201,71 +166,127 @@ class _CheckTypePaymentState extends State<CheckTypePayment> {
                               TextSpan(
                                   text: "Confirmar Paquete",
                                   style: TextStyle(
-                                      fontSize: textSizeMedium,
-                                      color: food_white,
-                                      fontWeight: fontSemibold)),
+                                      fontSize: textSizeMedium, color: food_white, fontWeight: fontSemibold)),
                               WidgetSpan(
                                 child: Padding(
-                                    padding: const EdgeInsets.only(
-                                        left: spacing_standard),
-                                    child: Icon(Icons.arrow_forward,
-                                        color: food_white, size: 18)),
+                                    padding: const EdgeInsets.only(left: spacing_standard),
+                                    child: Icon(Icons.arrow_forward, color: food_white, size: 18)),
                               ),
                             ],
                           ),
                         ),
                       ),
-                    )
+                    ),
                   ],
                 ),
-              )
-            ]),
-          )),
+              ),
+            ],
+          ),
+        ),
+      ),
     );
   }
 
-  var paymentIntent;
+  Widget _buildCardForm() {
+    return Column(
+      children: [
+        Padding(
+          padding: EdgeInsets.all(spacing_standard_new),
+          child: TextField(
+            controller: _holderNameController,
+            decoration: InputDecoration(labelText: "Nombre en la tarjeta"),
+          ),
+        ),
+        Padding(
+          padding: EdgeInsets.all(spacing_standard_new),
+          child: TextField(
+            controller: _cardNumberController,
+            keyboardType: TextInputType.number,
+            decoration: InputDecoration(labelText: "Número de tarjeta"),
+          ),
+        ),
+        Padding(
+          padding: EdgeInsets.all(spacing_standard_new),
+          child: Row(
+            children: [
+              Expanded(
+                child: TextField(
+                  controller: _expirationMonthController,
+                  keyboardType: TextInputType.number,
+                  decoration: InputDecoration(labelText: "Mes de expiración"),
+                ),
+              ),
+              SizedBox(width: 16),
+              Expanded(
+                child: TextField(
+                  controller: _expirationYearController,
+                  keyboardType: TextInputType.number,
+                  decoration: InputDecoration(labelText: "Año de expiración"),
+                ),
+              ),
+            ],
+          ),
+        ),
+        Padding(
+          padding: EdgeInsets.all(spacing_standard_new),
+          child: TextField(
+            controller: _cvvController,
+            obscureText: true,
+            keyboardType: TextInputType.number,
+            decoration: InputDecoration(labelText: "CVV"),
+          ),
+        ),
+      ],
+    );
+  }
 
-  Future<void> makePayment(int bookPrice) async {
+  Future<void> makePayment(String cardToken) async {
     try {
-      //STEP 1: Create Payment Intent
-      paymentIntent =
-          await createPaymentIntent((bookPrice * 100).toString(), 'MXN');
+      var charge = await createOpenPayCharge(cardToken);
 
-      //STEP 2: Initialize Payment Sheet
-      await Stripe.instance
-          .initPaymentSheet(
-              paymentSheetParameters: SetupPaymentSheetParameters(
-            paymentIntentClientSecret:
-                paymentIntent['client_secret'], //Gotten from payment intent
-            style: ThemeMode.light,
-            merchantDisplayName: 'Book',
-          ))
-          .then((value) {});
-
-      //STEP 3: Display Payment sheet
-      displayPaymentSheet();
+      if (charge['status'] == 'completed') {
+        showDialog(
+          context: context,
+          builder: (_) => AlertDialog(
+            content: Column(
+              mainAxisSize: MainAxisSize.min,
+              children: const [
+                Icon(Icons.check_circle, color: Colors.green, size: 100.0),
+                SizedBox(height: 10.0),
+                Text("¡Pago realizado correctamente!"),
+              ],
+            ),
+          ),
+        );
+        userPhysio.createRecord(widget.item).then((sesion) {
+          Fluttertoast.showToast(msg: "Sesiones agendadas correctamente");
+        });
+        Navigator.pushNamedAndRemoveUntil(
+          context, HomeView.routeName, (route) => false, arguments: "2",
+        );
+      }
     } catch (err) {
-      throw Exception(err);
+      print('Error: $err');
+      Fluttertoast.showToast(msg: "Error procesando el pago");
     }
   }
 
-  createPaymentIntent(String amount, String currency) async {
+  Future<Map<String, dynamic>> createOpenPayCharge(String cardToken) async {
     try {
-      //Request body
-      Map<String, dynamic> body = {
-        'amount': amount,
-        'currency': currency,
-      };
-
-      //Make post request to Stripe
       var response = await http.post(
-        Uri.parse('https://api.stripe.com/v1/payment_intents'),
+        Uri.parse('https://api.openpay.mx/v1/your_openpay_merchant_id/charges'),
         headers: {
-          'Authorization': 'Bearer ${dotenv.env['STRIPE_SECRET']}',
-          'Content-Type': 'application/x-www-form-urlencoded'
+          'Authorization': 'Bearer your_openpay_private_key',
+          'Content-Type': 'application/json'
         },
-        body: body,
+        body: json.encode({
+          'method': 'card',
+          'source_id': cardToken,
+          'amount': '1000', // Cambia el monto según corresponda
+          'currency': 'MXN',
+          'description': 'Compra de servicio',
+          'device_session_id': 'device_session_id_example'
+        }),
       );
       return json.decode(response.body);
     } catch (err) {
@@ -273,56 +294,17 @@ class _CheckTypePaymentState extends State<CheckTypePayment> {
     }
   }
 
-  displayPaymentSheet() async {
+  Future<void> initDeviceSession() async {
+    String deviceID;
     try {
-      await Stripe.instance.presentPaymentSheet().then((value) {
-        showDialog(
-            context: context,
-            builder: (_) => AlertDialog(
-                  content: Column(
-                    mainAxisSize: MainAxisSize.min,
-                    children: const [
-                      Icon(
-                        Icons.check_circle,
-                        color: Colors.green,
-                        size: 100.0,
-                      ),
-                      SizedBox(height: 10.0),
-                      Text("Pago realizado correctamente!"),
-                    ],
-                  ),
-                ));
-        userPhysio.createRecord(widget.item).then((sesion) {
-          Fluttertoast.showToast(msg: "Sesiones agendadas correctamente");
-        });
-        // Redirect and remove all screens
-        Navigator.pushNamedAndRemoveUntil(
-            context, HomeView.routeName, (route) => false,
-            arguments: "2");
-        paymentIntent = null;
-      }).onError((error, stackTrace) {
-        throw Exception(error);
-      });
-    } on StripeException catch (e) {
-      print('Error is:---> $e');
-      AlertDialog(
-        content: Column(
-          mainAxisSize: MainAxisSize.min,
-          children: [
-            Row(
-              children: const [
-                Icon(
-                  Icons.cancel,
-                  color: Colors.red,
-                ),
-                Text("Error procesando el pago"),
-              ],
-            ),
-          ],
-        ),
-      );
+      deviceID =
+          await openpay.getDeviceID() ?? 'Error getting the device session id';
     } catch (e) {
-      print('$e');
+      rethrow;
     }
+
+    setState(() {
+      _deviceID = deviceID;
+    });
   }
 }
