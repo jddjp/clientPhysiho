@@ -59,6 +59,7 @@ dependencies:
   direct_select: ^2.0.0
   http: ^0.13.6
   #stripe_payment: ^1.1.4
+  flutter_credit_card: ^3.0.0
 
 dependency_overrides:
   #http: ^1.1.0

@@ -4,7 +4,6 @@ import 'dart:io';
 
 import 'package:clientPhysiho/src/components/check_type_payment.dart';
 import 'package:clientPhysiho/src/config/theme.dart';
-import 'package:clientPhysiho/src/helpers/extension_helper.dart';
 import 'package:clientPhysiho/src/providers/cart_provider.dart';
 import 'package:clientPhysiho/src/providers/location_provider.dart';
 import 'package:clientPhysiho/src/providers/login_provider.dart';

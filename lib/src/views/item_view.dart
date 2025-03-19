@@ -100,7 +100,7 @@ class _ItemViewState extends StateMVC<ItemView> {
                   "Detalle de Compra",
                   style: TextStyle(
                       color: Colors.black,
-                      fontSize: 25,
+                      fontSize: 20,
                       fontFamily: 'Franklin Gothic'),
                 )),
             body: _con.isLoading

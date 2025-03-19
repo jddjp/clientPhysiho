@@ -1,10 +1,9 @@
 // @dart=2.9
-import 'package:intl/intl.dart';
+
 import 'package:cloud_firestore/cloud_firestore.dart';
 import 'package:flutter/material.dart';
 import 'package:fluttertoast/fluttertoast.dart';
 import 'package:geocoding/geocoding.dart';
-import 'package:geolocator/geolocator.dart';
 import 'package:google_maps_flutter/google_maps_flutter.dart';
 import 'package:clientPhysiho/src/config/constants.dart';
 import 'package:clientPhysiho/src/helpers/utils_helper.dart';
@@ -39,30 +38,9 @@ class CartProvider with ChangeNotifier {
   }
 
   void initialize() async {
-    _prefs = await SharedPreferences.getInstance();
-    _order = new OrderModel();
 
-    // Check for a order in progress1
-    _orderInprogress1 = _prefs.getString('orderInprogress1');
-    if (hasOrderInprogress1()) {
-      // Get order info
-      DocumentSnapshot orderRef = await FirebaseFirestore.instance
-          .collection('orders')
-          .doc(_orderInprogress1)
-          .get();
-      Map<String, dynamic> currentOrder = orderRef.data();
 
-      // Delete order in progress1
-      if (currentOrder == null ||
-          currentOrder['status'] == ORDER_FINISHED ||
-          currentOrder['status'] == ORDER_CANCELED) {
-        clearOrderInprogress();
-        notifyListeners();
-      }
-    }
 
-    // Calulcate user distance
-    calculateDeliveryData();
 
     notifyListeners();
   }
@@ -117,8 +95,7 @@ class CartProvider with ChangeNotifier {
         await placemarkFromCoordinates(location.latitude, location.longitude);
     _order.deliveryAddress = placemarks[0];
 
-    // Calculate new deliveryData
-    calculateDeliveryData();
+
 
     //
     notifyListeners();
@@ -142,79 +119,8 @@ class CartProvider with ChangeNotifier {
     return _order.location;
   }
 
-  void calculateDeliveryData({LatLng userLocation}) async {
-    LatLng centerLocation =
-        LatLng(19.282906, -98.435506); // Zocalo de Texmelucan
 
-    // If no set location, we calculate based on last known position
-    if (userLocation == null) {
-      if (_order.deliveryAddress == null || _order.location == null) {
-        Position position = await Geolocator.getLastKnownPosition();
-        if (position != null) {
-          userLocation = LatLng(position.latitude, position.longitude);
-        } else {
-          print("No location found");
-        }
-      } else {
-        userLocation = _order.location;
-      }
-    }
 
-    // Calculate delivery distance
-    double distance = userLocation != null
-        ? Geolocator.distanceBetween(
-            centerLocation.latitude,
-            centerLocation.longitude,
-            userLocation.latitude,
-            userLocation.longitude)
-        : DELIVERY_ZONE4 + 1;
-
-    _order.distance = distance;
-
-    // San Martín Centro
-    hasService = true;
-    if (_order.distance < DELIVERY_ZONE0) {
-      _order.deliveryCost = DELIVERY_COST_ZONE0;
-    } else if (_order.distance < DELIVERY_ZONE1) {
-      _order.deliveryCost = DELIVERY_COST_ZONE1;
-    } else if (_order.distance < DELIVERY_ZONE2) {
-      _order.deliveryCost = DELIVERY_COST_ZONE2;
-    } else if (_order.distance < DELIVERY_ZONE3) {
-      _order.deliveryCost = DELIVERY_COST_ZONE3;
-    } else if (_order.distance < DELIVERY_ZONE4) {
-      _order.deliveryCost = DELIVERY_COST_ZONE4;
-    } else {
-      hasService = false;
-    }
-
-    notifyListeners();
-  }
-
-  Future<String> validateCoupon(String couponCode) async {
-    QuerySnapshot result = await FirebaseFirestore.instance
-        .collection('coupons')
-        .where("code", isEqualTo: couponCode.toUpperCase())
-        .get();
-
-    if (result.size > 0) {
-      Map<String, dynamic> couponData = result.docs[0].data();
-
-      // Validate date
-      final today = DateTime.now();
-      final startDate =
-          DateFormat('yyyy-MM-dd').parse(couponData['start_date']);
-      final endDate = DateFormat('yyyy-MM-dd').parse(couponData['end_date']);
-
-      if (today.isAfter(startDate) && today.isBefore(endDate) ||
-          today.difference(endDate).inDays == 0) {
-        _coupon = couponData;
-        notifyListeners();
-        return Future.value("success");
-      }
-    }
-
-    return Future.value("error");
-  }
 
   void deleteCoupon() {
     _coupon = null;

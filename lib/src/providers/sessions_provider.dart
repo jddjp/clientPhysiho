@@ -24,8 +24,8 @@ class SessionProvider {
 
   Future<List<Map<String, dynamic>>> getHours(int index, String idEmployee,
       String sesionsListIndex, String selectedDay) async {
-    var hoursListIndex = new List(15);
-    List<Map<String, dynamic>> hoursList = new List();
+
+    List<Map<String, dynamic>> hoursList = [];
 
     hoursList.add(
       {
@@ -237,8 +237,8 @@ class SessionProvider {
 
   Future<List<Map<String, dynamic>>> getAllPhysih() async {
     print('userPhysio');
-    Map<String, dynamic> _currentUser;
-    List<Map<String, dynamic>> _employess = new List();
+
+    List<Map<String, dynamic>> _employess = [];
     QuerySnapshot user = await FirebaseFirestore.instance
         .collection('users')
         .where('type', isEqualTo: 'employees')
@@ -307,7 +307,7 @@ class SessionProvider {
         .collection('sesionRecord')
         .where('customers', isEqualTo: customerRef)
         .get();
-    List<dynamic> sesion = new List();
+    List<dynamic> sesion = [];
 
     var sesiones = await sesionData.docs;
 
@@ -347,15 +347,15 @@ class SessionProvider {
   }
 
   Future<DocumentReference> createRecord(Map<String, dynamic> item) async {
-    print('create session');
+  print('create session');
     print(item['item']['sesion']);
     item.forEach((key, value) {
       print(value);
       print(key);
     });
-    var pago = item['MetodPago'] == 'cash' ? 1 : 2;
 
-    print(pago);
+
+    var pago = item['MetodPago'] == 'cash' ? 1 : 2;
 
     CollectionReference record =
         FirebaseFirestore.instance.collection('Record');
@@ -397,8 +397,7 @@ class SessionProvider {
         print(item['hours'][i]);
         await sesionRecord.add({
           'comment': '',
-          'fecha': DateFormat('yyyy-MM-dd HH:mm')
-              .parse(item['sesions'][i] + ' ' + item['hours'][i]),
+          'fecha': DateFormat('yyyy-MM-dd HH:mm').parse(item['sesions'][i] + ' ' + item['hours'][i]),
           'customers': customerRef,
           'date': item['sesions'][i],
           'hours': item['hours'][i],
