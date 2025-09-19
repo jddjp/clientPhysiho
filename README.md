@@ -3,6 +3,7 @@
 A new Flutter project.
 
 ## Getting Started
+actualmente se corre con version git checkout 3.7.12 :daniel 10/julio/25
 PS C:\flutter> flutter --version
 Flutter 3.3.1 • channel unknown • unknown source
 Framework • revision 4f9d92fbbd (2 years, 6 months ago) • 2022-09-06 17:54:53 -0700
