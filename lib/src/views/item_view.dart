@@ -167,14 +167,24 @@ class _ItemViewState extends StateMVC<ItemView> {
                                           fontSize: textSizeMedium,
                                           fontWeight: fontRegular,
                                         )),
-                                    Text(
+                                      if(_con.selectedLocation == "Clinica") ...[   
+                                         Text(
                                         '\$' +
                                             _con.itemService['price']
                                                 .toString(),
                                         style: TextStyle(
                                           fontSize: textSizeMedium,
                                           fontWeight: fontSemibold,
-                                        )),
+                                        )),]
+                                      else ...[ Text(
+                                        '\$' +
+                                            _con.itemService['priceAddress']
+                                                .toString(),
+                                        style: TextStyle(
+                                          fontSize: textSizeMedium,
+                                          fontWeight: fontSemibold,
+                                        )),], 
+                                   
                                     Text(_con.itemService['sesion'].toString(),
                                         style: TextStyle(
                                           fontSize: textSizeMedium,
