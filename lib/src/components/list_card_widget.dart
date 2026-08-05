@@ -1,12 +1,13 @@
-// @dart=2.9
+
 import 'package:flutter/material.dart';
 
 class CustomListItem extends StatelessWidget {
   const CustomListItem({
-    this.thumbnail,
-    this.title,
-    this.user,
-    this.viewCount,
+    required this.thumbnail,
+    required this.title,
+    required this.user,
+    required this.viewCount,
+    super.key,
   });
 
   final Widget thumbnail;
@@ -60,11 +61,10 @@ class CustomListItem extends StatelessWidget {
 
 class _VideoDescription extends StatelessWidget {
   const _VideoDescription({
-    Key key,
-    this.title,
-    this.user,
-    this.viewCount,
-  }) : super(key: key);
+    required this.title,
+    required this.user,
+    required this.viewCount,
+  });
 
   final String title;
   final String user;
@@ -126,7 +126,7 @@ class _VideoDescription extends StatelessWidget {
 
 /// This is the stateless widget that the main application instantiates.
 class MyStatelessWidget extends StatelessWidget {
-  MyStatelessWidget({Key key}) : super(key: key);
+  MyStatelessWidget({Key? key}) : super(key: key);
 
   @override
   Widget build(BuildContext context) {

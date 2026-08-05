@@ -1,9 +1,8 @@
-// @dart=2.9
+
 import 'dart:convert';
 import 'dart:math';
-import 'package:flutter_web_auth/flutter_web_auth.dart';
+import 'package:flutter_web_auth_2/flutter_web_auth_2.dart';
 import 'package:fluttertoast/fluttertoast.dart';
-import 'package:intl/intl.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter/services.dart';
 import 'package:cloud_firestore/cloud_firestore.dart';
@@ -33,16 +32,16 @@ String sha256ofString(String input) {
 }
 
 class LoginProvider with ChangeNotifier {
-  FirebaseAuth _auth;
-  SharedPreferences _prefs;
-  Map<String, dynamic> _currentUser;
+  late FirebaseAuth _auth;
+  late SharedPreferences _prefs;
+  Map<String, dynamic>? _currentUser;
 
   bool _loggedIn = false;
   bool _loading = false;
   bool _loadingCurrentUser = true;
 
   // Public access to current user data
-  Map<String, dynamic> get currentUser => _currentUser;
+  Map<String, dynamic>? get currentUser => _currentUser;
 
   LoginProvider() {
     // Initialize App Provider
@@ -63,8 +62,7 @@ class LoginProvider with ChangeNotifier {
 
   bool isLoadingCurrentUser() => _loadingCurrentUser;
 
-  bool isCompleted() =>
-      _currentUser != null ? _currentUser['completed'] == true : false;
+  bool isCompleted() => _currentUser?['completed'] == true;
 
   // Main login function
   Future<dynamic> login(String type) async {
@@ -77,12 +75,17 @@ class LoginProvider with ChangeNotifier {
 
     if (result.status == AuthResult.ok) {
       try {
-        UserCredential userCredential =
-            await _auth.signInWithCredential(result.credential);
+        final credential = result.credential;
+        if (credential == null) {
+          throw FirebaseAuthException(code: 'credential-null');
+        }
+        UserCredential userCredential = await _auth.signInWithCredential(credential);
         //print("Validamos nombre"+result.fullName);
         return afterSignIn(userCredential, name: result.fullName);
       } on FirebaseAuthException catch (e) {
-        Fluttertoast.showToast(msg: "Error: " + e.message.toString());
+        Fluttertoast.showToast(
+          msg: 'Error: ${e.message ?? 'No fue posible iniciar sesión'}',
+        );
         print(e);
       }
     } else if (result.status == AuthResult.cancelled) {
@@ -103,18 +106,19 @@ class LoginProvider with ChangeNotifier {
     notifyListeners();
 
     // Present the dialog to the user
-    final result = await FlutterWebAuth.authenticate(
-        url: "fisioterapia-cfb53.web.app", callbackUrlScheme: "physiho");
+    final result = await FlutterWebAuth2.authenticate(
+        url: "https://fisioterapia-cfb53.web.app", callbackUrlScheme: "physiho");
 
     // Extract status from resulting url
     final params = Uri.parse(result).queryParameters;
-    final status = int.parse(params['status']);
+    final status = int.tryParse(params['status'] ?? '') ?? AuthResult.error;
 
     // Success
     if (status == AuthResult.ok) {
       final uid = params['uid'];
-      // Save UID on device
-      _prefs.setString('uid', uid);
+      if (uid != null) {
+        _prefs.setString('uid', uid);
+      }
       await checkLoginState();
     }
 
@@ -123,16 +127,19 @@ class LoginProvider with ChangeNotifier {
   }
 
   Future<void> afterSignIn(UserCredential userCredential,
-      {String name, String phone}) async {
+      {String? name, String? phone}) async {
     print(userCredential);
     _loadingCurrentUser = true;
     notifyListeners();
     // Register in firestore if is a new user
-    if (userCredential.additionalUserInfo.isNewUser) {
-      User _userData = userCredential.user;
+    if (userCredential.additionalUserInfo?.isNewUser == true) {
+      final User? _userData = userCredential.user;
+      if (_userData == null) {
+        return;
+      }
       // Validate phoneNumber
-      String phoneNumber = _userData.phoneNumber;
-      if (phoneNumber != null && phoneNumber.startsWith("+52")) {
+      String phoneNumber = _userData.phoneNumber ?? '';
+      if (phoneNumber.startsWith("+52")) {
         phoneNumber = phoneNumber.replaceAll("+", "").replaceFirst("52", "");
       }
       // Save new user
@@ -140,9 +147,9 @@ class LoginProvider with ChangeNotifier {
           .collection('customers')
           .doc(_userData.uid)
           .set({
-        'nombre': name != null ? name : _userData.displayName,
+        'nombre': name ?? _userData.displayName,
         'correo': _userData.email,
-        'telefono': phone != null ? phone : phoneNumber,
+        'telefono': phone ?? phoneNumber,
         'direccion': '',
         'estado': '',
         'municipio': '',
@@ -156,38 +163,40 @@ class LoginProvider with ChangeNotifier {
       });
     }
 
-    // Save UID on device
-    _prefs.setString('uid', userCredential.user.uid);
+    final currentUser = userCredential.user;
+    if (currentUser == null) {
+      return;
+    }
+
+    _prefs.setString('uid', currentUser.uid);
     await checkLoginState();
 
     return Future.value();
   }
 
   Future<AuthResult> signInWithGoogle() async {
-    GoogleSignInAccount result;
-    // Trigger the authentication flow
+    GoogleSignInAccount? result;
     try {
-      result =
-          await GoogleSignIn().signIn().catchError((onError) => print(onError));
+      result = await GoogleSignIn().signIn();
     } on PlatformException catch (e) {
       print(e);
     } catch (e) {
       print(e);
     }
 
-    // Canceled authentication
-    if (result == null) return AuthResult(status: AuthResult.cancelled);
+    if (result == null) {
+      return AuthResult(
+          status: AuthResult.cancelled,
+          credential: null,
+          message: 'cancelled');
+    }
 
-    // Obtain the auth details from the request
     final GoogleSignInAuthentication googleAuth = await result.authentication;
-
-    // Create a new credential
-    final GoogleAuthCredential credential = GoogleAuthProvider.credential(
+    final AuthCredential credential = GoogleAuthProvider.credential(
       accessToken: googleAuth.accessToken,
       idToken: googleAuth.idToken,
     );
 
-    // Once signed in, return the UserCredential
     return AuthResult(status: AuthResult.ok, credential: credential);
   }
 
@@ -199,32 +208,37 @@ class LoginProvider with ChangeNotifier {
 
     if (result.status == AuthorizationStatus.authorized) {
       final appleIdCredential = result.credential;
+      if (appleIdCredential == null) {
+        return AuthResult(status: AuthResult.error, credential: null, message: message);
+      }
       final oAuthProvider = OAuthProvider('apple.com');
       final credential = oAuthProvider.credential(
-        idToken: String.fromCharCodes(appleIdCredential.identityToken),
-        accessToken: String.fromCharCodes(appleIdCredential.authorizationCode),
+        idToken: String.fromCharCodes(appleIdCredential.identityToken ?? []),
+        accessToken: String.fromCharCodes(appleIdCredential.authorizationCode ?? []),
       );
       print(appleIdCredential);
       print("valida nombre");
-      print(
-          '${appleIdCredential.fullName.givenName} ${appleIdCredential.fullName.familyName}');
+      print('${appleIdCredential.fullName?.givenName ?? ''} ${appleIdCredential.fullName?.familyName ?? ''}');
       return AuthResult(
           status: AuthResult.ok,
           credential: credential,
           fullName:
-              '${appleIdCredential.fullName.givenName} ${appleIdCredential.fullName.familyName}');
+              '${appleIdCredential.fullName?.givenName ?? ''} ${appleIdCredential.fullName?.familyName ?? ''}');
     }
     return AuthResult(
         status: AuthResult.error, credential: null, message: message);
   }
 
   // SignIn With phone
-  Future<void> signInWithPhone({String verificationId, String smsCode}) async {
+  Future<void> signInWithPhone({String? verificationId, String? smsCode}) async {
     _loading = true;
     notifyListeners();
 
     PhoneAuthCredential phoneAuthCredential;
     try {
+      if (verificationId == null || smsCode == null) {
+        throw const FormatException('verificationId and smsCode are required');
+      }
       phoneAuthCredential = PhoneAuthProvider.credential(
           verificationId: verificationId, smsCode: smsCode);
       // Sign the user in (or link) with the credential
@@ -235,10 +249,15 @@ class LoginProvider with ChangeNotifier {
 
       return Future.value();
     } on PlatformException catch (err) {
-      Fluttertoast.showToast(msg: err.toString());
-      Fluttertoast.showToast(msg: err.details);
-      Fluttertoast.showToast(msg: err.code);
-      Fluttertoast.showToast(msg: err.message);
+      final String errorMessage =
+          err.message ?? err.details?.toString() ?? err.code;
+
+      Fluttertoast.showToast(
+        msg: errorMessage.isNotEmpty
+            ? errorMessage
+            : 'Ocurrió un error al validar el código',
+      );
+
       _loading = false;
     } catch (err) {
       _loading = false;
@@ -250,90 +269,59 @@ class LoginProvider with ChangeNotifier {
   }
 
   // Phone number authentication
-  Future verifyPhoneNumber(String phoneNumber, BuildContext context) {
+  Future<void> verifyPhoneNumber(String phoneNumber, BuildContext context) {
     return _auth.verifyPhoneNumber(
-        phoneNumber: "+52$phoneNumber",
-        verificationCompleted: (AuthCredential credential) async {
-          // ANDROID ONLY!
-          UserCredential userCredential =
-              await _auth.signInWithCredential(credential);
-          print(userCredential);
-          // redirect
-        },
-        verificationFailed: (FirebaseAuthException e) {
-          print(e);
-          return "error";
-        },
-        codeSent: (String verificationId, int resendToken) {
-          Navigator.pop(context);
-          launchScreen(context, OPTView.routeName, arguments: {
-            'phoneNumber': phoneNumber,
-            'verificationId': verificationId
-          });
-        },
-        codeAutoRetrievalTimeout: (String verificationId) {
-          print("retrieval");
+      phoneNumber: "+52$phoneNumber",
+      verificationCompleted: (AuthCredential credential) async {
+        final UserCredential userCredential =
+            await _auth.signInWithCredential(credential);
+        print(userCredential);
+      },
+      verificationFailed: (FirebaseAuthException e) {
+        print(e);
+      },
+      codeSent: (String verificationId, int? resendToken) {
+        Navigator.pop(context);
+        launchScreen(context, OPTView.routeName, arguments: {
+          'phoneNumber': phoneNumber,
+          'verificationId': verificationId
         });
+      },
+      codeAutoRetrievalTimeout: (String verificationId) {
+        print("retrieval");
+      },
+    );
   }
 
   /// Check login status // cookies
   Future<void> checkLoginState() async {
-    // Create instance if not initialized
-    if (_prefs == null) _prefs = await SharedPreferences.getInstance();
+    final uid = _prefs.getString('uid');
+    if (uid != null && uid.isNotEmpty) {
+      print(uid);
 
-    // Get logged user data
-    /*if (_prefs.getString('uid') != null) {
-      print(_prefs.getString('uid'));
-      DocumentSnapshot userDoc = await FirebaseFirestore.instance
+      final userDoc = await FirebaseFirestore.instance
           .collection('customers')
-          .doc(_prefs.getString('uid'))
+          .doc(uid)
           .get();
 
-      _currentUser = {
-        ...userDoc.data() as Map<String, dynamic>,
-        "id": userDoc.id
-      };
-      _loggedIn = true;
-    }*/
-    if (_prefs.getString('uid') != null) {
-      print(_prefs.getString('uid'));
-
-      // Obtener el documento del usuario usando el UID almacenado
-      DocumentSnapshot userDoc = await FirebaseFirestore.instance
-          .collection('customers')
-          .doc(_prefs.getString('uid'))
-          .get();
-
-      // Verificar si el documento existe
       if (userDoc.exists) {
-        // Si el documento existe, cargar los datos del usuario
         _currentUser = {
           ...userDoc.data() as Map<String, dynamic>,
           "id": userDoc.id
         };
         _loggedIn = true;
       } else {
-        // Si no existe, crear uno nuevo con los datos necesarios
-        String newUid = _prefs.getString('uid');
-
-        // Crear el nuevo documento con los datos que quieras
-        await FirebaseFirestore.instance
-            .collection('customers')
-            .doc(newUid)
-            .set({
+        await FirebaseFirestore.instance.collection('customers').doc(uid).set({
           'name': '',
           'email': '',
           'createdAt': FieldValue.serverTimestamp(),
-          // Agrega otros campos que necesites
         });
 
-        // Recuperar el nuevo documento para usar sus datos
-        DocumentSnapshot newUserDoc = await FirebaseFirestore.instance
+        final newUserDoc = await FirebaseFirestore.instance
             .collection('customers')
-            .doc(newUid)
+            .doc(uid)
             .get();
 
-        // Asignar los datos del nuevo documento a _currentUser
         _currentUser = {
           ...newUserDoc.data() as Map<String, dynamic>,
           "id": newUserDoc.id
@@ -351,15 +339,12 @@ class LoginProvider with ChangeNotifier {
   }
 
   /// Check login status // cookies
-  Future<Map<String, dynamic>> checkInfo() async {
-    // Create instance if not initialized
-    if (_prefs == null) _prefs = await SharedPreferences.getInstance();
-
-    // Get logged user data
-    if (_prefs.getString('uid') != null) {
-      DocumentSnapshot userDoc = await FirebaseFirestore.instance
+  Future<Map<String, dynamic>?> checkInfo() async {
+    final uid = _prefs.getString('uid');
+    if (uid != null && uid.isNotEmpty) {
+      final userDoc = await FirebaseFirestore.instance
           .collection('customers')
-          .doc(_prefs.getString('uid'))
+          .doc(uid)
           .get();
       _currentUser = {
         ...userDoc.data() as Map<String, dynamic>,
@@ -369,22 +354,20 @@ class LoginProvider with ChangeNotifier {
 
     print(_currentUser);
 
-    // Promise
     return _currentUser;
   }
 
-  Future<void> saveTokenToDatabase(String token) async {
+  Future<void> saveTokenToDatabase(String? token) async {
     // Create instance if not initialized
-    if (_prefs == null) _prefs = await SharedPreferences.getInstance();
-
-    // Assume user is logged in for this example
-    String deviceToken = _prefs.getString('device_token');
-    String userId = _prefs.getString('uid');
+    String deviceToken = _prefs.getString('device_token') ?? '';
+    String? userId = _prefs.getString('uid');
 
     // User not logged
-    if (userId == null || deviceToken != null) return;
+    if (token == null || userId == null) {
+      return;
+    }
 
-    print("Saving token $token to database");
+    print('Saving token $token to database');
 
     _prefs.setString('device_token', token);
 
@@ -422,12 +405,11 @@ class AuthResult {
   static const error = 500;
 
   final int status;
-  final AuthCredential credential;
+  final AuthCredential? credential;
   final String message;
-  final String fullName;
+  final String? fullName;
 
-  AuthResult(
-      {this.status, this.credential, this.message = "success", this.fullName});
+  AuthResult({required this.status, this.credential, this.message = 'success', this.fullName});
 
-  AuthCredential getCredential() => this.credential;
+  AuthCredential? getCredential() => credential;
 }

@@ -1,4 +1,4 @@
-// @dart=2.9
+
 import 'package:flutter/material.dart';
 import 'package:clientPhysiho/src/components/stepper_counter.dart';
 import 'package:clientPhysiho/src/config/colors.dart';
@@ -14,11 +14,13 @@ class ittemOptionWidget extends StatefulWidget {
   final void Function(ItemOptionModel, Map) onChange;
   final Map<String, String> errors;
 
-  ittemOptionWidget(
-      { this.ittemOption,
-       this.price,
-       this.onChange,
-       this.errors});
+  ittemOptionWidget({
+    required this.ittemOption,
+    required this.price,
+    required this.onChange,
+    required this.errors,
+    super.key,
+  });
 
   @override
   _ittemOptionWidgetState createState() =>
@@ -26,9 +28,9 @@ class ittemOptionWidget extends StatefulWidget {
 }
 
 class _ittemOptionWidgetState extends StateMVC<ittemOptionWidget> {
-  ItemOptionController _con;
+  late ItemOptionController _con;
 
-  _ittemOptionWidgetState(ItemOptionModel option, double price, onChange)
+  _ittemOptionWidgetState(ItemOptionModel option, double price, void Function(ItemOptionModel, Map) onChange)
       : super(ittemOptionController(option, price, onChange)) {
     _con = controller as ItemOptionController;
   }
@@ -53,12 +55,12 @@ class _ittemOptionWidgetState extends StateMVC<ittemOptionWidget> {
             itemCount: _con.itemOption.options.length,
             itemBuilder: (BuildContext context, index) {
               SingleItemOption option =
-                  _con?.itemOption.options.elementAt(index);
-              if (option?.active == false) {
+                  _con.itemOption.options.elementAt(index);
+              if (option.active == false) {
                 return Container();
               }
 
-              if (_con?.itemOption.type == 'addon') {
+              if (_con.itemOption.type == 'addon') {
                 return Container(
                   margin: EdgeInsets.only(
                       left: spacing_standard_new, bottom: spacing_standard),
@@ -68,41 +70,43 @@ class _ittemOptionWidgetState extends StateMVC<ittemOptionWidget> {
                         child: Column(
                           crossAxisAlignment: CrossAxisAlignment.start,
                           children: [
-                            text(option.name),
+                            text(option.name ?? ''),
                             mPrice(option.price, discount: option.discount)
                           ],
                         ),
                       ),
                       StepperCounter(
-                        stepperValue: _con?.selectedOptions[option.id],
+                        stepperValue: _con.selectedOptions[option.id ?? ''] ?? 0,
                         onIncrement: () {
-                          _con?.incrementOption(option);
+                          _con.incrementOption(option);
                         },
                         onDecrement: () {
-                          _con?.decrementOption(option);
+                          _con.decrementOption(option);
                         },
                       )
                     ],
                   ),
                 );
-              } else if (_con?.itemOption.max == 1 ||
-                  _con?.itemOption.multiple == false) {
-                return RadioListTile(
-                    title: Text(option.name),
+              } else if (_con.itemOption.max == 1 ||
+                  _con.itemOption.multiple == false) {
+                return RadioListTile<SingleItemOption>(
+                    title: Text(option.name ?? ''),
                     subtitle: mPrice(option.price, discount: option.discount),
                     value: option,
                     controlAffinity: ListTileControlAffinity.trailing,
-                    groupValue: _con?.selectedOption,
+                    groupValue: _con.selectedOption,
                     onChanged: (selected) {
-                      _con?.onChangeOption(option, selected: selected as bool);
+                      if (selected != null) {
+                        _con.onChangeOption(option, selected: true);
+                      }
                     });
               } else {
                 return CheckboxListTile(
-                    title: Text(option.name),
-                    subtitle: mPrice(option.price, discount: option?.discount),
-                    value: _con?.checkboxSelected[option?.id] ?? false,
+                    title: Text(option.name ?? ''),
+                    subtitle: mPrice(option.price, discount: option.discount),
+                    value: _con.checkboxSelected[option.id ?? ''] ?? false,
                     onChanged: (selected) {
-                      _con?.onChangeOption(option, selected: selected);
+                      _con.onChangeOption(option, selected: selected ?? false);
                     });
               }
             },
@@ -124,12 +128,12 @@ class _ittemOptionWidgetState extends StateMVC<ittemOptionWidget> {
             child: Column(
               crossAxisAlignment: CrossAxisAlignment.start,
               children: [
-                text(_con.itemOption.name,
+                text(_con.itemOption.name ?? '',
                     fontWeight: fontSemibold, fontSize: textSizeLargeMedium),
-                widget.errors[_con?.itemOption?.id] != null
-                    ? text(widget.errors[_con?.itemOption?.id],
+                widget.errors[_con.itemOption.id ?? ''] != null
+                    ? text(widget.errors[_con.itemOption.id ?? ''] ?? '',
                         textColor: Colors.red, fontSize: textSizeSMedium)
-                    : (_con?.subtitle != ""
+                    : (_con.subtitle != ""
                         ? text(_con.subtitle,
                             textColor: textSecondaryColor,
                             fontSize: textSizeSMedium)
@@ -140,9 +144,9 @@ class _ittemOptionWidgetState extends StateMVC<ittemOptionWidget> {
           _con.itemOption.required == true
               ? Container(
                   decoration: boxDecoration(
-                      bgColor: widget.errors[_con.itemOption.id] != null
+                      bgColor: widget.errors[_con.itemOption.id ?? ''] != null
                           ? Colors.red
-                          : Colors.grey[400]),
+                          : Colors.grey[400] ?? Colors.grey),
                   padding: EdgeInsets.symmetric(horizontal: spacing_control),
                   margin: EdgeInsets.only(top: spacing_standard),
                   child: text("Obligatorio",
@@ -154,5 +158,7 @@ class _ittemOptionWidgetState extends StateMVC<ittemOptionWidget> {
     );
   }
 
-  static ControllerMVC ittemOptionController(ItemOptionModel option, double price, onChange) {}
+  static ControllerMVC ittemOptionController(ItemOptionModel option, double price, void Function(ItemOptionModel, Map) onChange) {
+    return ItemOptionController(option, price, onChange);
+  }
 }

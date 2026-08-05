@@ -1,19 +1,17 @@
-// @dart=2.9
-import 'package:flutter/material.dart';
+
 import 'package:fluttertoast/fluttertoast.dart';
-import 'package:clientPhysiho/main.dart';
 import 'package:clientPhysiho/src/models/item_option_model.dart';
 import 'package:mvc_pattern/mvc_pattern.dart';
 
 class ItemOptionController extends ControllerMVC {
-  ItemOptionModel itemOption;
-  double _defaultPrice;
-  SingleItemOption _selectedOption; // For radio state change
+  late ItemOptionModel itemOption;
+  late double _defaultPrice;
+  late SingleItemOption _selectedOption; // For radio state change
   Map<String, int> _selectedOptions =
       {}; // From here we will handle item price { index: quantity }
   Map<String, bool> _checkboxSelected = {}; // For checkboxes controll
 
-  void Function(ItemOptionModel, Map) _triggerChange;
+  late void Function(ItemOptionModel, Map) _triggerChange;
 
   // Getters
   SingleItemOption get selectedOption => _selectedOption;
@@ -32,20 +30,14 @@ class ItemOptionController extends ControllerMVC {
   }
 
   int get max => itemOption.multiple || itemOption.type == 'addon'
-      ? (itemOption.max != null ? itemOption.max : 50)
+      ? (itemOption.max)
       : 1;
   bool get maxReached => selectedCount >= max;
   String get subtitle {
     return itemOption.multiple == true
-        ? (itemOption.max != null && itemOption.min != null
-            ? (itemOption.max != itemOption.min
+        ? ((itemOption.max != itemOption.min
                 ? "Elige entre ${itemOption.min} y ${itemOption.max} opciones"
-                : "Elige ${itemOption.min} opciones")
-            : (itemOption.max != null
-                ? "Elige hasta ${itemOption.max} opciones"
-                : (itemOption.min != null
-                    ? "Debes elegir ${itemOption.min} o más opciones"
-                    : "")))
+                : "Elige ${itemOption.min} opciones"))
         : (itemOption.required == true ? "Elige una opción" : "");
   }
 
@@ -56,7 +48,7 @@ class ItemOptionController extends ControllerMVC {
     _triggerChange = onChange;
   }
 
-  ItemOptionController(ItemOptionModel option, double price, onChange) {
+  ItemOptionController(ItemOptionModel option, double price, void Function(ItemOptionModel, Map) onChange) {
     itemOption = option;
     _defaultPrice = price;
     _triggerChange = onChange;
@@ -67,57 +59,58 @@ class ItemOptionController extends ControllerMVC {
       if (mainPriceIndex > -1) {
         var mainPrice = itemOption.options[mainPriceIndex];
         _selectedOption = mainPrice;
-        _triggerChange(itemOption, {mainPrice.id: 1});
+        _triggerChange(itemOption, {mainPrice.id ?? '': 1});
       }
     }
 
     // Initialize for stepper
     if (itemOption.type == 'addon') {
       itemOption.options.forEach((opt) {
-        _selectedOptions[opt.id] = 0;
+        _selectedOptions[opt.id ?? ''] = 0;
       });
     }
   }
 
   void incrementOption(SingleItemOption opt) {
+    final key = opt.id ?? '';
     if (maxReached) {
       Fluttertoast.showToast(msg: "Sólo puedes elegir $max opciones");
       return;
     }
 
-    // Increment
     setState(() {
-      ++_selectedOptions[opt.id];
+      _selectedOptions[key] = (_selectedOptions[key] ?? 0) + 1;
       _triggerChange(itemOption, _selectedOptions);
     });
   }
 
   void decrementOption(SingleItemOption opt) {
-    if (_selectedOptions[opt.id] > 0) {
+    final key = opt.id ?? '';
+    if ((_selectedOptions[key] ?? 0) > 0) {
       setState(() {
-        --_selectedOptions[opt.id];
+        _selectedOptions[key] = (_selectedOptions[key] ?? 0) - 1;
         _triggerChange(itemOption, _selectedOptions);
       });
     }
   }
 
-  void onChangeOption(SingleItemOption opt, {bool selected}) {
+  void onChangeOption(SingleItemOption opt, {required bool selected}) {
     if (itemOption.type == 'choose' && opt.active) {
       if (itemOption.max == 1 || itemOption.multiple == false) {
         setState(() {
           _selectedOption = opt; // For radio buttons
           _selectedOptions = {}; // Reset for a single option
-          _selectedOptions[opt.id] = 1;
+          _selectedOptions[opt.id ?? ''] = 1;
         });
       } else {
-        if (_selectedOptions[opt.id] != null) {
+        if (_selectedOptions[opt.id ?? ''] != null) {
           // Prevent main price
           if (itemOption.main) return;
-          var selectedOptionsTmp = _selectedOptions;
+          var selectedOptionsTmp = Map<String, int>.from(_selectedOptions);
           _selectedOptions = {};
 
           selectedOptionsTmp.forEach((id, quantity) {
-            if (id != opt.id) {
+            if (id != (opt.id ?? '')) {
               setState(() {
                 _selectedOptions[id] = 1;
               });
@@ -129,13 +122,12 @@ class ItemOptionController extends ControllerMVC {
               Fluttertoast.showToast(msg: "Sólo puedes elegir $max opciones");
               return;
             }
-            // Reset
             setState(() {
               _selectedOptions = {};
             });
           }
           setState(() {
-            _selectedOptions[opt.id] = 1;
+            _selectedOptions[opt.id ?? ''] = 1;
           });
         }
       }
@@ -143,11 +135,8 @@ class ItemOptionController extends ControllerMVC {
       _triggerChange(itemOption, _selectedOptions);
     }
 
-    // For checkboxes
-    if (selected != null) {
-      setState(() {
-        _checkboxSelected[opt.id] = selected;
-      });
-    }
+    setState(() {
+      _checkboxSelected[opt.id ?? ''] = selected;
+    });
   }
 }

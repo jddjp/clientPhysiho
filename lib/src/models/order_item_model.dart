@@ -1,14 +1,14 @@
-// @dart=2.9
+
 import 'package:clientPhysiho/src/models/item_model.dart';
 
 class OrderItemModel {
-  String id;
-  ItemModel item;
+  String? id;
+  ItemModel? item;
   int quantity;
-  double price;
-  String comment;
-  double total;
-  List options = [];
+  double? price;
+  String? comment;
+  double? total;
+  List<dynamic> options = [];
 
   OrderItemModel({
     this.id,
@@ -17,6 +17,5 @@ class OrderItemModel {
     this.price,
     this.comment,
     this.total,
-    //this.options = []
   });
 }

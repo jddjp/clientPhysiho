@@ -1,4 +1,4 @@
-// @dart=2.9
+
 
 import 'package:clientPhysiho/src/views/complete_profile_view.dart';
 import 'package:clientPhysiho/src/views/home_services_view.dart';
@@ -14,16 +14,16 @@ import 'package:clientPhysiho/src/config/images.dart';
 class HomeView extends StatefulWidget {
   // Route name for this view
   static const routeName = 'home';
-  String agendSetView;
+  final String agendSetView;
 
-  HomeView({Key key, this.agendSetView}) : super(key: key);
+  HomeView({Key? key, this.agendSetView = ''}) : super(key: key);
 
   @override
   _HomeViewState createState() => _HomeViewState();
 }
 
 class _HomeViewState extends State<HomeView> {
-  Future<QuerySnapshot> _servicesSnapshot;
+  late Future<QuerySnapshot<Object?>> _servicesSnapshot;
  // Placemark currentAddress;
   var _selectedIndex = 0;
 
@@ -57,7 +57,6 @@ class _HomeViewState extends State<HomeView> {
   Widget build(BuildContext context) {
     print('home');
     print(widget.agendSetView);
-    widget.agendSetView = "";
     changeStatusColor(pantoneThree);
 
     return Scaffold(

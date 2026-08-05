@@ -1,12 +1,12 @@
-// @dart=2.9
+
 import 'package:cloud_firestore/cloud_firestore.dart';
 import 'package:clientPhysiho/src/config/constants.dart';
 import 'package:mvc_pattern/mvc_pattern.dart';
 
 class ServiceController extends ControllerMVC {
   bool isLoading = true;
-  Map<String, dynamic> service;
-  List<QueryDocumentSnapshot> items;
+  Map<String, dynamic> service = {};
+  List<QueryDocumentSnapshot> items = [];
 
   ServiceController(String serviceId) {
     asyncData(serviceId);

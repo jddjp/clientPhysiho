@@ -1,4 +1,4 @@
-// @dart=2.9
+
 import 'package:cloud_firestore/cloud_firestore.dart';
 import 'package:flutter/cupertino.dart';
 import 'package:fluttertoast/fluttertoast.dart';
@@ -12,10 +12,10 @@ import 'package:provider/provider.dart';
 
 class OrderController extends ControllerMVC {
   bool isLoading = true;
-  Map<String, String> errors = {};
+  Map<String, String?> errors = {};
 
-  OrderItemModel orderItem;
-  ItemModel item;
+  late OrderItemModel orderItem;
+  late ItemModel item;
   // For make a orderItem
   List<ItemOptionModel> _itemOptions = [];
   List<SingleItemOption> _allOptions = []; // All sub options of any type
@@ -26,7 +26,7 @@ class OrderController extends ControllerMVC {
   double get unitPrice {
     double price = item.price;
     double subtotal = 0.0;
-    if (orderItem.options != null && orderItem.options.length > 0) {
+    if (orderItem.options.length > 0) {
       orderItem.options.forEach((option) {
         if (option['main'] == true) {
           price = option['total'];
@@ -53,10 +53,11 @@ class OrderController extends ControllerMVC {
 
     // Get item data
     DocumentSnapshot itemDoc = await itemRef.get();
-    item = new ItemModel.fromJSON(itemDoc.data());
+    final itemData = itemDoc.data() as Map<String, dynamic>? ?? <String, dynamic>{};
+    item = ItemModel.fromJSON(itemData);
 
-    orderItem = new OrderItemModel(
-        id: getUID(6), // Generate order item ID
+    orderItem = OrderItemModel(
+        id: getUID(6),
         item: item);
 
     // Get item options for orderItem
@@ -103,7 +104,7 @@ class OrderController extends ControllerMVC {
 
   void onChangeOption(ItemOptionModel option, dynamic selectedOptions) {
     //
-    var orderItemOptions = orderItem.options != null ? orderItem.options : [];
+    var orderItemOptions = orderItem.options;
     orderItemOptions.removeWhere((element) => element['optionId'] == option.id);
 
     selectedOptions.forEach((id, quantity) {
@@ -130,8 +131,7 @@ class OrderController extends ControllerMVC {
 
   void validateOption(ItemOptionModel option) {
     // Search on selected items
-    int minRequired =
-        option.min == null ? (option.required == true ? 1 : 0) : option.min;
+    int minRequired = option.min;
     var selectedOptions =
         orderItem.options.where((element) => element['optionId'] == option.id);
     int count = selectedOptions.length;
@@ -139,14 +139,14 @@ class OrderController extends ControllerMVC {
     if (option.type == 'addon') {
       count = 0;
       selectedOptions.forEach((option) {
-        count += option['quantity'];
+        count += (option['quantity'] as num?)?.toInt() ?? 0;
       });
     }
 
     if (count < minRequired) {
-      errors[option.id] = "Elige $minRequired opciones";
+      errors[option.id ?? ''] = "Elige $minRequired opciones";
     } else {
-      errors[option.id] = null;
+      errors[option.id ?? ''] = null;
     }
 
     // Update state if not main price

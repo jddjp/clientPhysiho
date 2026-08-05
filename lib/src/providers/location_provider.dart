@@ -1,4 +1,4 @@
-// @dart=2.9
+
 import 'package:flutter/cupertino.dart';
 import 'package:geocoding/geocoding.dart';
 import 'package:geolocator/geolocator.dart';
@@ -6,17 +6,18 @@ import 'package:google_maps_flutter/google_maps_flutter.dart';
 import 'package:shared_preferences/shared_preferences.dart';
 
 class LocationProvider with ChangeNotifier {
-  SharedPreferences _prefs;
+  SharedPreferences? _prefs;
   LocationPermission _permission = LocationPermission.denied;
   bool _permissionChecked = false;
-  Position _position;
-  Placemark _address;
+  Position? _position;
+  Placemark? _address;
 
-  Placemark get address => _address;
+  Placemark? get address => _address;
 
   // Get location
-  LatLng location() {
-    return LatLng(_position.latitude, _position.longitude);
+  LatLng? location() {
+    if (_position == null) return null;
+    return LatLng(_position!.latitude, _position!.longitude);
   }
 
   bool isPermissionChecked() => _permissionChecked;
@@ -33,15 +34,15 @@ class LocationProvider with ChangeNotifier {
     _prefs = await SharedPreferences.getInstance();
     _position = await _determinePosition();
 
-    print("///////LOCATION////");
-    print(_position);
-
     if (_position != null) {
+      print("///////LOCATION////");
+      print(_position);
+
       List<Placemark> placemarks = await placemarkFromCoordinates(
-          _position.latitude, _position.longitude);
-      _address = placemarks[0];
+          _position!.latitude, _position!.longitude);
+      _address = placemarks.isNotEmpty ? placemarks[0] : null;
     }
-    /*_permission = await Geolocator.checkPermission();
+      /*_permission = await Geolocator.checkPermission();
     _permissionChecked = true;
 
     print("///////LOCATION////");
@@ -63,7 +64,7 @@ class LocationProvider with ChangeNotifier {
   ///
   /// When the location services are not enabled or permissions
   /// are denied the `Future` will return an error.
-  Future<Position> _determinePosition() async {
+  Future<Position?> _determinePosition() async {
     bool serviceEnabled;
     LocationPermission permission;
     _prefs = await SharedPreferences.getInstance();
@@ -95,24 +96,22 @@ class LocationProvider with ChangeNotifier {
     _permission = await Geolocator.checkPermission();
     _position = position;
     List<Placemark> placemarks =
-        await placemarkFromCoordinates(_position.latitude, _position.longitude);
-    _address = placemarks[0];
+        await placemarkFromCoordinates(_position!.latitude, _position!.longitude);
+    _address = placemarks.isNotEmpty ? placemarks[0] : null;
     notifyListeners();
   }
 
-  LatLng getLocation() {
-    return LatLng(_position.latitude, _position.longitude);
+  LatLng? getLocation() {
+    if (_position == null) return null;
+    return LatLng(_position!.latitude, _position!.longitude);
   }
 
-  Placemark getAddress() {
+  Placemark? getAddress() {
     return _address;
   }
 
   String shortAddress() {
-    if (_address != null) {
-      return "${_address.street} ${_address.subLocality}";
-    }
-
-    return "Cargando dirección...";
+    if (_address == null) return 'Cargando dirección...';
+    return "${_address!.street} ${_address!.subLocality}";
   }
 }

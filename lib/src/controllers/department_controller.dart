@@ -1,13 +1,13 @@
-// @dart=2.9
+
 import 'package:cloud_firestore/cloud_firestore.dart';
 import 'package:mvc_pattern/mvc_pattern.dart';
 
 class DepartmentController extends ControllerMVC {
 
   bool isLoading = true;
-  Map<String,dynamic> department;
-  List<QueryDocumentSnapshot> categories;
-  List<QueryDocumentSnapshot> businesses;
+  late Map<String, dynamic> department;
+  late List<QueryDocumentSnapshot> categories;
+  late List<QueryDocumentSnapshot> businesses;
 
   DepartmentController(String docId) {
     print("============================");
@@ -30,8 +30,10 @@ class DepartmentController extends ControllerMVC {
     .get();
 
     // update
+    final departmentData = departmentDoc.data() as Map<String, dynamic>? ?? <String, dynamic>{};
+
     setState(() {
-      department = departmentDoc.data();
+      department = departmentData;
       categories = categoriesSnapshot.docs;
       businesses = businessesSnapshot.docs;
       isLoading = false;

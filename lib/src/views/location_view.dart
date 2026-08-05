@@ -45,9 +45,7 @@ class _LocationViewState extends State<LocationView> {
                 Center(
                   child: ElevatedButton(
                     style: TextButton.styleFrom(
-                        primary: Colors.white,
-                        shape: StadiumBorder(),
-                        foregroundColor: appColorAccent),
+                        foregroundColor: appColorAccent, shape: StadiumBorder()),
                     child: Padding(
                       padding: EdgeInsets.symmetric(
                           horizontal: 30.0, vertical: 10.0),

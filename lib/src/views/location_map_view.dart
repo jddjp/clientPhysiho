@@ -1,4 +1,4 @@
-// @dart=2.9
+
 import 'package:clientPhysiho/src/config/colors.dart';
 import 'package:flutter/material.dart';
 import 'package:google_maps_flutter/google_maps_flutter.dart';
@@ -7,7 +7,7 @@ class LocationMapView extends StatefulWidget {
   // Route name for this view
   static const routeName = 'locationMap';
 
-  LocationMapView({Key key}) : super(key: key);
+  const LocationMapView({Key? key}) : super(key: key);
 
   @override
   _LocationView createState() => _LocationView();
@@ -27,7 +27,7 @@ class _LocationView extends State<LocationMapView> {
 }
 
 class MyHomePage extends StatefulWidget {
-  MyHomePage({Key key, this.title}) : super(key: key);
+  const MyHomePage({Key? key, required this.title}) : super(key: key);
 
   final String title;
 
@@ -36,8 +36,7 @@ class MyHomePage extends StatefulWidget {
 }
 
 class _MyHomePageState extends State<MyHomePage> with TickerProviderStateMixin {
-  
-  GoogleMapController mapController;
+  GoogleMapController? mapController;
   Map<MarkerId, Marker> markers = <MarkerId, Marker>{};
 
   final LatLng _center = const LatLng(24.821616866968533, -107.38899707242675);

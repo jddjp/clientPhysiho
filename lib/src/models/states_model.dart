@@ -1,23 +1,16 @@
-// @dart=2.9
+
 
 class States {
-  bool error;
-  int codeError;
+  bool? error;
+  int? codeError;
   dynamic errorMessage;
-  Response response;
+  Response? response;
 
-  States({
-    this.error,
-    this.codeError,
-    this.errorMessage,
-    this.response,
-  });
+  States({this.error, this.codeError, this.errorMessage, this.response});
 }
 
 class Response {
-  List<String> estado;
+  List<String>? estado;
 
-  Response({
-    this.estado,
-  });
+  Response({this.estado});
 }

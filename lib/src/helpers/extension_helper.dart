@@ -1,4 +1,4 @@
-// @dart=2.9
+
 import 'package:flutter/material.dart';
 import 'package:flutter_statusbarcolor_ns/flutter_statusbarcolor_ns.dart';
 
@@ -6,12 +6,8 @@ back(var context) {
   Navigator.pop(context);
 }
 
-launchScreen(context, String routeName, {Object arguments}) {
-  if (arguments == null) {
-    Navigator.pushNamed(context, routeName);
-  } else {
-    Navigator.pushNamed(context, routeName, arguments: arguments);
-  }
+launchScreen(context, String routeName, {Object? arguments}) {
+  Navigator.pushNamed(context, routeName, arguments: arguments);
 }
 
 changeStatusColor(Color color) async {

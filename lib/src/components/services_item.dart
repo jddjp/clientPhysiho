@@ -1,4 +1,4 @@
-// @dart=2.9
+
 import 'package:cached_network_image/cached_network_image.dart';
 import 'package:clientPhysiho/src/config/colors.dart';
 import 'package:clientPhysiho/src/config/constants.dart';
@@ -10,7 +10,7 @@ import 'package:flutter/material.dart';
 class ServiceItem extends StatelessWidget {
   final Map<String, dynamic> services;
 
-  ServiceItem({Key key, this.services}) : super(key: key);
+  ServiceItem({super.key, required this.services});
   @override
   Widget build(BuildContext context) {
     var width = MediaQuery.of(context).size.width;

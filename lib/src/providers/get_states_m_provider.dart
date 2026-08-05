@@ -1,5 +1,4 @@
-// @dart=2.9
-import 'package:flutter/material.dart';
+
 import 'package:http/http.dart' as http;
 import 'dart:convert';
 
@@ -9,22 +8,21 @@ class StatesMProvider {
 
     final result = await http.get(Uri.parse(
         'https://api-sepomex.hckdrk.mx/query/get_estados?token=a2f08702-dc7c-4a49-a792-f79664589890'));
-    List<int> bytes = result.bodyBytes;
-    if (result.statusCode == 200) {
-      var body = utf8.decode(bytes);
-      var jsonResponse = jsonDecode(body);
 
-      //print(jsonResponse['response']['estado']);
-
-      List<dynamic> listState = new List();
-
-      for (var item in jsonResponse['response']['estado']) {
-        print(item);
-        listState.add(item);
-      }
-
-      return listState;
+    if (result.statusCode != 200) {
+      return [];
     }
+
+    final body = utf8.decode(result.bodyBytes);
+    final jsonResponse = jsonDecode(body);
+    final List<dynamic> listState = [];
+
+    for (var item in (jsonResponse['response']?['estado'] ?? [])) {
+      print(item);
+      listState.add(item);
+    }
+
+    return listState;
   }
 
   Future<List<dynamic>> municipio(String states) async {
@@ -36,19 +34,20 @@ class StatesMProvider {
               states +
               '?token=a2f08702-dc7c-4a49-a792-f79664589890'),
     );
-    List<int> bytes = result.bodyBytes;
-    if (result.statusCode == 200) {
-      var body = utf8.decode(bytes);
-      var jsonResponse = jsonDecode(body);
 
-      print(jsonResponse['response']['municipios']);
-
-      List<dynamic> listMunicipios = new List();
-      for (var item in jsonResponse['response']['municipios']) {
-        listMunicipios.add(item);
-      }
-
-      return listMunicipios;
+    if (result.statusCode != 200) {
+      return [];
     }
+
+    final body = utf8.decode(result.bodyBytes);
+    final jsonResponse = jsonDecode(body);
+    final List<dynamic> listMunicipios = [];
+
+    print(jsonResponse['response']?['municipios']);
+    for (var item in (jsonResponse['response']?['municipios'] ?? [])) {
+      listMunicipios.add(item);
+    }
+
+    return listMunicipios;
   }
 }

@@ -1,18 +1,16 @@
-// @dart=2.9
+
 import 'package:cloud_firestore/cloud_firestore.dart';
-import 'package:clientPhysiho/src/config/constants.dart';
 import 'package:mvc_pattern/mvc_pattern.dart';
 import 'package:shared_preferences/shared_preferences.dart';
-import 'dart:math';
 
 class CartServiceController extends ControllerMVC {
   bool isLoading = true;
-  Map<String, dynamic> service;
-  Map<String, dynamic> itemService;
-  Map<String, dynamic> employee;
-  SharedPreferences _idservices;
+  Map<String, dynamic> service = {};
+  Map<String, dynamic> itemService = {};
+  Map<String, dynamic> employee = {};
+  SharedPreferences? _idservices;
   List<Map<String, dynamic>> employess = [];
-  String selectedLocation; // Propiedad para la ubicación seleccionada
+  String selectedLocation = ''; // Propiedad para la ubicación seleccionada
 
   CartServiceController(Map<String, dynamic> data) {
     initialize();
@@ -28,11 +26,6 @@ class CartServiceController extends ControllerMVC {
 
   void asyncData(Map<String, dynamic> item) async {
     print('asyncData');
-
-    if (item == null) {
-      item['id'] = await _idservices.getString('idpaqueteservicio');
-      item['idservice'] = await _idservices.getString('idservicio');
-    }
 
     print('selectedLocation');
     print(selectedLocation);
@@ -90,7 +83,7 @@ class CartServiceController extends ControllerMVC {
 
   void asyncDataEmployes(String ubi) async {
     print('asyncDataEmployes=>>>>>>>>>>>');
-    print(service['ubicacion']);
+    print(service['ubicacion'] ?? '');
     print(ubi);
 
     //try {

@@ -1,4 +1,4 @@
-// @dart=2.9
+
 import 'package:clientPhysiho/src/components/services_item.dart';
 import 'package:clientPhysiho/src/config/colors.dart';
 import 'package:clientPhysiho/src/config/constants.dart';
@@ -15,7 +15,7 @@ class HomeServiceView extends StatefulWidget {
 }
 
 class _HomeServiceViewState extends State<HomeServiceView> {
-  Future<QuerySnapshot> _servicesSnapshot;
+  late Future<QuerySnapshot<Object?>> _servicesSnapshot;
 
   @override
   void initState() {
@@ -70,7 +70,7 @@ class _HomeServiceViewState extends State<HomeServiceView> {
                         FutureBuilder(
                             future: _servicesSnapshot,
                             builder: (BuildContext context,
-                                AsyncSnapshot<QuerySnapshot> snapshot) {
+                                AsyncSnapshot<QuerySnapshot<Object?>> snapshot) {
                               if (snapshot.hasError) {
                                 return Text('Something went wrong');
                               }
@@ -83,17 +83,18 @@ class _HomeServiceViewState extends State<HomeServiceView> {
                                 ));
                               }
 
+                              final docs = snapshot.data?.docs ?? [];
                               return ListView.builder(
                                   primary: false,
                                   scrollDirection: Axis.vertical,
                                   shrinkWrap: true,
-                                  itemCount: snapshot.data.docs.length,
+                                  itemCount: docs.length,
                                   itemBuilder:
                                       (BuildContext context, int index) {
+                                    final data = docs[index].data();
                                     return ServiceItem(services: {
-                                      ...snapshot.data.docs[index].data()
-                                          as Map<String, dynamic>,
-                                      "id": snapshot.data.docs[index].id
+                                      ...Map<String, dynamic>.from(data as Map),
+                                      "id": docs[index].id
                                     });
                                   });
                             }),

@@ -1,4 +1,4 @@
-// @dart=2.9
+
 import 'package:cached_network_image/cached_network_image.dart';
 import 'package:clientPhysiho/src/components/item_widget.dart';
 import 'package:clientPhysiho/src/config/colors.dart';
@@ -14,18 +14,19 @@ class ServiceView extends StatefulWidget {
   static const routeName = 'business';
   final String serviceId;
 
-  ServiceView({Key key, this.serviceId}) : super(key: key);
+  ServiceView({Key? key, required this.serviceId}) : super(key: key);
 
   @override
   _ServiceViewState createState() => _ServiceViewState(serviceId);
 }
 
 class _ServiceViewState extends StateMVC<ServiceView> {
-  ServiceController _con;
+  late ServiceController _con;
   var _selectedIndex = 0;
 
-  _ServiceViewState(String serviceId) : super(ServiceController(serviceId)) {
-    _con = controller;
+  _ServiceViewState(String serviceId)
+      : super(ServiceController(serviceId)) {
+    _con = controller as ServiceController;
   }
 
   void _onItemTapped(int index) {
@@ -49,7 +50,7 @@ class _ServiceViewState extends StateMVC<ServiceView> {
     super.dispose();
   }
 
-  ScrollController _scrollController;
+  late ScrollController _scrollController;
 
   bool lastStatus = true;
 
@@ -92,9 +93,7 @@ class _ServiceViewState extends StateMVC<ServiceView> {
                   width: width,
                   child: Lottie.asset('assets/images/8682-loading.json'),
                 )
-              : (_con.service == null
-                  ? Container()
-                  : NestedScrollView(
+              : (NestedScrollView(
                       controller: _scrollController,
                       headerSliverBuilder:
                           (BuildContext context, bool innerBoxIsScrolled) {
@@ -187,8 +186,7 @@ class _ServiceViewState extends StateMVC<ServiceView> {
                                 ),
                               ),
                             ),
-                            _con.items != null
-                                ? Expanded(
+                            Expanded(
                                     child: ListView.builder(
                                         primary: false,
                                         scrollDirection: Axis.vertical,
@@ -196,14 +194,16 @@ class _ServiceViewState extends StateMVC<ServiceView> {
                                         itemCount: _con.items.length,
                                         itemBuilder:
                                             (BuildContext context, int index) {
-                                          return ItemWidget(item: {
-                                            ..._con.items[index].data()
-                                                as Map<String, dynamic>,
-                                            "id": _con.items[index].id,
-                                            "idservice": _con.service["id"],
-                                          });
+                                          return ItemWidget(
+                                            item: {
+                                              ..._con.items[index].data()
+                                                  as Map<String, dynamic>,
+                                              "id": _con.items[index].id,
+                                              "idservice": _con.service["id"],
+                                            },
+                                            idservice: _con.service["id"] ?? '',
+                                          );
                                         }))
-                                : Container()
                           ],
                         ),
                       )))

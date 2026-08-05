@@ -1,4 +1,4 @@
-// @dart=2.9
+
 import 'dart:math';
 
 import 'package:flutter/material.dart';
@@ -170,28 +170,26 @@ class SessionProvider with ChangeNotifier {
 
 // Itera sobre las claves (días de la semana) en el mapa schedulesMap
       schedulesMap.forEach((key, value) {
-        if (selectedDay != null) {
-          String diaEnEspanol = traduccionDias[key] ?? key;
-          if (diaEnEspanol.toLowerCase() == selectedDay.toLowerCase()) {
-            // El día de la semana seleccionado está presente en el mapa
-            isDayAvailable = true;
-            // Obtén las horas de cierre y apertura del mapa
-            String closingTime = value['closing_time'];
-            String openingTime = value['opening_time'];
+        String diaEnEspanol = traduccionDias[key] ?? key;
+        if (diaEnEspanol.toLowerCase() == selectedDay.toLowerCase()) {
+          // El día de la semana seleccionado está presente en el mapa
+          isDayAvailable = true;
+          // Obtén las horas de cierre y apertura del mapa
+          String closingTime = value['closing_time'];
+          String openingTime = value['opening_time'];
 
-            DateTime openingHour = DateFormat('HH:mm').parse(openingTime);
-            DateTime closingHour = DateFormat('HH:mm').parse(closingTime);
-            // Eliminar las horas que no están dentro del rango de cierre y apertura
-            DateTime closingHourAdjusted =
-                closingHour.subtract(Duration(hours: 1));
-            hoursList.removeWhere((hour) {
-              DateTime currentHour = DateFormat('HH:mm').parse(hour['value']);
-              return currentHour.isBefore(openingHour) ||
-                  currentHour.isAfter(closingHourAdjusted);
-            });
-          }
+          DateTime openingHour = DateFormat('HH:mm').parse(openingTime);
+          DateTime closingHour = DateFormat('HH:mm').parse(closingTime);
+          // Eliminar las horas que no están dentro del rango de cierre y apertura
+          DateTime closingHourAdjusted =
+              closingHour.subtract(Duration(hours: 1));
+          hoursList.removeWhere((hour) {
+            DateTime currentHour = DateFormat('HH:mm').parse(hour['value']);
+            return currentHour.isBefore(openingHour) ||
+                currentHour.isAfter(closingHourAdjusted);
+          });
         }
-      });
+            });
     }
 
     if (!isDayAvailable) {
@@ -202,36 +200,37 @@ class SessionProvider with ChangeNotifier {
 
     print('physio : ${physioRef}');
 
-    if (sesionsListIndex != null) {
-      QuerySnapshot sesionData = await FirebaseFirestore.instance
-          .collection('sesionRecord')
-          .where('users', isEqualTo: physioRef)
-          .where('estatus', isEqualTo: 1)
-          .where('date', isEqualTo: sesionsListIndex)
-          // .orderBy('fecha')
-          .get();
+    QuerySnapshot sesionData = await FirebaseFirestore.instance
+        .collection('sesionRecord')
+        .where('users', isEqualTo: physioRef)
+        .where('estatus', isEqualTo: 1)
+        .where('date', isEqualTo: sesionsListIndex)
+        // .orderBy('fecha')
+        .get();
 
-      print('reference physio');
-      print(physioRef);
-      print('reference sesions Record');
-      print(sesionData);
-      sesionData.docs.forEach((element) {
-        print('for hours');
-        print(element.data());
-        Map<String, dynamic> elemnt = element.data();
-        hoursList.forEach((elementHours) {
-          print(elementHours);
-          if (elementHours['value'] == elemnt['hours']) {
-            print(
-                'si se encuentra ${elementHours['value']} && ${elemnt['hours']}');
-            elementHours['enable'] = false;
-          }
-        });
+    print('reference physio');
+    print(physioRef);
+    print('reference sesions Record');
+    print(sesionData);
+    sesionData.docs.forEach((element) {
+      print('for hours');
+      print(element.data());
+      final data = element.data();
+      final elemnt = data is Map<String, dynamic>
+          ? data
+          : Map<String, dynamic>.from(data as Map);
+      hoursList.forEach((elementHours) {
+        print(elementHours);
+        if (elementHours['value'] == elemnt['hours']) {
+          print(
+              'si se encuentra ${elementHours['value']} && ${elemnt['hours']}');
+          elementHours['enable'] = false;
+        }
       });
-      print(
-          'date list : $sesionsListIndex && idEmployee : $idEmployee & index : $index');
-    }
-
+    });
+    print(
+        'date list : $sesionsListIndex && idEmployee : $idEmployee & index : $index');
+  
     return hoursList;
   }
 
@@ -247,7 +246,10 @@ class SessionProvider with ChangeNotifier {
 
     user.docs.forEach((element) {
       print(element.data());
-      Map<String, dynamic> elemnt = element.data();
+      final data = element.data();
+      final elemnt = data is Map<String, dynamic>
+          ? data
+          : Map<String, dynamic>.from(data as Map);
       _employess.add({
         'value': '10:30',
         'label': elemnt["name"],
@@ -269,7 +271,7 @@ class SessionProvider with ChangeNotifier {
 
   Future<Map<String, dynamic>> getPhysio() async {
     print('userPhysio');
-    Map<String, dynamic> _currentUser;
+    Map<String, dynamic> _currentUser = {};
     final autoId = _getAutoId();
 
     print(autoId);
@@ -283,7 +285,10 @@ class SessionProvider with ChangeNotifier {
         .get();
     user.docs.forEach((element) {
       print(element.data());
-      Map<String, dynamic> elemnt = element.data();
+      final data = element.data();
+      final elemnt = data is Map<String, dynamic>
+          ? data
+          : Map<String, dynamic>.from(data as Map);
       _currentUser = {
         'id': element.reference.id,
         "name": elemnt['name'],
@@ -312,32 +317,37 @@ class SessionProvider with ChangeNotifier {
     var sesiones = await sesionData.docs;
 
     for (var element in sesiones) {
-      Map<String, dynamic> elemnt = element.data();
+      final rawData = element.data();
+      final elemnt = rawData is Map<String, dynamic>
+          ? rawData
+          : Map<String, dynamic>.from(rawData as Map);
 
-      DocumentSnapshot record = await FirebaseFirestore.instance
-          .collection('Record')
-          .doc(elemnt['record'].id)
-          .get();
+      final recordData = (await FirebaseFirestore.instance
+              .collection('Record')
+              .doc(elemnt['record'].id)
+              .get())
+          .data() ?? {};
 
-      DocumentSnapshot service = await FirebaseFirestore.instance
-          .collection('services')
-          .doc((record.data() as Map<String, dynamic>)['service'].id)
-          .get();
-      DocumentSnapshot package = await FirebaseFirestore.instance
-          .collection('items')
-          .doc((record.data() as Map<String, dynamic>)['package'].id)
-          .get();
+      final serviceData = (await FirebaseFirestore.instance
+              .collection('services')
+              .doc(recordData['service'].id)
+              .get())
+          .data() ?? {};
+
+      final packageData = (await FirebaseFirestore.instance
+              .collection('items')
+              .doc(recordData['package'].id)
+              .get())
+          .data() ?? {};
 
       sesion.add({
         'hours': elemnt['hours'],
         'date': elemnt['date'],
-        'serviceName': (service.data() as Map<String, dynamic>)['name'],
+        'serviceName': serviceData['name'] ?? '',
         'status': elemnt['estatus'],
-        'packageName': (package.data() as Map<String, dynamic>)['name'],
-        'location': (record.data() as Map<String, dynamic>)['location']
-      }
-          //element.data()
-          );
+        'packageName': packageData['name'] ?? '',
+        'location': recordData['location'] ?? ''
+      });
       print("yair:" + element.id);
     }
 

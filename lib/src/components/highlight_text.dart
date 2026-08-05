@@ -18,7 +18,7 @@ class HighlightText extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
     String text = this.text ?? '';
-    if ((highlight?.isEmpty ?? true) || text.isEmpty) {
+    if ((highlight.isEmpty ?? true) || text.isEmpty) {
       return Text(text, style: textStyle);
     }
 

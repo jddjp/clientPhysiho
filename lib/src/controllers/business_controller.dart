@@ -1,12 +1,12 @@
-// @dart=2.9
+
 import 'package:cloud_firestore/cloud_firestore.dart';
 import 'package:clientPhysiho/src/config/constants.dart';
 import 'package:mvc_pattern/mvc_pattern.dart';
 
 class BusinessController extends ControllerMVC {
   bool isLoading = true;
-  Map<String, dynamic> business;
-  List<QueryDocumentSnapshot> items;
+  late Map<String, dynamic> business;
+  late List<QueryDocumentSnapshot> items;
 
   BusinessController(String businessId) {
     asyncData(businessId);

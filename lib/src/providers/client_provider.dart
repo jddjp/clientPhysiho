@@ -1,4 +1,4 @@
-// @dart=2.9
+
 import 'package:cloud_firestore/cloud_firestore.dart';
 
 class ClientProvider {
@@ -17,7 +17,7 @@ class ClientProvider {
   /**
    * Update client info
    */
-  static Future update(String uid, { String name, String phoneNumber, String email }) {
+  static Future update(String uid, {String? name, String? phoneNumber, String? email}) {
     return FirebaseFirestore.instance.collection(collectionPath)
       .doc(uid)
       .update({

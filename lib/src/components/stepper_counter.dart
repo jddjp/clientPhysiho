@@ -1,4 +1,4 @@
-// @dart=2.9
+
 import 'package:flutter/material.dart';
 import 'package:clientPhysiho/src/config/colors.dart';
 import 'package:clientPhysiho/src/config/constants.dart';
@@ -7,13 +7,14 @@ class StepperCounter extends StatelessWidget {
   final double iconSize;
   final VoidCallback onIncrement;
   final VoidCallback onDecrement;
-  int stepperValue;
+  final int stepperValue;
 
-  StepperCounter({
-    this.stepperValue,
-    this.onIncrement,
-    this.onDecrement,
+  const StepperCounter({
+    required this.stepperValue,
+    required this.onIncrement,
+    required this.onDecrement,
     this.iconSize = textSizeNormal,
+    super.key,
   });
 
   @override
@@ -47,10 +48,15 @@ class StepperCounter extends StatelessWidget {
 }
 
 class RoundedIconButton extends StatelessWidget {
-  RoundedIconButton({this.icon, this.onPress, this.iconSize});
+  const RoundedIconButton({
+    required this.icon,
+    required this.onPress,
+    required this.iconSize,
+    super.key,
+  });
 
   final IconData icon;
-  final Function onPress;
+  final VoidCallback onPress;
   final double iconSize;
 
   @override

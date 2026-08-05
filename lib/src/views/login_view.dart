@@ -6,13 +6,11 @@ import 'package:clientPhysiho/src/components/default_button.dart';
 import 'package:clientPhysiho/src/config/colors.dart';
 import 'package:clientPhysiho/src/config/constants.dart';
 import 'package:clientPhysiho/src/config/images.dart';
-import 'package:clientPhysiho/src/config/strings.dart';
 import 'package:clientPhysiho/src/helpers/extension_helper.dart';
 import 'package:clientPhysiho/src/helpers/widget_helper.dart';
 import 'package:clientPhysiho/src/providers/login_provider.dart';
 import 'package:clientPhysiho/src/views/complete_profile_view.dart';
 import 'package:clientPhysiho/src/views/create_account_view.dart';
-import 'package:clientPhysiho/src/views/home_services_view.dart';
 import 'package:fluttertoast/fluttertoast.dart';
 import 'package:loading_overlay/loading_overlay.dart';
 import 'package:provider/provider.dart';
@@ -38,8 +36,7 @@ class _LoginViewState extends State<LoginView> {
         height: 50.0,
         child: TextButton.icon(
           style: TextButton.styleFrom(
-            primary: color,
-            shape: const RoundedRectangleBorder(
+            foregroundColor: color, shape: const RoundedRectangleBorder(
               borderRadius: BorderRadius.all(Radius.circular(50)),
             ),
           ),

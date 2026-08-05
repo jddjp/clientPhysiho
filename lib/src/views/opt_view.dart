@@ -1,4 +1,4 @@
-// @dart=2.9
+
 import 'package:flutter/material.dart';
 import 'package:clientPhysiho/src/components/default_button.dart';
 import 'package:clientPhysiho/src/helpers/extension_helper.dart';
@@ -29,7 +29,7 @@ class OPTView extends StatefulWidget {
 
   final Map<String, dynamic> phoneData;
 
-  OPTView({Key key, this.phoneData}) : super(key: key);
+  OPTView({Key? key, required this.phoneData}) : super(key: key);
 
   @override
   _OPTViewState createState() => _OPTViewState();
@@ -38,7 +38,7 @@ class OPTView extends StatefulWidget {
 class _OPTViewState extends State<OPTView> {
   // Form vars
   final _formKey = GlobalKey<FormState>();
-  String smsCode;
+  String smsCode = '';
 
   @override
   Widget build(BuildContext context) {
@@ -87,14 +87,14 @@ class _OPTViewState extends State<OPTView> {
                 maxLength: 6,
                 keyboardType: TextInputType.phone,
                 autofocus: true,
-                onSaved: (value) => smsCode = value,
+                onSaved: (value) => smsCode = value ?? '',
                 validator: (value) {
                   Pattern pattern = r'^[0-9]{6}$';
-                  RegExp regex = new RegExp(pattern);
-                  if (value.isEmpty) {
+                  RegExp regex = RegExp(pattern.toString());
+                  if ((value ?? '').isEmpty) {
                     return "Ingresa el código de verificación";
                   }
-                  if (!regex.hasMatch(value)) {
+                  if (!regex.hasMatch(value ?? '')) {
                     return "Ingresa un código válido";
                   }
                   return null;
@@ -115,8 +115,8 @@ class _OPTViewState extends State<OPTView> {
             child: DefaultButton(
               text: "Continuar",
               press: () async {
-                if (_formKey.currentState.validate()) {
-                  _formKey.currentState.save();
+                if (_formKey.currentState?.validate() ?? false) {
+                  _formKey.currentState?.save();
 
                   // Save phoneNumber on App Global State
                   Provider.of<LoginProvider>(context, listen: false)

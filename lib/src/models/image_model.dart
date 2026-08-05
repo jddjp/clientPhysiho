@@ -1,20 +1,16 @@
-// @dart=2.9
+
 class ImageModel {
   String path;
   String url;
 
-  ImageModel({
-    this.path,
-    this.url
-  });
+  ImageModel({String? path, String? url})
+      : path = path ?? '',
+        url = url ?? '';
 
-  ImageModel.fromJSON(Map<String,dynamic> json) {
-    try {
-      path = json['path'];
-      url = json['url'];
-    } catch (e) {
-      print("ImageModel: Error");
-      print(e);
-    }
-  }
+  ImageModel.fromJSON(Map<String, dynamic> json)
+      : path = (json['path'] ?? '').toString(),
+        url = (json['url'] ?? '').toString();
+
+  @override
+  String toString() => 'ImageModel(path: $path, url: $url)';
 }

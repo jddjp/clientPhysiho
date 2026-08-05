@@ -1,5 +1,4 @@
-// @dart=2.9
-import 'dart:convert';
+
 
 import 'package:clientPhysiho/src/config/colors.dart';
 import 'package:clientPhysiho/src/config/constants.dart';
@@ -20,8 +19,8 @@ class CheckTypePayment extends StatefulWidget {
   final Map<String, dynamic> item;
 
 
-  CheckTypePayment({Key key, Map<String, dynamic> item})
-      : this.item = item ?? <String, dynamic>{},
+  CheckTypePayment({Key? key, Map<String, dynamic>? item})
+      : item = item ?? <String, dynamic>{},
         super(key: key);
   @override
   _CheckTypePaymentState createState() => _CheckTypePaymentState(item);
@@ -240,22 +239,26 @@ class _CheckTypePaymentState extends State<CheckTypePayment> {
           widget.item['item']['name'].toString(),
           widget.item['item']['price'].toString(),item);
       print(preferenceId);
-      await launch(
-        preferenceId,
-        customTabsOption: CustomTabsOption(
-          toolbarColor: titleoverimage,
-          enableDefaultShare: true,
-          enableUrlBarHiding: true,
-          showPageTitle: true,
-          animation: CustomTabsSystemAnimation.slideIn(),
-          extraCustomTabs: const <String>[
-            // ref. https://play.google.com/store/apps/details?id=org.mozilla.firefox
-            'org.mozilla.firefox',
-            // ref. https://play.google.com/store/apps/details?id=com.microsoft.emmx
-            'com.microsoft.emmx',
-          ],
+      await launchUrl(
+        Uri.parse(preferenceId),
+        customTabsOptions: CustomTabsOptions(
+          colorSchemes: CustomTabsColorSchemes.defaults(
+            toolbarColor: titleoverimage,
+            navigationBarColor: titleoverimage,
+          ),
+          shareState: CustomTabsShareState.on,
+          urlBarHidingEnabled: true,
+          showTitle: true,
+          animations: CustomTabsSystemAnimations.slideIn(),
+          browser: const CustomTabsBrowserConfiguration(
+            prefersDefaultBrowser: false,
+            fallbackCustomTabs: <String>[
+              'org.mozilla.firefox',
+              'com.microsoft.emmx',
+            ],
+          ),
         ),
-        safariVCOption: SafariViewControllerOption(
+        safariVCOptions: SafariViewControllerOptions(
           preferredBarTintColor: theme.primaryColor,
           preferredControlTintColor: Colors.white,
           barCollapsingEnabled: true,

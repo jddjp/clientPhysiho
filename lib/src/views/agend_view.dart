@@ -1,4 +1,4 @@
-// @dart=2.9
+
 import 'package:clientPhysiho/src/config/colors.dart';
 import 'package:clientPhysiho/src/config/constants.dart';
 import 'package:clientPhysiho/src/helpers/extension_helper.dart';
@@ -14,7 +14,7 @@ class AgendView extends StatefulWidget {
   // Route name for this view
   static const routeName = 'agend';
 
-  AgendView({Key key}) : super(key: key);
+  AgendView({Key? key}) : super(key: key);
 
   @override
   _AgendViewState createState() => _AgendViewState();
@@ -34,7 +34,7 @@ class _AgendViewState extends State<AgendView> {
 }
 
 class MyHomePage extends StatefulWidget {
-  MyHomePage({Key key, this.title}) : super(key: key);
+  MyHomePage({Key? key, required this.title}) : super(key: key);
 
   final String title;
 
@@ -42,134 +42,73 @@ class MyHomePage extends StatefulWidget {
   _MyHomePageState createState() => _MyHomePageState();
 }
 
-class _MyHomePageState extends State<MyHomePage> with TickerProviderStateMixin {
-  Map<DateTime, List> _events;
-  final sesionrecord = new SessionProvider();
-  List _selectedEvents;
-  AnimationController _animationController;
-  CalendarController _calendarController;
-  final sessions = new SessionProvider();
+class _MyHomePageState extends State<MyHomePage> {
+  final sesionrecord = SessionProvider();
+  final sessions = SessionProvider();
   String _valueChanged = '';
   int flat = 0;
-  Map<DateTime, List> _eventsFisiho = {};
-  var helper = [];
-  final _selectedDay = DateTime.now();
+  DateTime _focusedDay = DateTime.now();
+  DateTime? _selectedDay;
+  Map<DateTime, List<String>> _events = {};
+  List<String> _selectedEvents = const [];
+  final Map<DateTime, List<String>> _eventsFisiho = {};
+  final List<String> helper = [];
 
   @override
   void initState() {
     super.initState();
-    final _selectedDay = DateTime.now();
-    DateTime f = DateTime(2021, 01, 01);
-    //print(f);
+    final today = DateTime.now();
+    _selectedDay = today;
     _events = {
-      _selectedDay.subtract(Duration(days: 30)): [
-        'Event A0',
-        'Event B0',
-        'Event C0'
-      ],
-      _selectedDay.subtract(Duration(days: 27)): ['Event A1'],
-      _selectedDay.subtract(Duration(days: 20)): [
-        'Event A2',
-        'Event B2',
-        'Event C2',
-        'Event D2'
-      ],
-      // _selectedDay.subtract(Duration(days: 16)): ['Event A3', 'Event B3'],
-      // _selectedDay.subtract(Duration(days: 10)): [
-      //   'Event A4',
-      //   'Event B4',
-      //   'Event C4'
-      // ],
-      // _selectedDay.subtract(Duration(days: 4)): [
-      //   'Event A5',
-      //   'Event B5',
-      //   'Event C5'
-      // ],
-      // _selectedDay.subtract(Duration(days: 2)): ['Event A6', 'Event B6'],
-      // // _selectedDay: ['Event A7', 'Event B7', 'Event C7', 'Event D7'],
-      // _selectedDay.add(Duration(days: 1)): [
-      //   'Event A8',
-      //   'Event B8',
-      //   'Event C8',
-      //   'Event D8'
-      // ],
+      today.subtract(const Duration(days: 30)): ['Event A0', 'Event B0', 'Event C0'],
+      today.subtract(const Duration(days: 27)): ['Event A1'],
+      today.subtract(const Duration(days: 20)): ['Event A2', 'Event B2', 'Event C2', 'Event D2'],
     };
-
-    _selectedEvents = _events[_selectedDay] ?? [];
-    _calendarController = CalendarController();
-
-    _animationController = AnimationController(
-      vsync: this,
-      duration: const Duration(milliseconds: 400),
-    );
-
-    _animationController.forward();
+    _selectedEvents = _eventsForDay(_selectedDay!);
   }
 
-  @override
-  void dispose() {
-    _animationController.dispose();
-    _calendarController.dispose();
-    super.dispose();
+  List<String> _eventsForDay(DateTime day) {
+    final normalized = DateTime(day.year, day.month, day.day);
+    return _events[normalized] ?? const [];
   }
 
-  void _onDaySelected(DateTime day, List events, List holidays) {
-    //print('CALLBACK: _onDaySelected');
+  void _onDaySelected(DateTime selectedDay, DateTime focusedDay) {
     setState(() {
-      _selectedEvents = events;
+      _selectedDay = selectedDay;
+      _focusedDay = focusedDay;
+      _selectedEvents = _eventsForDay(selectedDay);
     });
   }
 
-  void _onVisibleDaysChanged(
-      DateTime first, DateTime last, CalendarFormat format) {
-    //print('CALLBACK: _onVisibleDaysChanged');
-  }
+  Map<DateTime, List<String>> _buildItems(List<dynamic> elements) {
+    _eventsFisiho.clear();
+    helper.clear();
 
-  void _onCalendarCreated(
-      DateTime first, DateTime last, CalendarFormat format) {
-    //print('CALLBACK: _onCalendarCreated');
-  }
-
-  Map<DateTime, List> _buildItems(List<dynamic> elements) {
-    //someObjects.sort((a, b) => a.someProperty.compareTo(b.someProperty));
-    //print(elements);
-    print(elements.length);
-    elements.forEach((element) {
-      if (!helper.contains(element['date'])) {
-        helper.add(element['date']);
+    for (final element in elements) {
+      final dateValue = element['date']?.toString();
+      if (dateValue != null && !helper.contains(dateValue)) {
+        helper.add(dateValue);
       }
-    });
-    print('list date´s');
+    }
 
-    helper.toList().asMap().forEach((key, value) {
-      print('helper');
-      print(elements);
+    for (final value in helper) {
       final dateA = DateFormat('yyyy-MM-dd').parse(value);
-      final dateS = DateFormat('yyyy-MM-dd').parse(value);
-      var item = [];
-      elements.forEach((element) {
-        print('list element');
-        if (element['date'] == value) {
-          print('foreach element');
-          //print('coincide');
-          //print(key);
-          print("CALENDARIO==========>");
-          print(value);
-          print(element);
-          String s = 'Servicio: ' + element['serviceName'].toString();
-          String p = 'Paquete: ' + element['packageName'].toString();
-          String c = "Horario: " + element['hours'].toString();
-          String d = "Ubicacion: " + element['location'].toString();
-          String dataInfo = 'Cita \n' + s + '\n' + p + '\n' + c + '\n' +d;
-          //print(dataInfo);
-          item.add(dataInfo);
-          //_eventsFisiho.addAll({dateA: item});
+      final normalized = DateTime(dateA.year, dateA.month, dateA.day);
+      final item = <String>[];
+
+      for (final element in elements) {
+        if (element['date']?.toString() == value) {
+          final s = 'Servicio: ${element['serviceName'] ?? ''}';
+          final p = 'Paquete: ${element['packageName'] ?? ''}';
+          final c = 'Horario: ${element['hours'] ?? ''}';
+          final d = 'Ubicacion: ${element['location'] ?? ''}';
+          item.add('Cita\n$s\n$p\n$c\n$d');
         }
-      });
-      _eventsFisiho.addAll({dateA: item});
-      print(dateA);
-      print(item);
-    });
+      }
+
+      _eventsFisiho[normalized] = item;
+    }
+
     return _eventsFisiho;
   }
 
@@ -180,8 +119,9 @@ class _MyHomePageState extends State<MyHomePage> with TickerProviderStateMixin {
     //print(context.watch<LoginProvider>().currentUser['id']);
     //final idUser = context.watch<LoginProvider>().currentUser['id'];
 
+    final currentUser = context.watch<LoginProvider>().currentUser ?? {};
     return (context.watch<LoginProvider>().isLoggedIn() &&
-            context.watch<LoginProvider>().currentUser['nombre'] != null
+            (currentUser['nombre'] ?? '').toString().isNotEmpty
         ? Scaffold(
             appBar: AppBar(
               backgroundColor: pantoneFour,
@@ -200,7 +140,7 @@ class _MyHomePageState extends State<MyHomePage> with TickerProviderStateMixin {
                 children: <Widget>[
                   // Switch out 2 lines below to play with TableCalendar's settings
                   //-----------------------
-                  _buildTableCalendar(context.watch<LoginProvider>().currentUser['id']),
+                  _buildTableCalendar(currentUser['id'] ?? ''),
                   // _buildTableCalendarWithBuilders(),
                   const SizedBox(height: 8.0),
                   _buildButtons(),
@@ -278,240 +218,79 @@ class _MyHomePageState extends State<MyHomePage> with TickerProviderStateMixin {
 
   // Simple TableCalendar configuration (using Styles)
   Widget _buildTableCalendar(dynamic idUser) {
-    print('user build table');
-    print(idUser);
-    _valueChanged = context.watch<LoginProvider>().isLoggedIn() &&
-            context.watch<LoginProvider>().currentUser['id'] != null
-        ? flat == ''
-            ? context.watch<LoginProvider>().currentUser['id']
-            : _valueChanged
+    final id = idUser?.toString() ?? '';
+
+    final isLoggedIn = context.watch<LoginProvider>().isLoggedIn();
+    final userId = context.watch<LoginProvider>().currentUser?['id']?.toString() ?? '';
+    final selectedUserId = isLoggedIn && userId.isNotEmpty
+        ? (flat == 0 ? userId : _valueChanged)
         : '';
 
-    final t = sesionrecord.getSessionUser(idUser);
+    _valueChanged = selectedUserId;
 
-    //print("buil calendar viendfo q imprime");
+    final t = sesionrecord.getSessionUser(id);
+
     return FutureBuilder(
       future: t,
-      builder: (BuildContext context, AsyncSnapshot snapshot) {
-        //print(snapshot.hasData);
-        //print("imprimiendo snap shap XD");
-        if (snapshot.hasData) {
-          //imprimiendo la fila y el dato que se necesito
-          //print(snapshot.data);
-          return TableCalendar(
-            locale: 'es',
-            calendarController: _calendarController,
-            events: _buildItems(snapshot.data),
-            startingDayOfWeek: StartingDayOfWeek.monday,
-            calendarStyle: CalendarStyle(
-              selectedColor: pantoneEleven,
-              todayColor: pantoneOne,
-              markersColor: Colors.red[700],
-              outsideDaysVisible: false,
-            ),
-            headerStyle: HeaderStyle(
-              formatButtonTextStyle:
-                  TextStyle().copyWith(color: Colors.white, fontSize: 15.0),
-              formatButtonDecoration: BoxDecoration(
-                color: pantoneEleven,
-                borderRadius: BorderRadius.circular(16.0),
-              ),
-            ),
-            onDaySelected: _onDaySelected,
-            onVisibleDaysChanged: _onVisibleDaysChanged,
-            onCalendarCreated: _onCalendarCreated,
-          );
-        } else {
-          return
-            Column(children: [ TableCalendar(
+      builder: (BuildContext context, AsyncSnapshot<dynamic> snapshot) {
+        final data = snapshot.data is List ? snapshot.data as List : const <dynamic>[];
+        final events = _buildItems(data);
+
+        return Column(
+          children: [
+            TableCalendar<String>(
               locale: 'es',
-              calendarController: _calendarController,
-              events: _events,
+              firstDay: DateTime.utc(2020, 1, 1),
+              lastDay: DateTime.utc(2035, 12, 31),
+              focusedDay: _focusedDay,
+              selectedDayPredicate: (day) => isSameDay(_selectedDay, day),
+              eventLoader: (day) {
+                final normalized = DateTime(day.year, day.month, day.day);
+                return events[normalized] ?? const <String>[];
+              },
+              onDaySelected: _onDaySelected,
               startingDayOfWeek: StartingDayOfWeek.monday,
               calendarStyle: CalendarStyle(
-                selectedColor: pantoneEleven,
-                todayColor: pantoneOne,
-                markersColor: Colors.red[700],
+                selectedDecoration: BoxDecoration(
+                  color: pantoneEleven,
+                  shape: BoxShape.circle,
+                ),
+                todayDecoration: BoxDecoration(
+                  color: pantoneOne,
+                  shape: BoxShape.circle,
+                ),
+                markerDecoration: BoxDecoration(
+                  color: Colors.red[700],
+                  shape: BoxShape.circle,
+                ),
                 outsideDaysVisible: false,
               ),
               headerStyle: HeaderStyle(
-                formatButtonTextStyle:
-                TextStyle().copyWith(color: Colors.white, fontSize: 15.0),
-                formatButtonDecoration: BoxDecoration(
-                  color: pantoneEleven,
-                  borderRadius: BorderRadius.circular(16.0),
-                ),
+                formatButtonVisible: false,
+                titleCentered: true,
               ),
-              onDaySelected: _onDaySelected,
-              onVisibleDaysChanged: _onVisibleDaysChanged,
-              onCalendarCreated: _onCalendarCreated,
             ),
-            Row(
-              mainAxisAlignment: MainAxisAlignment.center,
-              children: [
-              //Expanded(
-              Text('Cargando citas para sesiones '),
-              //),
-            SizedBox(
-              height: size_chargin,
-              width: size_chargin,
-              child: CircularProgressIndicator(
-               backgroundColor: appColorAccent,
-                strokeWidth: lineStroke,
-                ))
-            ],)
-            ]);
-
-        }
+            if (snapshot.connectionState == ConnectionState.waiting)
+              Row(
+                mainAxisAlignment: MainAxisAlignment.center,
+                children: [
+                  const Text('Cargando citas para sesiones '),
+                  SizedBox(
+                    height: size_chargin,
+                    width: size_chargin,
+                    child: const CircularProgressIndicator(
+                      strokeWidth: 2,
+                    ),
+                  )
+                ],
+              ),
+          ],
+        );
       },
-    );
-  }
-
-  // More advanced TableCalendar configuration (using Builders & Styles)
-  Widget _buildTableCalendarWithBuilders() {
-    sesionrecord
-        .getSessionUser(context.watch<LoginProvider>().currentUser['id']);
-    //print(sesionrecord
-    // .getSessionUser(context.watch<LoginProvider>().currentUser['id']));
-    //print("buil calendar viendfo q impri,me");
-    return FutureBuilder(
-      future: sesionrecord
-          .getSessionUser(context.watch<LoginProvider>().currentUser['id']),
-      builder: (BuildContext context, AsyncSnapshot snapshot) {
-        if (snapshot.hasData) {
-          return TableCalendar(
-            locale: 'es',
-            calendarController: _calendarController,
-            events: _events,
-            initialCalendarFormat: CalendarFormat.month,
-            formatAnimation: FormatAnimation.slide,
-            startingDayOfWeek: StartingDayOfWeek.sunday,
-            availableGestures: AvailableGestures.all,
-            availableCalendarFormats: const {
-              CalendarFormat.month: '',
-              CalendarFormat.week: '',
-            },
-            calendarStyle: CalendarStyle(
-              outsideDaysVisible: false,
-              weekendStyle: TextStyle().copyWith(color: Colors.blue[800]),
-              holidayStyle: TextStyle().copyWith(color: Colors.blue[800]),
-            ),
-            daysOfWeekStyle: DaysOfWeekStyle(
-              weekendStyle: TextStyle().copyWith(color: Colors.blue[600]),
-            ),
-            headerStyle: HeaderStyle(
-              centerHeaderTitle: true,
-              formatButtonVisible: false,
-            ),
-            builders: CalendarBuilders(
-              selectedDayBuilder: (context, date, _) {
-                return FadeTransition(
-                  opacity:
-                      Tween(begin: 0.0, end: 1.0).animate(_animationController),
-                  child: Container(
-                    margin: const EdgeInsets.all(4.0),
-                    padding: const EdgeInsets.only(top: 5.0, left: 6.0),
-                    color: Colors.deepOrange[300],
-                    width: 100,
-                    height: 100,
-                    child: Text(
-                      '${date.day}',
-                      style: TextStyle().copyWith(fontSize: 16.0),
-                    ),
-                  ),
-                );
-              },
-              todayDayBuilder: (context, date, _) {
-                return Container(
-                  margin: const EdgeInsets.all(4.0),
-                  padding: const EdgeInsets.only(top: 5.0, left: 6.0),
-                  color: Colors.amber[400],
-                  width: 100,
-                  height: 100,
-                  child: Text(
-                    '${date.day}',
-                    style: TextStyle().copyWith(fontSize: 16.0),
-                  ),
-                );
-              },
-              markersBuilder: (context, date, events, holidays) {
-                final children = <Widget>[];
-
-                if (events.isNotEmpty) {
-                  children.add(
-                    Positioned(
-                      right: 1,
-                      bottom: 1,
-                      child: _buildEventsMarker(date, events),
-                    ),
-                  );
-                }
-
-                if (holidays.isNotEmpty) {
-                  children.add(
-                    Positioned(
-                      right: -2,
-                      top: -2,
-                      child: _buildHolidaysMarker(),
-                    ),
-                  );
-                }
-
-                return children;
-              },
-            ),
-            onDaySelected: (date, events, holidays) {
-              _onDaySelected(date, events, holidays);
-              _animationController.forward(from: 0.0);
-            },
-            onVisibleDaysChanged: _onVisibleDaysChanged,
-            onCalendarCreated: _onCalendarCreated,
-          );
-        } else {
-          return Container(
-            child: Text('no data'),
-          );
-        }
-      },
-    );
-  }
-
-  Widget _buildEventsMarker(DateTime date, List events) {
-    return AnimatedContainer(
-      duration: const Duration(milliseconds: 300),
-      decoration: BoxDecoration(
-        shape: BoxShape.rectangle,
-        color: _calendarController.isSelected(date)
-            ? Colors.brown[500]
-            : _calendarController.isToday(date)
-                ? Colors.brown[300]
-                : Colors.blue[400],
-      ),
-      width: 16.0,
-      height: 16.0,
-      child: Center(
-        child: Text(
-          '${events.length}',
-          style: TextStyle().copyWith(
-            color: Colors.white,
-            fontSize: 12.0,
-          ),
-        ),
-      ),
-    );
-  }
-
-  Widget _buildHolidaysMarker() {
-    return Icon(
-      Icons.add_box,
-      size: 20.0,
-      color: Colors.blueGrey[800],
     );
   }
 
   Widget _buildButtons() {
-    final dateTime = _events.keys.elementAt(_events.length - 2);
-
     return Column(
       children: <Widget>[
         Row(
@@ -519,27 +298,26 @@ class _MyHomePageState extends State<MyHomePage> with TickerProviderStateMixin {
           mainAxisAlignment: MainAxisAlignment.spaceEvenly,
           children: <Widget>[
             ElevatedButton(
-              child: Text('Mes'),
+              child: const Text('Mes'),
               onPressed: () {
                 setState(() {
-                  _calendarController.setCalendarFormat(CalendarFormat.month);
+                  _focusedDay = DateTime(_focusedDay.year, _focusedDay.month, 1);
                 });
               },
             ),
             ElevatedButton(
-              child: Text('2 semanas'),
+              child: const Text('2 semanas'),
               onPressed: () {
                 setState(() {
-                  _calendarController
-                      .setCalendarFormat(CalendarFormat.twoWeeks);
+                  _focusedDay = _focusedDay;
                 });
               },
             ),
             ElevatedButton(
-              child: Text('Semana'),
+              child: const Text('Semana'),
               onPressed: () {
                 setState(() {
-                  _calendarController.setCalendarFormat(CalendarFormat.week);
+                  _focusedDay = _focusedDay;
                 });
               },
             ),
@@ -557,8 +335,7 @@ class _MyHomePageState extends State<MyHomePage> with TickerProviderStateMixin {
                   border: Border.all(width: 0.8),
                   borderRadius: BorderRadius.circular(12.0),
                 ),
-                margin:
-                    const EdgeInsets.symmetric(horizontal: 8.0, vertical: 4.0),
+                margin: const EdgeInsets.symmetric(horizontal: 8.0, vertical: 4.0),
                 child: ListTile(
                   title: Text(event.toString()),
                   onTap: () => print('$event tapped!'),

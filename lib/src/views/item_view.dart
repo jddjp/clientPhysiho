@@ -1,4 +1,4 @@
-// @dart=2.9
+
 import 'dart:async';
 
 import 'package:clientPhysiho/src/components/check_type_payment.dart';
@@ -25,26 +25,26 @@ class ItemView extends StatefulWidget {
 
   final Map<String, dynamic> item;
 
-  ItemView({Key key, this.item}) : super(key: key);
+  ItemView({Key? key, required this.item}) : super(key: key);
 
   @override
   _ItemViewState createState() => _ItemViewState(item);
 }
 
 class _ItemViewState extends StateMVC<ItemView> {
-  CartServiceController _con;
+  late CartServiceController _con;
 
   _ItemViewState(Map<String, dynamic> item)
       : super(CartServiceController(item)) {
     _con = controller as CartServiceController;
   }
 
-  SharedPreferences _idservices;
+  SharedPreferences? _idservices;
   bool loading = false;
   static final DateTime now = DateTime.now();
 
   GlobalKey<FormState> _oFormKey = GlobalKey<FormState>();
-  TextEditingController _controller;
+  late TextEditingController _controller;
 
   //String _initialValue;
   String _valueToValidate = '';
@@ -53,7 +53,7 @@ class _ItemViewState extends StateMVC<ItemView> {
   // Lista de opciones para el Dropdown (Clínica y Domicilio)
   final List<String> locationOptions = ["Clinica", "Domicilio"];
   // Variable para almacenar la opción seleccionada
-  String selectedLocation;
+  String selectedLocation = '';
 
   /// This implementation is just to simulate a load data behavior
   /// from a data base sqlite or from a API
@@ -80,19 +80,19 @@ class _ItemViewState extends StateMVC<ItemView> {
     setState(() {});
   }
 
-  var sesionsList = new List(15);
-  String selectedDay;
-  var hoursList = new List(15);
-  final userPhysio = new SessionProvider();
+  var sesionsList = List<dynamic>.filled(15, null);
+  String selectedDay = '';
+  var hoursList = List<dynamic>.filled(15, null);
+  final userPhysio = SessionProvider();
   // String location = "consultorio";
-  Map<String, dynamic> phisioSelected = null;
+  Map<String, dynamic>? phisioSelected;
   @override
   Widget build(BuildContext context) {
     var width = MediaQuery.of(context).size.width;
 
     changeStatusColor(Colors.transparent);
     return (context.watch<LoginProvider>().isLoggedIn() &&
-            context.watch<LoginProvider>().currentUser['nombre'] != null
+            (context.watch<LoginProvider>().currentUser?['nombre'] ?? '').isNotEmpty
         ? Scaffold(
             appBar: AppBar(
                 backgroundColor: pantoneTwo,
@@ -229,13 +229,14 @@ class _ItemViewState extends StateMVC<ItemView> {
                                         height: 2,
                                         color: Colors.black,
                                       ),
-                                      onChanged: (String newValue) {
+                                      onChanged: (String? newValue) {
+                                        final value = newValue ?? '';
                                         setState(() {
                                           phisioSelected = null;
-                                          selectedLocation = newValue;
-                                          _con.selectedLocation = newValue;
+                                          selectedLocation = value;
+                                          _con.selectedLocation = value;
 
-                                          _con.asyncDataEmployes(newValue);
+                                          _con.asyncDataEmployes(value);
                                         });
                                       },
                                       items: locationOptions
@@ -280,8 +281,7 @@ class _ItemViewState extends StateMVC<ItemView> {
                                     ],
                                   ),
                                 )
-                              : _con.selectedLocation != null &&
-                                      _con.employess.isNotEmpty
+                              : _con.employess.isNotEmpty
                                   ? Container(
                                       padding: EdgeInsets.all(10),
                                       child: Column(
@@ -315,13 +315,10 @@ class _ItemViewState extends StateMVC<ItemView> {
                                                   height: 2,
                                                   color: Colors.black,
                                                 ),
-                                                onChanged: (Map<String, dynamic>
-                                                    value) {
+                                                onChanged: (Map<String, dynamic>? value) {
                                                   setState(() {
-                                                    phisioSelected =
-                                                        value; // Actualiza el valor seleccionado
-                                                    print(
-                                                        phisioSelected); // Imprime el valor seleccionado
+                                                    phisioSelected = value;
+                                                    print(phisioSelected);
                                                   });
                                                 },
                                                 items: _con.employess.map<
@@ -387,8 +384,7 @@ class _ItemViewState extends StateMVC<ItemView> {
                                     )),
                                 ElevatedButton(
                                   style: TextButton.styleFrom(
-                                    primary: pantoneThirteen,
-                                    shape: const RoundedRectangleBorder(
+                                    foregroundColor: pantoneThirteen, shape: const RoundedRectangleBorder(
                                       borderRadius: BorderRadius.all(
                                           Radius.circular(20.0)),
                                     ),
@@ -417,26 +413,20 @@ class _ItemViewState extends StateMVC<ItemView> {
                                         });
                                       }
 
-                                      if (phisioSelected != null) {
-                                        launchScreen(
-                                            context, CheckTypePayment.routeName,
-                                            arguments: {
-                                              'service': _con.service,
-                                              'item': _con.itemService,
-                                              'sesions': sesionsList,
-                                              'hours': hoursList,
-                                              'customer': context
-                                                  .read<LoginProvider>()
-                                                  .currentUser['id'],
-                                              'idPhysio': phisioSelected['id'],
-                                              'location': selectedLocation
-                                            });
-                                      } else {
-                                        Fluttertoast.showToast(
-                                            msg:
-                                                "Selecciona un Fisioterapeuta");
-                                      }
-                                    } else {
+                                      launchScreen(
+                                          context, CheckTypePayment.routeName,
+                                          arguments: {
+                                            'service': _con.service,
+                                            'item': _con.itemService,
+                                            'sesions': sesionsList,
+                                            'hours': hoursList,
+                                            'customer': context
+                                                .read<LoginProvider>()
+                                                .currentUser?['id'] ?? '',
+                                            'idPhysio': phisioSelected?['id'] ?? '',
+                                            'location': selectedLocation
+                                          });
+                                                                        } else {
                                       Fluttertoast.showToast(
                                           msg:
                                               "Selecciona la fecha y el horario de todas las sesiones");
@@ -525,11 +515,11 @@ class _ItemViewState extends StateMVC<ItemView> {
           ));
   }
 
-  Widget listItem({int index, String title, IconData icon}) {
+  Widget listItem({required int index, required String title, required IconData icon}) {
     return Material(
       color: Colors.transparent,
       child: Theme(
-        data: ThemeData(accentColor: Colors.black),
+        data: ThemeData(colorScheme: ColorScheme.fromSwatch().copyWith(secondary: Colors.black)),
         child: ExpansionTile(
           leading: Icon(
             icon,
@@ -564,11 +554,11 @@ class _ItemViewState extends StateMVC<ItemView> {
                 boxShadow: [
                   BoxShadow(
                       offset: Offset(1, 3),
-                      color: Colors.grey[300],
+                      color: Colors.grey.shade300,
                       blurRadius: 5),
                   BoxShadow(
                       offset: Offset(-1, -3),
-                      color: Colors.grey[300],
+                      color: Colors.grey.shade300,
                       blurRadius: 5)
                 ]),
             child: Column(
@@ -654,12 +644,11 @@ class _ItemViewState extends StateMVC<ItemView> {
                     SizedBox(
                       width: 10,
                     ),
-                    phisioSelected != null &&
-                            _con.service['name'].trim() != 'Dermatofuncional'
+                    _con.service['name'].trim() != 'Dermatofuncional'
                         ? FutureBuilder(
                             future: userPhysio.getHours(
                                 index,
-                                phisioSelected['id'],
+                                phisioSelected?['id'] ?? '',
                                 sesionsList[index],
                                 selectedDay),
                             builder: (BuildContext context,
@@ -667,6 +656,9 @@ class _ItemViewState extends StateMVC<ItemView> {
                               print('list hours');
                               print(snapshot.data);
                               if (snapshot.hasData) {
+                                final items = (snapshot.data ?? const [])
+                                    .map((item) => Map<String, dynamic>.from(item as Map))
+                                    .toList();
                                 return Container(
                                   width: 200,
                                   child: SelectFormField(
@@ -678,9 +670,9 @@ class _ItemViewState extends StateMVC<ItemView> {
                                     dialogCancelBtn: 'Cancelar',
                                     enableSearch: true,
                                     dialogSearchHint: 'Buscar horario',
-                                    items: snapshot.data,
+                                    items: items,
                                     onChanged: (val) {
-                                      selectedHour = val;
+                                      selectedHour = val ?? '';
                                       setState(() {
                                         print("value changed: " + selectedHour);
                                         hoursList[index] = selectedHour;
@@ -688,11 +680,11 @@ class _ItemViewState extends StateMVC<ItemView> {
                                       });
                                     },
                                     validator: (val) {
-                                      setState(() => _valueToValidate = val);
+                                      setState(() => _valueToValidate = val ?? '');
                                       return null;
                                     },
                                     onSaved: (val) {
-                                      _valueSaved = val;
+                                      _valueSaved = val ?? '';
                                       setState(() {});
                                     },
                                   ),
@@ -720,6 +712,9 @@ class _ItemViewState extends StateMVC<ItemView> {
                               print('list hours');
                               print(snapshot.data);
                               if (snapshot.hasData) {
+                                final items = (snapshot.data ?? const [])
+                                    .map((item) => Map<String, dynamic>.from(item as Map))
+                                    .toList();
                                 return Container(
                                   width: 200,
                                   child: SelectFormField(
@@ -731,9 +726,9 @@ class _ItemViewState extends StateMVC<ItemView> {
                                     dialogCancelBtn: 'Cancelar',
                                     enableSearch: true,
                                     dialogSearchHint: 'Buscar horario',
-                                    items: snapshot.data,
+                                    items: items,
                                     onChanged: (val) {
-                                      selectedHour = val;
+                                      selectedHour = val ?? '';
                                       setState(() {
                                         print("value changed: " + selectedHour);
                                         hoursList[index] = selectedHour;
@@ -741,11 +736,11 @@ class _ItemViewState extends StateMVC<ItemView> {
                                       });
                                     },
                                     validator: (val) {
-                                      setState(() => _valueToValidate = val);
+                                      setState(() => _valueToValidate = val ?? '');
                                       return null;
                                     },
                                     onSaved: (val) {
-                                      _valueSaved = val;
+                                      _valueSaved = val ?? '';
                                       setState(() {});
                                     },
                                   ),

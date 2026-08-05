@@ -1,4 +1,4 @@
-// @dart=2.9
+
 import 'package:clientPhysiho/src/components/default_button.dart';
 import 'package:clientPhysiho/src/config/colors.dart';
 import 'package:clientPhysiho/src/config/constants.dart';
@@ -20,7 +20,7 @@ class CreateAccountView extends StatefulWidget {
 class _CreateAccountViewState extends State<CreateAccountView> {
   final _formKey = GlobalKey<FormState>();
   final List<String> errors = [];
-  String phoneNumber;
+  String phoneNumber = '';
 
   final _codeController = TextEditingController();
 
@@ -43,7 +43,7 @@ class _CreateAccountViewState extends State<CreateAccountView> {
           print("verificationFailed");
           print(e);
         },
-        codeSent: (String verificationId, [int forceResendingToken]) {
+        codeSent: (String verificationId, [int? forceResendingToken]) {
           launchScreen(context, OPTView.routeName, arguments: {
             'phoneNumber': phoneNumber,
             'verificationId': verificationId
@@ -53,6 +53,7 @@ class _CreateAccountViewState extends State<CreateAccountView> {
           print("retrieval");
         },
         timeout: Duration(seconds: 60));
+    return true;
   }
 
   @override
@@ -113,7 +114,7 @@ class _CreateAccountViewState extends State<CreateAccountView> {
               child: DefaultButton(
                 text: "Continuar",
                 press: () async {
-                  if (_formKey.currentState.validate()) {
+                  if (_formKey.currentState?.validate() ?? false) {
                     showDialog(
                       context: context,
                       barrierDismissible: false,
@@ -136,7 +137,7 @@ class _CreateAccountViewState extends State<CreateAccountView> {
                         );
                       },
                     );
-                    _formKey.currentState.save();
+                    _formKey.currentState?.save();
 
                     // Save phoneNumber on App Global State
                     //await context.read<LoginProvider>().verifyPhoneNumber(phoneNumber, context);
@@ -161,14 +162,14 @@ class _CreateAccountViewState extends State<CreateAccountView> {
         child: TextFormField(
           keyboardType: TextInputType.phone,
           autofocus: true,
-          onSaved: (newValue) => phoneNumber = newValue,
+          onSaved: (newValue) => phoneNumber = newValue ?? '',
           validator: (value) {
             Pattern pattern = r'^(?:[+0]9)?[0-9]{10}$';
-            RegExp regex = new RegExp(pattern);
-            if (value.isEmpty) {
+            RegExp regex = RegExp(pattern.toString());
+            if ((value ?? '').isEmpty) {
               return "Ingresa tu número de teléfono";
             }
-            if (!regex.hasMatch(value)) {
+            if (!regex.hasMatch(value ?? '')) {
               return "Ingresa un número a 10 dígitos válido";
             }
             return null;

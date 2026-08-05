@@ -1,4 +1,4 @@
-// @dart=2.9
+
 import 'package:cached_network_image/cached_network_image.dart';
 import 'package:flutter/material.dart';
 import 'package:clientPhysiho/src/config/colors.dart';
@@ -12,14 +12,14 @@ class ItemWidget extends StatefulWidget {
   final Map<String, dynamic> item;
   final String idservice;
 
-  ItemWidget({Key key, this.item, this.idservice}) : super(key: key);
+  ItemWidget({Key? key, required this.item, required this.idservice}) : super(key: key);
 
   @override
   _ItemWidgetState createState() => _ItemWidgetState();
 }
 
 class _ItemWidgetState extends State<ItemWidget> {
-  SharedPreferences _idservices;
+  SharedPreferences? _idservices;
 
   @override
   void initState() {
@@ -28,9 +28,9 @@ class _ItemWidgetState extends State<ItemWidget> {
     //initializeFlutterFire();
   }
 
-  void initialize() async {
+  Future<void> initialize() async {
     _idservices = await SharedPreferences.getInstance();
-    setState(() {});
+    if (mounted) setState(() {});
   }
 
   @override
@@ -42,8 +42,8 @@ class _ItemWidgetState extends State<ItemWidget> {
     return InkWell(
       onTap: () {
         //id servicio y id de paquete de servicio
-        _idservices.setString('idservicio', widget.item["idservice"]);
-        _idservices.setString('idpaqueteservicio', widget.item["id"]);
+        _idservices?.setString('idservicio', widget.item["idservice"] ?? '');
+        _idservices?.setString('idpaqueteservicio', widget.item["id"] ?? '');
         print(widget.item["idservice"]);
         print(widget.item["id"]);
         print("guardando realizando set guardoado de id");

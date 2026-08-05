@@ -1,4 +1,5 @@
 import 'package:flutter/material.dart';
+import 'package:flutter/services.dart';
 import 'package:google_fonts/google_fonts.dart';
 import 'package:clientPhysiho/src/config/colors.dart';
 import 'package:clientPhysiho/src/config/constants.dart';
@@ -8,15 +9,13 @@ ThemeData getThemeData() {
     scaffoldBackgroundColor: whiteColor,
     primaryColor: appColorPrimary,
     primaryColorDark: appColorPrimary,
-    errorColor: Colors.red,
     hoverColor: Colors.grey,
     dividerColor: viewLineColor,
     fontFamily: GoogleFonts.poppins().fontFamily,
     appBarTheme: appBarTheme(),
-    colorScheme: colorScheme(),
-    cardTheme: CardTheme(color: Colors.white),
+    cardTheme: CardThemeData(color: Colors.white),
     iconTheme: IconThemeData(color: textPrimaryColor),
-    textTheme: textTheme(),
+    textTheme: textTheme(), colorScheme: colorScheme().copyWith(error: Colors.red),
     //inputDecorationTheme: inputDecorationTheme(),
   );
 }
@@ -24,7 +23,6 @@ ThemeData getThemeData() {
 ColorScheme colorScheme() {
   return ColorScheme.light(
     primary: appColorPrimary,
-    primaryVariant: appColorPrimary,
   );
 }
 
@@ -48,20 +46,20 @@ InputDecorationTheme inputDecorationTheme() {
 
 TextTheme textTheme() {
   return TextTheme(
-    button: TextStyle(color: appColorPrimary),
-    headline6: TextStyle(color: textPrimaryColor),
-    subtitle2: TextStyle(color: textSecondaryColor),
+    labelLarge: TextStyle(color: appColorPrimary),
+    titleLarge: TextStyle(color: textPrimaryColor),
+    titleSmall: TextStyle(color: textSecondaryColor),
   );
 }
 
 AppBarTheme appBarTheme() {
   return AppBarTheme(
-    color: appLayout_background,
+    backgroundColor: appLayout_background,
     iconTheme: IconThemeData(color: textPrimaryColor),
-    elevation: 0,
-    brightness: Brightness.light,
-    textTheme: TextTheme(
-      headline6: TextStyle(color: textPrimaryColor, fontSize: textSizeMedium),
-    ),
+    elevation: 0, systemOverlayStyle: SystemUiOverlayStyle.dark, toolbarTextStyle: TextTheme(
+      titleLarge: TextStyle(color: textPrimaryColor, fontSize: textSizeMedium),
+    ).bodyMedium, titleTextStyle: TextTheme(
+      titleLarge: TextStyle(color: textPrimaryColor, fontSize: textSizeMedium),
+    ).titleLarge,
   );
 }
