@@ -250,38 +250,32 @@ class _CompleteProfileViewState extends State<CompleteProfileView> {
     );
   }
 
-  Widget buildNameFormField(String defaultName) {
-    if (Platform.isIOS) {
-      return TextFormField(
-        onSaved: (newValue) => name = newValue ?? '',
-        initialValue: defaultName,
-        enabled: false, // Esto hace que el campo no sea editable
-        decoration: InputDecoration(
-          labelText: "Nombre",
-          hintText: "Ingresa tu nombre completo",
-          floatingLabelBehavior: FloatingLabelBehavior.always,
-        ),
-      );
-    } else {
-      return TextFormField(
-        onSaved: (newValue) => name = newValue ?? '',
-        initialValue: defaultName,
-        autofocus: true,
-        validator: (value) {
-          if ((value ?? '').isEmpty) {
-            return "Por favor ingresa tu nombre";
-          }
-          return null;
-        },
-        decoration: InputDecoration(
-          labelText: "Nombre",
-          hintText: "Ingresa tu nombre completo",
-          floatingLabelBehavior: FloatingLabelBehavior.always,
-        ),
-      );
-    }
-  }
+Widget buildNameFormField(String defaultName) {
+  final hasName = defaultName.trim().isNotEmpty;
 
+  return TextFormField(
+    initialValue: defaultName,
+    enabled: !hasName,
+    autofocus: !hasName,
+
+    onSaved: (value) {
+      name = value?.trim() ?? '';
+    },
+
+    validator: (value) {
+      if ((value ?? '').trim().isEmpty) {
+        return 'Por favor ingresa tu nombre';
+      }
+      return null;
+    },
+
+    decoration: const InputDecoration(
+      labelText: 'Nombre',
+      hintText: 'Ingresa tu nombre completo',
+      floatingLabelBehavior: FloatingLabelBehavior.always,
+    ),
+  );
+}
   Widget buildEmailFormField(String defaultValue) {
     if (Platform.isIOS) {
       return TextFormField(
