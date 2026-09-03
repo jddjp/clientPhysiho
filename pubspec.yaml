@@ -3,10 +3,10 @@ name: clientPhysiho
 description: Aplicación móvil Physiho.
 publish_to: "none"
 
-# 3.0.1 = versión visible para el usuario.
-# 29 = versionCode de Android.
-# Si ya existe una compilación 28 en Google Play, la siguiente debe ser 29.
-version: 3.0.1+29
+# 3.0.5 = versión visible para el usuario.
+# 30 = número de compilación para Android e iOS.
+# Debe incrementarse para cada nueva compilación enviada a las tiendas.
+version: 3.0.5+30
 
 environment:
   sdk: ">=3.3.0 <4.0.0"
