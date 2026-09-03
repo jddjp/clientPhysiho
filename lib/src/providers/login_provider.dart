@@ -1,4 +1,3 @@
-
 import 'dart:convert';
 import 'dart:math';
 import 'package:flutter_web_auth_2/flutter_web_auth_2.dart';
@@ -7,6 +6,8 @@ import 'package:flutter/material.dart';
 import 'package:flutter/services.dart';
 import 'package:cloud_firestore/cloud_firestore.dart';
 import 'package:firebase_auth/firebase_auth.dart';
+import 'package:firebase_messaging/firebase_messaging.dart'
+    hide AuthorizationStatus;
 import 'package:google_sign_in/google_sign_in.dart';
 import 'package:shared_preferences/shared_preferences.dart';
 import 'package:clientPhysiho/src/helpers/extension_helper.dart';
@@ -79,7 +80,8 @@ class LoginProvider with ChangeNotifier {
         if (credential == null) {
           throw FirebaseAuthException(code: 'credential-null');
         }
-        UserCredential userCredential = await _auth.signInWithCredential(credential);
+        UserCredential userCredential =
+            await _auth.signInWithCredential(credential);
         //print("Validamos nombre"+result.fullName);
         return afterSignIn(userCredential, name: result.fullName);
       } on FirebaseAuthException catch (e) {
@@ -107,7 +109,8 @@ class LoginProvider with ChangeNotifier {
 
     // Present the dialog to the user
     final result = await FlutterWebAuth2.authenticate(
-        url: "https://fisioterapia-cfb53.web.app", callbackUrlScheme: "physiho");
+        url: "https://fisioterapia-cfb53.web.app",
+        callbackUrlScheme: "physiho");
 
     // Extract status from resulting url
     final params = Uri.parse(result).queryParameters;
@@ -171,6 +174,14 @@ class LoginProvider with ChangeNotifier {
     _prefs.setString('uid', currentUser.uid);
     await checkLoginState();
 
+    try {
+      final String? messagingToken =
+          await FirebaseMessaging.instance.getToken();
+      await saveTokenToDatabase(messagingToken);
+    } on FirebaseException catch (error) {
+      debugPrint('No fue posible registrar el token de mensajerÃ­a: $error');
+    }
+
     return Future.value();
   }
 
@@ -186,9 +197,7 @@ class LoginProvider with ChangeNotifier {
 
     if (result == null) {
       return AuthResult(
-          status: AuthResult.cancelled,
-          credential: null,
-          message: 'cancelled');
+          status: AuthResult.cancelled, credential: null, message: 'cancelled');
     }
 
     final GoogleSignInAuthentication googleAuth = await result.authentication;
@@ -209,16 +218,19 @@ class LoginProvider with ChangeNotifier {
     if (result.status == AuthorizationStatus.authorized) {
       final appleIdCredential = result.credential;
       if (appleIdCredential == null) {
-        return AuthResult(status: AuthResult.error, credential: null, message: message);
+        return AuthResult(
+            status: AuthResult.error, credential: null, message: message);
       }
       final oAuthProvider = OAuthProvider('apple.com');
       final credential = oAuthProvider.credential(
         idToken: String.fromCharCodes(appleIdCredential.identityToken ?? []),
-        accessToken: String.fromCharCodes(appleIdCredential.authorizationCode ?? []),
+        accessToken:
+            String.fromCharCodes(appleIdCredential.authorizationCode ?? []),
       );
       print(appleIdCredential);
       print("valida nombre");
-      print('${appleIdCredential.fullName?.givenName ?? ''} ${appleIdCredential.fullName?.familyName ?? ''}');
+      print(
+          '${appleIdCredential.fullName?.givenName ?? ''} ${appleIdCredential.fullName?.familyName ?? ''}');
       return AuthResult(
           status: AuthResult.ok,
           credential: credential,
@@ -230,7 +242,8 @@ class LoginProvider with ChangeNotifier {
   }
 
   // SignIn With phone
-  Future<void> signInWithPhone({String? verificationId, String? smsCode}) async {
+  Future<void> signInWithPhone(
+      {String? verificationId, String? smsCode}) async {
     _loading = true;
     notifyListeners();
 
@@ -358,9 +371,7 @@ class LoginProvider with ChangeNotifier {
   }
 
   Future<void> saveTokenToDatabase(String? token) async {
-    // Create instance if not initialized
-    String deviceToken = _prefs.getString('device_token') ?? '';
-    String? userId = _prefs.getString('uid');
+    final String? userId = _prefs.getString('uid');
 
     // User not logged
     if (token == null || userId == null) {
@@ -369,7 +380,7 @@ class LoginProvider with ChangeNotifier {
 
     print('Saving token $token to database');
 
-    _prefs.setString('device_token', token);
+    await _prefs.setString('device_token', token);
 
     await FirebaseFirestore.instance
         .collection('customers')
@@ -409,7 +420,11 @@ class AuthResult {
   final String message;
   final String? fullName;
 
-  AuthResult({required this.status, this.credential, this.message = 'success', this.fullName});
+  AuthResult(
+      {required this.status,
+      this.credential,
+      this.message = 'success',
+      this.fullName});
 
   AuthCredential? getCredential() => credential;
 }

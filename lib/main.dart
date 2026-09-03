@@ -27,11 +27,18 @@ import 'package:intl/intl.dart';
 import 'package:provider/provider.dart';
 import 'package:shared_preferences/shared_preferences.dart';
 
+@pragma('vm:entry-point')
+Future<void> firebaseMessagingBackgroundHandler(RemoteMessage message) async {
+  await Firebase.initializeApp();
+  debugPrint('onBackgroundMessage: ${message.messageId}');
+}
+
 Future<void> main() async {
   Intl.defaultLocale = 'es';
 
   WidgetsFlutterBinding.ensureInitialized();
   await Firebase.initializeApp();
+  FirebaseMessaging.onBackgroundMessage(firebaseMessagingBackgroundHandler);
 
   await SystemChrome.setPreferredOrientations([
     DeviceOrientation.portraitUp,
@@ -68,20 +75,22 @@ class _PhysihoAppState extends State<PhysihoApp> {
 
   final AppLinks _appLinks = AppLinks();
 
-  final GlobalKey<NavigatorState> navigatorKey =
-      GlobalKey<NavigatorState>();
+  final GlobalKey<NavigatorState> navigatorKey = GlobalKey<NavigatorState>();
 
   SharedPreferences? _prefs;
 
-  StreamSubscription<String>? _sub;
+  StreamSubscription<String>? _appLinksSubscription;
+  StreamSubscription<RemoteMessage>? _messageSubscription;
+  StreamSubscription<RemoteMessage>? _messageOpenedSubscription;
+  StreamSubscription<String>? _tokenRefreshSubscription;
 
   @override
   void initState() {
     super.initState();
 
-    initialize();
-    initializeMessaging();
-    initAppLinks();
+    unawaited(initialize());
+    unawaited(initializeMessaging());
+    unawaited(initAppLinks());
   }
 
   Future<void> initialize() async {
@@ -92,32 +101,65 @@ class _PhysihoAppState extends State<PhysihoApp> {
     setState(() {});
   }
 
-  void initializeMessaging() {
-    FirebaseMessaging.onMessage.listen((RemoteMessage message) {
+  Future<void> initializeMessaging() async {
+    final LoginProvider loginProvider = context.read<LoginProvider>();
+
+    _messageSubscription =
+        FirebaseMessaging.onMessage.listen((RemoteMessage message) {
       debugPrint('onMessage: $message');
     });
 
-    FirebaseMessaging.onMessageOpenedApp.listen((RemoteMessage message) {
+    _messageOpenedSubscription =
+        FirebaseMessaging.onMessageOpenedApp.listen((RemoteMessage message) {
       debugPrint('onLaunch: $message');
     });
 
-    _firebaseMessaging.requestPermission(
-      sound: true,
-      alert: true,
-      badge: true,
-    );
+    _tokenRefreshSubscription =
+        _firebaseMessaging.onTokenRefresh.listen((String token) {
+      unawaited(loginProvider.saveTokenToDatabase(token));
+    });
 
-    _firebaseMessaging.getToken().then((String? token) {
+    try {
+      final NotificationSettings settings =
+          await _firebaseMessaging.requestPermission(
+        sound: true,
+        alert: true,
+        badge: true,
+      );
+
+      final bool permissionGranted =
+          settings.authorizationStatus == AuthorizationStatus.authorized ||
+              settings.authorizationStatus == AuthorizationStatus.provisional;
+
+      if (!permissionGranted) {
+        debugPrint('Permiso de notificaciones no concedido.');
+        return;
+      }
+
+      await _firebaseMessaging.setForegroundNotificationPresentationOptions(
+        alert: true,
+        badge: true,
+        sound: true,
+      );
+
+      final RemoteMessage? initialMessage =
+          await _firebaseMessaging.getInitialMessage();
+      if (initialMessage != null) {
+        debugPrint('onInitialMessage: $initialMessage');
+      }
+
+      final String? token = await _firebaseMessaging.getToken();
       if (!mounted) return;
 
-      context.read<LoginProvider>().saveTokenToDatabase(token);
-    });
+      await loginProvider.saveTokenToDatabase(token);
+    } on FirebaseException catch (error) {
+      debugPrint('Error inicializando Firebase Messaging: $error');
+    }
   }
 
   Future<void> initAppLinks() async {
     try {
-      final String? initialLink =
-          await _appLinks.getInitialLinkString();
+      final String? initialLink = await _appLinks.getInitialLinkString();
 
       if (initialLink != null && initialLink.isNotEmpty) {
         _handleIncomingLink(initialLink);
@@ -132,7 +174,7 @@ class _PhysihoAppState extends State<PhysihoApp> {
       );
     }
 
-    _sub = _appLinks.stringLinkStream.listen(
+    _appLinksSubscription = _appLinks.stringLinkStream.listen(
       (String link) {
         if (link.isEmpty) return;
 
@@ -158,9 +200,8 @@ class _PhysihoAppState extends State<PhysihoApp> {
       return;
     }
 
-    final String? status = uri.pathSegments.isNotEmpty
-        ? uri.pathSegments.first
-        : null;
+    final String? status =
+        uri.pathSegments.isNotEmpty ? uri.pathSegments.first : null;
 
     final String? id = uri.queryParameters['id'];
 
@@ -190,7 +231,10 @@ class _PhysihoAppState extends State<PhysihoApp> {
 
   @override
   void dispose() {
-    _sub?.cancel();
+    unawaited(_appLinksSubscription?.cancel());
+    unawaited(_messageSubscription?.cancel());
+    unawaited(_messageOpenedSubscription?.cancel());
+    unawaited(_tokenRefreshSubscription?.cancel());
     super.dispose();
   }
 
@@ -217,9 +261,7 @@ class _PhysihoAppState extends State<PhysihoApp> {
         switch (settings.name) {
           case CheckTypePayment.routeName:
             final Map<String, dynamic> paymentArgs =
-                args is Map<String, dynamic>
-                    ? args
-                    : <String, dynamic>{};
+                args is Map<String, dynamic> ? args : <String, dynamic>{};
 
             return MaterialPageRoute(
               builder: (_) => CheckTypePayment(
@@ -239,9 +281,7 @@ class _PhysihoAppState extends State<PhysihoApp> {
 
           case OPTView.routeName:
             final Map<String, dynamic> phoneData =
-                args is Map<String, dynamic>
-                    ? args
-                    : <String, dynamic>{};
+                args is Map<String, dynamic> ? args : <String, dynamic>{};
 
             return MaterialPageRoute(
               builder: (_) => OPTView(
@@ -255,8 +295,7 @@ class _PhysihoAppState extends State<PhysihoApp> {
             );
 
           case ServiceView.routeName:
-            final String serviceId =
-                args is String ? args : '';
+            final String serviceId = args is String ? args : '';
 
             return MaterialPageRoute(
               builder: (_) => ServiceView(
@@ -265,21 +304,18 @@ class _PhysihoAppState extends State<PhysihoApp> {
             );
 
           case ItemView.routeName:
-            final Map<String, dynamic> itemData =
-                args is Map<String, dynamic>
-                    ? args
-                    : <String, dynamic>{
-                        'id':
-                            _prefs?.getString(
-                                  'idpaqueteservicio',
-                                ) ??
-                                '',
-                        'idservice':
-                            _prefs?.getString(
-                                  'idservicio',
-                                ) ??
-                                '',
-                      };
+            final Map<String, dynamic> itemData = args is Map<String, dynamic>
+                ? args
+                : <String, dynamic>{
+                    'id': _prefs?.getString(
+                          'idpaqueteservicio',
+                        ) ??
+                        '',
+                    'idservice': _prefs?.getString(
+                          'idservicio',
+                        ) ??
+                        '',
+                  };
 
             return PageRouteBuilder(
               pageBuilder: (
@@ -321,8 +357,7 @@ class _PhysihoAppState extends State<PhysihoApp> {
             );
 
           case HomeView.routeName:
-            final String agendaValue =
-                args is String ? args : '';
+            final String agendaValue = args is String ? args : '';
 
             return MaterialPageRoute(
               builder: (_) => HomeView(

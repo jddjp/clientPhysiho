@@ -29,10 +29,10 @@ dependencies:
   table_calendar: ^3.2.0
 
   # Firebase
-  firebase_core: ^2.32.0
-  firebase_auth: ^4.16.0
-  cloud_firestore: ^4.17.5
-  firebase_messaging: ^14.7.10
+  firebase_core: ^4.14.0
+  firebase_auth: ^6.6.1
+  cloud_firestore: ^6.9.0
+  firebase_messaging: ^16.6.0
 
   # Autenticación
   google_sign_in: ^6.3.0
