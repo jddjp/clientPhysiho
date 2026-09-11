@@ -1,4 +1,3 @@
-
 import 'dart:io';
 
 import 'package:clientPhysiho/src/components/default_button.dart';
@@ -7,6 +6,7 @@ import 'package:clientPhysiho/src/helpers/widget_helper.dart';
 import 'package:clientPhysiho/src/providers/get_states_m_provider.dart';
 import 'package:clientPhysiho/src/providers/login_provider.dart';
 import 'package:clientPhysiho/src/views/home_view.dart';
+import 'package:clientPhysiho/src/views/login_view.dart';
 import 'package:cloud_firestore/cloud_firestore.dart';
 import 'package:flutter/material.dart';
 import 'package:loading_overlay/loading_overlay.dart';
@@ -58,8 +58,6 @@ class _CompleteProfileViewState extends State<CompleteProfileView> {
   var estados = 'a';
   var municipios = 'a';
 
-  var estadosUser = new LoginProvider().checkInfo();
-
   //*
   @override
   void initState() {
@@ -105,7 +103,39 @@ class _CompleteProfileViewState extends State<CompleteProfileView> {
 
   @override
   Widget build(BuildContext context) {
-    print(estadosUser.toString());
+    final login = context.watch<LoginProvider>();
+    if (login.isLoadingCurrentUser()) {
+      return const Scaffold(body: Center(child: CircularProgressIndicator()));
+    }
+    if (login.sessionError != null || login.currentUser == null) {
+      return Scaffold(
+        body: Center(
+          child: Padding(
+            padding: const EdgeInsets.all(24),
+            child: Column(
+              mainAxisSize: MainAxisSize.min,
+              children: [
+                Text(login.sessionError ??
+                    'Inicia sesión para completar tu perfil.'),
+                const SizedBox(height: 16),
+                ElevatedButton(
+                  onPressed: () {
+                    if (login.sessionError != null) {
+                      login.checkLoginState();
+                    } else {
+                      Navigator.pushNamed(context, LoginView.routeName);
+                    }
+                  },
+                  child: Text(login.sessionError != null
+                      ? 'Reintentar'
+                      : 'Iniciar sesión'),
+                ),
+              ],
+            ),
+          ),
+        ),
+      );
+    }
     final currentUser = context.watch<LoginProvider>().currentUser ?? {};
     _valueChanged = context.watch<LoginProvider>().isLoggedIn() &&
             currentUser['estado'] != null
@@ -122,74 +152,77 @@ class _CompleteProfileViewState extends State<CompleteProfileView> {
 
           // context.watch<LoginProvider>().isLoggedIn() &&
           LoadingOverlay(
-                  isLoading: context.watch<LoginProvider>().currentUser == null,
-                  child: SafeArea(
-                    child: SizedBox(
-                      width: double.infinity,
-                      child: Padding(
-                        padding: EdgeInsets.symmetric(horizontal: 32),
-                        child: SingleChildScrollView(
-                          child: Column(
-                            children: [
-                              SizedBox(height: 40.0),
-                              text("Completar perfil",
-                                  fontSize: textSizeNormal),
-                              Text(
-                                "Completa tus datos para poder continuar",
-                                textAlign: TextAlign.center,
-                              ),
-                              SizedBox(height: 45.0),
-                              Form(
-                                key: _formKey,
-                                child: Column(
-                                  children: [
-                                    buildNameFormField(context
-                                        .watch<LoginProvider>()
-                                        .currentUser?['nombre'] ?? ''),
-                                    SizedBox(height: spacing_large),
-                                    buildEmailFormField(context
-                                        .watch<LoginProvider>()
-                                        .currentUser?['correo'] ?? ''),
-                                    SizedBox(height: spacing_large),
-                                    buildPhoneNumberFormField(context
-                                        .watch<LoginProvider>()
-                                        .currentUser?['telefono'] ?? ''),
-                                    SizedBox(height: spacing_large),
-                                    buildDireccionFormField(context
-                                        .watch<LoginProvider>()
-                                        .currentUser?['direccion'] ?? ''),
-                                    SizedBox(height: 40.0),
-                                    DefaultButton(
-                                      text: "Continuar",
-                                      press: () async {
-                                        if (_formKey.currentState?.validate() ?? false) {
-                                          _formKey.currentState?.save();
-                                          await FirebaseFirestore.instance
-                                              .collection('customers')
-                                              .doc(context
-                                                  .read<LoginProvider>()
-                                                  .currentUser?['id'] ?? '')
-                                              .update({
-                                            'nombre': name,
-                                            'telefono': phoneNumber,
-                                            'correo': email,
-                                            'direccion': direccion,
-                                            'estado': _valueChanged,
-                                            'municipio': municipio,
-                                            'completed': true,
-                                            'updated_at':
-                                                FieldValue.serverTimestamp()
-                                          });
+        isLoading: login.isLoadingCurrentUser(),
+        child: SafeArea(
+          child: SizedBox(
+            width: double.infinity,
+            child: Padding(
+              padding: EdgeInsets.symmetric(horizontal: 32),
+              child: SingleChildScrollView(
+                child: Column(
+                  children: [
+                    SizedBox(height: 40.0),
+                    text("Completar perfil", fontSize: textSizeNormal),
+                    Text(
+                      "Completa tus datos para poder continuar",
+                      textAlign: TextAlign.center,
+                    ),
+                    SizedBox(height: 45.0),
+                    Form(
+                      key: _formKey,
+                      child: Column(
+                        children: [
+                          buildNameFormField(context
+                                  .watch<LoginProvider>()
+                                  .currentUser?['nombre'] ??
+                              ''),
+                          SizedBox(height: spacing_large),
+                          buildEmailFormField(context
+                                  .watch<LoginProvider>()
+                                  .currentUser?['correo'] ??
+                              ''),
+                          SizedBox(height: spacing_large),
+                          buildPhoneNumberFormField(context
+                                  .watch<LoginProvider>()
+                                  .currentUser?['telefono'] ??
+                              ''),
+                          SizedBox(height: spacing_large),
+                          buildDireccionFormField(context
+                                  .watch<LoginProvider>()
+                                  .currentUser?['direccion'] ??
+                              ''),
+                          SizedBox(height: 40.0),
+                          DefaultButton(
+                            text: "Continuar",
+                            press: () async {
+                              if (_formKey.currentState?.validate() ?? false) {
+                                _formKey.currentState?.save();
+                                await FirebaseFirestore.instance
+                                    .collection('customers')
+                                    .doc(context
+                                            .read<LoginProvider>()
+                                            .currentUser?['id'] ??
+                                        '')
+                                    .update({
+                                  'nombre': name,
+                                  'telefono': phoneNumber,
+                                  'correo': email,
+                                  'direccion': direccion,
+                                  'estado': _valueChanged,
+                                  'municipio': municipio,
+                                  'completed': true,
+                                  'updated_at': FieldValue.serverTimestamp()
+                                });
 
-                                          Provider.of<LoginProvider>(context,
-                                                  listen: false)
-                                              .checkLoginState()
-                                              .then((value) {
-                                            // Redirect and remove all screens
-                                            Navigator.pushNamedAndRemoveUntil(
-                                                context,
-                                                HomeView.routeName
-                                                /*_idservices.getString(
+                                Provider.of<LoginProvider>(context,
+                                        listen: false)
+                                    .checkLoginState()
+                                    .then((value) {
+                                  // Redirect and remove all screens
+                                  Navigator.pushNamedAndRemoveUntil(
+                                      context,
+                                      HomeView.routeName
+                                      /*_idservices.getString(
                                                             'idpaqueteservicio') !=
                                                         null &&
                                                     _idservices.getString(
@@ -197,85 +230,81 @@ class _CompleteProfileViewState extends State<CompleteProfileView> {
                                                         null
                                                 ? ItemView.routeName
                                                 : HomeView.routeName,*/
-                                                ,
-                                                (route) => false);
-                                          });
-                                        }
-                                      },
-                                    ),
-                                  ],
-                                ),
-                              ),
-                              SizedBox(height: 20.0),
-                              GestureDetector(
-                                onTap: () {
-                                  context.read<LoginProvider>().logout();
-                                },
-                                child: Text(
-                                  "Cerrar sesion",
-                                  style: TextStyle(
-                                      decoration: TextDecoration.underline),
-                                ),
-                              ),
-                              SizedBox(height: spacing_large),
-                              Text(
-                                "Al continuar, confirmas que estas¡ de acuerdo \ncon nuestros Terminos y condiciones",
-                                textAlign: TextAlign.center,
-                                style: Theme.of(context).textTheme.bodySmall,
-                              ),
-                              SizedBox(height: spacing_large),
-                              ElevatedButton(
-                                style: ElevatedButton.styleFrom(
-                                  backgroundColor: Colors.red, // Color rojo
-                                ),
-                                onPressed: () async {
-                                  const url =
-                                      'https://www.physiho.com/formulario-ios';
-                                  if (await canLaunch(url)) {
-                                    await launch(url);
-                                  } else {
-                                    throw 'No se pudo abrir el enlace: $url';
-                                  }
-                                },
-                                child: Text("Borrar Cuenta/Eliminar datos"),
-                              ),
-                              SizedBox(height: 20.0),
-                            ],
+                                      ,
+                                      (route) => false);
+                                });
+                              }
+                            },
                           ),
-                        ),
+                        ],
                       ),
                     ),
-                  ),
-                )),
+                    SizedBox(height: 20.0),
+                    GestureDetector(
+                      onTap: () {
+                        context.read<LoginProvider>().logout();
+                      },
+                      child: Text(
+                        "Cerrar sesion",
+                        style: TextStyle(decoration: TextDecoration.underline),
+                      ),
+                    ),
+                    SizedBox(height: spacing_large),
+                    Text(
+                      "Al continuar, confirmas que estas¡ de acuerdo \ncon nuestros Terminos y condiciones",
+                      textAlign: TextAlign.center,
+                      style: Theme.of(context).textTheme.bodySmall,
+                    ),
+                    SizedBox(height: spacing_large),
+                    ElevatedButton(
+                      style: ElevatedButton.styleFrom(
+                        backgroundColor: Colors.red, // Color rojo
+                      ),
+                      onPressed: () async {
+                        const url = 'https://www.physiho.com/formulario-ios';
+                        if (await canLaunch(url)) {
+                          await launch(url);
+                        } else {
+                          throw 'No se pudo abrir el enlace: $url';
+                        }
+                      },
+                      child: Text("Borrar Cuenta/Eliminar datos"),
+                    ),
+                    SizedBox(height: 20.0),
+                  ],
+                ),
+              ),
+            ),
+          ),
+        ),
+      )),
     );
   }
 
-Widget buildNameFormField(String defaultName) {
-  final hasName = defaultName.trim().isNotEmpty;
+  Widget buildNameFormField(String defaultName) {
+    final hasName = defaultName.trim().isNotEmpty;
 
-  return TextFormField(
-    initialValue: defaultName,
-    enabled: !hasName,
-    autofocus: !hasName,
+    return TextFormField(
+      initialValue: defaultName,
+      enabled: !hasName,
+      autofocus: !hasName,
+      onSaved: (value) {
+        name = value?.trim() ?? '';
+      },
+      validator: (value) {
+        if ((value ?? '').trim().isEmpty) {
+          return 'Por favor ingresa tu nombre';
+        }
+        return null;
+      },
+      decoration: const InputDecoration(
+        labelText: 'Nombre',
+        hintText: 'Ingresa tu nombre completo',
+        floatingLabelBehavior: FloatingLabelBehavior.always,
+      ),
+    );
+  }
 
-    onSaved: (value) {
-      name = value?.trim() ?? '';
-    },
-
-    validator: (value) {
-      if ((value ?? '').trim().isEmpty) {
-        return 'Por favor ingresa tu nombre';
-      }
-      return null;
-    },
-
-    decoration: const InputDecoration(
-      labelText: 'Nombre',
-      hintText: 'Ingresa tu nombre completo',
-      floatingLabelBehavior: FloatingLabelBehavior.always,
-    ),
-  );
-}
   Widget buildEmailFormField(String defaultValue) {
     if (Platform.isIOS) {
       return TextFormField(

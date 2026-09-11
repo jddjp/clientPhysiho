@@ -33,8 +33,11 @@ String sha256ofString(String input) {
 }
 
 class LoginProvider with ChangeNotifier {
-  late FirebaseAuth _auth;
+  final FirebaseAuth _auth = FirebaseAuth.instance;
   late SharedPreferences _prefs;
+  late final Future<void> _initialization;
+  String? _sessionError;
+  String? get sessionError => _sessionError;
   Map<String, dynamic>? _currentUser;
 
   bool _loggedIn = false;
@@ -46,15 +49,14 @@ class LoginProvider with ChangeNotifier {
 
   LoginProvider() {
     // Initialize App Provider
-    initAppProvider();
+    _initialization = initAppProvider();
 
     // Check for login state
     checkLoginState();
   }
 
-  void initAppProvider() async {
+  Future<void> initAppProvider() async {
     _prefs = await SharedPreferences.getInstance();
-    _auth = FirebaseAuth.instance;
   }
 
   bool isLoggedIn() => _loggedIn;
@@ -131,58 +133,67 @@ class LoginProvider with ChangeNotifier {
 
   Future<void> afterSignIn(UserCredential userCredential,
       {String? name, String? phone}) async {
+    await _initialization;
     print(userCredential);
     _loadingCurrentUser = true;
     notifyListeners();
-    // Register in firestore if is a new user
-    if (userCredential.additionalUserInfo?.isNewUser == true) {
-      final User? _userData = userCredential.user;
-      if (_userData == null) {
+    try {
+      // Register in firestore if is a new user
+      if (userCredential.additionalUserInfo?.isNewUser == true) {
+        final User? _userData = userCredential.user;
+        if (_userData == null) {
+          return;
+        }
+        // Validate phoneNumber
+        String phoneNumber = _userData.phoneNumber ?? '';
+        if (phoneNumber.startsWith("+52")) {
+          phoneNumber = phoneNumber.replaceAll("+", "").replaceFirst("52", "");
+        }
+        // Save new user
+        await FirebaseFirestore.instance
+            .collection('customers')
+            .doc(_userData.uid)
+            .set({
+          'nombre': name ?? _userData.displayName,
+          'correo': _userData.email,
+          'telefono': phone ?? phoneNumber,
+          'direccion': '',
+          'estado': '',
+          'municipio': '',
+          'photo': {'path': null, 'url': _userData.photoURL},
+          'record': '',
+          'active': true,
+          'completed': false, // We required that user complete their profile
+          'type': 'client',
+          'created_at': FieldValue.serverTimestamp(),
+          'updated_at': FieldValue.serverTimestamp()
+        }).timeout(const Duration(seconds: 20));
+      }
+
+      final currentUser = userCredential.user;
+      if (currentUser == null) {
         return;
       }
-      // Validate phoneNumber
-      String phoneNumber = _userData.phoneNumber ?? '';
-      if (phoneNumber.startsWith("+52")) {
-        phoneNumber = phoneNumber.replaceAll("+", "").replaceFirst("52", "");
+
+      await _prefs.setString('uid', currentUser.uid);
+      await checkLoginState();
+
+      try {
+        final String? messagingToken = await FirebaseMessaging.instance
+            .getToken()
+            .timeout(const Duration(seconds: 10));
+        await saveTokenToDatabase(messagingToken)
+            .timeout(const Duration(seconds: 10));
+      } catch (error) {
+        debugPrint('No fue posible registrar el token de mensajerÃ­a: $error');
       }
-      // Save new user
-      await FirebaseFirestore.instance
-          .collection('customers')
-          .doc(_userData.uid)
-          .set({
-        'nombre': name ?? _userData.displayName,
-        'correo': _userData.email,
-        'telefono': phone ?? phoneNumber,
-        'direccion': '',
-        'estado': '',
-        'municipio': '',
-        'photo': {'path': null, 'url': _userData.photoURL},
-        'record': '',
-        'active': true,
-        'completed': false, // We required that user complete their profile
-        'type': 'client',
-        'created_at': FieldValue.serverTimestamp(),
-        'updated_at': FieldValue.serverTimestamp()
-      });
+
+      return Future.value();
+    } finally {
+      _loading = false;
+      _loadingCurrentUser = false;
+      notifyListeners();
     }
-
-    final currentUser = userCredential.user;
-    if (currentUser == null) {
-      return;
-    }
-
-    _prefs.setString('uid', currentUser.uid);
-    await checkLoginState();
-
-    try {
-      final String? messagingToken =
-          await FirebaseMessaging.instance.getToken();
-      await saveTokenToDatabase(messagingToken);
-    } on FirebaseException catch (error) {
-      debugPrint('No fue posible registrar el token de mensajerÃ­a: $error');
-    }
-
-    return Future.value();
   }
 
   Future<AuthResult> signInWithGoogle() async {
@@ -242,7 +253,7 @@ class LoginProvider with ChangeNotifier {
   }
 
   // SignIn With phone
-  Future<void> signInWithPhone(
+  Future<bool> signInWithPhone(
       {String? verificationId, String? smsCode}) async {
     _loading = true;
     notifyListeners();
@@ -260,7 +271,10 @@ class LoginProvider with ChangeNotifier {
 
       await afterSignIn(userCredential);
 
-      return Future.value();
+      if (_sessionError != null) {
+        Fluttertoast.showToast(msg: _sessionError!);
+      }
+      return _loggedIn && _sessionError == null;
     } on PlatformException catch (err) {
       final String errorMessage =
           err.message ?? err.details?.toString() ?? err.code;
@@ -275,10 +289,11 @@ class LoginProvider with ChangeNotifier {
     } catch (err) {
       _loading = false;
       Fluttertoast.showToast(msg: 'Error:' + err.toString());
+    } finally {
+      _loading = false;
+      notifyListeners();
     }
-
-    _loading = false;
-    notifyListeners();
+    return false;
   }
 
   // Phone number authentication
@@ -286,9 +301,16 @@ class LoginProvider with ChangeNotifier {
     return _auth.verifyPhoneNumber(
       phoneNumber: "+52$phoneNumber",
       verificationCompleted: (AuthCredential credential) async {
-        final UserCredential userCredential =
-            await _auth.signInWithCredential(credential);
-        print(userCredential);
+        try {
+          final UserCredential userCredential =
+              await _auth.signInWithCredential(credential);
+          await afterSignIn(userCredential);
+        } catch (error) {
+          Fluttertoast.showToast(
+              msg:
+                  'No se pudo completar el inicio de sesión. Intenta de nuevo.');
+          debugPrint('Error en la verificación automática: $error');
+        }
       },
       verificationFailed: (FirebaseAuthException e) {
         print(e);
@@ -308,44 +330,79 @@ class LoginProvider with ChangeNotifier {
 
   /// Check login status // cookies
   Future<void> checkLoginState() async {
-    final uid = _prefs.getString('uid');
-    if (uid != null && uid.isNotEmpty) {
-      print(uid);
+    _loadingCurrentUser = true;
+    _sessionError = null;
+    notifyListeners();
+    try {
+      await _initialization;
+      final user = await _auth
+          .authStateChanges()
+          .first
+          .timeout(const Duration(seconds: 20));
+      final uid = user?.uid;
+      if (uid == null) {
+        _currentUser = null;
+        _loggedIn = false;
+        await _prefs.remove('uid');
+        return;
+      }
+      await _prefs.setString('uid', uid);
+      if (uid.isNotEmpty) {
+        print(uid);
 
-      final userDoc = await FirebaseFirestore.instance
-          .collection('customers')
-          .doc(uid)
-          .get();
-
-      if (userDoc.exists) {
-        _currentUser = {
-          ...userDoc.data() as Map<String, dynamic>,
-          "id": userDoc.id
-        };
-        _loggedIn = true;
-      } else {
-        await FirebaseFirestore.instance.collection('customers').doc(uid).set({
-          'name': '',
-          'email': '',
-          'createdAt': FieldValue.serverTimestamp(),
-        });
-
-        final newUserDoc = await FirebaseFirestore.instance
+        final userDoc = await FirebaseFirestore.instance
             .collection('customers')
             .doc(uid)
-            .get();
+            .get()
+            .timeout(const Duration(seconds: 20));
 
-        _currentUser = {
-          ...newUserDoc.data() as Map<String, dynamic>,
-          "id": newUserDoc.id
-        };
-        _loggedIn = true;
+        if (userDoc.exists) {
+          _currentUser = {
+            ...userDoc.data() as Map<String, dynamic>,
+            "id": userDoc.id
+          };
+          _loggedIn = true;
+        } else {
+          await FirebaseFirestore.instance
+              .collection('customers')
+              .doc(uid)
+              .set({
+            'nombre': user?.displayName ?? '',
+            'correo': user?.email ?? '',
+            'telefono': user?.phoneNumber ?? '',
+            'direccion': '',
+            'estado': '',
+            'municipio': '',
+            'completed': false,
+            'active': true,
+            'type': 'client',
+            'created_at': FieldValue.serverTimestamp(),
+            'updated_at': FieldValue.serverTimestamp(),
+          }).timeout(const Duration(seconds: 20));
+
+          final newUserDoc = await FirebaseFirestore.instance
+              .collection('customers')
+              .doc(uid)
+              .get()
+              .timeout(const Duration(seconds: 20));
+
+          _currentUser = {
+            ...newUserDoc.data() as Map<String, dynamic>,
+            "id": newUserDoc.id
+          };
+          _loggedIn = true;
+        }
       }
+    } catch (error) {
+      _sessionError =
+          'No se pudo cargar tu perfil. Revisa tu conexión e intenta de nuevo.';
+      debugPrint('Error al cargar la sesión: $error');
+    } finally {
+      // Loading and login
+      _loading = false;
+      _loadingCurrentUser = false;
+      notifyListeners();
     }
-    // Loading and login
-    _loading = false;
-    _loadingCurrentUser = false;
-    notifyListeners();
 
     // Promise
     return Future.value();
@@ -353,6 +410,7 @@ class LoginProvider with ChangeNotifier {
 
   /// Check login status // cookies
   Future<Map<String, dynamic>?> checkInfo() async {
+    await _initialization;
     final uid = _prefs.getString('uid');
     if (uid != null && uid.isNotEmpty) {
       final userDoc = await FirebaseFirestore.instance
@@ -371,6 +429,7 @@ class LoginProvider with ChangeNotifier {
   }
 
   Future<void> saveTokenToDatabase(String? token) async {
+    await _initialization;
     final String? userId = _prefs.getString('uid');
 
     // User not logged
@@ -392,11 +451,13 @@ class LoginProvider with ChangeNotifier {
 
   // Close sessión
   void logout() async {
+    await _initialization;
     _loading = true;
     notifyListeners();
 
     // Clear device data
-    _prefs.clear();
+    await _prefs.remove('uid');
+    await _prefs.remove('device_token');
 
     // Close auth session
     await _auth.signOut();

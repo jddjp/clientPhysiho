@@ -1,4 +1,3 @@
-
 import 'package:flutter/material.dart';
 import 'package:clientPhysiho/src/components/default_button.dart';
 import 'package:clientPhysiho/src/helpers/extension_helper.dart';
@@ -122,7 +121,8 @@ class _OPTViewState extends State<OPTView> {
                   Provider.of<LoginProvider>(context, listen: false)
                       .signInWithPhone(
                           verificationId: verificationId, smsCode: smsCode)
-                      .then((o) {
+                      .then((success) {
+                    if (!mounted || !success) return;
                     // Redirect
                     if (!Provider.of<LoginProvider>(context, listen: false)
                         .isCompleted()) {

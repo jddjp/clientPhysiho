@@ -220,7 +220,9 @@ class _ItemViewState extends StateMVC<ItemView> {
                                     ),
                                     SizedBox(width: 15),
                                     DropdownButton<String>(
-                                      value: selectedLocation,
+                                      value: selectedLocation.isEmpty
+                                          ? null
+                                          : selectedLocation,
                                       hint: Text("Selecciona..."),
                                       elevation: 16,
                                       style: const TextStyle(
@@ -383,8 +385,10 @@ class _ItemViewState extends StateMVC<ItemView> {
                                       fontWeight: fontRegular,
                                     )),
                                 ElevatedButton(
-                                  style: TextButton.styleFrom(
-                                    foregroundColor: pantoneThirteen, shape: const RoundedRectangleBorder(
+                                  style: ElevatedButton.styleFrom(
+                                    backgroundColor: appColorPrimary,
+                                    foregroundColor: whiteColor,
+                                    shape: const RoundedRectangleBorder(
                                       borderRadius: BorderRadius.all(
                                           Radius.circular(20.0)),
                                     ),
@@ -435,7 +439,6 @@ class _ItemViewState extends StateMVC<ItemView> {
                                   child: Text(
                                     'Siguiente',
                                     style: TextStyle(
-                                        color: pantoneEight,
                                         fontSize: textSizeMedium,
                                         fontWeight: fontBold),
                                   ),
@@ -644,7 +647,15 @@ class _ItemViewState extends StateMVC<ItemView> {
                     SizedBox(
                       width: 10,
                     ),
-                    _con.service['name'].trim() != 'Dermatofuncional'
+                    sesionsList[index] == null ||
+                            (_con.service['name'].trim() != 'Dermatofuncional' &&
+                                (phisioSelected?['id'] ?? '').isEmpty)
+                        ? const Expanded(
+                            child: Text(
+                              'Selecciona la fecha y el fisioterapeuta para ver los horarios',
+                            ),
+                          )
+                        : _con.service['name'].trim() != 'Dermatofuncional'
                         ? FutureBuilder(
                             future: userPhysio.getHours(
                                 index,
