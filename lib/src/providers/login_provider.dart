@@ -313,7 +313,17 @@ class LoginProvider with ChangeNotifier {
         }
       },
       verificationFailed: (FirebaseAuthException e) {
-        print(e);
+        if (Navigator.of(context).canPop()) {
+          Navigator.of(context).pop();
+        }
+
+        debugPrint(
+          'Error de autenticación por teléfono: ${e.code} - ${e.message}',
+        );
+        Fluttertoast.showToast(
+          msg:
+              'Error (${e.code}): ${e.message ?? 'No se pudo enviar el código'}',
+        );
       },
       codeSent: (String verificationId, int? resendToken) {
         Navigator.pop(context);

@@ -84,7 +84,9 @@ class _OPTViewState extends State<OPTView> {
                   left: spacing_standard_new, right: spacing_standard_new),
               child: TextFormField(
                 maxLength: 6,
-                keyboardType: TextInputType.phone,
+                keyboardType: TextInputType.number,
+                autofillHints: const [AutofillHints.oneTimeCode],
+                textInputAction: TextInputAction.done,
                 autofocus: true,
                 onSaved: (value) => smsCode = value ?? '',
                 validator: (value) {
